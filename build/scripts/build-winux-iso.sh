@@ -76,8 +76,8 @@ check_system() {
     fi
 
     source /etc/os-release
-    if [[ "${ID}" != "ubuntu" && "${ID_LIKE}" != *"ubuntu"* ]]; then
-        log_warn "Sistema nao e Ubuntu, pode haver incompatibilidades"
+    if [[ "${ID:-}" != "ubuntu" && "${ID_LIKE:-}" != *"ubuntu"* && "${ID_LIKE:-}" != *"debian"* && "${ID:-}" != "debian" ]]; then
+        log_warn "Sistema nao e Ubuntu/Debian, pode haver incompatibilidades"
     fi
 
     # Verificar espaco em disco
