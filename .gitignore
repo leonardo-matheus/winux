@@ -1,7 +1,10 @@
 # Winux OS - Git Ignore
 
 # Build artifacts
-/build/
+/build/output/
+/build/work/
+!/build/config/
+!/build/scripts/
 /target/
 /iso/
 *.iso

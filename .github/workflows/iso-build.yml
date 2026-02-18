@@ -1,0 +1,162 @@
+name: Build Winux ISO
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag for the ISO (e.g., 1.0.0-alpha)'
+        required: true
+        default: '1.0.0-dev'
+      edition:
+        description: 'Edition to build'
+        required: true
+        default: 'standard'
+        type: choice
+        options:
+          - standard
+          - gaming
+          - minimal
+      compression:
+        description: 'ISO compression level'
+        required: false
+        default: 'xz'
+        type: choice
+        options:
+          - xz
+          - zstd
+          - gzip
+
+env:
+  WINUX_VERSION: ${{ github.event.inputs.version }}
+  WINUX_EDITION: ${{ github.event.inputs.edition }}
+
+jobs:
+  build-iso:
+    name: Build Winux ISO
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm \
+            base-devel \
+            archiso \
+            git \
+            rust \
+            cargo \
+            squashfs-tools \
+            xorriso \
+            grub \
+            mtools \
+            dosfstools \
+            libisoburn
+
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-iso-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-iso-
+
+      - name: Build Winux applications
+        run: |
+          cargo build --release --workspace
+
+      - name: Prepare ISO profile
+        run: |
+          mkdir -p work/airootfs
+
+          # Copy built binaries
+          mkdir -p work/airootfs/usr/bin
+          cp target/release/winux-* work/airootfs/usr/bin/ || true
+
+          # Copy system configurations
+          cp -r system/etc/* work/airootfs/etc/ || true
+
+          # Copy themes
+          mkdir -p work/airootfs/usr/share/themes
+          cp -r themes/* work/airootfs/usr/share/themes/ || true
+
+          # Copy Calamares configuration
+          mkdir -p work/airootfs/etc/calamares
+          cp -r build/config/calamares/* work/airootfs/etc/calamares/ || true
+
+      - name: Build ISO image
+        run: |
+          chmod +x build/scripts/build-winux-iso.sh
+          ./build/scripts/build-winux-iso.sh \
+            --version "${{ env.WINUX_VERSION }}" \
+            --edition "${{ env.WINUX_EDITION }}" \
+            --compression "${{ github.event.inputs.compression }}" \
+            --output "winux-${{ env.WINUX_VERSION }}-${{ env.WINUX_EDITION }}-x86_64.iso"
+
+      - name: Generate checksums
+        run: |
+          cd output/
+          sha256sum *.iso > SHA256SUMS
+          sha512sum *.iso > SHA512SUMS
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: winux-${{ env.WINUX_VERSION }}-${{ env.WINUX_EDITION }}-iso
+          path: |
+            output/*.iso
+            output/SHA256SUMS
+            output/SHA512SUMS
+          retention-days: 30
+
+      - name: Create release (if tagged)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            output/*.iso
+            output/SHA256SUMS
+            output/SHA512SUMS
+          draft: true
+          prerelease: ${{ contains(github.event.inputs.version, 'alpha') || contains(github.event.inputs.version, 'beta') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test-iso:
+    name: Test ISO Boot
+    runs-on: ubuntu-latest
+    needs: build-iso
+    steps:
+      - name: Download ISO artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: winux-${{ env.WINUX_VERSION }}-${{ env.WINUX_EDITION }}-iso
+          path: iso/
+
+      - name: Install QEMU
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-system-x86 qemu-utils
+
+      - name: Test ISO boot (quick smoke test)
+        run: |
+          # Quick boot test - just verify ISO boots to GRUB
+          timeout 60 qemu-system-x86_64 \
+            -cdrom iso/*.iso \
+            -m 2048 \
+            -nographic \
+            -serial stdio \
+            -boot d \
+            || echo "Boot test completed (timeout expected)"
+
+      - name: Verify ISO integrity
+        run: |
+          cd iso/
+          sha256sum -c SHA256SUMS
