@@ -1,0 +1,65 @@
+# Winux OS - GitHub Pages Configuration
+# Jekyll configuration for GitHub Pages deployment
+
+# Site Settings
+title: Winux OS
+description: A experiência Linux perfeita no Windows. Execute aplicativos Linux nativamente com elegância e performance.
+url: "https://winux.dev"
+baseurl: ""
+
+# Author
+author:
+  name: Winux Team
+  email: contact@winux.dev
+
+# Social
+social:
+  github: winux-os
+  twitter: winuxos
+  discord: winux
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Include specific files
+include:
+  - _pages
+
+# Plugins (GitHub Pages compatible)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO
+lang: pt-BR
+logo: /assets/icons/logo.svg
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/images/og-image.png
+
+# Compression
+sass:
+  style: compressed
+
+# Analytics (add your tracking ID)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Theme (optional - using custom CSS)
+# theme: minima
