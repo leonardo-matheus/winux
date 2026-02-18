@@ -6,6 +6,10 @@ authors.workspace = true
 license.workspace = true
 description = "System monitor and task manager for Winux OS"
 
+[[bin]]
+name = "winux-monitor"
+path = "src/main.rs"
+
 [dependencies]
 gtk4.workspace = true
 libadwaita.workspace = true
@@ -17,3 +21,8 @@ serde.workspace = true
 chrono.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+dirs = "5.0"
+
+[features]
+default = []

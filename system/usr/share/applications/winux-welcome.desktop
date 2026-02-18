@@ -1,0 +1,47 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Welcome
+Name[pt_BR]=Bem-vindo ao Winux
+Name[es]=Bienvenido a Winux
+Name[fr]=Bienvenue sur Winux
+Name[de]=Willkommen bei Winux
+GenericName=Welcome Application
+GenericName[pt_BR]=Aplicativo de Boas-vindas
+Comment=Get started with Winux OS
+Comment[pt_BR]=Comece a usar o Winux OS
+Comment[es]=Comience con Winux OS
+Comment[fr]=Commencez avec Winux OS
+Comment[de]=Erste Schritte mit Winux OS
+Keywords=welcome;help;about;tour;guide;introduction;getting started;
+Keywords[pt_BR]=bem-vindo;ajuda;sobre;tour;guia;introducao;
+Exec=/usr/bin/winux-welcome
+Icon=winux-welcome
+Terminal=false
+Categories=System;Settings;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-welcome
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+X-AppStream-Ignore=true
+
+# Actions
+Actions=documentation;forum;report-bug;
+
+[Desktop Action documentation]
+Name=Documentation
+Name[pt_BR]=Documentacao
+Exec=xdg-open https://docs.winux.io
+Icon=help-contents
+
+[Desktop Action forum]
+Name=Community Forum
+Name[pt_BR]=Forum da Comunidade
+Exec=xdg-open https://forum.winux.io
+Icon=internet-web-browser
+
+[Desktop Action report-bug]
+Name=Report a Bug
+Name[pt_BR]=Reportar um Bug
+Exec=xdg-open https://github.com/winux-os/winux/issues/new
+Icon=tools-report-bug

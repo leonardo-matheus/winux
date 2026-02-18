@@ -27,3 +27,5 @@ rayon.workspace = true
 image.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
+tracing-subscriber.workspace = true
+open = "5.0"
