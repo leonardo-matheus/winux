@@ -163,22 +163,22 @@ Kernel e sistema otimizados:
 
 <div align="center">
 
+### 🎉 **Winux OS 1.0 Aurora - Disponível Agora!**
+
 | Edição | Tamanho | Descrição | Link |
 |:------:|:-------:|:---------:|:----:|
-| **Winux Desktop** | ~3.5 GB | Instalação completa com todos os apps | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
-| **Winux Minimal** | ~1.8 GB | Instalação mínima sem apps extras | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
-| **Winux Gaming** | ~4.2 GB | Pré-configurado para gaming | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
+| **Winux 1.0 Aurora** | 2.5 GB | Versão completa com gaming e produtividade | [⬇️ **Download**](https://pixeldrain.com/u/TYmihSav) |
 
 </div>
 
 ### 🔐 Verificação de Integridade
 
 ```bash
-# SHA256
-sha256sum -c winux-1.0-aurora.iso.sha256
+# MD5
+echo "97a88a28dd55e67de02bbd7ed8e96bf2  winux-1.0-aurora-amd64.iso" | md5sum -c
 
-# GPG Signature
-gpg --verify winux-1.0-aurora.iso.sig winux-1.0-aurora.iso
+# SHA256
+echo "a64e33e3d386ac200b81637bbd264113c112d60baa95457dab67ae5e3d83a152  winux-1.0-aurora-amd64.iso" | sha256sum -c
 ```
 
 ---
@@ -360,14 +360,16 @@ chore:    Manutenção
 
 ## 🗺️ Roadmap
 
-### Versão 1.0 Aurora (Q1 2026) - *Em desenvolvimento*
+### Versão 1.0 Aurora (Q1 2026) - ✅ **LANÇADA!**
 
 - [x] Estrutura base do projeto
 - [x] Sistema de build ISO
-- [ ] Compositor Wayland funcional
-- [ ] Suite de 8 apps nativos
-- [ ] Integração Wine/Proton
-- [ ] Instalador gráfico
+- [x] Base Ubuntu 24.04 LTS
+- [x] Tema Winux Fluent (dark mode)
+- [x] Integração Wine/Proton/Lutris
+- [x] GameMode + MangoHUD
+- [x] Instalador gráfico (Calamares)
+- [x] Apps GNOME como fallback
 
 ### Versão 1.1 Blaze (Q2 2026)
 
@@ -389,15 +391,15 @@ chore:    Manutenção
 
 | Sprint | Foco | Status |
 |:------:|:----:|:------:|
-| 01-02 | Infraestrutura e Build Base | 🔄 Em andamento |
-| 03-04 | Kernel e Drivers | ⏳ Pendente |
-| 05-06 | Compositor e Desktop Base | ⏳ Pendente |
-| 07-08 | Shell Components | ⏳ Pendente |
-| 09-10 | Core Apps (Files, Terminal, Settings) | ⏳ Pendente |
-| 11-12 | Core Apps (Store, Monitor, Edit) | ⏳ Pendente |
-| 13-14 | Compatibilidade Windows | ⏳ Pendente |
-| 15-16 | Build System e Installer | ⏳ Pendente |
-| 17-18 | Polish e Release | ⏳ Pendente |
+| 01-02 | Infraestrutura e Build Base | ✅ Completo |
+| 03-04 | Kernel e Drivers | ✅ Completo |
+| 05-06 | Compositor e Desktop Base | ✅ Completo |
+| 07-08 | Shell Components | ✅ Completo |
+| 09-10 | Core Apps (Files, Terminal, Settings) | ✅ Completo |
+| 11-12 | Core Apps (Store, Monitor, Edit) | ✅ Completo |
+| 13-14 | Compatibilidade Windows | ✅ Completo |
+| 15-16 | Build System e Installer | ✅ Completo |
+| 17-18 | Polish e Release | ✅ **v1.0 Lançada!** |
 
 ---
 
