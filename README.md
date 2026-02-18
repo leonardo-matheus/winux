@@ -167,7 +167,8 @@ Kernel e sistema otimizados:
 
 | Edição | Tamanho | Descrição | Link |
 |:------:|:-------:|:---------:|:----:|
-| **Winux 1.0 Aurora** | 2.5 GB | Versão completa com gaming e produtividade | [⬇️ **Download**](https://pixeldrain.com/u/TYmihSav) |
+| **Winux 1.0 Aurora** | 2.5 GB | Versão completa com gaming e produtividade | [⬇️ **Download (GoFile)**](https://gofile.io/d/5qozpl) |
+| *Mirror* | 2.5 GB | Link alternativo | [⬇️ Download (PixelDrain)](https://pixeldrain.com/u/TYmihSav) |
 
 </div>
 
