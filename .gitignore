@@ -1,6 +1,6 @@
 # Winux OS - Git Ignore
 
-# Build artifacts
+# Build artifacts - output directories
 /build/output/
 /build/work/
 !/build/config/

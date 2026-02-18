@@ -1,0 +1,428 @@
+/*
+ * Winux Fluent Theme - Dark Color Palette
+ * Premium Apple-Inspired Design System
+ *
+ * A carefully crafted color palette inspired by macOS/iOS dark mode,
+ * featuring deep backgrounds, vibrant accents, and perfect contrast ratios.
+ *
+ * Version: 2.0.0
+ * Author: Winux OS Team
+ * License: GPL-3.0
+ */
+
+/* ============================================
+   PRIMARY BACKGROUND COLORS
+   Deep, rich backgrounds for immersive experience
+   ============================================ */
+
+/* Main window background - deepest level */
+@define-color bg_primary #1c1c1e;
+
+/* Secondary surfaces - slightly elevated */
+@define-color bg_secondary #2c2c2e;
+
+/* Tertiary surfaces - for nested content */
+@define-color bg_tertiary #3a3a3c;
+
+/* Elevated surfaces - cards, popovers, dialogs */
+@define-color bg_elevated #2c2c2e;
+
+/* Sidebar background - subtle differentiation */
+@define-color bg_sidebar #1c1c1e;
+
+/* ============================================
+   GLASSMORPHISM & BLUR EFFECTS
+   Semi-transparent surfaces for depth
+   ============================================ */
+
+/* Glass effect background */
+@define-color bg_glass rgba(28, 28, 30, 0.85);
+
+/* Blur overlay background */
+@define-color bg_blur rgba(44, 44, 46, 0.75);
+
+/* Frosted glass effect */
+@define-color bg_frosted rgba(44, 44, 46, 0.72);
+
+/* ============================================
+   HEADER & NAVIGATION
+   Distinct areas for navigation
+   ============================================ */
+
+/* Headerbar background */
+@define-color bg_header #2c2c2e;
+
+/* Headerbar backdrop (unfocused) */
+@define-color bg_header_backdrop #252527;
+
+/* ============================================
+   INTERACTIVE ELEMENT BACKGROUNDS
+   ============================================ */
+
+/* Button backgrounds */
+@define-color bg_button #3a3a3c;
+@define-color bg_button_hover #48484a;
+@define-color bg_button_active #2c2c2e;
+
+/* Entry/Input backgrounds */
+@define-color bg_entry #1c1c1e;
+@define-color bg_entry_hover #252527;
+@define-color bg_entry_focus #1c1c1e;
+
+/* Switch backgrounds */
+@define-color bg_switch_off #48484a;
+@define-color bg_switch_off_hover #5a5a5c;
+
+/* Trough backgrounds (sliders, progress bars) */
+@define-color bg_trough #48484a;
+
+/* Disabled state background */
+@define-color bg_disabled #2c2c2e;
+
+/* ============================================
+   OVERLAY BACKGROUNDS
+   Tooltips, OSD, Toasts
+   ============================================ */
+
+/* Tooltip background */
+@define-color bg_tooltip #3a3a3c;
+
+/* OSD (On Screen Display) background */
+@define-color bg_osd rgba(44, 44, 46, 0.9);
+
+/* Toast notification background */
+@define-color bg_toast #3a3a3c;
+
+/* Popover background */
+@define-color bg_popover #2c2c2e;
+
+/* ============================================
+   ACCENT COLORS - APPLE SYSTEM COLORS
+   Vibrant, accessible accent palette
+   ============================================ */
+
+/* Primary Blue - Main accent color */
+@define-color accent_blue #0a84ff;
+@define-color accent_blue_hover #409cff;
+@define-color accent_blue_active #0071eb;
+
+/* System Green - Success, active states */
+@define-color accent_green #34c759;
+@define-color accent_green_hover #30d158;
+@define-color accent_green_active #28a745;
+
+/* System Red - Errors, destructive actions */
+@define-color accent_red #ff453a;
+@define-color accent_red_hover #ff6961;
+@define-color accent_red_active #e53935;
+
+/* System Orange - Warnings */
+@define-color accent_orange #ff9f0a;
+@define-color accent_orange_hover #ffb340;
+@define-color accent_orange_active #f5870a;
+
+/* System Yellow */
+@define-color accent_yellow #ffd60a;
+@define-color accent_yellow_hover #ffe040;
+@define-color accent_yellow_active #e6c200;
+
+/* System Purple - Links visited */
+@define-color accent_purple #bf5af2;
+@define-color accent_purple_hover #da8fff;
+@define-color accent_purple_active #a040d0;
+
+/* System Pink */
+@define-color accent_pink #ff375f;
+@define-color accent_pink_hover #ff6482;
+@define-color accent_pink_active #e62e53;
+
+/* System Teal */
+@define-color accent_teal #5ac8fa;
+@define-color accent_teal_hover #7ed4fb;
+@define-color accent_teal_active #4ab8e8;
+
+/* System Indigo */
+@define-color accent_indigo #5856d6;
+@define-color accent_indigo_hover #7a79e0;
+@define-color accent_indigo_active #4845c7;
+
+/* System Mint */
+@define-color accent_mint #00c7be;
+@define-color accent_mint_hover #33d4cd;
+@define-color accent_mint_active #00b3ab;
+
+/* System Cyan */
+@define-color accent_cyan #32d2e6;
+@define-color accent_cyan_hover #5cdbeb;
+@define-color accent_cyan_active #28bdd0;
+
+/* ============================================
+   TEXT COLORS
+   Carefully balanced for readability
+   ============================================ */
+
+/* Primary text - highest contrast */
+@define-color text_primary #ffffff;
+
+/* Secondary text - labels, descriptions */
+@define-color text_secondary #98989d;
+
+/* Tertiary text - less important info */
+@define-color text_tertiary #636366;
+
+/* Disabled text */
+@define-color text_disabled #48484a;
+
+/* Placeholder text */
+@define-color text_placeholder #636366;
+
+/* Text on accent colors */
+@define-color text_on_accent #ffffff;
+
+/* Text on dark accent */
+@define-color text_on_dark_accent #ffffff;
+
+/* ============================================
+   BORDER COLORS
+   Subtle separators and outlines
+   ============================================ */
+
+/* Subtle border - most common */
+@define-color border_subtle rgba(255, 255, 255, 0.08);
+
+/* Medium border - more visible */
+@define-color border_medium rgba(255, 255, 255, 0.12);
+
+/* Strong border - high visibility */
+@define-color border_strong rgba(255, 255, 255, 0.18);
+
+/* Button borders */
+@define-color border_button rgba(255, 255, 255, 0.1);
+@define-color border_button_hover rgba(255, 255, 255, 0.15);
+
+/* Entry borders */
+@define-color border_entry rgba(255, 255, 255, 0.1);
+@define-color border_entry_hover rgba(255, 255, 255, 0.15);
+@define-color border_entry_focus @accent_blue;
+
+/* Switch border */
+@define-color border_switch rgba(255, 255, 255, 0.1);
+
+/* Popover border */
+@define-color border_popover rgba(255, 255, 255, 0.1);
+
+/* Glass border */
+@define-color border_glass rgba(255, 255, 255, 0.1);
+
+/* ============================================
+   SHADOW COLORS
+   For depth and elevation
+   ============================================ */
+
+/* Small shadow - buttons, small elements */
+@define-color shadow_sm rgba(0, 0, 0, 0.15);
+
+/* Medium shadow - cards, dropdowns */
+@define-color shadow_md rgba(0, 0, 0, 0.25);
+
+/* Large shadow - modals, popovers */
+@define-color shadow_lg rgba(0, 0, 0, 0.35);
+
+/* Extra large shadow - focused windows */
+@define-color shadow_xl rgba(0, 0, 0, 0.5);
+
+/* Colored shadows for accents */
+@define-color shadow_blue rgba(10, 132, 255, 0.3);
+@define-color shadow_green rgba(52, 199, 89, 0.3);
+@define-color shadow_red rgba(255, 69, 58, 0.3);
+
+/* ============================================
+   SEMANTIC COLORS
+   Contextual meaning colors
+   ============================================ */
+
+/* Success states */
+@define-color success_bg rgba(52, 199, 89, 0.15);
+@define-color success_fg @accent_green;
+@define-color success_border rgba(52, 199, 89, 0.3);
+
+/* Warning states */
+@define-color warning_bg rgba(255, 159, 10, 0.15);
+@define-color warning_fg @accent_orange;
+@define-color warning_border rgba(255, 159, 10, 0.3);
+
+/* Error states */
+@define-color error_bg rgba(255, 69, 58, 0.15);
+@define-color error_fg @accent_red;
+@define-color error_border rgba(255, 69, 58, 0.3);
+
+/* Info states */
+@define-color info_bg rgba(10, 132, 255, 0.15);
+@define-color info_fg @accent_blue;
+@define-color info_border rgba(10, 132, 255, 0.3);
+
+/* ============================================
+   SELECTION COLORS
+   Text and item selection
+   ============================================ */
+
+/* Text selection */
+@define-color selection_bg rgba(10, 132, 255, 0.4);
+@define-color selection_fg @text_primary;
+
+/* Item selection (lists, grids) */
+@define-color item_selection_bg rgba(10, 132, 255, 0.15);
+@define-color item_selection_hover_bg rgba(10, 132, 255, 0.2);
+
+/* ============================================
+   HOVER & FOCUS STATES
+   Interactive state colors
+   ============================================ */
+
+/* Generic hover overlay */
+@define-color hover_overlay rgba(255, 255, 255, 0.05);
+
+/* Active/pressed overlay */
+@define-color active_overlay rgba(255, 255, 255, 0.08);
+
+/* Focus ring color */
+@define-color focus_ring rgba(10, 132, 255, 0.5);
+
+/* ============================================
+   WINDOW CONTROL COLORS
+   Traffic light buttons (macOS style)
+   ============================================ */
+
+/* Close button */
+@define-color window_close #ff5f57;
+@define-color window_close_hover #ff7b74;
+@define-color window_close_active #e5463f;
+
+/* Minimize button */
+@define-color window_minimize #febc2e;
+@define-color window_minimize_hover #feca57;
+@define-color window_minimize_active #e5a829;
+
+/* Maximize button */
+@define-color window_maximize #28c840;
+@define-color window_maximize_hover #5ad66f;
+@define-color window_maximize_active #22b439;
+
+/* Inactive window controls */
+@define-color window_control_inactive #48484a;
+
+/* ============================================
+   SCROLLBAR COLORS
+   ============================================ */
+
+@define-color scrollbar_bg transparent;
+@define-color scrollbar_slider rgba(255, 255, 255, 0.15);
+@define-color scrollbar_slider_hover rgba(255, 255, 255, 0.25);
+@define-color scrollbar_slider_active rgba(255, 255, 255, 0.35);
+
+/* ============================================
+   LINK COLORS
+   ============================================ */
+
+@define-color link_color @accent_blue;
+@define-color link_hover_color @accent_blue_hover;
+@define-color link_visited_color @accent_purple;
+
+/* ============================================
+   HEADERBAR SPECIFIC
+   ============================================ */
+
+@define-color headerbar_shade rgba(0, 0, 0, 0.1);
+@define-color headerbar_darker_shade rgba(0, 0, 0, 0.15);
+
+/* ============================================
+   LIBADWAITA COMPATIBILITY
+   Named colors for libadwaita apps
+   ============================================ */
+
+/* Window colors */
+@define-color window_bg_color @bg_primary;
+@define-color window_fg_color @text_primary;
+
+/* View colors */
+@define-color view_bg_color @bg_secondary;
+@define-color view_fg_color @text_primary;
+
+/* Header colors */
+@define-color headerbar_bg_color @bg_header;
+@define-color headerbar_fg_color @text_primary;
+@define-color headerbar_border_color @border_subtle;
+@define-color headerbar_backdrop_color @bg_header_backdrop;
+
+/* Card colors */
+@define-color card_bg_color @bg_elevated;
+@define-color card_fg_color @text_primary;
+@define-color card_shade_color rgba(0, 0, 0, 0.1);
+
+/* Popover colors */
+@define-color popover_bg_color @bg_popover;
+@define-color popover_fg_color @text_primary;
+
+/* Dialog colors */
+@define-color dialog_bg_color @bg_elevated;
+@define-color dialog_fg_color @text_primary;
+
+/* Sidebar colors */
+@define-color sidebar_bg_color @bg_sidebar;
+@define-color sidebar_fg_color @text_primary;
+@define-color sidebar_backdrop_color @bg_sidebar;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.1);
+
+/* Secondary sidebar */
+@define-color secondary_sidebar_bg_color @bg_tertiary;
+@define-color secondary_sidebar_fg_color @text_primary;
+@define-color secondary_sidebar_backdrop_color @bg_tertiary;
+@define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.1);
+
+/* Accent colors (libadwaita naming) */
+@define-color accent_color @accent_blue;
+@define-color accent_bg_color @accent_blue;
+@define-color accent_fg_color @text_on_accent;
+
+/* Destructive colors */
+@define-color destructive_color @accent_red;
+@define-color destructive_bg_color @accent_red;
+@define-color destructive_fg_color white;
+
+/* Success colors */
+@define-color success_color @accent_green;
+@define-color success_bg_color @accent_green;
+@define-color success_fg_color white;
+
+/* Warning colors */
+@define-color warning_color @accent_orange;
+@define-color warning_bg_color @accent_orange;
+@define-color warning_fg_color black;
+
+/* Error colors */
+@define-color error_color @accent_red;
+@define-color error_bg_color @accent_red;
+@define-color error_fg_color white;
+
+/* Thumbnail colors */
+@define-color thumbnail_bg_color @bg_tertiary;
+@define-color thumbnail_fg_color @text_primary;
+
+/* ============================================
+   SHADE & TINT UTILITIES
+   For generating variations
+   ============================================ */
+
+/* Shade overlays (darken) */
+@define-color shade_10 rgba(0, 0, 0, 0.1);
+@define-color shade_20 rgba(0, 0, 0, 0.2);
+@define-color shade_30 rgba(0, 0, 0, 0.3);
+@define-color shade_40 rgba(0, 0, 0, 0.4);
+@define-color shade_50 rgba(0, 0, 0, 0.5);
+
+/* Tint overlays (lighten) */
+@define-color tint_05 rgba(255, 255, 255, 0.05);
+@define-color tint_10 rgba(255, 255, 255, 0.1);
+@define-color tint_15 rgba(255, 255, 255, 0.15);
+@define-color tint_20 rgba(255, 255, 255, 0.2);
+@define-color tint_30 rgba(255, 255, 255, 0.3);

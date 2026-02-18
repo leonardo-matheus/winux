@@ -1,76 +1,256 @@
 /*
  * Winux Fluent Theme for GTK4
- * Inspired by Windows 11 Fluent Design System
+ * Premium Apple-Inspired Design
  *
- * Color Palette:
- * - Background Dark: #202020
- * - Background Medium: #2d2d2d
- * - Background Light: #383838
- * - Surface: #1f1f1f
- * - Accent: #60cdff (Winux Blue)
- * - Accent Hover: #7ad4ff
- * - Accent Active: #4ac2ff
- * - Text Primary: #ffffff
- * - Text Secondary: #9d9d9d
- * - Border: #454545
+ * A beautiful, minimal dark theme with glassmorphism effects,
+ * smooth animations, and elegant typography inspired by macOS/iOS.
+ *
+ * Version: 2.0.0
+ * Author: Winux OS Team
+ * License: GPL-3.0
  */
 
-/* ===== CSS Variables ===== */
-@define-color bg_dark #202020;
-@define-color bg_medium #2d2d2d;
-@define-color bg_light #383838;
-@define-color surface #1f1f1f;
-@define-color accent #60cdff;
-@define-color accent_hover #7ad4ff;
-@define-color accent_active #4ac2ff;
-@define-color accent_bg rgba(96, 205, 255, 0.15);
-@define-color text_primary #ffffff;
-@define-color text_secondary #9d9d9d;
-@define-color text_disabled #5d5d5d;
-@define-color border_color #454545;
-@define-color border_light #555555;
-@define-color error #ff6b6b;
-@define-color warning #ffc107;
-@define-color success #4caf50;
-@define-color mica_bg rgba(32, 32, 32, 0.85);
-@define-color acrylic_bg rgba(45, 45, 45, 0.75);
+/* ===== Import Color Palette ===== */
+@import url("colors-dark.css");
 
-/* ===== Global Styles ===== */
+/* ===== CSS Custom Properties ===== */
+@define-color window_bg_color @bg_primary;
+@define-color window_fg_color @text_primary;
+@define-color view_bg_color @bg_secondary;
+@define-color view_fg_color @text_primary;
+@define-color accent_bg_color @accent_blue;
+@define-color accent_fg_color @text_on_accent;
+@define-color card_bg_color @bg_elevated;
+@define-color card_fg_color @text_primary;
+@define-color headerbar_bg_color @bg_header;
+@define-color headerbar_fg_color @text_primary;
+@define-color popover_bg_color @bg_popover;
+@define-color popover_fg_color @text_primary;
+@define-color dialog_bg_color @bg_elevated;
+@define-color dialog_fg_color @text_primary;
+
+/* ============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes focusRing {
+    0% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.4); }
+    100% { box-shadow: 0 0 0 4px rgba(10, 132, 255, 0); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(10, 132, 255, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(10, 132, 255, 0.5); }
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
 * {
-    outline-color: @accent;
     outline-style: solid;
-    outline-offset: -2px;
     outline-width: 0;
+    outline-offset: 3px;
+    outline-color: @accent_blue;
     -gtk-outline-radius: 8px;
+    transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 *:focus-visible {
     outline-width: 2px;
     outline-offset: 2px;
+    animation: focusRing 300ms ease-out;
 }
 
-/* ===== Window & Background ===== */
+/* ============================================
+   WINDOW & BACKGROUND
+   ============================================ */
+
 window,
 .background {
-    background-color: @bg_dark;
+    background-color: @bg_primary;
     color: @text_primary;
 }
 
+/* Client-Side Decorated Windows */
 window.csd {
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
-                0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    margin: 0;
 }
 
-/* Mica Effect Background */
+window.csd:backdrop {
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Glassmorphism Background Effect */
 window.background.csd {
-    background-color: @mica_bg;
+    background-color: @bg_glass;
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.02) 100%
+    );
 }
 
-/* ===== Typography ===== */
+/* Solid Background Variant */
+window.solid-csd {
+    border-radius: 12px;
+    background-color: @bg_primary;
+}
+
+/* Maximized Window */
+window.maximized,
+window.fullscreen,
+window.tiled {
+    border-radius: 0;
+}
+
+/* Dialog Windows */
+window.dialog,
+window.messagedialog {
+    border-radius: 14px;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
 label,
 .label {
     color: @text_primary;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+label.title,
+.title {
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: -0.02em;
+}
+
+label.heading {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+label.body {
+    font-weight: 400;
+}
+
+label.caption,
+.caption {
+    font-size: 0.85em;
+    color: @text_secondary;
+}
+
+label.caption-heading {
+    font-weight: 600;
+    font-size: 0.85em;
+    color: @text_secondary;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+label.monospace,
+.monospace {
+    font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
 }
 
 label.dim-label,
@@ -83,139 +263,270 @@ label:disabled,
     color: @text_disabled;
 }
 
-/* ===== Headerbar ===== */
+/* Links */
+link,
+*:link {
+    color: @accent_blue;
+}
+
+link:hover,
+*:link:hover {
+    color: @accent_blue_hover;
+}
+
+link:visited,
+*:visited {
+    color: @accent_purple;
+}
+
+/* ============================================
+   HEADERBAR
+   ============================================ */
+
 headerbar,
 .titlebar {
-    background-color: @bg_medium;
-    background-image: none;
-    border-bottom: 1px solid @border_color;
+    background-color: @bg_header;
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    border-bottom: 1px solid @border_subtle;
     border-radius: 12px 12px 0 0;
-    padding: 6px 8px;
-    min-height: 44px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 0 8px;
+    min-height: 52px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 headerbar:backdrop,
 .titlebar:backdrop {
-    background-color: @bg_dark;
+    background-color: @bg_header_backdrop;
+    background-image: none;
     box-shadow: none;
 }
 
+/* Header Title */
 headerbar .title,
-.titlebar .title {
+.titlebar .title,
+headerbar windowtitle label.title {
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     color: @text_primary;
+    letter-spacing: -0.01em;
 }
 
 headerbar .subtitle,
-.titlebar .subtitle {
+.titlebar .subtitle,
+headerbar windowtitle label.subtitle {
+    font-weight: 400;
     font-size: 11px;
     color: @text_secondary;
 }
 
-/* Window Controls */
-windowcontrols {
-    margin: 0 4px;
-}
-
-windowcontrols button {
-    min-width: 24px;
-    min-height: 24px;
-    padding: 4px;
-    margin: 0 2px;
-    border-radius: 50%;
+/* Headerbar Buttons */
+headerbar button,
+.titlebar button {
     background-color: transparent;
+    background-image: none;
     border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    min-height: 28px;
+    min-width: 28px;
+    margin: 4px 2px;
+    box-shadow: none;
+    color: @text_primary;
 }
 
-windowcontrols button:hover {
+headerbar button:hover,
+.titlebar button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+headerbar button:active,
+.titlebar button:active {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+headerbar button:checked,
+.titlebar button:checked {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+headerbar button.suggested-action,
+.titlebar button.suggested-action {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+}
+
+headerbar button.suggested-action:hover {
+    background-color: @accent_blue_hover;
+}
+
+/* Window Controls */
+windowcontrols {
+    margin: 0 6px;
+}
+
+windowcontrols button {
+    min-width: 14px;
+    min-height: 14px;
+    padding: 0;
+    margin: 0 4px;
+    border-radius: 50%;
+    background-color: @text_secondary;
+    border: none;
+    box-shadow: none;
+    transition: all 150ms ease;
+}
+
+windowcontrols button:hover {
+    transform: scale(1.1);
+}
+
+windowcontrols button.close {
+    background-color: #ff5f57;
+}
+
 windowcontrols button.close:hover {
-    background-color: #e81123;
+    background-color: #ff5f57;
+    box-shadow: 0 0 8px rgba(255, 95, 87, 0.5);
 }
 
-windowcontrols button:active {
-    background-color: rgba(255, 255, 255, 0.15);
+windowcontrols button.minimize {
+    background-color: #febc2e;
 }
 
-windowcontrols button.close:active {
-    background-color: #c50f1f;
+windowcontrols button.minimize:hover {
+    background-color: #febc2e;
+    box-shadow: 0 0 8px rgba(254, 188, 46, 0.5);
 }
 
-/* ===== Buttons ===== */
+windowcontrols button.maximize {
+    background-color: #28c840;
+}
+
+windowcontrols button.maximize:hover {
+    background-color: #28c840;
+    box-shadow: 0 0 8px rgba(40, 200, 64, 0.5);
+}
+
+windowcontrols button:backdrop {
+    background-color: @text_disabled;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 button {
-    background-color: @bg_light;
+    background-color: @bg_button;
     background-image: none;
-    border: 1px solid @border_color;
+    border: 1px solid @border_button;
     border-radius: 8px;
     padding: 8px 16px;
     min-height: 32px;
     color: @text_primary;
     font-weight: 500;
-    transition: all 150ms ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 button:hover {
-    background-color: #424242;
-    border-color: @border_light;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: @bg_button_hover;
+    border-color: @border_button_hover;
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
 }
 
 button:active {
-    background-color: #353535;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    transform: translateY(1px);
+    background-color: @bg_button_active;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
 }
 
 button:disabled {
-    background-color: @bg_medium;
+    background-color: @bg_disabled;
     color: @text_disabled;
-    border-color: @border_color;
+    border-color: @border_subtle;
     box-shadow: none;
+}
+
+button:checked {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+    border-color: @accent_blue;
 }
 
 /* Suggested Action (Primary Button) */
 button.suggested-action {
-    background-color: @accent;
-    color: #000000;
-    border-color: @accent;
+    background-color: @accent_blue;
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    color: @text_on_accent;
+    border-color: @accent_blue;
     font-weight: 600;
+    box-shadow:
+        0 2px 8px rgba(10, 132, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.suggested-action:hover {
-    background-color: @accent_hover;
-    border-color: @accent_hover;
+    background-color: @accent_blue_hover;
+    border-color: @accent_blue_hover;
+    box-shadow:
+        0 4px 12px rgba(10, 132, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
 button.suggested-action:active {
-    background-color: @accent_active;
-    border-color: @accent_active;
+    background-color: @accent_blue_active;
+    border-color: @accent_blue_active;
+    box-shadow: 0 2px 4px rgba(10, 132, 255, 0.25);
+    transform: translateY(0);
 }
 
 button.suggested-action:disabled {
-    background-color: rgba(96, 205, 255, 0.3);
-    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(10, 132, 255, 0.3);
+    color: rgba(255, 255, 255, 0.5);
+    border-color: transparent;
 }
 
 /* Destructive Action Button */
 button.destructive-action {
-    background-color: @error;
-    color: #ffffff;
-    border-color: @error;
+    background-color: @accent_red;
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    color: white;
+    border-color: @accent_red;
+    font-weight: 600;
+    box-shadow:
+        0 2px 8px rgba(255, 69, 58, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.destructive-action:hover {
-    background-color: #ff8585;
-    border-color: #ff8585;
+    background-color: @accent_red_hover;
+    border-color: @accent_red_hover;
+    box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+    transform: translateY(-1px);
 }
 
 button.destructive-action:active {
-    background-color: #e85656;
-    border-color: #e85656;
+    background-color: @accent_red_active;
+    border-color: @accent_red_active;
+    transform: translateY(0);
 }
 
 /* Flat Button */
@@ -228,10 +539,17 @@ button.flat {
 button.flat:hover {
     background-color: rgba(255, 255, 255, 0.08);
     border-color: transparent;
+    box-shadow: none;
+    transform: none;
 }
 
 button.flat:active {
     background-color: rgba(255, 255, 255, 0.12);
+}
+
+button.flat:checked {
+    background-color: rgba(10, 132, 255, 0.2);
+    color: @accent_blue;
 }
 
 /* Circular Button */
@@ -242,87 +560,203 @@ button.circular {
     min-height: 36px;
 }
 
-/* ===== Text Entries ===== */
+/* Pill Button */
+button.pill {
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+/* Icon Button */
+button.image-button {
+    padding: 8px;
+    min-width: 36px;
+}
+
+/* Link Button */
+button.link {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: @accent_blue;
+    padding: 0;
+    min-height: 0;
+}
+
+button.link:hover {
+    color: @accent_blue_hover;
+    background: transparent;
+    text-decoration: underline;
+}
+
+/* ============================================
+   TEXT ENTRIES
+   ============================================ */
+
 entry,
 spinbutton {
-    background-color: @surface;
-    border: 1px solid @border_color;
+    background-color: @bg_entry;
+    border: 1px solid @border_entry;
     border-radius: 8px;
     padding: 8px 12px;
     min-height: 36px;
     color: @text_primary;
-    caret-color: @accent;
-    transition: all 150ms ease;
+    caret-color: @accent_blue;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-entry:focus,
-spinbutton:focus {
-    border-color: @accent;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1),
-                0 0 0 2px rgba(96, 205, 255, 0.25);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 entry:hover:not(:focus),
 spinbutton:hover:not(:focus) {
-    border-color: @border_light;
+    border-color: @border_entry_hover;
+    background-color: @bg_entry_hover;
+}
+
+entry:focus,
+spinbutton:focus {
+    border-color: @accent_blue;
+    background-color: @bg_entry_focus;
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 0 0 3px rgba(10, 132, 255, 0.2);
 }
 
 entry:disabled,
 spinbutton:disabled {
-    background-color: @bg_medium;
+    background-color: @bg_disabled;
     color: @text_disabled;
-    border-color: @border_color;
+    border-color: @border_subtle;
 }
 
 entry > placeholder,
 entry placeholder {
-    color: @text_secondary;
+    color: @text_placeholder;
 }
 
-/* Entry with icon */
-entry > image {
+entry > image,
+entry image {
     color: @text_secondary;
-    margin: 0 4px;
+    margin: 0 6px;
+}
+
+/* Entry Error State */
+entry.error,
+entry:invalid {
+    border-color: @accent_red;
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 0 0 3px rgba(255, 69, 58, 0.2);
+}
+
+/* Entry Warning State */
+entry.warning {
+    border-color: @accent_orange;
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 0 0 3px rgba(255, 159, 10, 0.2);
+}
+
+/* Entry Success State */
+entry.success {
+    border-color: @accent_green;
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 0 0 3px rgba(52, 199, 89, 0.2);
 }
 
 /* ===== Search Entry ===== */
 searchentry {
-    background-color: @surface;
-    border-radius: 20px;
-    padding: 4px 12px;
+    background-color: @bg_entry;
+    border-radius: 10px;
+    padding: 6px 12px;
 }
 
-/* ===== Combo Box ===== */
-combobox button,
-dropdown button {
-    background-color: @surface;
-    border: 1px solid @border_color;
+searchentry > image.left {
+    color: @text_secondary;
+    margin-right: 8px;
+}
+
+/* ============================================
+   DROPDOWNS & COMBO BOXES
+   ============================================ */
+
+dropdown,
+combobox {
+    background-color: transparent;
+}
+
+dropdown button,
+combobox button {
+    background-color: @bg_entry;
+    border: 1px solid @border_entry;
     border-radius: 8px;
     padding: 8px 12px;
     min-height: 36px;
 }
 
-combobox button:hover,
-dropdown button:hover {
-    background-color: @bg_light;
-    border-color: @border_light;
+dropdown button:hover,
+combobox button:hover {
+    background-color: @bg_entry_hover;
+    border-color: @border_entry_hover;
 }
 
-combobox arrow,
-dropdown arrow {
+dropdown button:focus,
+combobox button:focus {
+    border-color: @accent_blue;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
+}
+
+dropdown arrow,
+combobox arrow {
     min-width: 16px;
     min-height: 16px;
     color: @text_secondary;
+    transition: transform 200ms ease;
 }
 
-/* ===== Lists & Rows ===== */
+dropdown:hover arrow,
+combobox:hover arrow {
+    color: @text_primary;
+}
+
+dropdown popover,
+combobox popover {
+    background-color: @bg_popover;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+dropdown popover listview,
+combobox popover listview {
+    background-color: transparent;
+}
+
+dropdown popover listview > row,
+combobox popover listview > row {
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 2px 0;
+}
+
+dropdown popover listview > row:hover,
+combobox popover listview > row:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+dropdown popover listview > row:selected,
+combobox popover listview > row:selected {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+}
+
+/* ============================================
+   LISTS & ROWS
+   ============================================ */
+
 listview,
 list,
 .listview,
 .list {
     background-color: transparent;
-    border-radius: 8px;
 }
 
 listview > row,
@@ -330,33 +764,77 @@ list > row,
 .listview > row,
 .list > row {
     background-color: transparent;
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 10px;
+    padding: 10px 14px;
     margin: 2px 0;
-    transition: background-color 150ms ease;
+    transition: all 200ms ease;
 }
 
 listview > row:hover,
 list > row:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
 listview > row:selected,
 list > row:selected {
-    background-color: @accent_bg;
+    background-color: rgba(10, 132, 255, 0.15);
+    color: @text_primary;
 }
 
 listview > row:selected:hover,
 list > row:selected:hover {
-    background-color: rgba(96, 205, 255, 0.2);
+    background-color: rgba(10, 132, 255, 0.2);
 }
 
 listview > row:active,
 list > row:active {
-    background-color: rgba(96, 205, 255, 0.25);
+    background-color: rgba(10, 132, 255, 0.25);
 }
 
-/* ===== Checkbutton & Radiobutton ===== */
+/* Activatable Rows */
+row.activatable {
+    transition: all 200ms ease;
+}
+
+row.activatable:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+row.activatable:active {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Boxed List (Settings Style) */
+.boxed-list {
+    background-color: @bg_elevated;
+    border: 1px solid @border_subtle;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.boxed-list > row {
+    padding: 14px 16px;
+    border-bottom: 1px solid @border_subtle;
+}
+
+.boxed-list > row:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+.boxed-list > row:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
+}
+
+.boxed-list > row:only-child {
+    border-radius: 12px;
+    border-bottom: none;
+}
+
+/* ============================================
+   CHECKBOXES & RADIO BUTTONS
+   ============================================ */
+
 checkbutton,
 radiobutton {
     min-height: 24px;
@@ -365,13 +843,14 @@ radiobutton {
 
 checkbutton check,
 radiobutton radio {
-    min-width: 20px;
-    min-height: 20px;
-    background-color: @surface;
-    border: 2px solid @border_light;
-    border-radius: 4px;
-    transition: all 150ms ease;
-    margin-right: 8px;
+    min-width: 22px;
+    min-height: 22px;
+    background-color: @bg_entry;
+    border: 2px solid @border_entry;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition: all 200ms ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 radiobutton radio {
@@ -380,117 +859,146 @@ radiobutton radio {
 
 checkbutton check:hover,
 radiobutton radio:hover {
-    border-color: @accent;
-    background-color: @bg_light;
+    border-color: @accent_blue;
+    background-color: @bg_entry_hover;
 }
 
 checkbutton check:checked,
 radiobutton radio:checked {
-    background-color: @accent;
-    border-color: @accent;
-    color: #000000;
+    background-color: @accent_blue;
+    border-color: @accent_blue;
+    box-shadow: 0 2px 6px rgba(10, 132, 255, 0.3);
 }
 
 checkbutton check:checked:hover,
 radiobutton radio:checked:hover {
-    background-color: @accent_hover;
-    border-color: @accent_hover;
+    background-color: @accent_blue_hover;
+    border-color: @accent_blue_hover;
 }
 
 checkbutton check:indeterminate {
-    background-color: @accent;
-    border-color: @accent;
+    background-color: @accent_blue;
+    border-color: @accent_blue;
 }
 
 checkbutton:disabled check,
 radiobutton:disabled radio {
-    background-color: @bg_medium;
-    border-color: @border_color;
+    background-color: @bg_disabled;
+    border-color: @border_subtle;
+    box-shadow: none;
 }
 
-/* ===== Switch ===== */
+/* Checkmark Icon */
+checkbutton check:checked {
+    -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+    color: @text_on_accent;
+}
+
+radiobutton radio:checked {
+    -gtk-icon-source: -gtk-icontheme("radio-checked-symbolic");
+    color: @text_on_accent;
+}
+
+/* ============================================
+   SWITCHES
+   ============================================ */
+
 switch {
-    min-width: 48px;
-    min-height: 24px;
-    background-color: @bg_light;
-    border: 2px solid @border_color;
-    border-radius: 12px;
-    transition: all 200ms ease;
+    min-width: 52px;
+    min-height: 28px;
+    background-color: @bg_switch_off;
+    border: 2px solid @border_switch;
+    border-radius: 14px;
+    transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 switch:hover {
-    background-color: #424242;
+    background-color: @bg_switch_off_hover;
 }
 
 switch:checked {
-    background-color: @accent;
-    border-color: @accent;
+    background-color: @accent_green;
+    border-color: @accent_green;
 }
 
 switch:checked:hover {
-    background-color: @accent_hover;
-    border-color: @accent_hover;
+    background-color: @accent_green_hover;
+    border-color: @accent_green_hover;
 }
 
 switch slider {
-    min-width: 18px;
-    min-height: 18px;
-    background-color: @text_primary;
+    min-width: 22px;
+    min-height: 22px;
+    background-color: white;
     border-radius: 50%;
     margin: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    transition: all 200ms ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-switch:checked slider {
-    background-color: #000000;
+switch:hover slider {
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.25),
+        0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 switch:disabled {
-    background-color: @bg_medium;
-    border-color: @border_color;
+    background-color: @bg_disabled;
+    border-color: @border_subtle;
 }
 
 switch:disabled slider {
     background-color: @text_disabled;
+    box-shadow: none;
 }
 
-/* ===== Scale (Slider) ===== */
+/* ============================================
+   SCALES (SLIDERS)
+   ============================================ */
+
 scale {
-    min-height: 24px;
+    min-height: 32px;
     padding: 12px 0;
 }
 
 scale trough {
     min-height: 4px;
-    background-color: @bg_light;
+    background-color: @bg_trough;
     border-radius: 2px;
 }
 
 scale highlight {
-    background-color: @accent;
+    background-color: @accent_blue;
     border-radius: 2px;
 }
 
 scale slider {
-    min-width: 20px;
-    min-height: 20px;
-    background-color: @text_primary;
+    min-width: 22px;
+    min-height: 22px;
+    background-color: white;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: all 150ms ease;
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.25),
+        0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: all 200ms ease;
 }
 
 scale slider:hover {
     transform: scale(1.1);
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 scale slider:active {
-    background-color: @accent;
+    background-color: @accent_blue;
+    transform: scale(1.15);
 }
 
 scale:disabled trough {
-    background-color: @bg_medium;
+    background-color: @bg_disabled;
 }
 
 scale:disabled highlight {
@@ -499,25 +1007,45 @@ scale:disabled highlight {
 
 scale:disabled slider {
     background-color: @text_disabled;
+    box-shadow: none;
 }
 
-/* ===== Progress Bar ===== */
+/* Scale Marks */
+scale marks {
+    color: @text_secondary;
+}
+
+scale marks mark {
+    background-color: @text_secondary;
+}
+
+/* ============================================
+   PROGRESS BARS
+   ============================================ */
+
 progressbar {
-    min-height: 4px;
+    min-height: 6px;
 }
 
 progressbar trough {
-    min-height: 4px;
-    background-color: @bg_light;
-    border-radius: 2px;
+    min-height: 6px;
+    background-color: @bg_trough;
+    border-radius: 3px;
 }
 
 progressbar progress {
-    background-color: @accent;
-    border-radius: 2px;
+    background-color: @accent_blue;
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 3px;
+    animation: shimmer 2s infinite linear;
 }
 
-/* Indeterminate Progress Animation */
 progressbar.horizontal progress {
     min-width: 48px;
 }
@@ -526,37 +1054,63 @@ progressbar.vertical progress {
     min-height: 48px;
 }
 
-/* ===== Spinner ===== */
-spinner {
-    color: @accent;
+/* Osd Progress */
+progressbar.osd {
+    min-height: 4px;
 }
 
-/* ===== Scrollbar ===== */
+progressbar.osd trough {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   SPINNERS
+   ============================================ */
+
+spinner {
+    color: @accent_blue;
+    animation: spin 1s linear infinite;
+}
+
+spinner:disabled {
+    color: @text_disabled;
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
 scrollbar {
     background-color: transparent;
     padding: 2px;
 }
 
 scrollbar slider {
-    min-width: 8px;
-    min-height: 8px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    transition: all 150ms ease;
+    min-width: 6px;
+    min-height: 6px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    border: 2px solid transparent;
+    transition: all 200ms ease;
+}
+
+scrollbar:hover slider {
+    background-color: rgba(255, 255, 255, 0.25);
+    min-width: 10px;
 }
 
 scrollbar slider:hover {
     background-color: rgba(255, 255, 255, 0.35);
-    min-width: 10px;
 }
 
 scrollbar slider:active {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
-/* Overlay Scrollbar */
+/* Overlay Scrollbars */
 scrollbar.overlay-indicator {
     background-color: transparent;
+    padding: 0;
 }
 
 scrollbar.overlay-indicator slider {
@@ -564,87 +1118,150 @@ scrollbar.overlay-indicator slider {
     min-height: 4px;
 }
 
-scrollbar.overlay-indicator slider:hover {
-    min-width: 8px;
+scrollbar.overlay-indicator:hover slider {
+    min-width: 10px;
 }
 
-/* ===== Notebook (Tabs) ===== */
+/* Horizontal Scrollbar */
+scrollbar.horizontal slider {
+    min-width: 40px;
+}
+
+scrollbar.vertical slider {
+    min-height: 40px;
+}
+
+/* ============================================
+   NOTEBOOKS (TABS)
+   ============================================ */
+
 notebook,
 .notebook {
-    background-color: @bg_dark;
+    background-color: @bg_primary;
 }
 
 notebook > header {
-    background-color: @bg_medium;
-    border-bottom: 1px solid @border_color;
+    background-color: @bg_secondary;
+    border-bottom: 1px solid @border_subtle;
     padding: 4px 8px;
 }
 
 notebook > header.top {
-    border-radius: 8px 8px 0 0;
+    border-radius: 12px 12px 0 0;
 }
 
 notebook > header.bottom {
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid @border_subtle;
     border-bottom: none;
-    border-top: 1px solid @border_color;
+}
+
+notebook > header.left {
+    border-radius: 12px 0 0 12px;
+    border-right: 1px solid @border_subtle;
+    border-bottom: none;
+}
+
+notebook > header.right {
+    border-radius: 0 12px 12px 0;
+    border-left: 1px solid @border_subtle;
+    border-bottom: none;
 }
 
 notebook > header tab {
     background-color: transparent;
     border-radius: 8px;
     padding: 8px 16px;
-    margin: 2px 4px;
+    margin: 4px 2px;
     color: @text_secondary;
     font-weight: 500;
-    transition: all 150ms ease;
+    transition: all 200ms ease;
 }
 
 notebook > header tab:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.06);
     color: @text_primary;
 }
 
 notebook > header tab:checked {
-    background-color: @bg_light;
+    background-color: @bg_elevated;
     color: @text_primary;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+notebook > header tab button.close {
+    min-width: 20px;
+    min-height: 20px;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 50%;
 }
 
 notebook > stack {
-    background-color: @bg_dark;
-    border-radius: 0 0 8px 8px;
+    background-color: @bg_primary;
+    border-radius: 0 0 12px 12px;
 }
 
-/* ===== Popover ===== */
+/* ============================================
+   POPOVERS
+   ============================================ */
+
 popover,
 popover.background {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
-                0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: @bg_popover;
+    border: 1px solid @border_popover;
+    border-radius: 14px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 24px 80px rgba(0, 0, 0, 0.5),
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        0 4px 16px rgba(0, 0, 0, 0.25);
     padding: 8px;
+    animation: scaleIn 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 popover > arrow {
-    background-color: @bg_medium;
-    border-color: @border_color;
+    background-color: @bg_popover;
+    border-color: @border_popover;
+}
+
+popover contents {
+    background-color: transparent;
+    border-radius: 12px;
 }
 
 popover separator {
-    background-color: @border_color;
-    margin: 4px 0;
+    background-color: @border_subtle;
+    margin: 6px 0;
 }
 
-/* ===== Menu ===== */
+popover modelbutton,
+popover .model {
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: background-color 150ms ease;
+}
+
+popover modelbutton:hover,
+popover .model:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   MENUS
+   ============================================ */
+
 menu,
 .menu,
-menubar,
-.menubar {
-    background-color: @bg_medium;
+menubar > menuitem > menu {
+    background-color: @bg_popover;
+    border: 1px solid @border_popover;
     border-radius: 12px;
-    padding: 8px;
+    padding: 6px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 16px 48px rgba(0, 0, 0, 0.45),
+        0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 menu menuitem,
@@ -652,12 +1269,14 @@ menu menuitem,
     padding: 8px 12px;
     border-radius: 8px;
     color: @text_primary;
+    min-height: 24px;
     transition: background-color 150ms ease;
 }
 
 menu menuitem:hover,
 .menu menuitem:hover {
-    background-color: @accent_bg;
+    background-color: @accent_blue;
+    color: @text_on_accent;
 }
 
 menu menuitem:disabled,
@@ -667,105 +1286,197 @@ menu menuitem:disabled,
 
 menu separator,
 .menu separator {
-    background-color: @border_color;
-    margin: 4px 8px;
+    background-color: @border_subtle;
+    margin: 6px 8px;
+    min-height: 1px;
 }
 
-/* Menu accelerator */
 menu menuitem accelerator,
 .menu menuitem accelerator {
     color: @text_secondary;
+    font-size: 0.9em;
 }
 
-/* ===== Tooltip ===== */
+menu menuitem:hover accelerator {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Menubar */
+menubar,
+.menubar {
+    background-color: @bg_header;
+    padding: 4px 8px;
+}
+
+menubar > menuitem {
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+menubar > menuitem:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+
 tooltip,
 tooltip.background {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
+    background-color: @bg_tooltip;
+    border: 1px solid @border_subtle;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    padding: 8px 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    padding: 6px 10px;
     color: @text_primary;
+    font-size: 0.9em;
+    animation: fadeIn 150ms ease;
 }
 
-/* ===== Dialogs ===== */
+/* ============================================
+   DIALOGS
+   ============================================ */
+
 dialog,
 messagedialog {
-    background-color: @bg_dark;
-    border-radius: 12px;
+    background-color: @bg_primary;
+    border-radius: 14px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 32px 100px rgba(0, 0, 0, 0.55),
+        0 16px 50px rgba(0, 0, 0, 0.4);
 }
 
 dialog .dialog-content-area,
 messagedialog .dialog-content-area {
-    padding: 24px;
+    padding: 24px 24px 16px;
 }
 
 dialog .dialog-action-area,
 messagedialog .dialog-action-area {
-    padding: 12px 24px 24px;
+    padding: 16px 24px 24px;
+    border-top: 1px solid @border_subtle;
 }
 
-/* ===== Info Bars ===== */
+dialog .dialog-action-area button,
+messagedialog .dialog-action-area button {
+    min-width: 80px;
+}
+
+messagedialog .titlebar {
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* ============================================
+   INFO BARS
+   ============================================ */
+
 infobar {
-    border-radius: 8px;
-    padding: 8px 16px;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 4px;
 }
 
 infobar.info {
-    background-color: rgba(96, 205, 255, 0.15);
-    border: 1px solid @accent;
+    background-color: rgba(10, 132, 255, 0.12);
+    border: 1px solid rgba(10, 132, 255, 0.3);
+    color: @accent_blue;
 }
 
 infobar.warning {
-    background-color: rgba(255, 193, 7, 0.15);
-    border: 1px solid @warning;
+    background-color: rgba(255, 159, 10, 0.12);
+    border: 1px solid rgba(255, 159, 10, 0.3);
+    color: @accent_orange;
 }
 
 infobar.error {
-    background-color: rgba(255, 107, 107, 0.15);
-    border: 1px solid @error;
+    background-color: rgba(255, 69, 58, 0.12);
+    border: 1px solid rgba(255, 69, 58, 0.3);
+    color: @accent_red;
 }
 
 infobar.question {
-    background-color: rgba(96, 205, 255, 0.15);
-    border: 1px solid @accent;
+    background-color: rgba(10, 132, 255, 0.12);
+    border: 1px solid rgba(10, 132, 255, 0.3);
+    color: @accent_blue;
 }
 
-/* ===== Sidebar ===== */
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
 .sidebar,
 .navigation-sidebar {
-    background-color: @bg_medium;
-    border-right: 1px solid @border_color;
+    background-color: @bg_sidebar;
+    border-right: 1px solid @border_subtle;
     padding: 8px;
 }
 
 .sidebar row,
 .navigation-sidebar row {
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 10px 12px;
     margin: 2px 0;
+    color: @text_secondary;
+    transition: all 200ms ease;
+}
+
+.sidebar row:hover,
+.navigation-sidebar row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: @text_primary;
 }
 
 .sidebar row:selected,
 .navigation-sidebar row:selected {
-    background-color: @accent_bg;
+    background-color: rgba(10, 132, 255, 0.15);
+    color: @text_primary;
 }
 
-/* ===== Paned (Split View) ===== */
+.sidebar row:selected label {
+    color: @text_primary;
+    font-weight: 500;
+}
+
+/* ============================================
+   PANED (SPLIT VIEWS)
+   ============================================ */
+
 paned > separator {
     min-width: 1px;
     min-height: 1px;
-    background-color: @border_color;
+    background-color: @border_subtle;
+    transition: background-color 200ms ease;
 }
 
 paned > separator:hover {
-    background-color: @accent;
+    background-color: @accent_blue;
 }
 
-/* ===== Revealer/Expander ===== */
+paned.horizontal > separator {
+    min-width: 1px;
+}
+
+paned.vertical > separator {
+    min-height: 1px;
+}
+
+/* ============================================
+   EXPANDERS
+   ============================================ */
+
+expander {
+    padding: 4px;
+}
+
 expander title {
-    padding: 8px;
+    padding: 8px 12px;
     border-radius: 8px;
+    transition: background-color 200ms ease;
 }
 
 expander title:hover {
@@ -776,256 +1487,577 @@ expander arrow {
     color: @text_secondary;
     min-width: 16px;
     min-height: 16px;
+    transition: transform 200ms ease;
 }
 
-/* ===== Frame ===== */
+expander:checked arrow {
+    transform: rotate(90deg);
+}
+
+/* ============================================
+   FRAMES
+   ============================================ */
+
 frame {
-    border: 1px solid @border_color;
-    border-radius: 8px;
+    border: 1px solid @border_subtle;
+    border-radius: 10px;
 }
 
 frame > label {
-    margin: 0 8px;
+    margin: 0 10px;
     color: @text_secondary;
+    font-weight: 500;
 }
 
-/* ===== Statusbar ===== */
+/* ============================================
+   STATUSBAR
+   ============================================ */
+
 statusbar {
-    background-color: @bg_medium;
-    border-top: 1px solid @border_color;
-    padding: 4px 12px;
+    background-color: @bg_secondary;
+    border-top: 1px solid @border_subtle;
+    padding: 4px 16px;
+    min-height: 28px;
 }
 
-/* ===== Calendar ===== */
+statusbar label {
+    color: @text_secondary;
+    font-size: 0.9em;
+}
+
+/* ============================================
+   CALENDAR
+   ============================================ */
+
 calendar {
-    background-color: @bg_medium;
-    border-radius: 12px;
-    padding: 8px;
+    background-color: @bg_elevated;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 calendar:selected {
-    background-color: @accent;
-    color: #000000;
+    background-color: @accent_blue;
+    color: @text_on_accent;
     border-radius: 50%;
 }
 
 calendar.header {
-    border-bottom: 1px solid @border_color;
-    padding-bottom: 8px;
+    border-bottom: 1px solid @border_subtle;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 calendar.button {
     border-radius: 50%;
+    min-width: 32px;
+    min-height: 32px;
 }
 
-/* ===== Color Chooser ===== */
+calendar.day {
+    border-radius: 50%;
+    padding: 6px;
+}
+
+calendar.day:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   COLOR CHOOSER
+   ============================================ */
+
 colorswatch {
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease;
+}
+
+colorswatch:hover {
+    transform: scale(1.05);
 }
 
 colorswatch:selected {
-    box-shadow: 0 0 0 2px @accent;
+    box-shadow: 0 0 0 3px @accent_blue;
 }
 
-/* ===== Level Bar ===== */
+colorchooser {
+    padding: 12px;
+}
+
+/* ============================================
+   LEVEL BAR
+   ============================================ */
+
+levelbar {
+    min-height: 8px;
+}
+
 levelbar block {
-    min-height: 4px;
-    border-radius: 2px;
+    min-height: 8px;
+    border-radius: 4px;
 }
 
 levelbar block.filled {
-    background-color: @accent;
+    background-color: @accent_blue;
 }
 
 levelbar block.empty {
-    background-color: @bg_light;
+    background-color: @bg_trough;
 }
 
 levelbar block.low {
-    background-color: @error;
+    background-color: @accent_red;
 }
 
 levelbar block.high {
-    background-color: @success;
+    background-color: @accent_green;
 }
 
-/* ===== Link Button ===== */
-linkbutton {
-    color: @accent;
+levelbar block.full {
+    background-color: @accent_green;
 }
 
-linkbutton:hover {
-    color: @accent_hover;
-}
+/* ============================================
+   VIEW & TEXT VIEWS
+   ============================================ */
 
-linkbutton:visited {
-    color: #b388ff;
-}
-
-/* ===== Acrylic/Blur Effect Classes ===== */
-.acrylic {
-    background-color: @acrylic_bg;
-}
-
-.mica {
-    background-color: @mica_bg;
-}
-
-/* ===== Card Style ===== */
-.card {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-/* ===== View ===== */
 .view,
 textview,
 iconview {
-    background-color: @surface;
+    background-color: @bg_secondary;
     color: @text_primary;
+    border-radius: 8px;
 }
 
 textview text {
     background-color: transparent;
 }
 
-/* ===== Selection ===== */
+textview border {
+    background-color: @bg_tertiary;
+}
+
+iconview:selected {
+    background-color: rgba(10, 132, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
 selection,
 *:selected {
-    background-color: @accent;
-    color: #000000;
+    background-color: rgba(10, 132, 255, 0.4);
+    color: @text_primary;
 }
 
-/* ===== Dim/Separator Labels ===== */
-.dim-label {
-    color: @text_secondary;
-}
+/* ============================================
+   SEPARATORS
+   ============================================ */
 
 separator {
-    background-color: @border_color;
+    background-color: @border_subtle;
     min-width: 1px;
     min-height: 1px;
 }
 
-/* ===== OSD (On Screen Display) ===== */
+separator.horizontal {
+    min-height: 1px;
+}
+
+separator.vertical {
+    min-width: 1px;
+}
+
+/* ============================================
+   OSD (ON SCREEN DISPLAY)
+   ============================================ */
+
 .osd {
-    background-color: @acrylic_bg;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    background-color: @bg_osd;
+    border-radius: 14px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 16px 48px rgba(0, 0, 0, 0.5);
+    padding: 12px;
 }
 
 .osd button {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.12);
     border: none;
+    box-shadow: none;
 }
 
 .osd button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.18);
 }
 
-/* ===== Placeholder/Empty State ===== */
-.placeholder {
-    color: @text_secondary;
+.osd button:active {
+    background-color: rgba(255, 255, 255, 0.24);
 }
 
-/* ===== App Notification ===== */
-.app-notification {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    padding: 12px 16px;
-    margin: 8px;
-}
+/* ============================================
+   TOASTS
+   ============================================ */
 
-/* ===== Title Buttons ===== */
-.titlebutton {
-    min-width: 24px;
-    min-height: 24px;
-    padding: 4px;
-    border-radius: 50%;
-}
-
-/* ===== Special Libadwaita Classes ===== */
-.boxed-list {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
-    border-radius: 12px;
-}
-
-.boxed-list > row {
-    padding: 12px 16px;
-}
-
-.boxed-list > row:first-child {
-    border-radius: 12px 12px 0 0;
-}
-
-.boxed-list > row:last-child {
-    border-radius: 0 0 12px 12px;
-}
-
-.boxed-list > row:only-child {
-    border-radius: 12px;
-}
-
-/* Action Row */
-row.activatable {
-    transition: background-color 150ms ease;
-}
-
-row.activatable:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-row.activatable:active {
-    background-color: rgba(255, 255, 255, 0.08);
-}
-
-/* ===== Toast ===== */
 toast {
-    background-color: @bg_medium;
-    border: 1px solid @border_color;
+    background-color: @bg_toast;
+    border: 1px solid @border_subtle;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    padding: 12px 16px;
-    margin: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+    padding: 12px 18px;
+    margin: 16px;
+    animation: slideInFromBottom 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* ===== Banner ===== */
+toast button {
+    background-color: transparent;
+    border: none;
+    color: @accent_blue;
+    font-weight: 600;
+}
+
+toast button:hover {
+    background-color: rgba(10, 132, 255, 0.15);
+}
+
+/* ============================================
+   BANNERS
+   ============================================ */
+
 banner {
-    background-color: @accent_bg;
-    padding: 12px 16px;
+    background-color: rgba(10, 132, 255, 0.1);
+    border-bottom: 1px solid rgba(10, 132, 255, 0.2);
+    padding: 12px 18px;
 }
 
 banner.error {
-    background-color: rgba(255, 107, 107, 0.15);
+    background-color: rgba(255, 69, 58, 0.1);
+    border-color: rgba(255, 69, 58, 0.2);
 }
 
-/* ===== Animation Keyframes ===== */
-@keyframes spin {
-    to { transform: rotate(360deg); }
+banner.warning {
+    background-color: rgba(255, 159, 10, 0.1);
+    border-color: rgba(255, 159, 10, 0.2);
 }
 
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+banner label {
+    color: @text_primary;
 }
 
-/* ===== Print Styles ===== */
+banner button {
+    background-color: transparent;
+    border: none;
+}
+
+/* ============================================
+   APP NOTIFICATIONS
+   ============================================ */
+
+.app-notification {
+    background-color: @bg_elevated;
+    border: 1px solid @border_subtle;
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    padding: 14px 18px;
+    margin: 10px;
+    animation: slideInFromTop 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    background-color: @bg_elevated;
+    border: 1px solid @border_subtle;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.card:hover {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   GLASSMORPHISM EFFECTS
+   ============================================ */
+
+.glass {
+    background-color: @bg_glass;
+    border: 1px solid @border_glass;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.blur {
+    background-color: @bg_blur;
+}
+
+.frosted {
+    background-color: rgba(44, 44, 46, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   TITLE BUTTONS
+   ============================================ */
+
+.titlebutton {
+    min-width: 28px;
+    min-height: 28px;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 150ms ease;
+}
+
+.titlebutton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.titlebutton:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   PLACEHOLDER / EMPTY STATE
+   ============================================ */
+
+.placeholder,
+.empty-state {
+    color: @text_secondary;
+}
+
+.placeholder icon,
+.empty-state icon {
+    color: @text_disabled;
+    opacity: 0.6;
+}
+
+/* ============================================
+   STACK TRANSITIONS
+   ============================================ */
+
+stackswitcher button {
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 0 2px;
+}
+
+stackswitcher button:checked {
+    background-color: @bg_elevated;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+stack {
+    transition: opacity 200ms ease;
+}
+
+/* ============================================
+   VIEW SWITCHER
+   ============================================ */
+
+viewswitcher button {
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+viewswitcher button:checked {
+    background-color: rgba(10, 132, 255, 0.15);
+}
+
+viewswitcher button stack {
+    padding: 4px;
+}
+
+/* ============================================
+   ACTION BAR
+   ============================================ */
+
+actionbar {
+    background-color: @bg_secondary;
+    border-top: 1px solid @border_subtle;
+    padding: 8px 16px;
+}
+
+actionbar > revealer > box {
+    padding: 4px;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+searchbar {
+    background-color: @bg_secondary;
+    border-bottom: 1px solid @border_subtle;
+    padding: 8px;
+}
+
+searchbar > revealer > box {
+    background-color: transparent;
+}
+
+/* ============================================
+   TOOLBAR
+   ============================================ */
+
+toolbar,
+.toolbar {
+    background-color: @bg_secondary;
+    border-bottom: 1px solid @border_subtle;
+    padding: 4px 8px;
+}
+
+toolbar button,
+.toolbar button {
+    margin: 2px;
+}
+
+/* ============================================
+   FLAP (LIBADWAITA)
+   ============================================ */
+
+flap > separator {
+    background-color: @border_subtle;
+}
+
+flap > shadow {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* ============================================
+   PREFERENCE GROUPS (LIBADWAITA)
+   ============================================ */
+
+preferencesgroup > box > box {
+    margin-top: 8px;
+}
+
+preferencesgroup > box > box > label.heading {
+    margin-bottom: 8px;
+    color: @text_secondary;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   AVATAR
+   ============================================ */
+
+avatar {
+    border-radius: 50%;
+    background-color: @accent_blue;
+    color: @text_on_accent;
+    font-weight: 600;
+}
+
+avatar.contrasted {
+    box-shadow: 0 0 0 2px @bg_primary;
+}
+
+/* ============================================
+   STATUS PAGE
+   ============================================ */
+
+statuspage {
+    padding: 32px;
+}
+
+statuspage > box > clamp > box > .icon {
+    color: @text_disabled;
+    opacity: 0.6;
+}
+
+statuspage > box > clamp > box > .title {
+    margin-top: 24px;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+statuspage > box > clamp > box > .description {
+    margin-top: 8px;
+    color: @text_secondary;
+}
+
+/* ============================================
+   SPINNER ROW
+   ============================================ */
+
+row.spin spinner {
+    margin: 8px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
 @media print {
     * {
         background-color: white !important;
         color: black !important;
         box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    button,
+    entry,
+    scale,
+    switch {
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: more) {
+    * {
+        outline-width: 2px;
+    }
+
+    button {
+        border-width: 2px;
+    }
+
+    entry {
+        border-width: 2px;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
