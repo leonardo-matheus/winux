@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Winux OS Icon - Small Size
+  For window icons and small displays
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a84ff"/>
+      <stop offset="100%" style="stop-color:#5856d6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circle background -->
+  <circle cx="32" cy="32" r="28" fill="url(#iconGradient)"/>
+
+  <!-- W lettermark (simplified) -->
+  <path
+    d="M 16 18
+       L 22 46
+       L 32 32
+       L 42 46
+       L 48 18
+       L 42 18
+       L 39 38
+       L 32 28
+       L 25 38
+       L 22 18
+       Z"
+    fill="#ffffff"
+  />
+</svg>

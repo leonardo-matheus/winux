@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Winux OS Logo - Calamares Branding
+  Modern Apple-Style Design
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a84ff"/>
+      <stop offset="100%" style="stop-color:#5856d6"/>
+    </linearGradient>
+    <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Main circle background -->
+  <circle cx="128" cy="128" r="100" fill="url(#logoGradient)" filter="url(#logoShadow)"/>
+
+  <!-- W lettermark -->
+  <path
+    d="M 68 76
+       L 88 180
+       L 128 128
+       L 168 180
+       L 188 76
+       L 168 76
+       L 156 148
+       L 128 104
+       L 100 148
+       L 88 76
+       Z"
+    fill="#ffffff"
+    opacity="0.95"
+  />
+</svg>
