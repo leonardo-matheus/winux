@@ -1,0 +1,19 @@
+[package]
+name = "winux-settings"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "System settings application for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+serde.workspace = true
+toml.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true

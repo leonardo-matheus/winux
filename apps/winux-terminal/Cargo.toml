@@ -1,0 +1,22 @@
+[package]
+name = "winux-terminal"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "GPU-accelerated terminal emulator for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+vte4.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+tokio.workspace = true
+serde.workspace = true
+toml.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true

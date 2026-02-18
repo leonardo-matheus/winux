@@ -1,0 +1,29 @@
+[package]
+name = "winux-files"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Modern file manager for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+relm4.workspace = true
+relm4-macros.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+notify.workspace = true
+mime_guess.workspace = true
+trash.workspace = true
+dirs.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+walkdir.workspace = true
+chrono.workspace = true
+rayon.workspace = true
+image.workspace = true
+anyhow.workspace = true
+tracing.workspace = true

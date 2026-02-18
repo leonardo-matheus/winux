@@ -1,0 +1,19 @@
+[package]
+name = "winux-monitor"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "System monitor and task manager for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+sysinfo.workspace = true
+serde.workspace = true
+chrono.workspace = true
+anyhow.workspace = true
+tracing.workspace = true

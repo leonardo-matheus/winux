@@ -1,0 +1,610 @@
+#!/bin/bash
+#===============================================================================
+# winux-run - Winux OS Universal Windows Application Launcher
+# Smart launcher for Windows executables with automatic configuration
+#===============================================================================
+
+set -euo pipefail
+
+# Script version
+VERSION="1.0.0"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Default configuration
+WINUX_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/winux"
+WINUX_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/winux"
+WINUX_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/winux"
+WINUX_LOG_DIR="$WINUX_DATA_DIR/logs"
+
+# Default Wine settings
+DEFAULT_WINEPREFIX="$HOME/.wine"
+DEFAULT_WINE="wine"
+
+# Runtime options
+ENABLE_MANGOHUD="${ENABLE_MANGOHUD:-0}"
+ENABLE_GAMEMODE="${ENABLE_GAMEMODE:-0}"
+ENABLE_DXVK_ASYNC="${ENABLE_DXVK_ASYNC:-0}"
+ENABLE_VKD3D="${ENABLE_VKD3D:-1}"
+ENABLE_FSYNC="${ENABLE_FSYNC:-1}"
+ENABLE_ESYNC="${ENABLE_ESYNC:-1}"
+
+# Logging
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_success() { echo -e "${GREEN}[OK]${NC} $1"; }
+log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+log_debug() { [[ "${DEBUG:-0}" == "1" ]] && echo -e "${CYAN}[DEBUG]${NC} $1" || true; }
+
+# Initialize directories
+init_dirs() {
+    mkdir -p "$WINUX_CONFIG_DIR" "$WINUX_DATA_DIR" "$WINUX_CACHE_DIR" "$WINUX_LOG_DIR"
+}
+
+# Detect application type
+detect_app_type() {
+    local exe_path="$1"
+    local exe_name=$(basename "$exe_path" | tr '[:upper:]' '[:lower:]')
+    local exe_dir=$(dirname "$exe_path")
+
+    # Check for Steam
+    if [[ "$exe_path" == *"steamapps"* ]] || [[ -f "$exe_dir/steam_api.dll" ]] || [[ -f "$exe_dir/steam_api64.dll" ]]; then
+        echo "steam"
+        return
+    fi
+
+    # Check for GOG games
+    if [[ "$exe_path" == *"GOG Games"* ]] || [[ -f "$exe_dir/goggame-"*.info ]]; then
+        echo "gog"
+        return
+    fi
+
+    # Check for Epic Games
+    if [[ "$exe_path" == *"Epic Games"* ]] || [[ -f "$exe_dir/.egstore" ]]; then
+        echo "epic"
+        return
+    fi
+
+    # Check for common game indicators
+    local game_indicators=(
+        "d3d9.dll" "d3d10.dll" "d3d11.dll" "d3d12.dll"
+        "dxgi.dll" "opengl32.dll" "vulkan-1.dll"
+        "unityplayer.dll" "unrealengine*.dll"
+        "gameoverlayrenderer.dll"
+    )
+
+    for indicator in "${game_indicators[@]}"; do
+        if ls "$exe_dir"/$indicator &>/dev/null; then
+            echo "game"
+            return
+        fi
+    done
+
+    # Check for known game engines by exe name patterns
+    if [[ "$exe_name" == *"game"* ]] || [[ "$exe_name" == *"launcher"* ]] || \
+       [[ "$exe_name" == *"start"* ]] || [[ "$exe_name" == *"play"* ]]; then
+        echo "game"
+        return
+    fi
+
+    # Check file size (games are usually larger)
+    local file_size=$(stat -f%z "$exe_path" 2>/dev/null || stat -c%s "$exe_path" 2>/dev/null || echo 0)
+    if [[ "$file_size" -gt 104857600 ]]; then  # > 100MB
+        echo "game"
+        return
+    fi
+
+    # Default to regular application
+    echo "app"
+}
+
+# Get appropriate Wine prefix
+get_wine_prefix() {
+    local exe_path="$1"
+    local app_type="$2"
+
+    # Check for app-specific prefix in config
+    local exe_hash=$(echo -n "$exe_path" | md5sum | cut -d' ' -f1)
+    local config_file="$WINUX_CONFIG_DIR/apps/$exe_hash.conf"
+
+    if [[ -f "$config_file" ]]; then
+        local prefix=$(grep "^WINEPREFIX=" "$config_file" 2>/dev/null | cut -d'=' -f2)
+        if [[ -n "$prefix" ]] && [[ -d "$prefix" ]]; then
+            echo "$prefix"
+            return
+        fi
+    fi
+
+    # Use type-specific prefix if exists
+    case "$app_type" in
+        steam)
+            local steam_prefix="$HOME/.steam/steam/steamapps/compatdata"
+            if [[ -d "$steam_prefix" ]]; then
+                # Try to find app-specific prefix
+                local app_id=$(echo "$exe_path" | grep -oP 'steamapps/common/\K[^/]+' | head -1)
+                if [[ -n "$app_id" ]]; then
+                    for prefix_dir in "$steam_prefix"/*/pfx; do
+                        if [[ -d "$prefix_dir" ]]; then
+                            echo "$prefix_dir"
+                            return
+                        fi
+                    done
+                fi
+            fi
+            echo "$HOME/.wine-steam"
+            ;;
+        gog)
+            echo "$HOME/.wine-gog"
+            ;;
+        epic)
+            echo "$HOME/.wine-epic"
+            ;;
+        game)
+            echo "$HOME/.wine-games"
+            ;;
+        *)
+            echo "$DEFAULT_WINEPREFIX"
+            ;;
+    esac
+}
+
+# Get appropriate runtime
+get_runtime() {
+    local app_type="$1"
+    local force_runtime="${WINUX_RUNTIME:-auto}"
+
+    if [[ "$force_runtime" != "auto" ]]; then
+        echo "$force_runtime"
+        return
+    fi
+
+    # Check for Proton-GE
+    local proton_ge_path=$(find "$HOME/.steam/root/compatibilitytools.d" -maxdepth 1 -name "GE-Proton*" -type d 2>/dev/null | sort -V | tail -1)
+
+    # Check for system Proton
+    local proton_path=$(find "$HOME/.steam/steam/steamapps/common" -maxdepth 1 -name "Proton*" -type d 2>/dev/null | sort -V | tail -1)
+
+    # Check for Wine-GE
+    local wine_ge_path=$(find "$HOME/.local/share/lutris/runners/wine" -maxdepth 1 -name "*GE*" -type d 2>/dev/null | sort -V | tail -1)
+
+    case "$app_type" in
+        steam)
+            if [[ -n "$proton_ge_path" ]]; then
+                echo "proton-ge:$proton_ge_path"
+            elif [[ -n "$proton_path" ]]; then
+                echo "proton:$proton_path"
+            else
+                echo "wine"
+            fi
+            ;;
+        game|gog|epic)
+            if [[ -n "$wine_ge_path" ]]; then
+                echo "wine-ge:$wine_ge_path"
+            elif [[ -n "$proton_ge_path" ]]; then
+                echo "proton-ge:$proton_ge_path"
+            else
+                echo "wine"
+            fi
+            ;;
+        *)
+            echo "wine"
+            ;;
+    esac
+}
+
+# Configure environment for runtime
+configure_environment() {
+    local app_type="$1"
+    local runtime="$2"
+
+    # Base Wine environment
+    export WINEDEBUG="${WINEDEBUG:--all}"
+    export WINEDLLOVERRIDES="${WINEDLLOVERRIDES:-winemenubuilder.exe=d}"
+
+    # Sync primitives
+    if [[ "$ENABLE_FSYNC" == "1" ]]; then
+        export WINEFSYNC=1
+        log_debug "FSYNC enabled"
+    fi
+
+    if [[ "$ENABLE_ESYNC" == "1" ]]; then
+        export WINEESYNC=1
+        log_debug "ESYNC enabled"
+    fi
+
+    # DXVK settings
+    export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-none}"
+    export DXVK_STATE_CACHE_PATH="${DXVK_STATE_CACHE_PATH:-$WINUX_CACHE_DIR/dxvk}"
+
+    if [[ "$ENABLE_DXVK_ASYNC" == "1" ]]; then
+        export DXVK_ASYNC=1
+        log_debug "DXVK_ASYNC enabled"
+    fi
+
+    # VKD3D settings
+    if [[ "$ENABLE_VKD3D" == "1" ]]; then
+        export VKD3D_DEBUG="${VKD3D_DEBUG:-none}"
+        export VKD3D_SHADER_CACHE_PATH="${VKD3D_SHADER_CACHE_PATH:-$WINUX_CACHE_DIR/vkd3d}"
+        log_debug "VKD3D enabled"
+    fi
+
+    # Game-specific optimizations
+    if [[ "$app_type" == "game" ]] || [[ "$app_type" == "steam" ]] || \
+       [[ "$app_type" == "gog" ]] || [[ "$app_type" == "epic" ]]; then
+
+        # Mesa optimizations
+        export mesa_glthread=true
+        export MESA_GL_VERSION_OVERRIDE=4.6COMPAT
+        export MESA_GLSL_VERSION_OVERRIDE=460
+
+        # AMD-specific
+        export RADV_PERFTEST="${RADV_PERFTEST:-gpl,rt}"
+        export AMD_VULKAN_ICD=RADV
+
+        # NVIDIA-specific
+        export __GL_SHADER_DISK_CACHE=1
+        export __GL_SHADER_DISK_CACHE_PATH="$WINUX_CACHE_DIR/nvidia"
+        export __GL_THREADED_OPTIMIZATION=1
+
+        # Vulkan settings
+        export DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1=1
+
+        log_debug "Gaming optimizations enabled"
+    fi
+
+    # Proton-specific environment
+    if [[ "$runtime" == proton* ]]; then
+        export PROTON_USE_WINED3D="${PROTON_USE_WINED3D:-0}"
+        export PROTON_NO_ESYNC="${PROTON_NO_ESYNC:-0}"
+        export PROTON_NO_FSYNC="${PROTON_NO_FSYNC:-0}"
+        export PROTON_HIDE_NVIDIA_GPU="${PROTON_HIDE_NVIDIA_GPU:-0}"
+        export PROTON_ENABLE_NVAPI="${PROTON_ENABLE_NVAPI:-1}"
+        log_debug "Proton environment configured"
+    fi
+}
+
+# Build launch command
+build_launch_command() {
+    local exe_path="$1"
+    local runtime="$2"
+    local prefix="$3"
+    shift 3
+    local extra_args=("$@")
+
+    local cmd=()
+
+    # MangoHud
+    if [[ "$ENABLE_MANGOHUD" == "1" ]] && command -v mangohud &>/dev/null; then
+        cmd+=("mangohud")
+        log_debug "MangoHud enabled"
+    fi
+
+    # Gamemode
+    if [[ "$ENABLE_GAMEMODE" == "1" ]] && command -v gamemoderun &>/dev/null; then
+        cmd+=("gamemoderun")
+        log_debug "GameMode enabled"
+    fi
+
+    # Runtime-specific launcher
+    case "$runtime" in
+        proton-ge:*|proton:*)
+            local proton_path="${runtime#*:}"
+            local proton_bin="$proton_path/proton"
+
+            if [[ -f "$proton_bin" ]]; then
+                export STEAM_COMPAT_DATA_PATH="$prefix"
+                export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/steam"
+                cmd+=("$proton_bin" "run")
+            else
+                log_warn "Proton binary not found, falling back to Wine"
+                cmd+=("wine")
+            fi
+            ;;
+        wine-ge:*)
+            local wine_ge_path="${runtime#*:}"
+            local wine_ge_bin="$wine_ge_path/bin/wine"
+
+            if [[ -f "$wine_ge_bin" ]]; then
+                export WINEPREFIX="$prefix"
+                cmd+=("$wine_ge_bin")
+            else
+                log_warn "Wine-GE binary not found, falling back to system Wine"
+                export WINEPREFIX="$prefix"
+                cmd+=("wine")
+            fi
+            ;;
+        wine|*)
+            export WINEPREFIX="$prefix"
+            cmd+=("wine")
+            ;;
+    esac
+
+    # Add executable and arguments
+    cmd+=("$exe_path" "${extra_args[@]}")
+
+    echo "${cmd[@]}"
+}
+
+# Save app configuration
+save_app_config() {
+    local exe_path="$1"
+    local prefix="$2"
+    local runtime="$3"
+    local app_type="$4"
+
+    local exe_hash=$(echo -n "$exe_path" | md5sum | cut -d' ' -f1)
+    local config_dir="$WINUX_CONFIG_DIR/apps"
+    local config_file="$config_dir/$exe_hash.conf"
+
+    mkdir -p "$config_dir"
+
+    cat > "$config_file" << EOF
+# Winux Run Configuration
+# Generated: $(date -Iseconds)
+# Executable: $exe_path
+
+APP_TYPE=$app_type
+WINEPREFIX=$prefix
+RUNTIME=$runtime
+ENABLE_MANGOHUD=$ENABLE_MANGOHUD
+ENABLE_GAMEMODE=$ENABLE_GAMEMODE
+ENABLE_DXVK_ASYNC=$ENABLE_DXVK_ASYNC
+ENABLE_FSYNC=$ENABLE_FSYNC
+ENABLE_ESYNC=$ENABLE_ESYNC
+EOF
+
+    log_debug "Configuration saved to $config_file"
+}
+
+# Load app configuration
+load_app_config() {
+    local exe_path="$1"
+
+    local exe_hash=$(echo -n "$exe_path" | md5sum | cut -d' ' -f1)
+    local config_file="$WINUX_CONFIG_DIR/apps/$exe_hash.conf"
+
+    if [[ -f "$config_file" ]]; then
+        source "$config_file"
+        log_debug "Configuration loaded from $config_file"
+        return 0
+    fi
+
+    return 1
+}
+
+# Show usage
+show_usage() {
+    cat << EOF
+Usage: $(basename "$0") [OPTIONS] <executable.exe> [ARGS...]
+
+Winux OS Universal Windows Application Launcher
+
+Options:
+    -p, --prefix PATH       Set Wine prefix path
+    -r, --runtime RUNTIME   Force runtime (wine, proton, proton-ge, wine-ge)
+    -t, --type TYPE         Force app type (game, steam, gog, epic, app)
+
+    -m, --mangohud          Enable MangoHud overlay
+    -g, --gamemode          Enable Feral GameMode
+    -a, --async             Enable DXVK async shader compilation
+
+    --no-fsync              Disable FSYNC
+    --no-esync              Disable ESYNC
+
+    -d, --debug             Enable debug output
+    -n, --dry-run           Show what would be executed
+    -s, --save              Save configuration for this app
+
+    -h, --help              Show this help message
+    -v, --version           Show version
+
+Environment Variables:
+    WINUX_RUNTIME           Force runtime selection
+    ENABLE_MANGOHUD         Enable MangoHud (0/1)
+    ENABLE_GAMEMODE         Enable GameMode (0/1)
+    ENABLE_DXVK_ASYNC       Enable DXVK async (0/1)
+    ENABLE_FSYNC            Enable FSYNC (0/1, default: 1)
+    ENABLE_ESYNC            Enable ESYNC (0/1, default: 1)
+    DEBUG                   Enable debug output (0/1)
+
+Examples:
+    $(basename "$0") game.exe
+    $(basename "$0") -m -g game.exe
+    $(basename "$0") -p ~/.wine-custom app.exe
+    $(basename "$0") -r proton-ge game.exe --fullscreen
+    ENABLE_MANGOHUD=1 $(basename "$0") game.exe
+
+EOF
+}
+
+# Show version
+show_version() {
+    echo "winux-run version $VERSION"
+    echo "Winux OS Universal Windows Application Launcher"
+}
+
+# Main function
+main() {
+    local exe_path=""
+    local extra_args=()
+    local force_prefix=""
+    local force_runtime=""
+    local force_type=""
+    local dry_run=false
+    local save_config=false
+
+    # Initialize directories
+    init_dirs
+
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -p|--prefix)
+                force_prefix="$2"
+                shift 2
+                ;;
+            -r|--runtime)
+                force_runtime="$2"
+                shift 2
+                ;;
+            -t|--type)
+                force_type="$2"
+                shift 2
+                ;;
+            -m|--mangohud)
+                ENABLE_MANGOHUD=1
+                shift
+                ;;
+            -g|--gamemode)
+                ENABLE_GAMEMODE=1
+                shift
+                ;;
+            -a|--async)
+                ENABLE_DXVK_ASYNC=1
+                shift
+                ;;
+            --no-fsync)
+                ENABLE_FSYNC=0
+                shift
+                ;;
+            --no-esync)
+                ENABLE_ESYNC=0
+                shift
+                ;;
+            -d|--debug)
+                DEBUG=1
+                shift
+                ;;
+            -n|--dry-run)
+                dry_run=true
+                shift
+                ;;
+            -s|--save)
+                save_config=true
+                shift
+                ;;
+            -h|--help)
+                show_usage
+                exit 0
+                ;;
+            -v|--version)
+                show_version
+                exit 0
+                ;;
+            -*)
+                log_error "Unknown option: $1"
+                show_usage
+                exit 1
+                ;;
+            *)
+                if [[ -z "$exe_path" ]]; then
+                    exe_path="$1"
+                else
+                    extra_args+=("$1")
+                fi
+                shift
+                ;;
+        esac
+    done
+
+    # Validate executable
+    if [[ -z "$exe_path" ]]; then
+        log_error "No executable specified"
+        show_usage
+        exit 1
+    fi
+
+    # Convert to absolute path if needed
+    if [[ ! "$exe_path" = /* ]]; then
+        exe_path="$(pwd)/$exe_path"
+    fi
+
+    if [[ ! -f "$exe_path" ]]; then
+        log_error "Executable not found: $exe_path"
+        exit 1
+    fi
+
+    # Try to load existing configuration
+    load_app_config "$exe_path" || true
+
+    # Detect app type
+    local app_type
+    if [[ -n "$force_type" ]]; then
+        app_type="$force_type"
+    else
+        app_type=$(detect_app_type "$exe_path")
+    fi
+    log_debug "Detected app type: $app_type"
+
+    # Get Wine prefix
+    local prefix
+    if [[ -n "$force_prefix" ]]; then
+        prefix="$force_prefix"
+    else
+        prefix=$(get_wine_prefix "$exe_path" "$app_type")
+    fi
+    log_debug "Using prefix: $prefix"
+
+    # Get runtime
+    local runtime
+    if [[ -n "$force_runtime" ]]; then
+        runtime="$force_runtime"
+    else
+        runtime=$(get_runtime "$app_type")
+    fi
+    log_debug "Using runtime: $runtime"
+
+    # Configure environment
+    configure_environment "$app_type" "$runtime"
+
+    # Build launch command
+    local launch_cmd
+    launch_cmd=$(build_launch_command "$exe_path" "$runtime" "$prefix" "${extra_args[@]}")
+
+    # Save configuration if requested
+    if [[ "$save_config" == true ]]; then
+        save_app_config "$exe_path" "$prefix" "$runtime" "$app_type"
+    fi
+
+    # Execute or show dry-run
+    if [[ "$dry_run" == true ]]; then
+        echo "=============================================="
+        echo "  Winux Run - Dry Run"
+        echo "=============================================="
+        echo ""
+        echo "Executable:  $exe_path"
+        echo "App Type:    $app_type"
+        echo "Prefix:      $prefix"
+        echo "Runtime:     $runtime"
+        echo ""
+        echo "Environment:"
+        echo "  WINEPREFIX=$WINEPREFIX"
+        echo "  WINEDEBUG=$WINEDEBUG"
+        echo "  WINEFSYNC=$WINEFSYNC"
+        echo "  WINEESYNC=$WINEESYNC"
+        echo "  DXVK_ASYNC=${DXVK_ASYNC:-0}"
+        echo ""
+        echo "Command:"
+        echo "  $launch_cmd"
+        echo ""
+    else
+        log_info "Launching: $(basename "$exe_path")"
+        log_debug "Full command: $launch_cmd"
+
+        # Create log file
+        local log_file="$WINUX_LOG_DIR/$(basename "$exe_path" .exe)_$(date +%Y%m%d_%H%M%S).log"
+
+        # Execute
+        cd "$(dirname "$exe_path")"
+        exec $launch_cmd 2>&1 | tee "$log_file"
+    fi
+}
+
+# Run main function
+main "$@"

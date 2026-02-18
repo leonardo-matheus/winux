@@ -1,0 +1,20 @@
+[package]
+name = "winux-store"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Application store for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true

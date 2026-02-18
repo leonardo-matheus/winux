@@ -1,0 +1,49 @@
+# Winux OS - Git Ignore
+
+# Build artifacts
+/build/
+/target/
+/iso/
+*.iso
+*.squashfs
+
+# Rust
+**/target/
+**/*.rs.bk
+Cargo.lock
+
+# Chroot
+/chroot/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+/logs/
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Packages
+*.deb
+*.rpm
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Secrets
+*.key
+*.pem
+.env
+.env.local
