@@ -449,11 +449,20 @@ apt install -y \
     php-bcmath \
     php-redis || true
 
-# Java OpenJDK
+# Java OpenJDK - Múltiplas versões
 apt install -y \
+    openjdk-8-jdk \
+    openjdk-11-jdk \
+    openjdk-17-jdk \
     openjdk-21-jdk \
     maven \
-    gradle || true
+    gradle \
+    ant \
+    visualvm || true
+
+# Configurar Java 21 como padrão
+update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java || true
+update-alternatives --set javac /usr/lib/jvm/java-21-openjdk-amd64/bin/javac || true
 
 # Servidores Web
 apt install -y \

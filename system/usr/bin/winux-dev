@@ -139,11 +139,40 @@ install_go() {
 }
 
 install_java() {
-    log_step "Instalando stack Java..."
+    log_step "Instalando stack Java completa..."
 
-    sudo apt install -y openjdk-21-jdk maven gradle
+    # Múltiplas versões do JDK
+    sudo apt install -y \
+        openjdk-8-jdk \
+        openjdk-11-jdk \
+        openjdk-17-jdk \
+        openjdk-21-jdk \
+        maven \
+        gradle \
+        ant \
+        visualvm
 
-    log_info "Stack Java instalada: $(java --version | head -1)"
+    # SDKMAN para gerenciar versões Java
+    if [[ ! -d "$HOME/.sdkman" ]]; then
+        curl -s "https://get.sdkman.io" | bash
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+    fi
+
+    # Spring Boot CLI
+    if command -v sdk &>/dev/null; then
+        sdk install springboot || true
+    fi
+
+    # JBang (runner de scripts Java)
+    curl -Ls https://sh.jbang.dev | bash -s - app setup 2>/dev/null || true
+
+    # Configurar JAVA_HOME
+    echo 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64' >> ~/.bashrc
+    echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bashrc
+
+    log_info "Stack Java instalada com JDK 8, 11, 17 e 21"
+    log_info "Use 'sudo update-alternatives --config java' para trocar versão"
+    log_info "Ou use SDKMAN: sdk use java <version>"
 }
 
 install_php() {
