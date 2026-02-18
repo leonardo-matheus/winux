@@ -4,12 +4,8 @@
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, Box, Button, Label, Orientation, Scale, Frame, DrawingArea};
+use gtk::{Application, Box, Button, Label, Orientation, Frame, DrawingArea};
 use libadwaita as adw;
-use adw::prelude::*;
-use adw::ApplicationWindow;
-use std::cell::RefCell;
-use std::rc::Rc;
 
 const APP_ID: &str = "org.winux.player";
 
@@ -25,8 +21,6 @@ fn main() -> gtk::glib::ExitCode {
 }
 
 fn build_ui(app: &Application) {
-    let current_file: Rc<RefCell<Option<String>>> = Rc::new(RefCell::new(None));
-
     // Apply dark theme
     let style_manager = adw::StyleManager::default();
     style_manager.set_color_scheme(adw::ColorScheme::ForceDark);
@@ -34,22 +28,15 @@ fn build_ui(app: &Application) {
     // Header bar
     let header = adw::HeaderBar::new();
 
-    let open_button = Button::builder()
-        .icon_name("document-open-symbolic")
-        .tooltip_text("Open media file")
-        .build();
-    header.pack_start(&open_button);
-
     let title_label = Label::builder()
         .label("Winux Player")
-        .css_classes(vec!["title"])
         .build();
     header.set_title_widget(Some(&title_label));
 
     // Main content
     let main_box = Box::builder()
         .orientation(Orientation::Vertical)
-        .spacing(0)
+        .spacing(12)
         .build();
 
     // Video area placeholder
@@ -90,208 +77,60 @@ fn build_ui(app: &Application) {
         .margin_top(12)
         .build();
 
-    // Now playing info
-    let now_playing_box = Box::builder()
-        .orientation(Orientation::Vertical)
-        .spacing(4)
-        .margin_start(12)
-        .margin_end(12)
-        .margin_top(12)
+    // Info label
+    let info_label = Label::builder()
+        .label("Winux Player\n\nA full media player is coming soon!\nFor now, use VLC or Totem from the app menu.")
+        .justify(gtk::Justification::Center)
+        .margin_start(24)
+        .margin_end(24)
+        .margin_bottom(24)
         .build();
+    info_label.add_css_class("dim-label");
 
-    let track_label = Label::builder()
-        .label("No media loaded")
-        .css_classes(vec!["title-3"])
-        .halign(gtk::Align::Start)
-        .ellipsize(gtk::pango::EllipsizeMode::End)
-        .build();
-
-    let artist_label = Label::builder()
-        .label("Open a file to launch in system player")
-        .css_classes(vec!["dim-label"])
-        .halign(gtk::Align::Start)
-        .build();
-
-    now_playing_box.append(&track_label);
-    now_playing_box.append(&artist_label);
-
-    // Progress bar (mockup)
-    let progress_box = Box::builder()
-        .orientation(Orientation::Horizontal)
-        .spacing(8)
-        .margin_start(12)
-        .margin_end(12)
-        .margin_top(8)
-        .build();
-
-    let current_time = Label::builder()
-        .label("0:00")
-        .css_classes(vec!["caption", "dim-label"])
-        .width_chars(5)
-        .build();
-
-    let progress_scale = Scale::builder()
-        .orientation(Orientation::Horizontal)
-        .hexpand(true)
-        .draw_value(false)
-        .sensitive(false)
-        .build();
-    progress_scale.set_range(0.0, 100.0);
-    progress_scale.set_value(0.0);
-
-    let duration = Label::builder()
-        .label("0:00")
-        .css_classes(vec!["caption", "dim-label"])
-        .width_chars(5)
-        .build();
-
-    progress_box.append(&current_time);
-    progress_box.append(&progress_scale);
-    progress_box.append(&duration);
-
-    // Controls
-    let controls_box = Box::builder()
-        .orientation(Orientation::Horizontal)
-        .spacing(12)
+    // Open with VLC button
+    let vlc_button = Button::builder()
+        .label("Open VLC Media Player")
         .halign(gtk::Align::Center)
-        .margin_top(12)
         .margin_bottom(12)
         .build();
+    vlc_button.add_css_class("suggested-action");
+    vlc_button.add_css_class("pill");
 
-    let play_button = Button::builder()
-        .icon_name("media-playback-start-symbolic")
-        .tooltip_text("Open in system player")
-        .css_classes(vec!["circular", "suggested-action"])
-        .width_request(48)
-        .height_request(48)
+    vlc_button.connect_clicked(|_| {
+        let _ = std::process::Command::new("vlc").spawn();
+    });
+
+    // Open with Totem button
+    let totem_button = Button::builder()
+        .label("Open GNOME Videos")
+        .halign(gtk::Align::Center)
+        .margin_bottom(24)
         .build();
+    totem_button.add_css_class("pill");
 
-    controls_box.append(&play_button);
-
-    // Volume (mockup)
-    let volume_box = Box::builder()
-        .orientation(Orientation::Horizontal)
-        .spacing(8)
-        .margin_start(12)
-        .margin_end(12)
-        .margin_bottom(12)
-        .halign(gtk::Align::End)
-        .build();
-
-    let volume_button = Button::builder()
-        .icon_name("audio-volume-high-symbolic")
-        .css_classes(vec!["flat"])
-        .sensitive(false)
-        .build();
-
-    let volume_scale = Scale::builder()
-        .orientation(Orientation::Horizontal)
-        .draw_value(false)
-        .width_request(120)
-        .sensitive(false)
-        .build();
-    volume_scale.set_range(0.0, 100.0);
-    volume_scale.set_value(75.0);
-
-    volume_box.append(&volume_button);
-    volume_box.append(&volume_scale);
-
-    let bottom_box = Box::builder()
-        .orientation(Orientation::Horizontal)
-        .hexpand(true)
-        .build();
-
-    let spacer = Box::builder()
-        .hexpand(true)
-        .build();
-
-    bottom_box.append(&controls_box);
-    bottom_box.append(&spacer);
-    bottom_box.append(&volume_box);
+    totem_button.connect_clicked(|_| {
+        let _ = std::process::Command::new("totem").spawn();
+    });
 
     main_box.append(&video_frame);
-    main_box.append(&now_playing_box);
-    main_box.append(&progress_box);
-    main_box.append(&bottom_box);
+    main_box.append(&info_label);
+    main_box.append(&vlc_button);
+    main_box.append(&totem_button);
 
-    let toolbar_view = adw::ToolbarView::new();
-    toolbar_view.add_top_bar(&header);
-    toolbar_view.set_content(Some(&main_box));
+    // Content box with header
+    let content_box = Box::builder()
+        .orientation(Orientation::Vertical)
+        .build();
+    content_box.append(&header);
+    content_box.append(&main_box);
 
-    let window = ApplicationWindow::builder()
+    let window = adw::ApplicationWindow::builder()
         .application(app)
         .title("Winux Player")
         .default_width(600)
         .default_height(500)
+        .content(&content_box)
         .build();
-
-    window.set_content(Some(&toolbar_view));
-
-    // Open button handler
-    let current_file_clone = current_file.clone();
-    let track_label_clone = track_label.clone();
-    let artist_label_clone = artist_label.clone();
-    let window_clone = window.clone();
-
-    open_button.connect_clicked(move |_| {
-        let file_dialog = gtk::FileDialog::builder()
-            .title("Open Media File")
-            .modal(true)
-            .build();
-
-        let filters = gtk::gio::ListStore::new::<gtk::FileFilter>();
-
-        let media_filter = gtk::FileFilter::new();
-        media_filter.set_name(Some("Media Files"));
-        media_filter.add_mime_type("audio/*");
-        media_filter.add_mime_type("video/*");
-        filters.append(&media_filter);
-
-        file_dialog.set_filters(Some(&filters));
-
-        let current_file = current_file_clone.clone();
-        let track_label = track_label_clone.clone();
-        let artist_label = artist_label_clone.clone();
-
-        file_dialog.open(Some(&window_clone), gtk::gio::Cancellable::NONE, move |result| {
-            if let Ok(file) = result {
-                if let Some(path) = file.path() {
-                    let filename = path.file_name()
-                        .and_then(|n| n.to_str())
-                        .unwrap_or("Unknown")
-                        .to_string();
-
-                    let path_str = path.to_string_lossy().to_string();
-                    *current_file.borrow_mut() = Some(path_str.clone());
-
-                    track_label.set_label(&filename);
-                    artist_label.set_label("Click play to open in system player");
-
-                    if let Err(e) = open::that(&path_str) {
-                        eprintln!("Failed to open: {}", e);
-                        artist_label.set_label(&format!("Error: {}", e));
-                    } else {
-                        artist_label.set_label("Opened in system player");
-                    }
-                }
-            }
-        });
-    });
-
-    // Play button handler
-    let current_file_clone = current_file.clone();
-    let artist_label_clone = artist_label.clone();
-
-    play_button.connect_clicked(move |_| {
-        if let Some(ref path) = *current_file_clone.borrow() {
-            if let Err(e) = open::that(path) {
-                eprintln!("Failed to open: {}", e);
-                artist_label_clone.set_label(&format!("Error: {}", e));
-            } else {
-                artist_label_clone.set_label("Opened in system player");
-            }
-        }
-    });
 
     window.present();
 }
