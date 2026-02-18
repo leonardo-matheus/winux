@@ -6,6 +6,10 @@ authors.workspace = true
 license.workspace = true
 description = "Application store for Winux OS"
 
+[[bin]]
+name = "winux-store"
+path = "src/main.rs"
+
 [dependencies]
 gtk4.workspace = true
 libadwaita.workspace = true
@@ -18,3 +22,9 @@ serde_json.workspace = true
 dirs.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[features]
+default = []
+flatpak = []
+apt = []
