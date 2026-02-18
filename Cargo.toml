@@ -13,6 +13,7 @@ members = [
     "apps/winux-store",
     "apps/winux-monitor",
     "apps/winux-edit",
+    "apps/winux-image",
 ]
 
 [workspace.package]

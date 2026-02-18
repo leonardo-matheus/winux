@@ -1,0 +1,51 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Image
+Name[pt_BR]=Winux Imagens
+Name[es]=Winux Imagenes
+Name[fr]=Winux Images
+Name[de]=Winux Bilder
+GenericName=Image Viewer
+GenericName[pt_BR]=Visualizador de Imagens
+GenericName[es]=Visor de Imagenes
+GenericName[fr]=Visionneuse d'images
+GenericName[de]=Bildbetrachter
+Comment=View and organize your photos
+Comment[pt_BR]=Visualize e organize suas fotos
+Comment[es]=Vea y organice sus fotos
+Comment[fr]=Visualisez et organisez vos photos
+Comment[de]=Fotos anzeigen und organisieren
+Keywords=image;photo;picture;viewer;gallery;jpeg;png;gif;
+Keywords[pt_BR]=imagem;foto;visualizador;galeria;jpeg;png;gif;
+Exec=/usr/bin/winux-image %F
+Icon=image-viewer
+Terminal=false
+Categories=Graphics;Viewer;Photography;GTK;
+MimeType=image/png;image/jpeg;image/gif;image/bmp;image/tiff;image/webp;image/svg+xml;image/x-icon;image/heic;image/heif;image/avif;
+StartupNotify=true
+StartupWMClass=winux-image
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+X-Purism-FormFactor=Workstation;Mobile;
+
+# Actions
+Actions=slideshow;open-folder;
+
+[Desktop Action slideshow]
+Name=Slideshow
+Name[pt_BR]=Apresentacao de Slides
+Name[es]=Presentacion
+Name[fr]=Diaporama
+Name[de]=Diashow
+Exec=/usr/bin/winux-image --slideshow %F
+Icon=media-playback-start
+
+[Desktop Action open-folder]
+Name=Open Folder...
+Name[pt_BR]=Abrir Pasta...
+Name[es]=Abrir Carpeta...
+Name[fr]=Ouvrir un dossier...
+Name[de]=Ordner offnen...
+Exec=/usr/bin/winux-image --folder
+Icon=folder-pictures
