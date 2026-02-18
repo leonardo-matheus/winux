@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
 Name=Winux Fluent
-Comment=A Windows 11 Fluent Design inspired theme for Winux OS
+Comment=Premium Apple-inspired dark theme with glassmorphism effects and smooth animations
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
@@ -10,3 +10,74 @@ MetacityTheme=winux-fluent
 IconTheme=Fluent-dark
 CursorTheme=Fluent-cursors
 ButtonLayout=close,minimize,maximize:menu
+BackgroundImage=
+Font=Inter 10
+TitleFont=Inter Semi-Bold 11
+MonospaceFont=JetBrains Mono 10
+DocumentFont=Inter 10
+
+# Theme Metadata
+[Theme]
+Name=Winux Fluent
+Version=2.0.0
+Author=Winux OS Team
+License=GPL-3.0
+Website=https://winux.os
+Description=A premium dark theme inspired by Apple's design language. Features elegant glassmorphism effects, smooth 200-300ms animations, deep shadows, and a carefully crafted color palette. Perfect for modern desktops seeking a refined, professional appearance.
+
+# Color Scheme
+[Colors]
+AccentColor=#0a84ff
+BackgroundPrimary=#1c1c1e
+BackgroundSecondary=#2c2c2e
+BackgroundElevated=#2c2c2e
+TextPrimary=#ffffff
+TextSecondary=#98989d
+BorderSubtle=rgba(255,255,255,0.08)
+SuccessColor=#34c759
+WarningColor=#ff9f0a
+ErrorColor=#ff453a
+
+# Design Specifications
+[Design]
+BorderRadius=12
+ButtonRadius=8
+AnimationDuration=200ms
+ShadowStyle=deep
+GlassmorphismEnabled=true
+BlurAmount=20
+FontFamily=Inter, SF Pro Display, Roboto, sans-serif
+MonospaceFontFamily=SF Mono, JetBrains Mono, Fira Code, monospace
+
+# GTK4 Support
+[GTK4]
+StyleSheet=gtk-4.0/gtk.css
+ColorPalette=gtk-4.0/colors-dark.css
+SupportsDarkMode=true
+SupportsHDR=false
+PrefersColorScheme=dark
+
+# Compatibility
+[Compatibility]
+GTK3Support=true
+GTK4Support=true
+LibadwaitaSupport=true
+GNOMEShellSupport=true
+MinGTKVersion=4.0
+MinLibadwaitaVersion=1.0
+
+# Window Controls
+[WindowControls]
+Layout=close,minimize,maximize:menu
+Style=macos
+CloseColor=#ff5f57
+MinimizeColor=#febc2e
+MaximizeColor=#28c840
+InactiveColor=#48484a
+
+# Recommended Applications
+[Recommendations]
+Terminal=gnome-terminal
+FileManager=nautilus
+TextEditor=gnome-text-editor
+Browser=firefox
