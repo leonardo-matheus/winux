@@ -162,19 +162,16 @@ Kernel e sistema otimizados:
 
 | Edição | Tamanho | Descrição | Link |
 |:------:|:-------:|:---------:|:----:|
-| **Winux 1.0 Aurora** | 2.5 GB | Versão completa com gaming e produtividade | [⬇️ **Download (GoFile)**](https://gofile.io/d/5qozpl) |
-| *Mirror* | 2.5 GB | Link alternativo | [⬇️ Download (PixelDrain)](https://pixeldrain.com/u/TYmihSav) |
+| **Winux 1.0 Aurora Developer** | 2.7 GB | Versão completa com gaming, produtividade e ferramentas dev | [⬇️ **Download (GoFile)**](https://gofile.io/d/Y351PH) |
+| *Mirror* | 2.5 GB | Versão anterior | [⬇️ Download (PixelDrain)](https://pixeldrain.com/u/TYmihSav) |
 
 </div>
 
 ### 🔐 Verificação de Integridade
 
 ```bash
-# MD5
-echo "97a88a28dd55e67de02bbd7ed8e96bf2  winux-1.0-aurora-amd64.iso" | md5sum -c
-
-# SHA256
-echo "a64e33e3d386ac200b81637bbd264113c112d60baa95457dab67ae5e3d83a152  winux-1.0-aurora-amd64.iso" | sha256sum -c
+# MD5 (Developer Edition)
+echo "77443aeb30519091512c8720688fbef7  winux-1.0-aurora-dev-amd64.iso" | md5sum -c
 ```
 
 ---
