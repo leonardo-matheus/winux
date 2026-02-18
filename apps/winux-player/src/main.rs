@@ -4,9 +4,10 @@
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, ApplicationWindow, Box, Button, Label, Orientation, Scale, Frame, DrawingArea};
+use gtk::{Application, Box, Button, Label, Orientation, Scale, Frame, DrawingArea};
 use libadwaita as adw;
 use adw::prelude::*;
+use adw::ApplicationWindow;
 use std::cell::RefCell;
 use std::rc::Rc;
 
