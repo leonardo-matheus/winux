@@ -29,3 +29,19 @@ anyhow.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 open = "5.0"
+
+# Archive support
+zip = "0.6"
+tar = "0.4"
+flate2 = "1.0"
+bzip2 = "0.4"
+xz2 = "0.1"
+zstd = "0.13"
+sevenz-rust = "0.5"
+
+# Optional RAR support (requires unrar library)
+unrar = { version = "0.5", optional = true }
+
+[features]
+default = []
+rar = ["unrar"]

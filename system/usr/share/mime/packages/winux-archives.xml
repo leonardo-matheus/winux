@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Winux OS Archive MIME Types
+
+    This file defines MIME types for various archive formats supported by
+    Winux OS. These definitions ensure proper file type detection and
+    association with the Winux Archive Manager.
+
+    Supported formats:
+    - ZIP (.zip)
+    - TAR (.tar)
+    - Gzipped TAR (.tar.gz, .tgz)
+    - Bzip2 TAR (.tar.bz2, .tbz2)
+    - XZ TAR (.tar.xz, .txz)
+    - Zstd TAR (.tar.zst, .tzst)
+    - RAR (.rar)
+    - 7-Zip (.7z)
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+    <!-- ZIP Archive -->
+    <mime-type type="application/zip">
+        <comment>ZIP archive</comment>
+        <comment xml:lang="pt_BR">Arquivo ZIP</comment>
+        <comment xml:lang="es">Archivo ZIP</comment>
+        <comment xml:lang="fr">Archive ZIP</comment>
+        <comment xml:lang="de">ZIP-Archiv</comment>
+        <acronym>ZIP</acronym>
+        <expanded-acronym>Zone Information Protocol</expanded-acronym>
+        <glob pattern="*.zip"/>
+        <glob pattern="*.ZIP"/>
+        <magic priority="50">
+            <match type="string" value="PK\003\004" offset="0"/>
+            <match type="string" value="PK\005\006" offset="0"/>
+            <match type="string" value="PK\007\010" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- TAR Archive -->
+    <mime-type type="application/x-tar">
+        <comment>TAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo TAR</comment>
+        <comment xml:lang="es">Archivo TAR</comment>
+        <comment xml:lang="fr">Archive TAR</comment>
+        <comment xml:lang="de">TAR-Archiv</comment>
+        <acronym>TAR</acronym>
+        <expanded-acronym>Tape Archive</expanded-acronym>
+        <glob pattern="*.tar"/>
+        <glob pattern="*.TAR"/>
+        <magic priority="50">
+            <match type="string" value="ustar\0" offset="257"/>
+            <match type="string" value="ustar\040\040\0" offset="257"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Gzipped TAR Archive -->
+    <mime-type type="application/x-compressed-tar">
+        <comment>Gzipped TAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo TAR compactado com Gzip</comment>
+        <comment xml:lang="es">Archivo TAR comprimido con Gzip</comment>
+        <comment xml:lang="fr">Archive TAR compresse avec Gzip</comment>
+        <comment xml:lang="de">Gzip-komprimiertes TAR-Archiv</comment>
+        <sub-class-of type="application/gzip"/>
+        <glob pattern="*.tar.gz"/>
+        <glob pattern="*.tgz"/>
+        <glob pattern="*.TAR.GZ"/>
+        <glob pattern="*.TGZ"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Bzip2 TAR Archive -->
+    <mime-type type="application/x-bzip-compressed-tar">
+        <comment>Bzip2-compressed TAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo TAR compactado com Bzip2</comment>
+        <comment xml:lang="es">Archivo TAR comprimido con Bzip2</comment>
+        <comment xml:lang="fr">Archive TAR compresse avec Bzip2</comment>
+        <comment xml:lang="de">Bzip2-komprimiertes TAR-Archiv</comment>
+        <sub-class-of type="application/x-bzip"/>
+        <glob pattern="*.tar.bz2"/>
+        <glob pattern="*.tbz2"/>
+        <glob pattern="*.tbz"/>
+        <glob pattern="*.TAR.BZ2"/>
+        <glob pattern="*.TBZ2"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- XZ TAR Archive -->
+    <mime-type type="application/x-xz-compressed-tar">
+        <comment>XZ-compressed TAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo TAR compactado com XZ</comment>
+        <comment xml:lang="es">Archivo TAR comprimido con XZ</comment>
+        <comment xml:lang="fr">Archive TAR compresse avec XZ</comment>
+        <comment xml:lang="de">XZ-komprimiertes TAR-Archiv</comment>
+        <sub-class-of type="application/x-xz"/>
+        <glob pattern="*.tar.xz"/>
+        <glob pattern="*.txz"/>
+        <glob pattern="*.TAR.XZ"/>
+        <glob pattern="*.TXZ"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Zstd TAR Archive -->
+    <mime-type type="application/x-zstd-compressed-tar">
+        <comment>Zstandard-compressed TAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo TAR compactado com Zstandard</comment>
+        <comment xml:lang="es">Archivo TAR comprimido con Zstandard</comment>
+        <comment xml:lang="fr">Archive TAR compresse avec Zstandard</comment>
+        <comment xml:lang="de">Zstandard-komprimiertes TAR-Archiv</comment>
+        <sub-class-of type="application/zstd"/>
+        <glob pattern="*.tar.zst"/>
+        <glob pattern="*.tzst"/>
+        <glob pattern="*.TAR.ZST"/>
+        <glob pattern="*.TZST"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Gzip -->
+    <mime-type type="application/gzip">
+        <comment>Gzip archive</comment>
+        <comment xml:lang="pt_BR">Arquivo Gzip</comment>
+        <comment xml:lang="es">Archivo Gzip</comment>
+        <comment xml:lang="fr">Archive Gzip</comment>
+        <comment xml:lang="de">Gzip-Archiv</comment>
+        <alias type="application/x-gzip"/>
+        <glob pattern="*.gz"/>
+        <glob pattern="*.GZ"/>
+        <magic priority="50">
+            <match type="string" value="\037\213" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Bzip2 -->
+    <mime-type type="application/x-bzip">
+        <comment>Bzip archive</comment>
+        <comment xml:lang="pt_BR">Arquivo Bzip</comment>
+        <comment xml:lang="es">Archivo Bzip</comment>
+        <comment xml:lang="fr">Archive Bzip</comment>
+        <comment xml:lang="de">Bzip-Archiv</comment>
+        <alias type="application/x-bzip2"/>
+        <glob pattern="*.bz2"/>
+        <glob pattern="*.bz"/>
+        <glob pattern="*.BZ2"/>
+        <glob pattern="*.BZ"/>
+        <magic priority="50">
+            <match type="string" value="BZh" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- XZ -->
+    <mime-type type="application/x-xz">
+        <comment>XZ archive</comment>
+        <comment xml:lang="pt_BR">Arquivo XZ</comment>
+        <comment xml:lang="es">Archivo XZ</comment>
+        <comment xml:lang="fr">Archive XZ</comment>
+        <comment xml:lang="de">XZ-Archiv</comment>
+        <alias type="application/x-lzma"/>
+        <glob pattern="*.xz"/>
+        <glob pattern="*.XZ"/>
+        <glob pattern="*.lzma"/>
+        <glob pattern="*.LZMA"/>
+        <magic priority="50">
+            <match type="string" value="\xfd7zXZ\x00" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Zstandard -->
+    <mime-type type="application/zstd">
+        <comment>Zstandard archive</comment>
+        <comment xml:lang="pt_BR">Arquivo Zstandard</comment>
+        <comment xml:lang="es">Archivo Zstandard</comment>
+        <comment xml:lang="fr">Archive Zstandard</comment>
+        <comment xml:lang="de">Zstandard-Archiv</comment>
+        <alias type="application/x-zstd"/>
+        <glob pattern="*.zst"/>
+        <glob pattern="*.ZST"/>
+        <glob pattern="*.zstd"/>
+        <glob pattern="*.ZSTD"/>
+        <magic priority="50">
+            <match type="string" value="\x28\xb5\x2f\xfd" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- RAR Archive -->
+    <mime-type type="application/vnd.rar">
+        <comment>RAR archive</comment>
+        <comment xml:lang="pt_BR">Arquivo RAR</comment>
+        <comment xml:lang="es">Archivo RAR</comment>
+        <comment xml:lang="fr">Archive RAR</comment>
+        <comment xml:lang="de">RAR-Archiv</comment>
+        <acronym>RAR</acronym>
+        <expanded-acronym>Roshal Archive</expanded-acronym>
+        <alias type="application/x-rar"/>
+        <alias type="application/x-rar-compressed"/>
+        <glob pattern="*.rar"/>
+        <glob pattern="*.RAR"/>
+        <magic priority="50">
+            <!-- RAR 1.5 - 4.x -->
+            <match type="string" value="Rar!\x1a\x07\x00" offset="0"/>
+            <!-- RAR 5.0+ -->
+            <match type="string" value="Rar!\x1a\x07\x01\x00" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- 7-Zip Archive -->
+    <mime-type type="application/x-7z-compressed">
+        <comment>7-Zip archive</comment>
+        <comment xml:lang="pt_BR">Arquivo 7-Zip</comment>
+        <comment xml:lang="es">Archivo 7-Zip</comment>
+        <comment xml:lang="fr">Archive 7-Zip</comment>
+        <comment xml:lang="de">7-Zip-Archiv</comment>
+        <acronym>7z</acronym>
+        <expanded-acronym>7-Zip</expanded-acronym>
+        <glob pattern="*.7z"/>
+        <glob pattern="*.7Z"/>
+        <magic priority="50">
+            <match type="string" value="7z\xbc\xaf\x27\x1c" offset="0"/>
+        </magic>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Multi-part ZIP -->
+    <mime-type type="application/x-zip-compressed-fb2">
+        <comment>ZIP archive (multi-part)</comment>
+        <comment xml:lang="pt_BR">Arquivo ZIP (multiparte)</comment>
+        <glob pattern="*.z01"/>
+        <glob pattern="*.z02"/>
+        <glob pattern="*.z03"/>
+        <glob pattern="*.z04"/>
+        <glob pattern="*.z05"/>
+        <sub-class-of type="application/zip"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+    <!-- Self-extracting archives -->
+    <mime-type type="application/x-self-extracting-archive">
+        <comment>Self-extracting archive</comment>
+        <comment xml:lang="pt_BR">Arquivo auto-extraivel</comment>
+        <comment xml:lang="es">Archivo auto-extraible</comment>
+        <comment xml:lang="fr">Archive auto-extractible</comment>
+        <comment xml:lang="de">Selbstextrahierendes Archiv</comment>
+        <glob pattern="*.exe" weight="10"/>
+        <glob pattern="*.sfx"/>
+        <generic-icon name="package-x-generic"/>
+    </mime-type>
+
+</mime-info>
