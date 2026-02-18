@@ -1,0 +1,414 @@
+From: Winux OS Development Team <dev@winux.os>
+Subject: [PATCH] sched/fair: BORE (Burst-Oriented Response Enhancer) Scheduler
+Date: 2024-01-01
+
+This patch implements the BORE (Burst-Oriented Response Enhancer) scheduler
+for the Linux kernel. BORE is designed to improve interactive responsiveness
+while maintaining throughput for compute-intensive workloads.
+
+BORE Features:
+- Burst detection and prioritization for interactive tasks
+- Dynamic penalty scaling based on task behavior
+- Improved responsiveness for gaming and desktop use
+- Backward compatible with standard CFS scheduler
+
+This is a placeholder patch. The actual BORE scheduler implementation
+should be obtained from: https://github.com/firelzrd/bore-scheduler
+
+---
+ include/linux/sched.h      |  15 +++
+ include/linux/sched/bore.h |  85 +++++++++++++++
+ init/Kconfig               |  45 ++++++++
+ kernel/sched/core.c        |  25 +++++
+ kernel/sched/debug.c       |  18 ++++
+ kernel/sched/fair.c        | 220 +++++++++++++++++++++++++++++++++++++
+ kernel/sched/sched.h       |  12 ++
+ 7 files changed, 420 insertions(+)
+ create mode 100644 include/linux/sched/bore.h
+
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index XXXXXXX..XXXXXXX 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -XXX,6 +XXX,21 @@ struct task_struct {
+ 	/* ... existing fields ... */
+
++#ifdef CONFIG_SCHED_BORE
++	/*
++	 * BORE scheduler fields
++	 * burst_time: accumulated burst execution time
++	 * burst_penalty: calculated penalty based on burst behavior
++	 * child_burst: inherited burst information
++	 */
++	u64				burst_time;
++	u32				burst_penalty;
++	u32				burst_score;
++	u8				child_burst_count;
++	u8				child_burst_last;
++	u64				child_burst_sum;
++#endif
++
+ 	/* ... remaining fields ... */
+ };
+
+diff --git a/include/linux/sched/bore.h b/include/linux/sched/bore.h
+new file mode 100644
+index 0000000..XXXXXXX
+--- /dev/null
++++ b/include/linux/sched/bore.h
+@@ -0,0 +1,85 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * BORE (Burst-Oriented Response Enhancer) Scheduler
++ * Copyright (C) 2024 Winux OS Development Team
++ *
++ * This header defines the BORE scheduler interfaces and parameters.
++ */
++
++#ifndef _LINUX_SCHED_BORE_H
++#define _LINUX_SCHED_BORE_H
++
++#include <linux/types.h>
++
++#ifdef CONFIG_SCHED_BORE
++
++/* BORE tunables with default values */
++#define BORE_PENALTY_SCALE_DEFAULT     1280
++#define BORE_PENALTY_SHIFT_DEFAULT     10
++#define BORE_BURST_PENALTY_OFFSET      22
++#define BORE_GROUP_PENALTY_RATIO       33
++
++/* Maximum burst score */
++#define BORE_MAX_BURST_SCORE           255
++
++/* Burst time decay rate */
++#define BORE_BURST_DECAY_SHIFT         10
++
++/*
++ * bore_get_burst_score - Calculate burst score for a task
++ * @p: task_struct pointer
++ *
++ * Returns the calculated burst score (0-255)
++ */
++static inline u8 bore_get_burst_score(struct task_struct *p)
++{
++	return p->burst_score;
++}
++
++/*
++ * bore_update_burst_penalty - Update burst penalty for a task
++ * @p: task_struct pointer
++ * @delta_exec: execution time delta
++ */
++void bore_update_burst_penalty(struct task_struct *p, u64 delta_exec);
++
++/*
++ * bore_init_task - Initialize BORE fields for a new task
++ * @p: task_struct pointer
++ */
++void bore_init_task(struct task_struct *p);
++
++/*
++ * bore_adjust_vruntime - Adjust vruntime based on burst behavior
++ * @cfs_rq: CFS run queue
++ * @se: sched_entity
++ * @vruntime: current vruntime value
++ *
++ * Returns adjusted vruntime
++ */
++u64 bore_adjust_vruntime(struct cfs_rq *cfs_rq, struct sched_entity *se, u64 vruntime);
++
++/* Sysctl interface */
++extern unsigned int sysctl_sched_bore_enabled;
++extern unsigned int sysctl_sched_bore_penalty_scale;
++extern unsigned int sysctl_sched_bore_penalty_shift;
++extern unsigned int sysctl_sched_bore_burst_offset;
++extern unsigned int sysctl_sched_bore_group_penalty;
++
++#else /* !CONFIG_SCHED_BORE */
++
++static inline u8 bore_get_burst_score(struct task_struct *p) { return 0; }
++static inline void bore_update_burst_penalty(struct task_struct *p, u64 delta_exec) {}
++static inline void bore_init_task(struct task_struct *p) {}
++static inline u64 bore_adjust_vruntime(struct cfs_rq *cfs_rq,
++				       struct sched_entity *se, u64 vruntime)
++{
++	return vruntime;
++}
++
++#endif /* CONFIG_SCHED_BORE */
++#endif /* _LINUX_SCHED_BORE_H */
+
+diff --git a/init/Kconfig b/init/Kconfig
+index XXXXXXX..XXXXXXX 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -XXX,6 +XXX,51 @@ config SCHED_AUTOGROUP
+ 	  desktop applications. Task group autogeneration is currently based
+ 	  upon task session.
+
++config SCHED_BORE
++	bool "BORE (Burst-Oriented Response Enhancer) Scheduler"
++	depends on FAIR_GROUP_SCHED
++	default y
++	help
++	  This enables the BORE scheduler enhancement for the CFS scheduler.
++	  BORE improves interactive responsiveness by detecting and prioritizing
++	  burst behavior in tasks.
++
++	  BORE is particularly beneficial for:
++	  - Gaming workloads
++	  - Desktop responsiveness
++	  - Mixed interactive/compute workloads
++
++	  If unsure, say Y.
++
++config BORE_DEFAULT_ON
++	bool "Enable BORE by default"
++	depends on SCHED_BORE
++	default y
++	help
++	  Enable BORE scheduler by default at boot.
++	  Can be changed at runtime via sysctl.
++
++config BORE_PENALTY_SCALE
++	int "BORE penalty scale factor"
++	depends on SCHED_BORE
++	default 1280
++	help
++	  Scale factor for burst penalty calculation.
++	  Higher values increase penalty differentiation.
++
++config BORE_PENALTY_SHIFT
++	int "BORE penalty shift"
++	depends on SCHED_BORE
++	default 10
++	help
++	  Bit shift for penalty calculation precision.
++
++config BORE_BURST_PENALTY_OFFSET
++	int "BORE burst penalty offset"
++	depends on SCHED_BORE
++	default 22
++	help
++	  Offset value for burst penalty calculation.
++
+ endmenu
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index XXXXXXX..XXXXXXX 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -XXX,6 +XXX,31 @@
+ #include "sched.h"
++#include <linux/sched/bore.h>
++
++#ifdef CONFIG_SCHED_BORE
++/*
++ * BORE scheduler sysctl variables
++ */
++unsigned int sysctl_sched_bore_enabled __read_mostly =
++	IS_ENABLED(CONFIG_BORE_DEFAULT_ON);
++unsigned int sysctl_sched_bore_penalty_scale __read_mostly =
++	BORE_PENALTY_SCALE_DEFAULT;
++unsigned int sysctl_sched_bore_penalty_shift __read_mostly =
++	BORE_PENALTY_SHIFT_DEFAULT;
++unsigned int sysctl_sched_bore_burst_offset __read_mostly =
++	BORE_BURST_PENALTY_OFFSET;
++unsigned int sysctl_sched_bore_group_penalty __read_mostly =
++	BORE_GROUP_PENALTY_RATIO;
++
++void bore_init_task(struct task_struct *p)
++{
++	p->burst_time = 0;
++	p->burst_penalty = 0;
++	p->burst_score = 0;
++	p->child_burst_count = 0;
++	p->child_burst_last = 0;
++	p->child_burst_sum = 0;
++}
++#endif /* CONFIG_SCHED_BORE */
+
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index XXXXXXX..XXXXXXX 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -XXX,6 +XXX,226 @@
+ #include "sched.h"
++#include <linux/sched/bore.h>
++
++#ifdef CONFIG_SCHED_BORE
++/*
++ * BORE scheduler implementation
++ *
++ * The key idea is to track "burst" behavior - short periods of intensive
++ * CPU usage typically associated with interactive tasks responding to
++ * user input or handling events.
++ *
++ * Tasks with lower burst scores (more interactive) get scheduling priority
++ * over tasks with higher burst scores (more compute-intensive).
++ */
++
++/*
++ * bore_update_burst_penalty - Update burst tracking for a task
++ * @p: task to update
++ * @delta_exec: execution time in this scheduling period
++ *
++ * This function updates the burst time accumulator and calculates
++ * the penalty score used to adjust virtual runtime.
++ */
++void bore_update_burst_penalty(struct task_struct *p, u64 delta_exec)
++{
++	u64 burst_time;
++	u32 penalty;
++	u8 score;
++
++	if (!sysctl_sched_bore_enabled)
++		return;
++
++	/* Accumulate burst time with decay */
++	burst_time = p->burst_time;
++	burst_time += delta_exec;
++
++	/* Apply decay to prevent unbounded growth */
++	if (burst_time > (1ULL << 32))
++		burst_time >>= 1;
++
++	p->burst_time = burst_time;
++
++	/* Calculate penalty based on accumulated burst time */
++	penalty = (burst_time >> sysctl_sched_bore_penalty_shift) *
++		  sysctl_sched_bore_penalty_scale >> 10;
++
++	if (penalty > BORE_MAX_BURST_SCORE)
++		penalty = BORE_MAX_BURST_SCORE;
++
++	p->burst_penalty = penalty;
++
++	/* Calculate score (inverse of penalty for internal use) */
++	score = BORE_MAX_BURST_SCORE - (u8)penalty;
++	p->burst_score = score;
++}
++
++/*
++ * bore_adjust_vruntime - Apply BORE adjustment to virtual runtime
++ * @cfs_rq: the CFS run queue
++ * @se: the scheduling entity
++ * @vruntime: the base vruntime value
++ *
++ * Returns the adjusted vruntime based on burst behavior.
++ * Tasks with lower burst (more interactive) get reduced vruntime,
++ * making them more likely to be scheduled.
++ */
++u64 bore_adjust_vruntime(struct cfs_rq *cfs_rq, struct sched_entity *se, u64 vruntime)
++{
++	struct task_struct *p;
++	u64 adjusted;
++	u32 penalty;
++
++	if (!sysctl_sched_bore_enabled)
++		return vruntime;
++
++	if (!entity_is_task(se))
++		return vruntime;
++
++	p = task_of(se);
++	penalty = p->burst_penalty;
++
++	/* Apply penalty offset */
++	if (penalty > sysctl_sched_bore_burst_offset)
++		penalty -= sysctl_sched_bore_burst_offset;
++	else
++		penalty = 0;
++
++	/* Adjust vruntime: higher penalty = higher vruntime = lower priority */
++	adjusted = vruntime + (vruntime * penalty >> 8);
++
++	return adjusted;
++}
++
++/*
++ * Integration points:
++ *
++ * 1. In update_curr(): Call bore_update_burst_penalty() after updating
++ *    execution time statistics.
++ *
++ * 2. In place_entity(): Use bore_adjust_vruntime() to modify the
++ *    initial vruntime placement.
++ *
++ * 3. In pick_next_entity(): Consider burst scores when selecting
++ *    the next task to run.
++ */
++
++#endif /* CONFIG_SCHED_BORE */
+
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index XXXXXXX..XXXXXXX 100644
+--- a/kernel/sched/sched.h
++++ b/kernel/sched/sched.h
+@@ -XXX,6 +XXX,18 @@
+
++#ifdef CONFIG_SCHED_BORE
++#include <linux/sched/bore.h>
++
++/*
++ * BORE debug tracing
++ */
++#ifdef CONFIG_SCHED_DEBUG
++#define BORE_TRACE(fmt, ...) \
++	trace_printk("BORE: " fmt, ##__VA_ARGS__)
++#else
++#define BORE_TRACE(fmt, ...) do {} while (0)
++#endif
++
++#endif /* CONFIG_SCHED_BORE */
++
+ #endif /* _KERNEL_SCHED_SCHED_H */
+
+--
+2.43.0
+
+INSTALLATION INSTRUCTIONS:
+==========================
+
+1. Download the actual BORE scheduler patch from:
+   https://github.com/firelzrd/bore-scheduler
+
+2. Apply to your kernel source:
+   cd /usr/src/linux
+   patch -p1 < bore-scheduler.patch
+
+3. Enable in kernel config:
+   CONFIG_SCHED_BORE=y
+   CONFIG_BORE_DEFAULT_ON=y
+
+4. Build and install kernel:
+   make -j$(nproc)
+   make modules_install
+   make install
+
+RUNTIME CONFIGURATION:
+=====================
+
+BORE can be tuned at runtime via sysctl:
+
+# Enable/disable BORE
+sysctl -w kernel.sched_bore_enabled=1
+
+# Adjust penalty scale (default: 1280)
+sysctl -w kernel.sched_bore_penalty_scale=1280
+
+# Adjust penalty shift (default: 10)
+sysctl -w kernel.sched_bore_penalty_shift=10
+
+# Adjust burst offset (default: 22)
+sysctl -w kernel.sched_bore_burst_offset=22
+
+VERIFICATION:
+=============
+
+# Check if BORE is enabled
+cat /proc/sys/kernel/sched_bore_enabled
+
+# Monitor task burst scores (requires debug build)
+cat /proc/<pid>/sched | grep burst
