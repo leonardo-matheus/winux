@@ -441,6 +441,29 @@ chmod 440 /etc/sudoers.d/winux
 phase_install_rust_apps() {
     log_phase "4 - COMPILACAO E INSTALACAO DOS APPS RUST"
 
+    # Skip Rust compilation for now - use GNOME apps as fallback
+    if [[ "${SKIP_RUST_APPS:-true}" == "true" ]]; then
+        log_warn "Compilacao de apps Rust desabilitada (SKIP_RUST_APPS=true)"
+        log_info "Usando apps GNOME como fallback:"
+        log_info "  - Nautilus (Files)"
+        log_info "  - GNOME Terminal"
+        log_info "  - GNOME Settings"
+        log_info "  - GNOME System Monitor"
+        log_info "  - Gedit/GNOME Text Editor"
+        log_info "  - Eye of GNOME (Image Viewer)"
+        log_info "  - Totem (Video Player)"
+
+        # Install GNOME fallback apps
+        mount_chroot
+        run_in_chroot "
+export DEBIAN_FRONTEND=noninteractive
+apt install -y nautilus gnome-terminal gnome-control-center gnome-text-editor totem || true
+apt clean
+"
+        log_info "Apps GNOME de fallback instalados"
+        return 0
+    fi
+
     log_step "Compilando aplicativos Winux..."
 
     # Lista de apps para compilar
