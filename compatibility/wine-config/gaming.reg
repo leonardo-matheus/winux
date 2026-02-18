@@ -1,0 +1,198 @@
+Windows Registry Editor Version 5.00
+
+; =============================================================================
+; Winux OS - Wine Gaming Registry Tweaks
+; Sprint 13-14: Windows Compatibility Layer
+; =============================================================================
+
+; -----------------------------------------------------------------------------
+; DirectX / Direct3D Optimizations
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"DirectDrawRenderer"="opengl"
+"UseGLSL"="enabled"
+"VideoMemorySize"="8192"
+"csmt"=dword:00000003
+"MaxVersionGL"=dword:00040006
+"shader_backend"="glsl"
+"OffscreenRenderingMode"="fbo"
+"RenderTargetLockMode"="auto"
+"StrictDrawOrdering"="disabled"
+"AlwaysOffscreen"="enabled"
+"CheckFloatConstants"="disabled"
+"SampleCount"=dword:00000000
+"MultisampleTextures"="enabled"
+
+; DXVK/VKD3D Settings (for Vulkan-based rendering)
+[HKEY_CURRENT_USER\Software\Wine\DXVK]
+"dxgi.nvapiHack"="True"
+"dxgi.hideNvidiaGpu"="False"
+"dxgi.maxFrameLatency"=dword:00000001
+"d3d11.samplerAnisotropy"=dword:00000010
+"d3d11.maxTessFactor"=dword:00000000
+"d3d9.maxFrameLatency"=dword:00000001
+"d3d9.presentInterval"=dword:00000001
+"d3d9.shaderModel"=dword:00000003
+"d3d9.evictManagedOnUnlock"="False"
+"d3d9.allowLockFlagReadonly"="True"
+"d3d9.strictPow"="False"
+"d3d9.lenientClear"="False"
+"d3d9.numBackBuffers"=dword:00000000
+"d3d9.noExplicitFrontBuffer"="False"
+"d3d9.strictConstantCopies"="False"
+"d3d9.allowDiscard"="True"
+"d3d9.memoryTrackTest"="False"
+"d3d9.supportDFFormats"="True"
+"d3d9.supportX4R4G4B4"="True"
+"d3d9.supportD16Lockable"="False"
+"d3d9.forceSwapchainMSAA"=dword:00000000
+"d3d9.forceSampleRateShading"="False"
+"d3d9.forceAspectRatio"=""
+
+; -----------------------------------------------------------------------------
+; Input/Controller Settings
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\DirectInput]
+"MouseWarpOverride"="force"
+"DefaultDeadZone"=dword:00001388
+"JoystickLinuxOverride"=""
+
+; Raw Input for better mouse handling
+[HKEY_CURRENT_USER\Software\Wine\RawInput]
+"MouseEnable"=dword:00000001
+"KeyboardEnable"=dword:00000001
+
+; XInput for Xbox controllers
+[HKEY_CURRENT_USER\Software\Wine\XInput]
+"Enable"=dword:00000001
+
+; -----------------------------------------------------------------------------
+; Audio Settings
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\Drivers]
+"Audio"="pulse,alsa"
+
+[HKEY_CURRENT_USER\Software\Wine\Pulse Driver]
+"AutoPulse"="1"
+"LowLatency"="1"
+
+[HKEY_CURRENT_USER\Software\Wine\DirectSound]
+"HardwareAcceleration"="Emulation"
+"DefaultSampleRate"="48000"
+"DefaultBitsPerSample"="16"
+"EmulDriver"="Y"
+"HelBuflen"=dword:00003E80
+"SndQueueMax"=dword:00000014
+"SndQueueMin"=dword:00000003
+
+; -----------------------------------------------------------------------------
+; Display / Graphics Settings
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
+"GrabFullscreen"="Y"
+"UseTakeFocus"="N"
+"Decorated"="Y"
+"Managed"="Y"
+"ClientSideGraphics"="Y"
+"UseXVidMode"="Y"
+"UseXRandR"="Y"
+"UseTakeFocus"="N"
+"GrabPointer"="Y"
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"FontSmoothing"="2"
+"FontSmoothingType"=dword:00000002
+"FontSmoothingGamma"=dword:00000578
+"FontSmoothingOrientation"=dword:00000001
+
+; DPI Settings (96 DPI = 100% scaling)
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"LogPixels"=dword:00000060
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Hardware Profiles\Current\Software\Fonts]
+"LogPixels"=dword:00000060
+
+; Disable Desktop Effects
+[HKEY_CURRENT_USER\Software\Wine\Explorer\Desktops]
+"Default"=""
+
+; Virtual Desktop (disabled by default, enable per-game if needed)
+; "Default"="1920x1080"
+
+; -----------------------------------------------------------------------------
+; Performance Tweaks
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine]
+"Version"="win10"
+"ShowDotFiles"="Y"
+
+; Memory Settings
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion]
+"RegisteredOrganization"="Winux Gaming"
+"RegisteredOwner"="Winux User"
+"CurrentBuild"="19041"
+"CurrentBuildNumber"="19041"
+"CurrentVersion"="6.3"
+"ProductName"="Windows 10"
+
+; Disable Debugging
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug]
+"Auto"="0"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+; Disable Windows Features that affect performance
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"EnableBalloonTips"=dword:00000000
+"DisableThumbnailCache"=dword:00000001
+
+; -----------------------------------------------------------------------------
+; Game-Specific Compatibility
+; -----------------------------------------------------------------------------
+
+; Anti-Cheat Compatibility (where supported)
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\EasyAntiCheat.exe]
+"Version"="win10"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\BEService.exe]
+"Version"="win10"
+
+; Common Game Launchers
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\Steam.exe]
+"Version"="win10"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\EpicGamesLauncher.exe]
+"Version"="win10"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\Origin.exe]
+"Version"="win7"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\GalaxyClient.exe]
+"Version"="win10"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\upc.exe]
+"Version"="win10"
+
+; -----------------------------------------------------------------------------
+; Shader Cache Settings
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\ShaderCache]
+"Enable"=dword:00000001
+"Size"=dword:00002000
+
+; -----------------------------------------------------------------------------
+; NVAPI Settings (for NVIDIA GPUs)
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\NVAPI]
+"nvapi_enable"=dword:00000001
+
+; -----------------------------------------------------------------------------
+; FSR (FidelityFX Super Resolution) Settings
+; -----------------------------------------------------------------------------
+[HKEY_CURRENT_USER\Software\Wine\FSR]
+"Enable"=dword:00000001
+"Sharpness"="5"
+"Mode"="ultra"
+
+; End of Gaming Registry Tweaks

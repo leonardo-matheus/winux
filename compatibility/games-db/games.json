@@ -1,0 +1,753 @@
+{
+  "$schema": "./games-schema.json",
+  "version": "1.0.0",
+  "last_updated": "2026-02-18",
+  "description": "Winux OS Games Database - Optimized configurations for Windows games",
+  "games": [
+    {
+      "id": "cyberpunk2077",
+      "name": "Cyberpunk 2077",
+      "executable": "Cyberpunk2077.exe",
+      "steam_appid": 1091500,
+      "gog_id": "1423049311",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": "2.11"
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=native,builtin;dxgi=native,builtin",
+        "VKD3D_CONFIG": "dxr",
+        "VKD3D_FEATURE_LEVEL": "12_1",
+        "DXVK_ASYNC": "1",
+        "RADV_PERFTEST": "gpl",
+        "mesa_glthread": "true",
+        "WINE_FULLSCREEN_FSR": "1",
+        "WINE_FULLSCREEN_FSR_STRENGTH": "2"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "--launcher-skip -skipStartScreen",
+      "notes": "Ray Tracing requires VKD3D with DXR support. FSR recommended for better performance."
+    },
+    {
+      "id": "eldenring",
+      "name": "Elden Ring",
+      "executable": "eldenring.exe",
+      "steam_appid": 1245620,
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=n,b;dinput8=n,b",
+        "DXVK_ASYNC": "1",
+        "DXVK_HUD": "compiler",
+        "RADV_PERFTEST": "gpl"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "",
+      "tweaks": [
+        {
+          "name": "disable_eac",
+          "description": "EasyAntiCheat is not supported, play offline",
+          "type": "info"
+        }
+      ],
+      "notes": "Online play with EasyAntiCheat is not supported. Works well in offline mode."
+    },
+    {
+      "id": "gtav",
+      "name": "Grand Theft Auto V",
+      "executable": "GTA5.exe",
+      "steam_appid": 271590,
+      "epic_id": "9d2d0eb64d5c44529cece33fe2a46482",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin;d3dcompiler_47=native,builtin",
+        "DXVK_ASYNC": "1",
+        "STAGING_SHARED_MEMORY": "1",
+        "WINE_LARGE_ADDRESS_AWARE": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "-uilanguage english",
+      "notes": "Social Club works. Online mode supported through Rockstar launcher."
+    },
+    {
+      "id": "witcher3",
+      "name": "The Witcher 3: Wild Hunt",
+      "executable": "witcher3.exe",
+      "steam_appid": 292030,
+      "gog_id": "1207664663",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-9.0",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "1",
+        "__GL_SHADER_DISK_CACHE": "1",
+        "__GL_SHADER_DISK_CACHE_PATH": "$HOME/.cache/witcher3_shaders"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "",
+      "notes": "Native Linux version available but Wine version often performs better with DXVK."
+    },
+    {
+      "id": "hogwartslegacy",
+      "name": "Hogwarts Legacy",
+      "executable": "HogwartsLegacy.exe",
+      "steam_appid": 990080,
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": "2.11"
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=native,builtin;dxgi=native,builtin",
+        "VKD3D_CONFIG": "dxr",
+        "DXVK_ASYNC": "1",
+        "WINE_FULLSCREEN_FSR": "1",
+        "WINE_FULLSCREEN_FSR_STRENGTH": "3",
+        "PROTON_HIDE_NVIDIA_GPU": "0",
+        "PROTON_ENABLE_NVAPI": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 30
+      },
+      "launch_options": "-dx12",
+      "notes": "DX12 recommended for better performance. NVIDIA DLSS requires NVAPI."
+    },
+    {
+      "id": "baldursgate3",
+      "name": "Baldur's Gate 3",
+      "executable": "bg3_dx11.exe",
+      "steam_appid": 1086940,
+      "gog_id": "1456460669",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "1",
+        "RADV_PERFTEST": "gpl"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "",
+      "alternative_executables": [
+        {
+          "name": "Vulkan Mode",
+          "executable": "bg3.exe",
+          "notes": "Native Vulkan renderer, may have better performance"
+        }
+      ],
+      "notes": "Native Linux version available. Wine version with Vulkan (bg3.exe) may perform better."
+    },
+    {
+      "id": "rdr2",
+      "name": "Red Dead Redemption 2",
+      "executable": "RDR2.exe",
+      "steam_appid": 1174180,
+      "epic_id": "b30b6d1b4dfd4dcc93b5490be5e094e5",
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=native,builtin;dxgi=native,builtin;d3dcompiler_47=native,builtin",
+        "STAGING_SHARED_MEMORY": "1",
+        "WINE_LARGE_ADDRESS_AWARE": "1",
+        "DXVK_ASYNC": "1",
+        "__GL_SHADER_DISK_CACHE": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "-vulkan",
+      "notes": "Vulkan renderer recommended. Requires Rockstar Games Launcher."
+    },
+    {
+      "id": "forza5",
+      "name": "Forza Horizon 5",
+      "executable": "ForzaHorizon5.exe",
+      "steam_appid": 1551360,
+      "microsoft_id": "9NKX70BBCDRN",
+      "compatibility": {
+        "rating": "silver",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": "2.11"
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=native,builtin;dxgi=native,builtin",
+        "VKD3D_CONFIG": "dxr",
+        "VKD3D_FEATURE_LEVEL": "12_1",
+        "WINE_FULLSCREEN_FSR": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": "1920x1080",
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "",
+      "notes": "DX12 only game. Virtual desktop recommended for stability."
+    },
+    {
+      "id": "deusex",
+      "name": "Deus Ex: Human Revolution",
+      "executable": "DXHRDC.exe",
+      "steam_appid": 238010,
+      "gog_id": "1207659192",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-9.0",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "1"
+      },
+      "wine_config": {
+        "version": "win7",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "ondemand",
+        "gpu_performance": true,
+        "priority": 0
+      },
+      "mangohud": {
+        "enabled": false,
+        "preset": "minimal",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "",
+      "notes": "Older title, works flawlessly. Lower resource requirements."
+    },
+    {
+      "id": "darksouls3",
+      "name": "Dark Souls III",
+      "executable": "DarkSoulsIII.exe",
+      "steam_appid": 374320,
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin;dinput8=native,builtin",
+        "DXVK_ASYNC": "1",
+        "DXVK_HUD": "compiler"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "",
+      "notes": "Online requires EasyAntiCheat bypass or offline mode."
+    },
+    {
+      "id": "stardewvalley",
+      "name": "Stardew Valley",
+      "executable": "Stardew Valley.exe",
+      "steam_appid": 413150,
+      "gog_id": "1453375253",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-9.0",
+        "dxvk_version": null,
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": false,
+        "cpu_governor": "powersave",
+        "gpu_performance": false,
+        "priority": 0
+      },
+      "mangohud": {
+        "enabled": false,
+        "preset": "minimal",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "",
+      "notes": "Native Linux version available and recommended. Low system requirements."
+    },
+    {
+      "id": "control",
+      "name": "Control Ultimate Edition",
+      "executable": "Control_DX12.exe",
+      "steam_appid": 870780,
+      "epic_id": "callisto",
+      "gog_id": "1971477531",
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": "2.11"
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d12=native,builtin;dxgi=native,builtin",
+        "VKD3D_CONFIG": "dxr",
+        "VKD3D_FEATURE_LEVEL": "12_1",
+        "WINE_FULLSCREEN_FSR": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "",
+      "alternative_executables": [
+        {
+          "name": "DirectX 11",
+          "executable": "Control_DX11.exe",
+          "notes": "Better compatibility, no ray tracing"
+        }
+      ],
+      "notes": "DX12 version required for ray tracing. DX11 version more stable."
+    },
+    {
+      "id": "doom2016",
+      "name": "DOOM (2016)",
+      "executable": "DOOMx64.exe",
+      "steam_appid": 379720,
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-9.0",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "1",
+        "mesa_glthread": "true"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "+com_skipIntroVideo 1",
+      "notes": "Vulkan renderer built-in, excellent performance."
+    },
+    {
+      "id": "deathstranding",
+      "name": "Death Stranding",
+      "executable": "ds.exe",
+      "steam_appid": 1190460,
+      "epic_id": "utah",
+      "compatibility": {
+        "rating": "platinum",
+        "wine_version": "wine-ge-proton8-26",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "1",
+        "PROTON_HIDE_NVIDIA_GPU": "0",
+        "PROTON_ENABLE_NVAPI": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -5
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "gaming",
+        "position": "top-left",
+        "fps_limit": 60
+      },
+      "launch_options": "",
+      "notes": "DLSS support with NVAPI. Excellent performance on Linux."
+    },
+    {
+      "id": "leagueoflegends",
+      "name": "League of Legends",
+      "executable": "LeagueClient.exe",
+      "riot_id": "league_of_legends",
+      "compatibility": {
+        "rating": "gold",
+        "wine_version": "wine-lol-8.0",
+        "dxvk_version": "2.3.1",
+        "vkd3d_version": null
+      },
+      "environment": {
+        "WINEDLLOVERRIDES": "d3d9=native,builtin;d3d11=native,builtin;dxgi=native,builtin",
+        "DXVK_ASYNC": "0",
+        "STAGING_WRITECOPY": "1"
+      },
+      "wine_config": {
+        "version": "win10",
+        "dpi": 96,
+        "virtual_desktop": null,
+        "csmt": true
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true,
+        "priority": -10
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "minimal",
+        "position": "top-left",
+        "fps_limit": 144
+      },
+      "launch_options": "",
+      "special_requirements": [
+        "wine-lol patches required",
+        "vulkan-mesa-layers recommended"
+      ],
+      "notes": "Requires special Wine build with League patches. Anti-cheat works."
+    },
+    {
+      "id": "minecraft",
+      "name": "Minecraft: Java Edition",
+      "executable": "Minecraft.exe",
+      "compatibility": {
+        "rating": "native",
+        "wine_version": null,
+        "dxvk_version": null,
+        "vkd3d_version": null
+      },
+      "environment": {
+        "_JAVA_AWT_WM_NONREPARENTING": "1"
+      },
+      "wine_config": {
+        "version": null,
+        "dpi": null,
+        "virtual_desktop": null,
+        "csmt": false
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": false,
+        "priority": 0
+      },
+      "mangohud": {
+        "enabled": false,
+        "preset": "minimal",
+        "position": "top-left",
+        "fps_limit": 0
+      },
+      "launch_options": "",
+      "notes": "Native Java application. Use Prism Launcher or native Minecraft launcher."
+    }
+  ],
+  "presets": {
+    "gaming": {
+      "description": "Optimized for gaming performance",
+      "environment": {
+        "DXVK_ASYNC": "1",
+        "WINE_FULLSCREEN_FSR": "1",
+        "mesa_glthread": "true",
+        "RADV_PERFTEST": "gpl"
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true
+      }
+    },
+    "battery": {
+      "description": "Optimized for battery life on laptops",
+      "environment": {
+        "DXVK_ASYNC": "0",
+        "WINE_FULLSCREEN_FSR": "0",
+        "mesa_glthread": "false"
+      },
+      "gamemode": {
+        "enabled": false,
+        "cpu_governor": "powersave",
+        "gpu_performance": false
+      }
+    },
+    "compatibility": {
+      "description": "Maximum compatibility, may sacrifice performance",
+      "environment": {
+        "DXVK_ASYNC": "0",
+        "STAGING_SHARED_MEMORY": "0",
+        "WINE_LARGE_ADDRESS_AWARE": "1"
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "ondemand",
+        "gpu_performance": true
+      }
+    },
+    "streaming": {
+      "description": "Optimized for game streaming",
+      "environment": {
+        "DXVK_ASYNC": "1",
+        "WINE_FULLSCREEN_FSR": "0"
+      },
+      "gamemode": {
+        "enabled": true,
+        "cpu_governor": "performance",
+        "gpu_performance": true
+      },
+      "mangohud": {
+        "enabled": true,
+        "preset": "streaming"
+      }
+    }
+  },
+  "wine_versions": {
+    "wine-9.0": {
+      "name": "Wine Stable 9.0",
+      "description": "Latest stable Wine release",
+      "recommended_for": ["older_games", "general_compatibility"]
+    },
+    "wine-ge-proton8-26": {
+      "name": "Wine-GE-Proton8-26",
+      "description": "GloriousEggroll's Wine build with Proton patches",
+      "recommended_for": ["modern_games", "steam_games", "dxvk_games"]
+    },
+    "wine-lol-8.0": {
+      "name": "Wine LoL 8.0",
+      "description": "Special Wine build for League of Legends",
+      "recommended_for": ["league_of_legends"]
+    },
+    "wine-staging-9.0": {
+      "name": "Wine Staging 9.0",
+      "description": "Wine with experimental patches",
+      "recommended_for": ["testing", "bleeding_edge"]
+    }
+  },
+  "compatibility_ratings": {
+    "platinum": {
+      "description": "Works perfectly out of the box",
+      "icon": "medal-gold"
+    },
+    "gold": {
+      "description": "Works with minor tweaks or has minor issues",
+      "icon": "medal-silver"
+    },
+    "silver": {
+      "description": "Works with significant tweaks, some features may not work",
+      "icon": "medal-bronze"
+    },
+    "bronze": {
+      "description": "Runs but with major issues",
+      "icon": "warning"
+    },
+    "borked": {
+      "description": "Does not run or crashes frequently",
+      "icon": "error"
+    },
+    "native": {
+      "description": "Has native Linux version",
+      "icon": "linux"
+    }
+  }
+}

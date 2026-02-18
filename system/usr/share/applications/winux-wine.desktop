@@ -1,0 +1,137 @@
+[Desktop Entry]
+# =============================================================================
+# Winux OS - Wine Windows Executable Launcher
+# Sprint 13-14: Windows Compatibility Layer
+# =============================================================================
+#
+# This desktop entry enables launching Windows .exe files directly from
+# file managers and the application menu in Winux OS.
+#
+# Installation: Place in /usr/share/applications/
+# =============================================================================
+
+Type=Application
+Name=Winux Wine Launcher
+Name[pt_BR]=Winux Lançador Wine
+Name[es]=Winux Lanzador Wine
+Name[de]=Winux Wine-Starter
+Name[fr]=Winux Lanceur Wine
+GenericName=Windows Application Launcher
+GenericName[pt_BR]=Lançador de Aplicativos Windows
+Comment=Run Windows applications and games using Wine
+Comment[pt_BR]=Execute aplicativos e jogos Windows usando Wine
+Comment[es]=Ejecutar aplicaciones y juegos de Windows usando Wine
+Comment[de]=Windows-Anwendungen und Spiele mit Wine ausführen
+Comment[fr]=Exécuter des applications et jeux Windows avec Wine
+
+# Main executable command
+# Uses Winux's custom wine wrapper with GameMode and MangoHud integration
+Exec=winux-wine-launcher %f
+
+# Alternative commands (uncomment to use)
+# Basic Wine: Exec=wine %f
+# With GameMode: Exec=gamemoderun wine %f
+# With MangoHud: Exec=mangohud wine %f
+# With both: Exec=mangohud gamemoderun wine %f
+
+# Icon for the application
+Icon=wine
+# Alternative icons:
+# Icon=wine-winecfg
+# Icon=application-x-executable
+# Icon=preferences-desktop-gaming
+
+# Terminal settings
+Terminal=false
+# Set to true for console applications that need terminal output
+# Terminal=true
+
+# MIME types this application can handle
+MimeType=application/x-ms-dos-executable;application/x-msdos-program;application/x-msdownload;application/exe;application/x-exe;application/dos-exe;application/x-winexe;application/msdos-windows;application/x-wine-extension-msi;
+
+# Categories for menu organization
+Categories=Game;Emulator;System;Wine;
+
+# Keywords for search
+Keywords=wine;windows;exe;gaming;proton;compatibility;
+
+# Actions available from context menu
+Actions=Configure;WineCfg;Winetricks;KillAll;GameMode;MangoHud;
+
+# Don't show in specific desktop environments (if needed)
+# NotShowIn=GNOME;KDE;
+
+# Show in all desktop environments
+# OnlyShowIn=
+
+# Startup notification
+StartupNotify=true
+StartupWMClass=wine
+
+# Additional settings
+NoDisplay=false
+Hidden=false
+
+# DBus activation (if supported)
+# DBusActivatable=false
+
+# =============================================================================
+# Desktop Actions
+# =============================================================================
+
+[Desktop Action Configure]
+Name=Configure Wine Prefix
+Name[pt_BR]=Configurar Prefixo Wine
+Exec=winux-wine-config %f
+Icon=preferences-system
+
+[Desktop Action WineCfg]
+Name=Wine Configuration
+Name[pt_BR]=Configuração do Wine
+Exec=winecfg
+Icon=wine-winecfg
+
+[Desktop Action Winetricks]
+Name=Winetricks
+Name[pt_BR]=Winetricks
+Exec=winetricks --gui
+Icon=winetricks
+
+[Desktop Action KillAll]
+Name=Kill All Wine Processes
+Name[pt_BR]=Encerrar Todos os Processos Wine
+Exec=wineserver -k
+Icon=process-stop
+
+[Desktop Action GameMode]
+Name=Run with GameMode
+Name[pt_BR]=Executar com GameMode
+Exec=gamemoderun wine %f
+Icon=applications-games
+
+[Desktop Action MangoHud]
+Name=Run with MangoHud Overlay
+Name[pt_BR]=Executar com Overlay MangoHud
+Exec=mangohud wine %f
+Icon=preferences-desktop-display
+
+# =============================================================================
+# Notes for Winux OS
+# =============================================================================
+#
+# The winux-wine-launcher script should:
+# 1. Detect the best Wine version for the application
+# 2. Check the games database for optimized configurations
+# 3. Apply appropriate DXVK/VKD3D settings
+# 4. Optionally enable GameMode and MangoHud
+# 5. Handle prefix management
+#
+# File associations are registered through:
+# - update-mime-database /usr/share/mime
+# - update-desktop-database /usr/share/applications
+#
+# Users can set this as the default handler for .exe files in their
+# file manager preferences or via xdg-mime:
+#   xdg-mime default winux-wine.desktop application/x-ms-dos-executable
+#
+# =============================================================================
