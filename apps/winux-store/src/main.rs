@@ -388,7 +388,7 @@ fn create_apps_section(title_text: &str, apps: Vec<AppInfo>) -> Box {
 
     for app in apps {
         let card = create_app_card(&app);
-        flow_box.append(&card);
+        flow_box.insert(&card, -1);
     }
 
     section.append(&flow_box);

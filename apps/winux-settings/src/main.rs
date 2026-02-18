@@ -106,7 +106,10 @@ fn build_ui(app: &Application) {
 
 fn create_page(title: &str, items: &[(&str, &str)]) -> Box {
     let page = Box::new(Orientation::Vertical, 12);
-    page.set_margin_all(24);
+    page.set_margin_top(24);
+    page.set_margin_bottom(24);
+    page.set_margin_start(24);
+    page.set_margin_end(24);
     page.set_hexpand(true);
 
     let title_label = Label::new(Some(title));

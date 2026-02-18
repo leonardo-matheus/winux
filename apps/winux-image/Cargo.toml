@@ -4,47 +4,15 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-description = "Native image viewer for Winux OS with modern GPU-accelerated rendering"
+description = "Simple image viewer for Winux OS"
 
 [[bin]]
 name = "winux-image"
 path = "src/main.rs"
 
 [dependencies]
-# GTK4 Stack
 gtk4 = { workspace = true, features = ["v4_12"] }
 libadwaita = { workspace = true, features = ["v1_4"] }
 glib.workspace = true
 gio.workspace = true
 gdk4.workspace = true
-
-# Image processing
-image = { workspace = true }
-kamadak-exif = "0.5"
-
-# Async
-tokio.workspace = true
-async-channel.workspace = true
-futures.workspace = true
-
-# Serialization
-serde.workspace = true
-toml.workspace = true
-
-# Utilities
-dirs.workspace = true
-anyhow.workspace = true
-thiserror.workspace = true
-chrono.workspace = true
-mime_guess.workspace = true
-walkdir.workspace = true
-
-# Logging
-tracing.workspace = true
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-
-[features]
-default = []
-heif = []  # HEIC/HEIF support (requires libheif)
-avif = []  # AVIF support
-raw = []   # RAW image support

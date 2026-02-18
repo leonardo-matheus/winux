@@ -66,7 +66,7 @@ fn build_ui(app: &Application) {
     // Update clock every second
     let clock_label_clone = clock_label.clone();
     gtk::glib::timeout_add_seconds_local(1, move || {
-        if let Some(now) = gtk::glib::DateTime::now_local() {
+        if let Ok(now) = gtk::glib::DateTime::now_local() {
             if let Ok(time_str) = now.format("%H:%M:%S") {
                 clock_label_clone.set_text(&format!("Current time: {}", time_str));
             }
@@ -75,7 +75,7 @@ fn build_ui(app: &Application) {
     });
 
     // Initial time update
-    if let Some(now) = gtk::glib::DateTime::now_local() {
+    if let Ok(now) = gtk::glib::DateTime::now_local() {
         if let Ok(time_str) = now.format("%H:%M:%S") {
             clock_label.set_text(&format!("Current time: {}", time_str));
         }
