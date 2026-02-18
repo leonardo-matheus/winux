@@ -1,0 +1,30 @@
+# Winux OS GDM Greeter Configuration
+# GDM login screen branding with purple gradient theme
+
+[org/gnome/login-screen]
+logo='/usr/share/pixmaps/winux-logo.png'
+banner-message-enable=true
+banner-message-text='Welcome to Winux OS'
+disable-user-list=false
+
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/winux/aurora-default.png'
+picture-options='zoom'
+primary-color='#6366f1'
+secondary-color='#8b5cf6'
+color-shading-type='vertical'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/winux/aurora-dark.png'
+picture-options='zoom'
+primary-color='#6366f1'
+secondary-color='#8b5cf6'
+color-shading-type='vertical'
+
+[org/gnome/desktop/interface]
+gtk-theme='Winux-Dark'
+icon-theme='Winux'
+cursor-theme='Winux'
+font-name='Ubuntu 11'
+document-font-name='Ubuntu 11'
+monospace-font-name='Ubuntu Mono 13'

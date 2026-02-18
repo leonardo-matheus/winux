@@ -1,0 +1,99 @@
+# Winux OS GRUB Theme
+# Brand Colors: Purple Gradient #6366f1 to #8b5cf6
+
+# Global Properties
+title-text: ""
+desktop-image: "background.png"
+desktop-color: "#1a1a2e"
+terminal-font: "Ubuntu Mono Regular 14"
+terminal-box: "terminal_box_*.png"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
+# Boot Menu Styling
++ boot_menu {
+    left = 50%
+    top = 50%
+    width = 600
+    height = 400
+    item_font = "Ubuntu Regular 16"
+    item_color = "#ffffff"
+    selected_item_font = "Ubuntu Bold 16"
+    selected_item_color = "#8b5cf6"
+    item_height = 40
+    item_padding = 15
+    item_icon_space = 20
+    item_spacing = 5
+    icon_width = 32
+    icon_height = 32
+    menu_pixmap_style = "menu_*.png"
+    selected_item_pixmap_style = "select_*.png"
+    scrollbar = true
+    scrollbar_width = 8
+    scrollbar_thumb = "scrollbar_thumb.png"
+    scrollbar_frame = "scrollbar_frame.png"
+}
+
+# Title Label
++ label {
+    left = 50%
+    top = 15%
+    width = 100%
+    align = "center"
+    id = "__timeout__"
+    text = "Winux OS - Boot Menu"
+    font = "Ubuntu Bold 24"
+    color = "#8b5cf6"
+}
+
+# Countdown Label
++ label {
+    left = 50%
+    top = 85%
+    width = 100%
+    align = "center"
+    id = "__timeout__"
+    text = "Booting in %d seconds..."
+    font = "Ubuntu Regular 14"
+    color = "#a0a0a0"
+}
+
+# Version Info
++ label {
+    left = 50%
+    top = 90%
+    width = 100%
+    align = "center"
+    text = "Winux OS 1.0 Aurora | Based on Ubuntu 24.04 LTS"
+    font = "Ubuntu Regular 12"
+    color = "#6366f1"
+}
+
+# Help Text
++ label {
+    left = 50%
+    top = 95%
+    width = 100%
+    align = "center"
+    text = "Press 'e' to edit | 'c' for command line"
+    font = "Ubuntu Regular 10"
+    color = "#666666"
+}
+
+# Progress Bar (for timeout visualization)
++ progress_bar {
+    id = "__timeout__"
+    left = 35%
+    top = 82%
+    width = 30%
+    height = 10
+    fg_color = "#8b5cf6"
+    bg_color = "#2a2a4e"
+    border_color = "#6366f1"
+    text_color = "#ffffff"
+    bar_style = "*"
+    highlight_style = "highlight_*.png"
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="editGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 4 L30 4 L38 12 L38 44 L8 44 Q6 44 6 42 L6 6 Q6 4 8 4 Z" fill="#fff"/>
+  <path d="M30 4 L30 12 L38 12 Z" fill="#e0e7ff"/>
+  <rect x="6" y="4" width="32" height="40" rx="2" fill="none" stroke="url(#editGrad)" stroke-width="2"/>
+  <line x1="12" y1="20" x2="26" y2="20" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="26" x2="22" y2="26" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="32" x2="24" y2="32" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(24, 20) rotate(45)">
+    <rect x="0" y="0" width="6" height="24" rx="1" fill="url(#editGrad)"/>
+    <polygon points="0,24 3,28 6,24" fill="#fbbf24"/>
+  </g>
+</svg>

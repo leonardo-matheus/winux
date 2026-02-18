@@ -598,78 +598,213 @@ apt clean
         return 0
     fi
 
-    log_step "Compilando aplicativos Winux..."
+    log_step "Instalando dependencias de build Rust no chroot..."
 
-    # Lista de apps para compilar
-    local apps=(
+    mount_chroot
+
+    # Install Rust build dependencies in chroot
+    run_in_chroot "
+export DEBIAN_FRONTEND=noninteractive
+
+# Rust toolchain e ferramentas de build
+apt update
+apt install -y \
+    rustc \
+    cargo \
+    pkg-config \
+    build-essential \
+    cmake \
+    meson \
+    ninja-build
+
+# GTK4 e bibliotecas de desenvolvimento
+apt install -y \
+    libgtk-4-dev \
+    libadwaita-1-dev \
+    libglib2.0-dev \
+    libgdk-pixbuf-2.0-dev \
+    libpango1.0-dev \
+    libcairo2-dev \
+    libgraphene-1.0-dev
+
+# VTE (terminal) e GtkSourceView (editor)
+apt install -y \
+    libvte-2.91-gtk4-dev \
+    libgtksourceview-5-dev
+
+# Wayland/Compositor dependencies
+apt install -y \
+    libwayland-dev \
+    wayland-protocols \
+    libxkbcommon-dev \
+    libudev-dev \
+    libinput-dev \
+    libdrm-dev \
+    libgbm-dev \
+    libseat-dev \
+    libegl-dev \
+    libgles2-mesa-dev
+
+# Multimedia dependencies
+apt install -y \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly
+
+apt clean
+"
+
+    log_info "Dependencias de build Rust instaladas no chroot"
+
+    log_step "Compilando aplicativos Winux (workspace)..."
+
+    # Lista de binarios esperados do workspace
+    local workspace_binaries=(
+        "winux-compositor"
+        "winux-panel"
+        "winux-shell"
         "winux-files"
         "winux-terminal"
         "winux-settings"
+        "winux-store"
         "winux-monitor"
         "winux-edit"
         "winux-image"
         "winux-player"
-        "winux-store"
     )
 
-    local desktop_components=(
-        "winux-compositor"
-        "winux-shell"
-        "winux-panel"
-    )
-
-    # Criar diretorio de binarios
+    # Criar diretorio de binarios e aplicacoes
     mkdir -p "${CHROOT_DIR}/usr/bin"
     mkdir -p "${CHROOT_DIR}/usr/share/applications"
     mkdir -p "${CHROOT_DIR}/usr/share/icons/hicolor/scalable/apps"
 
-    # Compilar apps
-    for app in "${apps[@]}"; do
-        local app_dir="${PROJECT_ROOT}/apps/${app}"
-        if [[ -d "${app_dir}" ]]; then
-            log_info "Compilando ${app}..."
+    # Build the entire workspace from PROJECT_ROOT
+    log_info "Compilando workspace Rust completo..."
+    log_info "Diretorio do projeto: ${PROJECT_ROOT}"
 
-            (
-                cd "${app_dir}"
-                CARGO_TARGET_DIR="${CACHE_DIR}/rust" cargo build --release -j "${PARALLEL_JOBS}" 2>&1 | tee -a "${LOG_FILE}"
-            )
+    local build_success=true
+    local build_output="${CACHE_DIR}/rust"
 
-            # Copiar binario
-            local binary="${CACHE_DIR}/rust/release/${app}"
-            if [[ -f "${binary}" ]]; then
-                cp "${binary}" "${CHROOT_DIR}/usr/bin/"
-                chmod +x "${CHROOT_DIR}/usr/bin/${app}"
-                log_info "  -> ${app} instalado"
+    # Build entire workspace with release profile
+    if ! (
+        cd "${PROJECT_ROOT}"
+        CARGO_TARGET_DIR="${build_output}" cargo build --workspace --release -j "${PARALLEL_JOBS}" 2>&1 | tee -a "${LOG_FILE}"
+    ); then
+        log_error "Falha ao compilar workspace Rust"
+        build_success=false
+
+        # Try building individual packages to identify which ones fail
+        log_warn "Tentando compilar pacotes individualmente para identificar falhas..."
+
+        for binary in "${workspace_binaries[@]}"; do
+            if (
+                cd "${PROJECT_ROOT}"
+                CARGO_TARGET_DIR="${build_output}" cargo build --release -p "${binary}" -j "${PARALLEL_JOBS}" 2>&1 | tee -a "${LOG_FILE}"
+            ); then
+                log_info "  -> ${binary} compilado com sucesso"
             else
-                log_warn "  -> ${app} nao encontrado em ${binary}"
+                log_error "  -> ${binary} falhou na compilacao"
             fi
+        done
+    fi
 
-            # Criar .desktop file
-            create_desktop_entry "${app}"
+    # Install compiled binaries
+    log_step "Instalando binarios compilados..."
+
+    local installed_count=0
+    local failed_count=0
+
+    for binary in "${workspace_binaries[@]}"; do
+        local binary_path="${build_output}/release/${binary}"
+        if [[ -f "${binary_path}" ]]; then
+            cp "${binary_path}" "${CHROOT_DIR}/usr/bin/"
+            chmod +x "${CHROOT_DIR}/usr/bin/${binary}"
+            log_info "  -> ${binary} instalado em /usr/bin/"
+            ((installed_count++))
         else
-            log_warn "App nao encontrado: ${app_dir}"
+            log_warn "  -> ${binary} nao encontrado em ${binary_path}"
+            ((failed_count++))
         fi
     done
 
-    # Compilar componentes desktop
-    for component in "${desktop_components[@]}"; do
-        local comp_dir="${PROJECT_ROOT}/desktop/${component}"
-        if [[ -d "${comp_dir}" ]]; then
-            log_info "Compilando ${component}..."
+    log_info "Binarios instalados: ${installed_count}, Nao encontrados: ${failed_count}"
 
-            (
-                cd "${comp_dir}"
-                CARGO_TARGET_DIR="${CACHE_DIR}/rust" cargo build --release -j "${PARALLEL_JOBS}" 2>&1 | tee -a "${LOG_FILE}"
-            )
+    # Copy .desktop files from system directory
+    log_step "Copiando arquivos .desktop..."
 
-            local binary="${CACHE_DIR}/rust/release/${component}"
-            if [[ -f "${binary}" ]]; then
-                cp "${binary}" "${CHROOT_DIR}/usr/bin/"
-                chmod +x "${CHROOT_DIR}/usr/bin/${component}"
-                log_info "  -> ${component} instalado"
+    local desktop_src="${PROJECT_ROOT}/system/usr/share/applications"
+    local desktop_dest="${CHROOT_DIR}/usr/share/applications"
+
+    if [[ -d "${desktop_src}" ]]; then
+        for desktop_file in "${desktop_src}"/winux-*.desktop; do
+            if [[ -f "${desktop_file}" ]]; then
+                cp "${desktop_file}" "${desktop_dest}/"
+                local filename=$(basename "${desktop_file}")
+                log_info "  -> ${filename} copiado"
             fi
+        done
+    else
+        log_warn "Diretorio de .desktop nao encontrado: ${desktop_src}"
+    fi
+
+    # Generate .desktop files for apps that don't have one
+    log_step "Gerando arquivos .desktop faltantes..."
+
+    for binary in "${workspace_binaries[@]}"; do
+        local desktop_file="${desktop_dest}/${binary}.desktop"
+        if [[ ! -f "${desktop_file}" && -f "${CHROOT_DIR}/usr/bin/${binary}" ]]; then
+            create_desktop_entry "${binary}"
+            log_info "  -> ${binary}.desktop gerado"
         fi
     done
+
+    # Handle build failure gracefully
+    if [[ "${build_success}" == "false" ]]; then
+        log_warn "Build parcialmente falhou. Instalando apps GNOME como fallback para os que falharam..."
+
+        run_in_chroot "
+export DEBIAN_FRONTEND=noninteractive
+
+# Install GNOME fallback apps for any missing Winux apps
+if [[ ! -f /usr/bin/winux-files ]]; then
+    apt install -y nautilus || true
+fi
+if [[ ! -f /usr/bin/winux-terminal ]]; then
+    apt install -y gnome-terminal || true
+fi
+if [[ ! -f /usr/bin/winux-settings ]]; then
+    apt install -y gnome-control-center || true
+fi
+if [[ ! -f /usr/bin/winux-edit ]]; then
+    apt install -y gnome-text-editor || true
+fi
+if [[ ! -f /usr/bin/winux-image ]]; then
+    apt install -y eog || true
+fi
+if [[ ! -f /usr/bin/winux-player ]]; then
+    apt install -y totem || true
+fi
+if [[ ! -f /usr/bin/winux-monitor ]]; then
+    apt install -y gnome-system-monitor || true
+fi
+
+apt clean
+"
+        log_info "Apps GNOME de fallback instalados para binarios faltantes"
+    fi
+
+    # Clean up build dependencies to reduce image size (optional)
+    if [[ "${CLEANUP_BUILD_DEPS:-false}" == "true" ]]; then
+        log_step "Removendo dependencias de build (CLEANUP_BUILD_DEPS=true)..."
+        run_in_chroot "
+export DEBIAN_FRONTEND=noninteractive
+apt remove -y rustc cargo || true
+apt autoremove -y
+apt clean
+"
+    fi
 
     log_info "Aplicativos Rust compilados e instalados"
 }
@@ -1385,12 +1520,15 @@ show_help() {
     echo "  FORCE_REBUILD      Forcar reconstrucao (default: false)"
     echo "  CLEANUP            Limpar apos build (default: false)"
     echo "  DEBUG              Modo debug verbose (default: false)"
+    echo "  SKIP_RUST_APPS     Pular compilacao Rust, usar apps GNOME (default: true)"
+    echo "  CLEANUP_BUILD_DEPS Remover deps de build apos compilacao (default: false)"
     echo ""
     echo "Exemplos:"
     echo "  sudo $0 all"
     echo "  sudo QUICK_BUILD=true $0 all"
     echo "  sudo COMPRESSION=lz4 $0 squashfs"
     echo "  sudo OUTPUT_DIR=/mnt/iso $0 iso"
+    echo "  sudo SKIP_RUST_APPS=false $0 rust-apps   # Compilar apps Rust"
     echo ""
 }
 

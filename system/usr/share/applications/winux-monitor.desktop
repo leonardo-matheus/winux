@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux System Monitor
+GenericName=System Monitor
+Comment=View and manage system resources and processes
+Exec=/usr/bin/winux-monitor
+Icon=utilities-system-monitor
+Categories=System;Monitor;
+Terminal=false

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Winux Aurora Default</name>
+    <filename>/usr/share/backgrounds/winux/aurora-default.png</filename>
+    <filename-dark>/usr/share/backgrounds/winux/aurora-dark.png</filename-dark>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#6366f1</pcolor>
+    <scolor>#8b5cf6</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Winux Gradient</name>
+    <filename>/usr/share/backgrounds/winux/gradient.png</filename>
+    <options>zoom</options>
+    <shade_type>vertical</shade_type>
+    <pcolor>#6366f1</pcolor>
+    <scolor>#8b5cf6</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Winux Abstract</name>
+    <filename>/usr/share/backgrounds/winux/abstract.png</filename>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#6366f1</pcolor>
+    <scolor>#8b5cf6</scolor>
+  </wallpaper>
+</wallpapers>

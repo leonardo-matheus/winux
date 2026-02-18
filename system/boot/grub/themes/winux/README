@@ -1,0 +1,32 @@
+Winux OS GRUB Theme
+===================
+
+This theme requires the following image assets to be placed in this directory:
+
+Required Images:
+- background.png          - Main background (1920x1080 recommended)
+- terminal_box_*.png      - Terminal background (9-part scaling)
+- menu_*.png              - Menu background (9-part scaling)
+- select_*.png            - Selected item highlight (9-part scaling)
+- scrollbar_thumb.png     - Scrollbar thumb
+- scrollbar_frame.png     - Scrollbar track
+- highlight_*.png         - Progress bar highlight
+
+Optional Icons (32x32 PNG):
+- winux.png               - Winux OS boot option icon
+- ubuntu.png              - Ubuntu recovery icon
+- memtest.png             - Memory test icon
+- settings.png            - UEFI settings icon
+
+Color Palette:
+- Primary:    #6366f1 (Indigo)
+- Secondary:  #8b5cf6 (Purple)
+- Background: #1a1a2e (Dark blue)
+- Text:       #ffffff (White)
+- Muted:      #666666 (Gray)
+
+Installation:
+1. Copy this directory to /boot/grub/themes/winux/
+2. Add to /etc/default/grub:
+   GRUB_THEME="/boot/grub/themes/winux/theme.txt"
+3. Run: sudo update-grub

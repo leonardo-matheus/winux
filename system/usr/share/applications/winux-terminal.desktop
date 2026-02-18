@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Terminal
+GenericName=Terminal Emulator
+Comment=Access the command line
+Exec=/usr/bin/winux-terminal
+Icon=utilities-terminal
+Categories=System;TerminalEmulator;
+Terminal=false

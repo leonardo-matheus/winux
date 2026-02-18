@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Winux GDM Greeter Config
+Comment=Apply Winux branding to GDM login screen
+Exec=/usr/bin/winux-gdm-setup
+NoDisplay=true
+X-GNOME-Autostart-Phase=PreDisplayServer

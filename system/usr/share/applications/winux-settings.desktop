@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Settings
+GenericName=Settings
+Comment=Configure system settings and preferences
+Exec=/usr/bin/winux-settings
+Icon=preferences-system
+Categories=Settings;System;
+Terminal=false

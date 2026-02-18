@@ -1,50 +1,9 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
-Name=Winux Player
-Name[pt_BR]=Winux Player
-Name[es]=Reproductor Winux
-Name[fr]=Lecteur Winux
-Name[de]=Winux Player
-GenericName=Video Player
-GenericName[pt_BR]=Reprodutor de Video
-GenericName[es]=Reproductor de Video
-GenericName[fr]=Lecteur Video
-GenericName[de]=Videoplayer
-Comment=Play videos and music with GStreamer
-Comment[pt_BR]=Reproduza videos e musica com GStreamer
-Comment[es]=Reproduce videos y musica con GStreamer
-Comment[fr]=Lire des videos et de la musique avec GStreamer
-Comment[de]=Videos und Musik mit GStreamer abspielen
-Keywords=video;player;media;movie;music;audio;mp4;mkv;avi;webm;mp3;flac;
-Keywords[pt_BR]=video;player;midia;filme;musica;audio;
-Exec=/usr/bin/winux-player %U
-Icon=winux-player
+Name=Winux Media Player
+GenericName=Media Player
+Comment=Play audio and video files
+Exec=/usr/bin/winux-player
+Icon=multimedia-video-player
+Categories=AudioVideo;Player;
 Terminal=false
-Categories=AudioVideo;Video;Audio;Player;GTK;
-MimeType=video/mp4;video/x-matroska;video/x-msvideo;video/webm;video/quicktime;video/x-flv;video/x-ms-wmv;video/ogg;video/3gpp;video/mpeg;audio/mpeg;audio/flac;audio/wav;audio/aac;audio/ogg;audio/mp4;audio/x-ms-wma;audio/opus;
-StartupNotify=true
-StartupWMClass=winux-player
-X-GNOME-SingleWindow=true
-X-KDE-StartupNotify=true
-
-# Actions for quick access
-Actions=open-file;open-url;
-
-[Desktop Action open-file]
-Name=Open File
-Name[pt_BR]=Abrir Arquivo
-Name[es]=Abrir Archivo
-Name[fr]=Ouvrir un Fichier
-Name[de]=Datei offnen
-Exec=/usr/bin/winux-player --open-dialog
-Icon=document-open
-
-[Desktop Action open-url]
-Name=Open URL
-Name[pt_BR]=Abrir URL
-Name[es]=Abrir URL
-Name[fr]=Ouvrir une URL
-Name[de]=URL offnen
-Exec=/usr/bin/winux-player --open-url
-Icon=web-browser

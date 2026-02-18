@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="monGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="6" width="40" height="30" rx="3" fill="url(#monGrad)"/>
+  <rect x="7" y="9" width="34" height="24" rx="1" fill="#1e1b4b"/>
+  <polyline points="10,26 16,20 22,24 30,14 38,18" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="10,28 16,26 22,30 30,22 38,26" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <rect x="18" y="36" width="12" height="3" fill="url(#monGrad)"/>
+  <rect x="14" y="39" width="20" height="3" rx="1" fill="url(#monGrad)"/>
+</svg>

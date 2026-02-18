@@ -9,6 +9,7 @@ license.workspace = true
 gtk4.workspace = true
 libadwaita.workspace = true
 glib.workspace = true
+gio.workspace = true
 tokio.workspace = true
 tracing.workspace = true
 anyhow.workspace = true

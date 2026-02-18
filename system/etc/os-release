@@ -1,0 +1,13 @@
+PRETTY_NAME="Winux OS 1.0 Aurora"
+NAME="Winux OS"
+VERSION_ID="1.0"
+VERSION="1.0 Aurora"
+VERSION_CODENAME=aurora
+ID=winux
+ID_LIKE=ubuntu debian
+HOME_URL="https://winux.os"
+SUPPORT_URL="https://winux.os/support"
+BUG_REPORT_URL="https://winux.os/bugs"
+PRIVACY_POLICY_URL="https://winux.os/privacy"
+UBUNTU_CODENAME=noble
+LOGO=winux-logo

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Files
+GenericName=File Manager
+Comment=Browse and manage files and folders
+Exec=/usr/bin/winux-files
+Icon=system-file-manager
+Categories=System;FileTools;FileManager;
+Terminal=false

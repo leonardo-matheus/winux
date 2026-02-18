@@ -1,0 +1,6 @@
+# Winux OS dconf profile
+# This profile configures the dconf database lookup order
+
+user-db:user
+system-db:local
+system-db:site

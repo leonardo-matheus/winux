@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux App Store
+GenericName=App Store
+Comment=Browse and install applications
+Exec=/usr/bin/winux-store
+Icon=system-software-install
+Categories=System;PackageManager;
+Terminal=false

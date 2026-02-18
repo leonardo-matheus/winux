@@ -1,0 +1,79 @@
+# Winux OS GSettings Schema Override
+# Windows 11 inspired defaults for GNOME
+
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'
+gtk-theme='Adwaita-dark'
+icon-theme='Winux-Icons'
+cursor-theme='Winux-Cursors'
+font-name='Segoe UI 11'
+document-font-name='Segoe UI 11'
+monospace-font-name='Cascadia Code 10'
+font-antialiasing='rgba'
+font-hinting='slight'
+clock-show-weekday=true
+clock-show-date=true
+clock-format='24h'
+enable-animations=true
+
+[org.gnome.desktop.wm.preferences]
+button-layout='close,minimize,maximize:'
+titlebar-font='Segoe UI Bold 11'
+theme='Adwaita-dark'
+focus-mode='click'
+auto-raise=false
+
+[org.gnome.desktop.background]
+picture-uri='file:///usr/share/backgrounds/winux/default.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/winux/default-dark.jpg'
+picture-options='zoom'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org.gnome.desktop.screensaver]
+picture-uri='file:///usr/share/backgrounds/winux/lock-screen.jpg'
+lock-enabled=true
+lock-delay=300
+
+[org.gnome.shell]
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'arcmenu@arcmenu.com', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Settings.desktop']
+
+[org.gnome.desktop.sound]
+theme-name='Winux'
+event-sounds=true
+input-feedback-sounds=false
+
+[org.gnome.desktop.peripherals.touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
+natural-scroll=true
+
+[org.gnome.desktop.peripherals.mouse]
+natural-scroll=false
+speed=0.0
+
+[org.gnome.mutter]
+center-new-windows=true
+edge-tiling=true
+dynamic-workspaces=true
+workspaces-only-on-primary=true
+
+[org.gnome.desktop.privacy]
+remember-recent-files=true
+recent-files-max-age=30
+remove-old-trash-files=true
+remove-old-temp-files=true
+old-files-age=30
+
+[org.gnome.nautilus.preferences]
+default-folder-viewer='icon-view'
+show-hidden-files=false
+show-image-thumbnails='local-only'
+
+[org.gnome.nautilus.icon-view]
+default-zoom-level='standard'
+
+[org.gnome.terminal.legacy]
+theme-variant='dark'
+default-show-menubar=false

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="termGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="40" height="32" rx="4" fill="url(#termGrad)"/>
+  <rect x="4" y="8" width="40" height="6" rx="4" ry="0" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="9" cy="11" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="14" cy="11" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="19" cy="11" r="1.5" fill="#fff" opacity="0.6"/>
+  <polyline points="10,22 16,27 10,32" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="32" x2="32" y2="32" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

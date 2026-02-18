@@ -1,0 +1,150 @@
+# Winux OS Default GNOME Configuration
+# Windows 11 inspired dark theme settings
+
+[org/gnome/desktop/interface]
+# Dark theme enabled by default (Windows 11 style)
+color-scheme='prefer-dark'
+gtk-theme='Adwaita-dark'
+icon-theme='Winux-Icons'
+cursor-theme='Winux-Cursors'
+
+# Font settings (Windows 11 inspired)
+font-name='Segoe UI 11'
+document-font-name='Segoe UI 11'
+monospace-font-name='Cascadia Code 10'
+font-antialiasing='rgba'
+font-hinting='slight'
+
+# Clock settings
+clock-show-weekday=true
+clock-show-date=true
+clock-format='24h'
+
+# Enable animations
+enable-animations=true
+
+[org/gnome/desktop/wm/preferences]
+# Window button layout (Windows 11 style - buttons on right)
+button-layout='close,minimize,maximize:'
+titlebar-font='Segoe UI Bold 11'
+theme='Adwaita-dark'
+
+# Focus mode
+focus-mode='click'
+auto-raise=false
+
+[org/gnome/desktop/background]
+# Winux wallpaper
+picture-uri='file:///usr/share/backgrounds/winux/default.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/winux/default-dark.jpg'
+picture-options='zoom'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/winux/lock-screen.jpg'
+lock-enabled=true
+lock-delay=uint32 300
+
+[org/gnome/shell]
+# Enabled extensions for Windows 11 look
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'arcmenu@arcmenu.com', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Settings.desktop']
+
+[org/gnome/shell/extensions/dash-to-panel]
+# Taskbar configuration (Windows 11 style)
+panel-position='BOTTOM'
+panel-size=48
+panel-element-positions='{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
+appicon-margin=4
+appicon-padding=8
+dot-style-focused='METRO'
+dot-style-unfocused='METRO'
+trans-use-custom-bg=true
+trans-bg-color='#1a1a1a'
+trans-use-custom-opacity=true
+trans-panel-opacity=0.9
+
+[org/gnome/shell/extensions/arcmenu]
+# Start menu configuration (Windows 11 style)
+menu-layout='Windows'
+menu-button-appearance='Icon'
+menu-button-icon='Distro_Icon'
+distro-icon=6
+enable-menu-hotkey=true
+menu-hotkey='Super_L'
+
+[org/gnome/shell/extensions/blur-my-shell]
+# Blur effects (Windows 11 style)
+brightness=0.6
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+blur=true
+brightness=0.6
+sigma=30
+static-blur=true
+
+[org/gnome/desktop/sound]
+# Sound settings
+theme-name='Winux'
+event-sounds=true
+input-feedback-sounds=false
+
+[org/gnome/desktop/peripherals/touchpad]
+# Touchpad settings
+tap-to-click=true
+two-finger-scrolling-enabled=true
+natural-scroll=true
+
+[org/gnome/desktop/peripherals/mouse]
+# Mouse settings
+natural-scroll=false
+speed=0.0
+
+[org/gnome/mutter]
+# Window management
+center-new-windows=true
+edge-tiling=true
+dynamic-workspaces=true
+workspaces-only-on-primary=true
+
+[org/gnome/desktop/wm/keybindings]
+# Windows-like keyboard shortcuts
+close=['<Alt>F4']
+minimize=['<Super>d']
+maximize=['<Super>Up']
+unmaximize=['<Super>Down']
+switch-applications=['<Alt>Tab']
+switch-applications-backward=['<Shift><Alt>Tab']
+switch-windows=['<Super>Tab']
+switch-windows-backward=['<Shift><Super>Tab']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+# Media keys
+home=['<Super>e']
+www=['<Super>b']
+search=['<Super>s']
+screensaver=['<Super>l']
+
+[org/gnome/desktop/privacy]
+# Privacy settings
+remember-recent-files=true
+recent-files-max-age=30
+remove-old-trash-files=true
+remove-old-temp-files=true
+old-files-age=uint32 30
+
+[org/gnome/nautilus/preferences]
+# File manager settings
+default-folder-viewer='icon-view'
+show-hidden-files=false
+show-image-thumbnails='local-only'
+
+[org/gnome/nautilus/icon-view]
+default-zoom-level='standard'
+
+[org/gnome/terminal/legacy]
+# Terminal settings
+theme-variant='dark'
+default-show-menubar=false

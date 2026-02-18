@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Text Editor
+GenericName=Text Editor
+Comment=Edit text files
+Exec=/usr/bin/winux-edit
+Icon=accessories-text-editor
+Categories=Utility;TextEditor;
+Terminal=false

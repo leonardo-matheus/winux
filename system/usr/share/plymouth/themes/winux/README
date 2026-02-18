@@ -1,0 +1,26 @@
+Winux OS Plymouth Boot Theme
+=============================
+
+This Plymouth theme displays the Winux OS branding during system boot.
+
+Required Image Assets (place in this directory):
+- winux-logo.png      - Main logo (recommended: 200x200 PNG with transparency)
+- progress-box.png    - Progress bar background (recommended: 400x20 PNG)
+- progress-bar.png    - Progress bar fill (recommended: 400x20 PNG, purple gradient)
+
+Color Scheme:
+- Background Top:    #6366f1 (Indigo)
+- Background Bottom: #8b5cf6 (Purple)
+- Text:              #ffffff (White)
+
+Installation:
+1. Copy this directory to /usr/share/plymouth/themes/winux/
+2. Install the theme:
+   sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/winux/winux.plymouth 100
+3. Set as default:
+   sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/winux/winux.plymouth
+4. Update initramfs:
+   sudo update-initramfs -u
+
+Testing:
+- Preview: sudo plymouthd; sudo plymouth --show-splash; sleep 5; sudo plymouth quit
