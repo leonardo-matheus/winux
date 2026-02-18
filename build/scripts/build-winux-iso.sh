@@ -722,10 +722,10 @@ apt clean
             cp "${binary_path}" "${CHROOT_DIR}/usr/bin/"
             chmod +x "${CHROOT_DIR}/usr/bin/${binary}"
             log_info "  -> ${binary} instalado em /usr/bin/"
-            ((installed_count++))
+            ((installed_count++)) || true
         else
             log_warn "  -> ${binary} nao encontrado em ${binary_path}"
-            ((failed_count++))
+            ((failed_count++)) || true
         fi
     done
 
