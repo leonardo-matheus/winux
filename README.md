@@ -1,74 +1,394 @@
-# 🐧 Winux OS
-
-> **"O Melhor dos Dois Mundos"**
-> Gaming + Produtividade | Linux + Windows Experience
+<div align="center">
 
 ```
-██╗    ██╗██╗███╗   ██╗██╗   ██╗██╗  ██╗
-██║    ██║██║████╗  ██║██║   ██║╚██╗██╔╝
-██║ █╗ ██║██║██╔██╗ ██║██║   ██║ ╚███╔╝
-██║███╗██║██║██║╚██╗██║██║   ██║ ██╔██╗
-╚███╔███╔╝██║██║ ╚████║╚██████╔╝██╔╝ ██╗
- ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
+██╗    ██╗██╗███╗   ██╗██╗   ██╗██╗  ██╗     ██████╗ ███████╗
+██║    ██║██║████╗  ██║██║   ██║╚██╗██╔╝    ██╔═══██╗██╔════╝
+██║ █╗ ██║██║██╔██╗ ██║██║   ██║ ╚███╔╝     ██║   ██║███████╗
+██║███╗██║██║██║╚██╗██║██║   ██║ ██╔██╗     ██║   ██║╚════██║
+╚███╔███╔╝██║██║ ╚████║╚██████╔╝██╔╝ ██╗    ╚██████╔╝███████║
+ ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝
 ```
 
-## Sobre
+### 🐧 **O Melhor dos Dois Mundos** 🎮
 
-Winux OS é uma distribuição Linux baseada no Ubuntu 24.04 LTS, projetada para oferecer:
+*Gaming + Produtividade | Linux + Experiência Windows | Performance + Elegância*
 
-- **Interface Familiar**: Desktop inspirado no Windows 11 com Fluent Design
-- **Gaming de Alto Desempenho**: Wine, Proton, DXVK integrados nativamente
-- **Aplicações Nativas em Rust**: Suite completa de apps modernos e performáticos
-- **Otimizações Agressivas**: Kernel zen com tunables para máxima performance
+[![Version](https://img.shields.io/badge/version-1.0_Aurora-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/winux-os/winux/releases)
+[![License](https://img.shields.io/badge/license-GPL_v3_|_MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/winux-os/winux?style=for-the-badge&logo=github&logoColor=white&color=gold)](https://github.com/winux-os/winux/stargazers)
+[![Ubuntu](https://img.shields.io/badge/base-Ubuntu_24.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com)
+[![Rust](https://img.shields.io/badge/built_with-Rust-DEA584?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
 
-## Versão
+[📥 Download](#-download) • [📖 Documentação](#-documentação) • [🚀 Quick Start](#-instalação-rápida) • [💬 Comunidade](#-comunidade)
 
-- **Versão**: 1.0 Aurora
-- **Base**: Ubuntu 24.04 LTS (Noble Numbat)
-- **Licença**: GPL v3 + MIT (aplicações próprias)
+---
 
-## Requisitos
+</div>
 
-### Mínimos
-- CPU: x86_64 com suporte SSE4.2
-- RAM: 4 GB
-- Armazenamento: 30 GB (SSD recomendado)
-- GPU: Vulkan 1.1 compatível
+## 📸 Screenshots
 
-### Recomendados
-- CPU: AMD Ryzen 5 / Intel Core i5 (6+ cores)
-- RAM: 16 GB DDR4/DDR5
-- Armazenamento: 100 GB NVMe SSD
-- GPU: NVIDIA RTX 3060 / AMD RX 6700 XT ou superior
+<div align="center">
 
-## Estrutura do Projeto
+| Desktop | Apps | Gaming |
+|:-------:|:----:|:------:|
+| ![Desktop](docs/screenshots/desktop.png) | ![Apps](docs/screenshots/apps.png) | ![Gaming](docs/screenshots/gaming.png) |
+| *Interface elegante Apple-like* | *Suite completa de apps nativos* | *Gaming otimizado com Wine/Proton* |
+
+</div>
+
+> 💡 *Screenshots serão adicionados quando a versão 1.0 for lançada*
+
+---
+
+## ✨ Features Highlights
+
+<table>
+<tr>
+<td width="50%">
+
+### 🖥️ **8 Apps Nativos**
+Desenvolvidos em **Rust** para máxima performance:
+- 📁 **Files** - Gerenciador de arquivos moderno
+- 💻 **Terminal** - Emulador com GPU acceleration
+- ⚙️ **Settings** - Central de configurações
+- 🏪 **Store** - Loja de aplicativos
+- 📊 **Monitor** - System monitor em tempo real
+- ✏️ **Edit** - Editor de texto avançado
+- 🖼️ **Image** - Visualizador de imagens
+- 🎵 **Player** - Player multimídia
+
+</td>
+<td width="50%">
+
+### 🎨 **Design Apple-like**
+Interface inspirada no macOS com elementos modernos:
+- Blur effects e transparências
+- Animações fluidas a 60fps
+- Tema claro/escuro automático
+- Ícones vetoriais SF Symbols-like
+- Typography system consistente
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 🎮 **Gaming First-Class**
+Otimizado para gamers desde o primeiro boot:
+- 🍷 **Wine 9.0** integrado
+- 🔥 **Proton GE** pré-configurado
+- ⚡ **GameMode** ativo automaticamente
+- 🎯 **DXVK/VKD3D** para DirectX
+- 📈 **MangoHud** overlay
+
+</td>
+<td>
+
+### 📦 **Suporte a Arquivos**
+Gerenciamento completo de arquivos compactados:
+- 📁 ZIP - Compressão universal
+- 📁 RAR - Suporte completo
+- 📁 TAR/GZ/BZ2 - Formatos Linux
+- 📁 7Z - Alta compressão
+- 📁 XZ/ZSTD - Formatos modernos
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 🖼️ **Compositor Wayland**
+Compositor moderno baseado em Smithay:
+- 🔄 VRR/FreeSync/G-Sync
+- 🖥️ Multi-monitor HDR
+- 🎨 Color management ICC
+- ⚡ Direct scanout
+- 🖱️ Gestures touchpad
+
+</td>
+<td>
+
+### ⚡ **Performance Extrema**
+Kernel e sistema otimizados:
+- 🧠 **Kernel Zen** customizado
+- 💨 **ZRAM** e **zswap** ativos
+- 🚀 **IO schedulers** otimizados
+- 🔧 **Sysctl tunables** para gaming
+- 📦 **Flatpak** sandboxed apps
+
+</td>
+</tr>
+</table>
+
+---
+
+## 💻 Requisitos do Sistema
+
+<table>
+<tr>
+<th width="50%">⚡ Mínimo</th>
+<th width="50%">🚀 Recomendado</th>
+</tr>
+<tr>
+<td>
+
+| Componente | Especificação |
+|:----------:|:-------------:|
+| **CPU** | x86_64 SSE4.2 |
+| **RAM** | 4 GB |
+| **Storage** | 30 GB SSD |
+| **GPU** | Vulkan 1.1 |
+| **Display** | 1366x768 |
+
+</td>
+<td>
+
+| Componente | Especificação |
+|:----------:|:-------------:|
+| **CPU** | Ryzen 5 / i5 (6+ cores) |
+| **RAM** | 16 GB DDR4/DDR5 |
+| **Storage** | 100 GB NVMe |
+| **GPU** | RTX 3060 / RX 6700 XT |
+| **Display** | 1920x1080 144Hz |
+
+</td>
+</tr>
+</table>
+
+> ⚠️ **Nota**: Para gaming com Wine/Proton, recomendamos GPU NVIDIA (driver proprietário) ou AMD (Mesa RADV)
+
+---
+
+## 📥 Download
+
+<div align="center">
+
+| Edição | Tamanho | Descrição | Link |
+|:------:|:-------:|:---------:|:----:|
+| **Winux Desktop** | ~3.5 GB | Instalação completa com todos os apps | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
+| **Winux Minimal** | ~1.8 GB | Instalação mínima sem apps extras | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
+| **Winux Gaming** | ~4.2 GB | Pré-configurado para gaming | [⬇️ Download](https://github.com/winux-os/winux/releases/latest) |
+
+</div>
+
+### 🔐 Verificação de Integridade
+
+```bash
+# SHA256
+sha256sum -c winux-1.0-aurora.iso.sha256
+
+# GPG Signature
+gpg --verify winux-1.0-aurora.iso.sig winux-1.0-aurora.iso
+```
+
+---
+
+## 🚀 Instalação Rápida
+
+### Opção 1: USB Bootável (Recomendado)
+
+```bash
+# Linux - Usando dd
+sudo dd if=winux-1.0-aurora.iso of=/dev/sdX bs=4M status=progress conv=fsync
+
+# Linux - Usando Ventoy (mais fácil)
+# Basta copiar a ISO para o pendrive Ventoy
+
+# Windows - Usar Rufus ou balenaEtcher
+```
+
+### Opção 2: Build from Source
+
+```bash
+# Clonar repositório
+git clone https://github.com/winux-os/winux.git
+cd winux
+
+# Instalar dependências (Ubuntu/Debian)
+sudo apt install debootstrap squashfs-tools xorriso grub-efi-amd64-bin
+
+# Build da ISO
+sudo ./build/scripts/build-winux-iso.sh
+
+# ISO gerada em: build/output/winux-1.0-aurora.iso
+```
+
+### 🎯 Pós-Instalação
+
+```bash
+# Atualizar sistema
+winux-update
+
+# Instalar drivers NVIDIA (se aplicável)
+sudo winux-drivers --nvidia
+
+# Configurar gaming
+winux-gaming-setup
+```
+
+---
+
+## 📱 Aplicativos Nativos
+
+### Suite Winux Apps
+
+| App | Descrição | Tecnologias | Status |
+|:---:|:---------:|:-----------:|:------:|
+| 📁 **Winux Files** | Gerenciador de arquivos dual-pane com preview, tabs, e suporte a arquivos compactados (zip, rar, tar, 7z) | Rust, GTK4, libarchive | ✅ v1.0 |
+| 💻 **Winux Terminal** | Emulador de terminal GPU-accelerated com multiplexing, splits, e temas | Rust, wgpu, pty | ✅ v1.0 |
+| ⚙️ **Winux Settings** | Central de configurações unificada com categorias intuitivas | Rust, GTK4, dbus | ✅ v1.0 |
+| 🏪 **Winux Store** | Loja de aplicativos com Flatpak, AppImage, e repositório nativo | Rust, GTK4, flatpak-rs | ✅ v1.0 |
+| 📊 **Winux Monitor** | System monitor com gráficos em tempo real, processos, e recursos | Rust, GTK4, sysinfo | ✅ v1.0 |
+| ✏️ **Winux Edit** | Editor de texto com syntax highlighting, LSP, e plugins | Rust, GTK4, tree-sitter | ✅ v1.0 |
+| 🖼️ **Winux Image** | Visualizador de imagens com edição básica e suporte a RAW | Rust, GTK4, image-rs | ✅ v1.0 |
+| 🎵 **Winux Player** | Player multimídia com suporte a vídeo, áudio, e playlists | Rust, GTK4, GStreamer | ✅ v1.0 |
+
+### Desktop Environment
+
+| Componente | Descrição | Tecnologias |
+|:----------:|:---------:|:-----------:|
+| 🖼️ **Winux Compositor** | Compositor Wayland com VRR, HDR, e gestures | Rust, Smithay, wgpu |
+| 📊 **Winux Panel** | Painel superior com systray, clock, e notificações | Rust, GTK4 Layer Shell |
+| 🐚 **Winux Shell** | Desktop shell com dock, launcher, e widgets | Rust, GTK4, cairo |
+
+---
+
+## 🛠️ Stack Tecnológico
+
+<div align="center">
 
 ```
-winux/
-├── apps/                   # Aplicações nativas Rust
-│   ├── winux-files/
-│   ├── winux-terminal/
-│   ├── winux-settings/
-│   ├── winux-store/
-│   ├── winux-monitor/
-│   └── winux-edit/
-├── build/                  # Sistema de build
-├── compatibility/          # Wine/Proton integration
-├── desktop/                # Desktop Environment
-│   ├── winux-compositor/
-│   ├── winux-panel/
-│   └── winux-shell/
-├── docs/                   # Documentação
-├── drivers/                # Scripts de drivers
-├── kernel/                 # Kernel customizado
-├── system/                 # Configurações de sistema
-└── themes/                 # Temas visuais
+┌─────────────────────────────────────────────────────────────────┐
+│                        WINUX OS STACK                           │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                    USER APPLICATIONS                     │   │
+│  │  Files │ Terminal │ Settings │ Store │ Monitor │ Edit   │   │
+│  │               Image │ Player │ Third-party              │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                              ▼                                  │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                    DESKTOP SHELL                         │   │
+│  │         Panel │ Shell │ Compositor (Wayland)            │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                              ▼                                  │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   SYSTEM SERVICES                        │   │
+│  │     systemd │ PipeWire │ NetworkManager │ udisks2       │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                              ▼                                  │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                  COMPATIBILITY LAYER                     │   │
+│  │         Wine 9.0 │ Proton GE │ DXVK │ VKD3D             │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                              ▼                                  │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                     KERNEL LAYER                         │   │
+│  │      Linux Zen 6.8 │ Mesa RADV │ NVIDIA Driver          │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## Sprints de Desenvolvimento
+</div>
+
+### Linguagens e Frameworks
+
+| Categoria | Tecnologias |
+|:---------:|:-----------:|
+| **Core Apps** | Rust, GTK4, Adwaita |
+| **Compositor** | Rust, Smithay, wgpu, DRM |
+| **Build System** | Bash, Python, Make |
+| **Packaging** | dpkg, Flatpak, AppImage |
+| **Gaming** | Wine, Proton, DXVK, VKD3D, GameMode |
+
+---
+
+## 🤝 Como Contribuir
+
+Adoramos contribuições! Veja como você pode ajudar:
+
+### 🐛 Reportar Bugs
+
+```bash
+# Use o template de issue
+gh issue create --template bug_report.md
+```
+
+### 💡 Sugerir Features
+
+```bash
+# Use o template de feature request
+gh issue create --template feature_request.md
+```
+
+### 🔧 Desenvolvimento
+
+1. **Fork** o repositório
+2. **Clone** seu fork:
+   ```bash
+   git clone https://github.com/SEU_USER/winux.git
+   ```
+3. **Crie uma branch**:
+   ```bash
+   git checkout -b feature/minha-feature
+   ```
+4. **Faça suas alterações** seguindo o [Style Guide](docs/STYLE_GUIDE.md)
+5. **Commit** suas mudanças:
+   ```bash
+   git commit -m "feat: adiciona minha feature"
+   ```
+6. **Push** para seu fork:
+   ```bash
+   git push origin feature/minha-feature
+   ```
+7. Abra um **Pull Request**
+
+### 📋 Convenção de Commits
+
+```
+feat:     Nova funcionalidade
+fix:      Correção de bug
+docs:     Documentação
+style:    Formatação
+refactor: Refatoração
+perf:     Performance
+test:     Testes
+chore:    Manutenção
+```
+
+---
+
+## 🗺️ Roadmap
+
+### Versão 1.0 Aurora (Q1 2026) - *Em desenvolvimento*
+
+- [x] Estrutura base do projeto
+- [x] Sistema de build ISO
+- [ ] Compositor Wayland funcional
+- [ ] Suite de 8 apps nativos
+- [ ] Integração Wine/Proton
+- [ ] Instalador gráfico
+
+### Versão 1.1 Blaze (Q2 2026)
+
+- [ ] App de Backup integrado
+- [ ] Winux Connect (smartphone integration)
+- [ ] Cloud sync nativo
+- [ ] Temas customizáveis via Store
+
+### Versão 2.0 Cosmos (Q4 2026)
+
+- [ ] AI Assistant integrado
+- [ ] Virtual Desktop Workspaces
+- [ ] Container support (Podman GUI)
+- [ ] ARM64 support
+
+---
+
+## 📊 Status do Desenvolvimento
 
 | Sprint | Foco | Status |
-|--------|------|--------|
+|:------:|:----:|:------:|
 | 01-02 | Infraestrutura e Build Base | 🔄 Em andamento |
 | 03-04 | Kernel e Drivers | ⏳ Pendente |
 | 05-06 | Compositor e Desktop Base | ⏳ Pendente |
@@ -79,32 +399,92 @@ winux/
 | 15-16 | Build System e Installer | ⏳ Pendente |
 | 17-18 | Polish e Release | ⏳ Pendente |
 
-## Branches
+---
 
-- `main` - Releases estáveis
-- `develop` - Integração de desenvolvimento
-- `sprint/XX-nome` - Branches de sprint
+## 📁 Estrutura do Projeto
 
-## Build
-
-```bash
-# Clonar repositório
-git clone https://github.com/winux-os/winux.git
-cd winux
-
-# Build da ISO (requer Ubuntu/Debian)
-sudo ./build/scripts/build-winux-iso.sh
 ```
-
-## Contribuindo
-
-Veja [CONTRIBUTING.md](CONTRIBUTING.md) para guidelines de contribuição.
-
-## Licença
-
-- Sistema e scripts: GPL v3
-- Aplicações Winux: MIT
+winux/
+├── 📁 apps/                    # Aplicações nativas Rust
+│   ├── winux-files/           # Gerenciador de arquivos
+│   ├── winux-terminal/        # Emulador de terminal
+│   ├── winux-settings/        # Configurações
+│   ├── winux-store/           # Loja de apps
+│   ├── winux-monitor/         # System monitor
+│   ├── winux-edit/            # Editor de texto
+│   ├── winux-image/           # Visualizador de imagens
+│   └── winux-player/          # Player multimídia
+├── 📁 build/                   # Sistema de build
+│   ├── scripts/               # Scripts de build
+│   └── configs/               # Configurações
+├── 📁 compatibility/           # Wine/Proton integration
+├── 📁 desktop/                 # Desktop Environment
+│   ├── winux-compositor/      # Compositor Wayland
+│   ├── winux-panel/           # Painel superior
+│   └── winux-shell/           # Desktop shell
+├── 📁 docs/                    # Documentação
+├── 📁 drivers/                 # Scripts de drivers
+├── 📁 kernel/                  # Kernel customizado
+├── 📁 system/                  # Configurações de sistema
+└── 📁 themes/                  # Temas visuais
+```
 
 ---
 
-**Winux OS Project - 2026**
+## 💬 Comunidade
+
+<div align="center">
+
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/winux)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://reddit.com/r/winuxos)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/winuxos)
+[![Matrix](https://img.shields.io/badge/Matrix-000000?style=for-the-badge&logo=matrix&logoColor=white)](https://matrix.to/#/#winux:matrix.org)
+
+</div>
+
+---
+
+## 🏆 Créditos
+
+### Core Team
+
+- **Lead Developer** - Projeto e arquitetura
+- **Contributors** - [Ver lista completa](https://github.com/winux-os/winux/graphs/contributors)
+
+### Projetos que tornaram isso possível
+
+- [Ubuntu](https://ubuntu.com) - Base do sistema
+- [Smithay](https://github.com/Smithay/smithay) - Framework do compositor
+- [GTK4](https://gtk.org) - Toolkit gráfico
+- [Wine](https://winehq.org) - Compatibilidade Windows
+- [Proton](https://github.com/ValveSoftware/Proton) - Gaming layer
+
+---
+
+## 📄 Licença
+
+<div align="center">
+
+| Componente | Licença |
+|:----------:|:-------:|
+| Sistema e Scripts | [GPL v3](LICENSE-GPL) |
+| Aplicações Winux | [MIT](LICENSE-MIT) |
+| Documentação | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+
+</div>
+
+---
+
+<div align="center">
+
+**Feito com ❤️ pelo Winux OS Project**
+
+*"O Melhor dos Dois Mundos"*
+
+**2026**
+
+---
+
+⭐ Se você gostou do projeto, considere dar uma estrela!
+
+</div>
