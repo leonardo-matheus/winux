@@ -218,9 +218,16 @@ mount_chroot() {
     mount -t sysfs none "${CHROOT_DIR}/sys"
     mount -t tmpfs none "${CHROOT_DIR}/run"
 
-    # DNS
+    # DNS - handle both regular resolv.conf and systemd-resolved
     mkdir -p "${CHROOT_DIR}/run/systemd/resolve"
-    cp /etc/resolv.conf "${CHROOT_DIR}/etc/" 2>/dev/null || true
+    if [[ -L /etc/resolv.conf ]]; then
+        # systemd-resolved: copy the actual content
+        cat /etc/resolv.conf > "${CHROOT_DIR}/etc/resolv.conf" 2>/dev/null || \
+        echo "nameserver 8.8.8.8" > "${CHROOT_DIR}/etc/resolv.conf"
+    else
+        cp /etc/resolv.conf "${CHROOT_DIR}/etc/" 2>/dev/null || \
+        echo "nameserver 8.8.8.8" > "${CHROOT_DIR}/etc/resolv.conf"
+    fi
 
     log_info "Filesystems montados"
 }
@@ -344,7 +351,6 @@ apt install -y \
 # Live session
 apt install -y \
     casper \
-    lupin-casper \
     discover \
     laptop-detect \
     os-prober \
@@ -355,7 +361,6 @@ apt install -y \
 # Instalador Calamares
 apt install -y \
     calamares \
-    calamares-settings-ubuntu \
     libkf5parts5 \
     qml-module-qtquick2 \
     qml-module-qtquick-window2 \
@@ -377,14 +382,16 @@ apt install -y \
     file-roller \
     gnome-screenshot
 
-# Gaming e compatibilidade
+# Gaming e compatibilidade (steam-installer pode falhar em algumas versoes)
 apt install -y \
-    steam-installer \
     gamemode \
     mangohud \
     lutris \
     wine64 \
     winetricks
+
+# Steam (opcional - pode ter dependencias quebradas)
+apt install -y steam-installer || echo 'Steam installer nao disponivel, pulando...'
 
 # Limpar
 apt clean
