@@ -1,0 +1,182 @@
+/* Winux Files - Custom Styles */
+
+/* Sidebar styling */
+.sidebar {
+    background-color: @theme_bg_color;
+    border-right: 1px solid @borders;
+}
+
+.sidebar .heading {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: @theme_fg_color;
+    opacity: 0.7;
+}
+
+.navigation-sidebar row {
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin: 2px 4px;
+}
+
+.navigation-sidebar row:selected {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.navigation-sidebar row:hover:not(:selected) {
+    background-color: alpha(@theme_fg_color, 0.1);
+}
+
+/* File grid items */
+flowbox > flowboxchild {
+    border-radius: 8px;
+    padding: 4px;
+    transition: background-color 150ms ease;
+}
+
+flowbox > flowboxchild:selected {
+    background-color: @accent_bg_color;
+}
+
+flowbox > flowboxchild:hover:not(:selected) {
+    background-color: alpha(@theme_fg_color, 0.08);
+}
+
+/* File list view */
+listview > row {
+    padding: 4px 8px;
+}
+
+listview > row:selected {
+    background-color: @accent_bg_color;
+}
+
+/* Toolbar styling */
+.toolbar {
+    padding: 4px 8px;
+    background-color: @theme_bg_color;
+    border-top: 1px solid @borders;
+}
+
+/* Path bar */
+.path-bar {
+    background-color: @view_bg_color;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.path-bar button {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+}
+
+.path-bar button:hover {
+    background-color: alpha(@theme_fg_color, 0.1);
+}
+
+/* Search bar */
+searchbar {
+    background-color: @theme_bg_color;
+    border-bottom: 1px solid @borders;
+}
+
+searchentry {
+    border-radius: 20px;
+}
+
+/* Status bar */
+.statusbar {
+    padding: 4px 8px;
+    font-size: 0.85em;
+    color: @theme_fg_color;
+    opacity: 0.8;
+}
+
+/* File type specific icons */
+.file-icon-folder {
+    color: @accent_color;
+}
+
+.file-icon-image {
+    color: #e040fb;
+}
+
+.file-icon-audio {
+    color: #ff5722;
+}
+
+.file-icon-video {
+    color: #f44336;
+}
+
+.file-icon-document {
+    color: #2196f3;
+}
+
+.file-icon-archive {
+    color: #795548;
+}
+
+/* Progress bar for file operations */
+.file-progress {
+    border-radius: 4px;
+    min-height: 6px;
+}
+
+.file-progress progress {
+    border-radius: 4px;
+    background-color: @accent_bg_color;
+}
+
+/* Context menu styling */
+popover.menu {
+    padding: 4px;
+}
+
+popover.menu modelbutton {
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+popover.menu modelbutton:hover {
+    background-color: alpha(@theme_fg_color, 0.1);
+}
+
+/* Drag and drop styling */
+.drag-icon {
+    background-color: @theme_bg_color;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+flowbox > flowboxchild.drop-target {
+    background-color: alpha(@accent_color, 0.2);
+    border: 2px dashed @accent_color;
+}
+
+/* Properties dialog */
+.properties-grid {
+    padding: 16px;
+}
+
+.properties-grid label.dim-label {
+    opacity: 0.7;
+}
+
+.properties-icon {
+    margin-bottom: 16px;
+}
+
+/* Empty folder message */
+.empty-folder {
+    padding: 32px;
+    opacity: 0.5;
+}
+
+.empty-folder image {
+    margin-bottom: 16px;
+}
