@@ -1,0 +1,51 @@
+[package]
+name = "winux-player"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Native video player for Winux OS with GStreamer backend"
+
+[dependencies]
+# GTK4/Adwaita UI
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# GStreamer multimedia
+gstreamer = "0.22"
+gstreamer-video = "0.22"
+gstreamer-audio = "0.22"
+gstreamer-player = "0.22"
+gstreamer-pbutils = "0.22"
+gst-plugin-gtk4 = "0.12"
+
+# Async runtime
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+
+# Serialization/Config
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Error handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+# Utilities
+dirs.workspace = true
+chrono.workspace = true
+url = "2.5"
+regex = "1.10"
+
+[features]
+default = []
+vaapi = []  # Hardware acceleration support

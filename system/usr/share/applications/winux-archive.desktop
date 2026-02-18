@@ -1,0 +1,62 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Archive Manager
+Name[pt_BR]=Gerenciador de Arquivos Compactados Winux
+Name[es]=Gestor de Archivos Comprimidos Winux
+Name[fr]=Gestionnaire d'Archives Winux
+Name[de]=Winux Archiv-Manager
+GenericName=Archive Manager
+GenericName[pt_BR]=Gerenciador de Arquivos Compactados
+GenericName[es]=Gestor de Archivos Comprimidos
+GenericName[fr]=Gestionnaire d'Archives
+GenericName[de]=Archiv-Manager
+Comment=Create and extract archives
+Comment[pt_BR]=Crie e extraia arquivos compactados
+Comment[es]=Cree y extraiga archivos comprimidos
+Comment[fr]=Creer et extraire des archives
+Comment[de]=Archive erstellen und entpacken
+Keywords=archive;zip;tar;rar;7z;compress;extract;gzip;bzip;xz;zstd;
+Keywords[pt_BR]=arquivo;zip;tar;rar;7z;compactar;extrair;gzip;bzip;xz;zstd;
+Exec=/usr/bin/winux-files --archive %U
+Icon=winux-archive
+Terminal=false
+Categories=Utility;Archiving;GTK;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-files
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+X-AppStream-Ignore=false
+
+# MIME types this application can open
+MimeType=application/zip;application/x-zip;application/x-zip-compressed;application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-xz-compressed-tar;application/x-zstd-compressed-tar;application/gzip;application/x-gzip;application/x-bzip;application/x-bzip2;application/x-xz;application/x-lzma;application/zstd;application/x-zstd;application/vnd.rar;application/x-rar;application/x-rar-compressed;application/x-7z-compressed;
+
+# Actions
+Actions=extract-here;extract-to;compress;
+
+[Desktop Action extract-here]
+Name=Extract Here
+Name[pt_BR]=Extrair Aqui
+Name[es]=Extraer Aqui
+Name[fr]=Extraire Ici
+Name[de]=Hier Entpacken
+Exec=/usr/bin/winux-files --extract-here %U
+Icon=archive-extract-symbolic
+
+[Desktop Action extract-to]
+Name=Extract To...
+Name[pt_BR]=Extrair Para...
+Name[es]=Extraer En...
+Name[fr]=Extraire Vers...
+Name[de]=Entpacken Nach...
+Exec=/usr/bin/winux-files --extract-to %U
+Icon=folder-symbolic
+
+[Desktop Action compress]
+Name=Compress
+Name[pt_BR]=Compactar
+Name[es]=Comprimir
+Name[fr]=Compresser
+Name[de]=Komprimieren
+Exec=/usr/bin/winux-files --compress %U
+Icon=archive-insert-symbolic
