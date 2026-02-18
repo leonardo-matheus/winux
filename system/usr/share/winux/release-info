@@ -1,0 +1,78 @@
+# Winux OS Release Information
+# This file contains information about the current Winux OS release
+
+WINUX_VERSION="1.0.0"
+WINUX_CODENAME="aurora"
+WINUX_RELEASE_DATE="2026-02-18"
+WINUX_BUILD_ID="20260218.001"
+
+# Distribution Base
+DISTRO_BASE="Ubuntu"
+DISTRO_BASE_VERSION="24.04"
+DISTRO_BASE_CODENAME="noble"
+
+# Pretty Names
+PRETTY_NAME="Winux OS 1.0 Aurora"
+NAME="Winux OS"
+VERSION="1.0.0 (Aurora)"
+VERSION_ID="1.0.0"
+VERSION_CODENAME="aurora"
+ID="winux"
+ID_LIKE="ubuntu debian"
+
+# URLs
+HOME_URL="https://winux-os.org"
+SUPPORT_URL="https://forum.winux-os.org"
+BUG_REPORT_URL="https://github.com/winux-os/winux/issues"
+PRIVACY_POLICY_URL="https://winux-os.org/privacy"
+DOCUMENTATION_URL="https://docs.winux-os.org"
+
+# Branding
+LOGO="winux-logo"
+ANSI_COLOR="38;2;0;150;255"
+
+# Build Information
+BUILD_TYPE="stable"
+BUILD_ARCH="amd64"
+BUILD_KERNEL="6.8.0-zen"
+
+# Component Versions
+WINUX_SHELL_VERSION="1.0.0"
+WINUX_COMPOSITOR_VERSION="1.0.0"
+WINUX_PANEL_VERSION="1.0.0"
+WINUX_FILES_VERSION="1.0.0"
+WINUX_TERMINAL_VERSION="1.0.0"
+WINUX_SETTINGS_VERSION="1.0.0"
+WINUX_STORE_VERSION="1.0.0"
+WINUX_MONITOR_VERSION="1.0.0"
+WINUX_EDIT_VERSION="1.0.0"
+
+# Gaming Stack Versions
+WINE_VERSION="9.0"
+DXVK_VERSION="2.3.1"
+VKD3D_VERSION="2.11.1"
+MANGOHUD_VERSION="0.7.1"
+GAMEMODE_VERSION="1.8.1"
+
+# Feature Flags
+FEATURE_WAYLAND="enabled"
+FEATURE_XWAYLAND="enabled"
+FEATURE_PIPEWIRE="enabled"
+FEATURE_GAMEMODE="enabled"
+FEATURE_WINE="enabled"
+FEATURE_FLATPAK="enabled"
+FEATURE_SNAP="disabled"
+
+# Update Channel
+UPDATE_CHANNEL="stable"
+UPDATE_URL="https://updates.winux-os.org/stable"
+
+# Checksums (updated during release)
+ISO_SHA256=""
+ISO_SIZE=""
+
+# License
+LICENSE="GPL-3.0+ AND MIT"
+LICENSE_URL="https://github.com/winux-os/winux/blob/main/LICENSE"
+
+# EOF
