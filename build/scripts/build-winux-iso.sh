@@ -348,6 +348,20 @@ apt install -y \
     lshw \
     dmidecode
 
+# Display Manager e Plymouth
+apt install -y \
+    sddm \
+    plymouth \
+    plymouth-themes
+
+# Sistema adicional
+apt install -y \
+    cups \
+    cups-browsed \
+    flatpak \
+    ufw \
+    util-linux
+
 # Live session
 apt install -y \
     casper \
@@ -654,6 +668,28 @@ EOF
     if [[ -d "${system_dir}" ]]; then
         cp -r "${system_dir}"/etc/* "${CHROOT_DIR}/etc/" 2>/dev/null || true
         log_info "Configuracoes de sistema copiadas"
+    fi
+
+    # Instalar tema Plymouth
+    log_step "Instalando tema Plymouth Winux..."
+
+    local plymouth_src="${PROJECT_ROOT}/themes/plymouth/winux"
+    local plymouth_dest="${CHROOT_DIR}/usr/share/plymouth/themes/winux"
+
+    if [[ -d "${plymouth_src}" ]]; then
+        mkdir -p "${plymouth_dest}"
+        cp -r "${plymouth_src}"/* "${plymouth_dest}/"
+
+        # Configurar como tema padrão
+        run_in_chroot "
+if command -v plymouth-set-default-theme &> /dev/null; then
+    plymouth-set-default-theme winux || true
+fi
+" 2>/dev/null || true
+
+        log_info "Tema Plymouth instalado: ${plymouth_dest}"
+    else
+        log_warn "Tema Plymouth nao encontrado: ${plymouth_src}"
     fi
 }
 

@@ -1,0 +1,128 @@
+// Winux Plymouth Theme Script
+// Simple text-based theme with progress bar
+
+// Background color (dark modern)
+Window.SetBackgroundTopColor(0.07, 0.07, 0.09);
+Window.SetBackgroundBottomColor(0.04, 0.04, 0.06);
+
+// Brand text "WINUX"
+logo_text = Image.Text("W I N U X", 1, 1, 1, 1, "Sans Bold 48");
+logo_sprite = Sprite(logo_text);
+logo_sprite.SetX(Window.GetWidth() / 2 - logo_text.GetWidth() / 2);
+logo_sprite.SetY(Window.GetHeight() / 2 - 80);
+logo_sprite.SetOpacity(1);
+
+// Tagline
+tagline_text = Image.Text("Gaming-First Linux", 0.6, 0.6, 0.7, 1, "Sans 16");
+tagline_sprite = Sprite(tagline_text);
+tagline_sprite.SetX(Window.GetWidth() / 2 - tagline_text.GetWidth() / 2);
+tagline_sprite.SetY(Window.GetHeight() / 2 - 20);
+
+// Spinner animation using text
+spinner_chars = ["|", "/", "-", "\\"];
+spinner_index = 0;
+spinner_sprite = Sprite();
+spinner_sprite.SetX(Window.GetWidth() / 2 - 10);
+spinner_sprite.SetY(Window.GetHeight() / 2 + 60);
+
+fun refresh_callback() {
+    spinner_index++;
+    if (spinner_index >= 4)
+        spinner_index = 0;
+
+    spinner_image = Image.Text(spinner_chars[spinner_index], 0.4, 0.6, 1, 1, "Mono Bold 24");
+    spinner_sprite.SetImage(spinner_image);
+    spinner_sprite.SetX(Window.GetWidth() / 2 - spinner_image.GetWidth() / 2);
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+// Progress bar background
+progress_width = 300;
+progress_height = 6;
+
+// Draw progress bar box
+fun draw_progress_box() {
+    box = Image(progress_width + 4, progress_height + 4);
+    box.Clear(0.2, 0.2, 0.25, 1);
+    box_sprite = Sprite(box);
+    box_sprite.SetX(Window.GetWidth() / 2 - (progress_width + 4) / 2);
+    box_sprite.SetY(Window.GetHeight() - 80);
+    return box_sprite;
+}
+
+progress_box_sprite = draw_progress_box();
+
+// Progress bar fill
+progress_bar_sprite = Sprite();
+progress_bar_sprite.SetX(Window.GetWidth() / 2 - progress_width / 2);
+progress_bar_sprite.SetY(Window.GetHeight() - 78);
+
+fun progress_callback(duration, progress) {
+    if (progress > 0) {
+        bar_width = Math.Int(progress_width * progress);
+        if (bar_width > 0) {
+            bar = Image(bar_width, progress_height);
+            // Blue gradient effect
+            bar.Clear(0.2, 0.5, 1, 1);
+            progress_bar_sprite.SetImage(bar);
+        }
+    }
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);
+
+// Status message
+status_sprite = Sprite();
+
+fun message_callback(text) {
+    status_image = Image.Text(text, 0.5, 0.5, 0.55, 1, "Sans 12");
+    status_sprite.SetImage(status_image);
+    status_sprite.SetX(Window.GetWidth() / 2 - status_image.GetWidth() / 2);
+    status_sprite.SetY(Window.GetHeight() - 50);
+}
+
+Plymouth.SetMessageFunction(message_callback);
+
+// Password prompt
+password_prompt_sprite = Sprite();
+password_entry_sprite = Sprite();
+
+fun display_password_callback(prompt, bullets) {
+    prompt_image = Image.Text(prompt, 0.9, 0.9, 0.9, 1, "Sans 14");
+    password_prompt_sprite.SetImage(prompt_image);
+    password_prompt_sprite.SetX(Window.GetWidth() / 2 - prompt_image.GetWidth() / 2);
+    password_prompt_sprite.SetY(Window.GetHeight() / 2 + 120);
+
+    bullet_string = "";
+    for (i = 0; i < bullets; i++) {
+        bullet_string += "●";
+    }
+
+    if (bullets > 0) {
+        entry_image = Image.Text(bullet_string, 0.4, 0.6, 1, 1, "Sans Bold 18");
+        password_entry_sprite.SetImage(entry_image);
+        password_entry_sprite.SetX(Window.GetWidth() / 2 - entry_image.GetWidth() / 2);
+        password_entry_sprite.SetY(Window.GetHeight() / 2 + 150);
+    }
+}
+
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+// Normal/FSCK display
+fun display_normal_callback() {
+    // Nothing special
+}
+
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+// Quit function
+fun quit_callback() {
+    logo_sprite.SetOpacity(0);
+    tagline_sprite.SetOpacity(0);
+    spinner_sprite.SetOpacity(0);
+    progress_bar_sprite.SetOpacity(0);
+    progress_box_sprite.SetOpacity(0);
+}
+
+Plymouth.SetQuitFunction(quit_callback);
