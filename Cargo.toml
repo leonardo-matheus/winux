@@ -42,8 +42,8 @@ smithay-drm-extras = "0.1"
 wayland-server = "0.31"
 wayland-protocols = "0.31"
 
-# Terminal (using gtk4 0.8 compatible version)
-vte4 = "0.8"
+# Terminal (vte4 0.7 is compatible with gtk4 0.8)
+vte4 = "0.7"
 
 # Editor (using gtk4 0.8 compatible version)
 sourceview5 = "0.8"
