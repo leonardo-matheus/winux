@@ -7,7 +7,28 @@ license.workspace = true
 description = "Wayland compositor for Winux OS"
 
 [dependencies]
+# Wayland/Compositor
+smithay = { workspace = true, features = ["backend_drm", "backend_libinput", "backend_udev", "backend_session_libseat", "backend_winit", "renderer_glow", "wayland_frontend"] }
+smithay-drm-extras.workspace = true
+wayland-server.workspace = true
+wayland-protocols.workspace = true
+
+# Async Runtime
 tokio.workspace = true
-tracing.workspace = true
-tracing-subscriber.workspace = true
+futures.workspace = true
+
+# Serialization
+serde.workspace = true
+toml.workspace = true
+
+# Error Handling
 anyhow.workspace = true
+thiserror.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+
+# Utilities
+dirs.workspace = true
+chrono.workspace = true
