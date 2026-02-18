@@ -937,10 +937,18 @@ phase_prepare_boot() {
 set timeout=10
 set default=0
 
+# Procurar o dispositivo de boot pelo label do volume
+search --set=root --label WINUX_1_0 --no-floppy
+if [ -z "$root" ]; then
+    search --set=root --file /casper/vmlinuz --no-floppy
+fi
+
 # Carrega modulos necessarios
 insmod all_video
 insmod gfxterm
-insmod png
+insmod part_gpt
+insmod part_msdos
+insmod iso9660
 
 # Configuracao de video
 if loadfont /boot/grub/fonts/unicode.pf2; then
@@ -1070,8 +1078,8 @@ phase_create_iso() {
     grub-mkstandalone \
         --format=i386-pc \
         --output="${ISO_DIR}/boot/grub/bios.img" \
-        --install-modules="linux normal iso9660 biosdisk memdisk search tar ls" \
-        --modules="linux normal iso9660 biosdisk search" \
+        --install-modules="linux normal iso9660 biosdisk memdisk search tar ls all_video gfxterm part_gpt part_msdos" \
+        --modules="linux normal iso9660 biosdisk search all_video part_gpt part_msdos" \
         --locales="" \
         --fonts="" \
         "boot/grub/grub.cfg=${ISO_DIR}/boot/grub/grub.cfg"
