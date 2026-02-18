@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Developer Setup
+Comment=Configure developer environment on first login
+Exec=/etc/winux/scripts/first-login-dev-setup.sh
+Terminal=true
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+OnlyShowIn=GNOME;Unity;

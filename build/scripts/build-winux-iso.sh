@@ -396,6 +396,117 @@ apt install -y \
     file-roller \
     gnome-screenshot
 
+# =========================================
+# DEVELOPER TOOLS - Winux Developer Edition
+# =========================================
+
+# Build essentials e compiladores
+apt install -y \
+    build-essential \
+    cmake \
+    ninja-build \
+    pkg-config \
+    autoconf \
+    automake \
+    libtool \
+    gcc \
+    g++ \
+    clang \
+    llvm \
+    gdb
+
+# Git avançado
+apt install -y \
+    git \
+    git-lfs \
+    git-flow \
+    gitk \
+    gh
+
+# Python completo
+apt install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-dev \
+    python3-setuptools \
+    python3-wheel \
+    pipx
+
+# PHP completo
+apt install -y \
+    php \
+    php-cli \
+    php-fpm \
+    php-mysql \
+    php-pgsql \
+    php-sqlite3 \
+    php-curl \
+    php-gd \
+    php-mbstring \
+    php-xml \
+    php-zip \
+    php-bcmath \
+    php-redis || true
+
+# Java OpenJDK
+apt install -y \
+    openjdk-21-jdk \
+    maven \
+    gradle || true
+
+# Servidores Web
+apt install -y \
+    apache2 \
+    nginx \
+    libapache2-mod-php || true
+
+# Desabilitar servidores por padrão
+systemctl disable apache2 nginx || true
+
+# Databases
+apt install -y \
+    postgresql \
+    postgresql-contrib \
+    mysql-server \
+    redis-server \
+    sqlite3 || true
+
+# Desabilitar databases por padrão
+systemctl disable postgresql mysql redis-server || true
+
+# Terminal tools modernas
+apt install -y \
+    zsh \
+    tmux \
+    fzf \
+    ripgrep \
+    fd-find \
+    jq \
+    tree \
+    ncdu \
+    htop \
+    btop \
+    tldr \
+    neofetch
+
+# Ferramentas de rede
+apt install -y \
+    net-tools \
+    dnsutils \
+    nmap \
+    mtr-tiny
+
+# Snap packages (IDEs)
+snap install code --classic || true
+snap install intellij-idea-community --classic || true
+snap install postman || true
+snap install insomnia || true
+
+# Docker
+curl -fsSL https://get.docker.com | sh || true
+apt install -y docker-compose-plugin || true
+
 # Gaming e compatibilidade (steam-installer pode falhar em algumas versoes)
 apt install -y \
     gamemode \
@@ -666,8 +777,28 @@ EOF
 
     local system_dir="${PROJECT_ROOT}/system"
     if [[ -d "${system_dir}" ]]; then
+        # Copiar /etc
         cp -r "${system_dir}"/etc/* "${CHROOT_DIR}/etc/" 2>/dev/null || true
+
+        # Copiar /usr/bin (utilitários Winux)
+        if [[ -d "${system_dir}/usr/bin" ]]; then
+            cp -r "${system_dir}"/usr/bin/* "${CHROOT_DIR}/usr/bin/" 2>/dev/null || true
+            chmod +x "${CHROOT_DIR}"/usr/bin/winux-* 2>/dev/null || true
+        fi
+
+        # Tornar scripts executáveis
+        chmod +x "${CHROOT_DIR}"/etc/winux/scripts/*.sh 2>/dev/null || true
+
         log_info "Configuracoes de sistema copiadas"
+    fi
+
+    # Copiar branding (logo)
+    log_step "Copiando branding..."
+    local branding_dir="${PROJECT_ROOT}/assets/branding"
+    if [[ -d "${branding_dir}" ]]; then
+        mkdir -p "${CHROOT_DIR}/usr/share/winux/branding"
+        cp -r "${branding_dir}"/* "${CHROOT_DIR}/usr/share/winux/branding/" 2>/dev/null || true
+        log_info "Branding copiado"
     fi
 
     # Instalar tema Plymouth
