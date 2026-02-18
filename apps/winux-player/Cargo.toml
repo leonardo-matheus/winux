@@ -6,15 +6,13 @@ authors.workspace = true
 license.workspace = true
 description = "Media player launcher for Winux OS"
 
+[[bin]]
+name = "winux-player"
+path = "src/main.rs"
+
 [dependencies]
-# GTK4/Adwaita UI
 gtk4.workspace = true
 libadwaita.workspace = true
 glib.workspace = true
 gio.workspace = true
-
-# Open files with system default player
 open = "5"
-
-[features]
-default = []
