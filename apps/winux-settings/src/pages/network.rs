@@ -22,10 +22,13 @@ impl NetworkPage {
         wifi_group.set_title("Wi-Fi");
 
         // Wi-Fi toggle
-        let wifi_toggle = adw::SwitchRow::new();
+        let wifi_toggle = adw::ActionRow::new();
         wifi_toggle.set_title("Wi-Fi");
         wifi_toggle.set_subtitle("Enable wireless networking");
-        wifi_toggle.set_active(true);
+        let wifi_switch = gtk4::Switch::new();
+        wifi_switch.set_active(true);
+        wifi_switch.set_valign(gtk4::Align::Center);
+        wifi_toggle.add_suffix(&wifi_switch);
         wifi_group.add(&wifi_toggle);
 
         // Connected network
@@ -101,9 +104,12 @@ impl NetworkPage {
         vpn_group.set_title("VPN");
 
         // VPN toggle
-        let vpn_toggle = adw::SwitchRow::new();
+        let vpn_toggle = adw::ActionRow::new();
         vpn_toggle.set_title("VPN");
         vpn_toggle.set_subtitle("Virtual Private Network");
+        let vpn_switch = gtk4::Switch::new();
+        vpn_switch.set_valign(gtk4::Align::Center);
+        vpn_toggle.add_suffix(&vpn_switch);
         vpn_group.add(&vpn_toggle);
 
         // Add VPN button
@@ -140,10 +146,13 @@ impl NetworkPage {
         advanced_group.set_title("Advanced");
 
         // Firewall
-        let firewall_row = adw::SwitchRow::new();
+        let firewall_row = adw::ActionRow::new();
         firewall_row.set_title("Firewall");
         firewall_row.set_subtitle("Protect your computer from unauthorized access");
-        firewall_row.set_active(true);
+        let firewall_switch = gtk4::Switch::new();
+        firewall_switch.set_active(true);
+        firewall_switch.set_valign(gtk4::Align::Center);
+        firewall_row.add_suffix(&firewall_switch);
         advanced_group.add(&firewall_row);
 
         // Network sharing

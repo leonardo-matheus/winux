@@ -13,9 +13,6 @@ libadwaita.workspace = true
 glib.workspace = true
 gio.workspace = true
 
-# Layer Shell for Wayland panels (0.3 is compatible with gtk4 0.8)
-gtk4-layer-shell = "0.3"
-
 # Async runtime
 tokio.workspace = true
 
@@ -61,9 +58,7 @@ thiserror = "1.0"
 futures = "0.3"
 
 [features]
-default = ["wayland"]
-wayland = []
-x11 = []
+default = []
 
 [profile.release]
 lto = true

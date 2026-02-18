@@ -61,9 +61,12 @@ impl DisplayPage {
         resolution_group.add(&refresh_row);
 
         // Variable Refresh Rate (VRR/FreeSync/G-Sync)
-        let vrr_row = adw::SwitchRow::new();
+        let vrr_row = adw::ActionRow::new();
         vrr_row.set_title("Variable Refresh Rate");
         vrr_row.set_subtitle("Enable FreeSync/G-Sync for smoother gaming");
+        let vrr_switch = gtk4::Switch::new();
+        vrr_switch.set_valign(gtk4::Align::Center);
+        vrr_row.add_suffix(&vrr_switch);
         resolution_group.add(&vrr_row);
 
         page.add(&resolution_group);
@@ -107,9 +110,12 @@ impl DisplayPage {
         hdr_group.set_description(Some("High Dynamic Range settings for supported displays"));
 
         // HDR toggle
-        let hdr_row = adw::SwitchRow::new();
+        let hdr_row = adw::ActionRow::new();
         hdr_row.set_title("HDR");
         hdr_row.set_subtitle("Enable High Dynamic Range");
+        let hdr_switch = gtk4::Switch::new();
+        hdr_switch.set_valign(gtk4::Align::Center);
+        hdr_row.add_suffix(&hdr_switch);
         hdr_group.add(&hdr_row);
 
         // HDR brightness
@@ -132,9 +138,12 @@ impl DisplayPage {
         night_group.set_description(Some("Reduce blue light for better sleep"));
 
         // Night light toggle
-        let night_row = adw::SwitchRow::new();
+        let night_row = adw::ActionRow::new();
         night_row.set_title("Night Light");
         night_row.set_subtitle("Warm colors to reduce eye strain");
+        let night_switch = gtk4::Switch::new();
+        night_switch.set_valign(gtk4::Align::Center);
+        night_row.add_suffix(&night_switch);
         night_group.add(&night_row);
 
         // Color temperature

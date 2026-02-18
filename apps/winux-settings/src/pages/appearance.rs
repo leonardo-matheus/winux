@@ -228,17 +228,23 @@ impl AppearancePage {
         interface_group.set_title("Interface");
 
         // Animations
-        let animations = adw::SwitchRow::new();
+        let animations = adw::ActionRow::new();
         animations.set_title("Animations");
         animations.set_subtitle("Enable interface animations");
-        animations.set_active(true);
+        let animations_switch = gtk4::Switch::new();
+        animations_switch.set_active(true);
+        animations_switch.set_valign(gtk4::Align::Center);
+        animations.add_suffix(&animations_switch);
         interface_group.add(&animations);
 
         // Transparency
-        let transparency = adw::SwitchRow::new();
+        let transparency = adw::ActionRow::new();
         transparency.set_title("Transparency Effects");
         transparency.set_subtitle("Enable window transparency and blur");
-        transparency.set_active(true);
+        let transparency_switch = gtk4::Switch::new();
+        transparency_switch.set_active(true);
+        transparency_switch.set_valign(gtk4::Align::Center);
+        transparency.add_suffix(&transparency_switch);
         interface_group.add(&transparency);
 
         // Rounded corners

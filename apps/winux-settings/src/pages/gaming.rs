@@ -25,35 +25,50 @@ impl GamingPage {
         ));
 
         // Game Mode toggle
-        let gamemode_row = adw::SwitchRow::new();
+        let gamemode_row = adw::ActionRow::new();
         gamemode_row.set_title("Game Mode");
         gamemode_row.set_subtitle("Automatically optimize performance when games are running");
+        let gamemode_switch = gtk4::Switch::new();
+        gamemode_switch.set_valign(gtk4::Align::Center);
+        gamemode_row.add_suffix(&gamemode_switch);
         gamemode_group.add(&gamemode_row);
 
         // CPU optimization
-        let cpu_row = adw::SwitchRow::new();
+        let cpu_row = adw::ActionRow::new();
         cpu_row.set_title("CPU Governor");
         cpu_row.set_subtitle("Set CPU to performance mode while gaming");
-        cpu_row.set_active(true);
+        let cpu_switch = gtk4::Switch::new();
+        cpu_switch.set_active(true);
+        cpu_switch.set_valign(gtk4::Align::Center);
+        cpu_row.add_suffix(&cpu_switch);
         gamemode_group.add(&cpu_row);
 
         // GPU optimization
-        let gpu_row = adw::SwitchRow::new();
+        let gpu_row = adw::ActionRow::new();
         gpu_row.set_title("GPU Performance Mode");
         gpu_row.set_subtitle("Maximize GPU clock speeds");
-        gpu_row.set_active(true);
+        let gpu_switch = gtk4::Switch::new();
+        gpu_switch.set_active(true);
+        gpu_switch.set_valign(gtk4::Align::Center);
+        gpu_row.add_suffix(&gpu_switch);
         gamemode_group.add(&gpu_row);
 
         // Compositor
-        let compositor_row = adw::SwitchRow::new();
+        let compositor_row = adw::ActionRow::new();
         compositor_row.set_title("Disable Compositor");
         compositor_row.set_subtitle("Reduce input latency by disabling compositing");
+        let compositor_switch = gtk4::Switch::new();
+        compositor_switch.set_valign(gtk4::Align::Center);
+        compositor_row.add_suffix(&compositor_switch);
         gamemode_group.add(&compositor_row);
 
         // Screen tearing
-        let tearing_row = adw::SwitchRow::new();
+        let tearing_row = adw::ActionRow::new();
         tearing_row.set_title("Allow Screen Tearing");
         tearing_row.set_subtitle("Disable VSync for lower input latency");
+        let tearing_switch = gtk4::Switch::new();
+        tearing_switch.set_valign(gtk4::Align::Center);
+        tearing_row.add_suffix(&tearing_switch);
         gamemode_group.add(&tearing_row);
 
         page.add(&gamemode_group);
@@ -78,17 +93,23 @@ impl GamingPage {
         wine_group.add(&wine_version);
 
         // DXVK
-        let dxvk_row = adw::SwitchRow::new();
+        let dxvk_row = adw::ActionRow::new();
         dxvk_row.set_title("DXVK");
         dxvk_row.set_subtitle("Vulkan-based DirectX 9/10/11 translation");
-        dxvk_row.set_active(true);
+        let dxvk_switch = gtk4::Switch::new();
+        dxvk_switch.set_active(true);
+        dxvk_switch.set_valign(gtk4::Align::Center);
+        dxvk_row.add_suffix(&dxvk_switch);
         wine_group.add(&dxvk_row);
 
         // VKD3D
-        let vkd3d_row = adw::SwitchRow::new();
+        let vkd3d_row = adw::ActionRow::new();
         vkd3d_row.set_title("VKD3D-Proton");
         vkd3d_row.set_subtitle("Vulkan-based DirectX 12 translation");
-        vkd3d_row.set_active(true);
+        let vkd3d_switch = gtk4::Switch::new();
+        vkd3d_switch.set_active(true);
+        vkd3d_switch.set_valign(gtk4::Align::Center);
+        vkd3d_row.add_suffix(&vkd3d_switch);
         wine_group.add(&vkd3d_row);
 
         // FSR
@@ -106,10 +127,13 @@ impl GamingPage {
         wine_group.add(&fsr_row);
 
         // Shader cache
-        let shader_row = adw::SwitchRow::new();
+        let shader_row = adw::ActionRow::new();
         shader_row.set_title("Shader Pre-caching");
         shader_row.set_subtitle("Download pre-compiled shaders when available");
-        shader_row.set_active(true);
+        let shader_switch = gtk4::Switch::new();
+        shader_switch.set_active(true);
+        shader_switch.set_valign(gtk4::Align::Center);
+        shader_row.add_suffix(&shader_switch);
         wine_group.add(&shader_row);
 
         page.add(&wine_group);
@@ -119,9 +143,12 @@ impl GamingPage {
         perf_group.set_title("Performance Monitoring");
 
         // MangoHud
-        let mangohud_row = adw::SwitchRow::new();
+        let mangohud_row = adw::ActionRow::new();
         mangohud_row.set_title("MangoHud");
         mangohud_row.set_subtitle("Show performance overlay in games");
+        let mangohud_switch = gtk4::Switch::new();
+        mangohud_switch.set_valign(gtk4::Align::Center);
+        mangohud_row.add_suffix(&mangohud_switch);
         perf_group.add(&mangohud_row);
 
         // MangoHud position
@@ -139,32 +166,50 @@ impl GamingPage {
         perf_group.add(&hud_position);
 
         // What to show
-        let show_fps = adw::SwitchRow::new();
+        let show_fps = adw::ActionRow::new();
         show_fps.set_title("Show FPS");
-        show_fps.set_active(true);
+        let show_fps_switch = gtk4::Switch::new();
+        show_fps_switch.set_active(true);
+        show_fps_switch.set_valign(gtk4::Align::Center);
+        show_fps.add_suffix(&show_fps_switch);
         perf_group.add(&show_fps);
 
-        let show_frametime = adw::SwitchRow::new();
+        let show_frametime = adw::ActionRow::new();
         show_frametime.set_title("Show Frame Time");
-        show_frametime.set_active(true);
+        let show_frametime_switch = gtk4::Switch::new();
+        show_frametime_switch.set_active(true);
+        show_frametime_switch.set_valign(gtk4::Align::Center);
+        show_frametime.add_suffix(&show_frametime_switch);
         perf_group.add(&show_frametime);
 
-        let show_cpu = adw::SwitchRow::new();
+        let show_cpu = adw::ActionRow::new();
         show_cpu.set_title("Show CPU Usage");
-        show_cpu.set_active(true);
+        let show_cpu_switch = gtk4::Switch::new();
+        show_cpu_switch.set_active(true);
+        show_cpu_switch.set_valign(gtk4::Align::Center);
+        show_cpu.add_suffix(&show_cpu_switch);
         perf_group.add(&show_cpu);
 
-        let show_gpu = adw::SwitchRow::new();
+        let show_gpu = adw::ActionRow::new();
         show_gpu.set_title("Show GPU Usage");
-        show_gpu.set_active(true);
+        let show_gpu_switch = gtk4::Switch::new();
+        show_gpu_switch.set_active(true);
+        show_gpu_switch.set_valign(gtk4::Align::Center);
+        show_gpu.add_suffix(&show_gpu_switch);
         perf_group.add(&show_gpu);
 
-        let show_vram = adw::SwitchRow::new();
+        let show_vram = adw::ActionRow::new();
         show_vram.set_title("Show VRAM Usage");
+        let show_vram_switch = gtk4::Switch::new();
+        show_vram_switch.set_valign(gtk4::Align::Center);
+        show_vram.add_suffix(&show_vram_switch);
         perf_group.add(&show_vram);
 
-        let show_ram = adw::SwitchRow::new();
+        let show_ram = adw::ActionRow::new();
         show_ram.set_title("Show RAM Usage");
+        let show_ram_switch = gtk4::Switch::new();
+        show_ram_switch.set_valign(gtk4::Align::Center);
+        show_ram.add_suffix(&show_ram_switch);
         perf_group.add(&show_ram);
 
         page.add(&perf_group);
@@ -197,10 +242,13 @@ impl GamingPage {
         controller_group.add(&deadzone_row);
 
         // Vibration
-        let vibration_row = adw::SwitchRow::new();
+        let vibration_row = adw::ActionRow::new();
         vibration_row.set_title("Vibration");
         vibration_row.set_subtitle("Enable controller rumble");
-        vibration_row.set_active(true);
+        let vibration_switch = gtk4::Switch::new();
+        vibration_switch.set_active(true);
+        vibration_switch.set_valign(gtk4::Align::Center);
+        vibration_row.add_suffix(&vibration_switch);
         controller_group.add(&vibration_row);
 
         page.add(&controller_group);
@@ -221,10 +269,13 @@ impl GamingPage {
         steam_group.add(&runtime_row);
 
         // Enable Steam Play for all titles
-        let steamplay_row = adw::SwitchRow::new();
+        let steamplay_row = adw::ActionRow::new();
         steamplay_row.set_title("Steam Play for All Titles");
         steamplay_row.set_subtitle("Enable Proton for all Windows games");
-        steamplay_row.set_active(true);
+        let steamplay_switch = gtk4::Switch::new();
+        steamplay_switch.set_active(true);
+        steamplay_switch.set_valign(gtk4::Align::Center);
+        steamplay_row.add_suffix(&steamplay_switch);
         steam_group.add(&steamplay_row);
 
         page.add(&steam_group);
@@ -244,15 +295,21 @@ impl GamingPage {
         tweaks_group.add(&swap_row);
 
         // Split lock detection
-        let splitlock_row = adw::SwitchRow::new();
+        let splitlock_row = adw::ActionRow::new();
         splitlock_row.set_title("Disable Split Lock Detection");
         splitlock_row.set_subtitle("May improve performance in some games");
+        let splitlock_switch = gtk4::Switch::new();
+        splitlock_switch.set_valign(gtk4::Align::Center);
+        splitlock_row.add_suffix(&splitlock_switch);
         tweaks_group.add(&splitlock_row);
 
         // Watch dogs
-        let watchdog_row = adw::SwitchRow::new();
+        let watchdog_row = adw::ActionRow::new();
         watchdog_row.set_title("Disable NMI Watchdog");
         watchdog_row.set_subtitle("Reduce CPU overhead");
+        let watchdog_switch = gtk4::Switch::new();
+        watchdog_switch.set_valign(gtk4::Align::Center);
+        watchdog_row.add_suffix(&watchdog_switch);
         tweaks_group.add(&watchdog_row);
 
         page.add(&tweaks_group);

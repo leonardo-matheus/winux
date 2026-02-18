@@ -120,9 +120,12 @@ impl SoundPage {
         input_group.add(&level_row);
 
         // Noise cancellation
-        let noise_row = adw::SwitchRow::new();
+        let noise_row = adw::ActionRow::new();
         noise_row.set_title("Noise Cancellation");
         noise_row.set_subtitle("Reduce background noise from microphone");
+        let noise_switch = gtk4::Switch::new();
+        noise_switch.set_valign(gtk4::Align::Center);
+        noise_row.add_suffix(&noise_switch);
         input_group.add(&noise_row);
 
         page.add(&input_group);
@@ -132,10 +135,13 @@ impl SoundPage {
         effects_group.set_title("Sound Effects");
 
         // System sounds
-        let system_sounds = adw::SwitchRow::new();
+        let system_sounds = adw::ActionRow::new();
         system_sounds.set_title("System Sounds");
         system_sounds.set_subtitle("Play sounds for notifications and actions");
-        system_sounds.set_active(true);
+        let system_sounds_switch = gtk4::Switch::new();
+        system_sounds_switch.set_active(true);
+        system_sounds_switch.set_valign(gtk4::Align::Center);
+        system_sounds.add_suffix(&system_sounds_switch);
         effects_group.add(&system_sounds);
 
         // Alert sound
@@ -152,9 +158,12 @@ impl SoundPage {
         effects_group.add(&alert_row);
 
         // Startup sound
-        let startup_sound = adw::SwitchRow::new();
+        let startup_sound = adw::ActionRow::new();
         startup_sound.set_title("Startup Sound");
         startup_sound.set_subtitle("Play sound when Winux starts");
+        let startup_sound_switch = gtk4::Switch::new();
+        startup_sound_switch.set_valign(gtk4::Align::Center);
+        startup_sound.add_suffix(&startup_sound_switch);
         effects_group.add(&startup_sound);
 
         page.add(&effects_group);
@@ -178,9 +187,12 @@ impl SoundPage {
         profiles_group.add(&profile_row);
 
         // Spatial audio
-        let spatial_row = adw::SwitchRow::new();
+        let spatial_row = adw::ActionRow::new();
         spatial_row.set_title("Spatial Audio");
         spatial_row.set_subtitle("Enable 3D surround sound for headphones");
+        let spatial_switch = gtk4::Switch::new();
+        spatial_switch.set_valign(gtk4::Align::Center);
+        spatial_row.add_suffix(&spatial_switch);
         profiles_group.add(&spatial_row);
 
         // Equalizer button

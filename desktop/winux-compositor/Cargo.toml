@@ -4,31 +4,7 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-description = "Wayland compositor for Winux OS"
+description = "Compositor launcher/wrapper for Winux OS - delegates to mutter/gnome-shell"
 
+# No external dependencies - uses only std library
 [dependencies]
-# Wayland/Compositor
-smithay = { workspace = true, features = ["backend_drm", "backend_libinput", "backend_udev", "backend_session_libseat", "backend_winit", "renderer_gl", "wayland_frontend"] }
-smithay-drm-extras.workspace = true
-wayland-server.workspace = true
-wayland-protocols.workspace = true
-
-# Async Runtime
-tokio.workspace = true
-futures.workspace = true
-
-# Serialization
-serde.workspace = true
-toml.workspace = true
-
-# Error Handling
-anyhow.workspace = true
-thiserror.workspace = true
-
-# Logging
-tracing.workspace = true
-tracing-subscriber = { workspace = true, features = ["env-filter"] }
-
-# Utilities
-dirs.workspace = true
-chrono.workspace = true

@@ -1,12 +1,10 @@
-// Winux Terminal - GPU-accelerated terminal emulator
+// Winux Terminal - Simplified terminal launcher
 // Copyright (c) 2026 Winux OS Project
 
 use gtk4::prelude::*;
-use gtk4::{Application, ApplicationWindow, Box, Button, Notebook, Label, Orientation, HeaderBar};
+use gtk4::{Application, ApplicationWindow, Box, Button, Label, Orientation, HeaderBar, Align};
 use libadwaita as adw;
-use vte4::{Terminal, PtyFlags};
-use glib::clone;
-use std::env;
+use std::process::Command;
 
 const APP_ID: &str = "org.winux.terminal";
 
@@ -25,38 +23,61 @@ fn main() -> glib::ExitCode {
 fn build_ui(app: &Application) {
     let header = HeaderBar::new();
 
-    let new_tab_btn = Button::builder()
-        .icon_name("tab-new-symbolic")
-        .tooltip_text("New Tab (Ctrl+Shift+T)")
+    let main_box = Box::builder()
+        .orientation(Orientation::Vertical)
+        .spacing(24)
+        .margin_top(48)
+        .margin_bottom(48)
+        .margin_start(48)
+        .margin_end(48)
+        .halign(Align::Center)
+        .valign(Align::Center)
         .build();
 
-    let menu_btn = Button::builder()
-        .icon_name("open-menu-symbolic")
-        .tooltip_text("Menu")
+    let icon = Label::builder()
+        .label("\u{1F4BB}")
         .build();
+    icon.add_css_class("title-1");
 
-    header.pack_start(&new_tab_btn);
-    header.pack_end(&menu_btn);
-
-    let notebook = Notebook::builder()
-        .scrollable(true)
-        .show_border(false)
+    let title = Label::builder()
+        .label("Winux Terminal")
         .build();
+    title.add_css_class("title-1");
 
-    add_terminal_tab(&notebook);
+    let subtitle = Label::builder()
+        .label("Full terminal emulator coming soon!\nFor now, click below to open GNOME Terminal.")
+        .justify(gtk4::Justification::Center)
+        .build();
+    subtitle.add_css_class("dim-label");
 
-    new_tab_btn.connect_clicked(clone!(@weak notebook => move |_| {
-        add_terminal_tab(&notebook);
-    }));
+    let open_terminal_btn = Button::builder()
+        .label("Open GNOME Terminal")
+        .halign(Align::Center)
+        .build();
+    open_terminal_btn.add_css_class("suggested-action");
+    open_terminal_btn.add_css_class("pill");
 
-    let main_box = Box::new(Orientation::Vertical, 0);
-    main_box.append(&notebook);
+    open_terminal_btn.connect_clicked(|_| {
+        launch_terminal();
+    });
+
+    let status_label = Label::builder()
+        .label("VTE library not available - using system terminal")
+        .build();
+    status_label.add_css_class("dim-label");
+    status_label.add_css_class("caption");
+
+    main_box.append(&icon);
+    main_box.append(&title);
+    main_box.append(&subtitle);
+    main_box.append(&open_terminal_btn);
+    main_box.append(&status_label);
 
     let window = ApplicationWindow::builder()
         .application(app)
         .title("Winux Terminal")
-        .default_width(900)
-        .default_height(600)
+        .default_width(500)
+        .default_height(350)
         .build();
 
     window.set_titlebar(Some(&header));
@@ -66,84 +87,33 @@ fn build_ui(app: &Application) {
         settings.set_gtk_application_prefer_dark_theme(true);
     }
 
-    let css_provider = gtk4::CssProvider::new();
-    css_provider.load_from_string(r#"
-        window { background-color: #1a1b26; }
-        notebook tab { padding: 8px 16px; background-color: #24283b; }
-        notebook tab:checked { background-color: #1a1b26; }
-    "#);
-
-    gtk4::style_context_add_provider_for_display(
-        &gtk4::gdk::Display::default().unwrap(),
-        &css_provider,
-        gtk4::STYLE_PROVIDER_PRIORITY_APPLICATION,
-    );
-
     window.present();
 }
 
-fn add_terminal_tab(notebook: &Notebook) {
-    let terminal = Terminal::new();
-    terminal.set_cursor_blink_mode(vte4::CursorBlinkMode::On);
-    terminal.set_scrollback_lines(10000);
-
-    let font_desc = pango::FontDescription::from_string("Monospace 11");
-    terminal.set_font(Some(&font_desc));
-
-    let fg = gtk4::gdk::RGBA::parse("#c0caf5").unwrap();
-    let bg = gtk4::gdk::RGBA::parse("#1a1b26").unwrap();
-    let palette: [gtk4::gdk::RGBA; 16] = [
-        gtk4::gdk::RGBA::parse("#15161e").unwrap(),
-        gtk4::gdk::RGBA::parse("#f7768e").unwrap(),
-        gtk4::gdk::RGBA::parse("#9ece6a").unwrap(),
-        gtk4::gdk::RGBA::parse("#e0af68").unwrap(),
-        gtk4::gdk::RGBA::parse("#7aa2f7").unwrap(),
-        gtk4::gdk::RGBA::parse("#bb9af7").unwrap(),
-        gtk4::gdk::RGBA::parse("#7dcfff").unwrap(),
-        gtk4::gdk::RGBA::parse("#a9b1d6").unwrap(),
-        gtk4::gdk::RGBA::parse("#414868").unwrap(),
-        gtk4::gdk::RGBA::parse("#f7768e").unwrap(),
-        gtk4::gdk::RGBA::parse("#9ece6a").unwrap(),
-        gtk4::gdk::RGBA::parse("#e0af68").unwrap(),
-        gtk4::gdk::RGBA::parse("#7aa2f7").unwrap(),
-        gtk4::gdk::RGBA::parse("#bb9af7").unwrap(),
-        gtk4::gdk::RGBA::parse("#7dcfff").unwrap(),
-        gtk4::gdk::RGBA::parse("#c0caf5").unwrap(),
+fn launch_terminal() {
+    // Try various terminal emulators in order of preference
+    let terminals = [
+        ("gnome-terminal", vec!["--"]),
+        ("konsole", vec!["-e"]),
+        ("xfce4-terminal", vec!["-e"]),
+        ("mate-terminal", vec!["-e"]),
+        ("xterm", vec!["-e"]),
+        ("terminator", vec!["-e"]),
+        ("tilix", vec!["-e"]),
     ];
-    terminal.set_colors(Some(&fg), Some(&bg), &palette);
 
-    let shell = env::var("SHELL").unwrap_or_else(|_| "/bin/bash".to_string());
-    terminal.spawn_async(
-        PtyFlags::DEFAULT,
-        None,
-        &[&shell],
-        &[],
-        glib::SpawnFlags::DEFAULT,
-        || {},
-        -1,
-        None::<&gio::Cancellable>,
-        |_| {},
-    );
-
-    terminal.connect_child_exited(clone!(@weak notebook => move |term, _| {
-        if let Some(parent) = term.parent() {
-            notebook.remove_page(notebook.page_num(&parent));
-            if notebook.n_pages() == 0 {
-                if let Some(win) = notebook.root().and_then(|r| r.downcast::<ApplicationWindow>().ok()) {
-                    win.close();
-                }
+    for (terminal, _args) in terminals.iter() {
+        match Command::new(terminal).spawn() {
+            Ok(_) => {
+                tracing::info!("Launched {} successfully", terminal);
+                return;
+            }
+            Err(e) => {
+                tracing::debug!("Failed to launch {}: {}", terminal, e);
+                continue;
             }
         }
-    }));
+    }
 
-    let scrolled = gtk4::ScrolledWindow::builder()
-        .hscrollbar_policy(gtk4::PolicyType::Never)
-        .vscrollbar_policy(gtk4::PolicyType::Automatic)
-        .child(&terminal)
-        .build();
-
-    let tab_label = Label::new(Some(&format!("Terminal {}", notebook.n_pages() + 1)));
-    notebook.append_page(&scrolled, Some(&tab_label));
-    notebook.set_current_page(Some(notebook.n_pages() - 1));
-    terminal.grab_focus();
+    tracing::error!("No terminal emulator found on system");
 }

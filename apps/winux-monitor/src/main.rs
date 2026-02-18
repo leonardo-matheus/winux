@@ -24,12 +24,18 @@ fn build_ui(app: &Application) {
     header.set_title_widget(Some(&Label::new(Some("System Monitor"))));
 
     let main_box = Box::new(Orientation::Vertical, 24);
-    main_box.set_margin_all(24);
+    main_box.set_margin_start(24);
+    main_box.set_margin_end(24);
+    main_box.set_margin_top(24);
+    main_box.set_margin_bottom(24);
 
     // CPU Section
     let cpu_frame = Frame::new(Some("CPU"));
     let cpu_box = Box::new(Orientation::Vertical, 12);
-    cpu_box.set_margin_all(12);
+    cpu_box.set_margin_start(12);
+    cpu_box.set_margin_end(12);
+    cpu_box.set_margin_top(12);
+    cpu_box.set_margin_bottom(12);
 
     let cpu_label = Label::new(Some("CPU Usage"));
     cpu_label.set_xalign(0.0);
@@ -43,7 +49,10 @@ fn build_ui(app: &Application) {
     // Memory Section
     let mem_frame = Frame::new(Some("Memory"));
     let mem_box = Box::new(Orientation::Vertical, 12);
-    mem_box.set_margin_all(12);
+    mem_box.set_margin_start(12);
+    mem_box.set_margin_end(12);
+    mem_box.set_margin_top(12);
+    mem_box.set_margin_bottom(12);
 
     let mem_label = Label::new(Some("Memory Usage"));
     mem_label.set_xalign(0.0);
@@ -62,7 +71,10 @@ fn build_ui(app: &Application) {
     // Disk Section
     let disk_frame = Frame::new(Some("Disk"));
     let disk_box = Box::new(Orientation::Vertical, 12);
-    disk_box.set_margin_all(12);
+    disk_box.set_margin_start(12);
+    disk_box.set_margin_end(12);
+    disk_box.set_margin_top(12);
+    disk_box.set_margin_bottom(12);
 
     let disk_label = Label::new(Some("Disk Usage"));
     disk_label.set_xalign(0.0);

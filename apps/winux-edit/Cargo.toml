@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-description = "Text editor with syntax highlighting for Winux OS"
+description = "Simple text editor for Winux OS"
 
 [[bin]]
 name = "winux-edit"
@@ -13,7 +13,6 @@ path = "src/main.rs"
 [dependencies]
 gtk4.workspace = true
 libadwaita.workspace = true
-sourceview5.workspace = true
 glib.workspace = true
 gio.workspace = true
 pango.workspace = true
