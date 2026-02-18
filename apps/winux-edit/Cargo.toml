@@ -6,6 +6,10 @@ authors.workspace = true
 license.workspace = true
 description = "Text editor with syntax highlighting for Winux OS"
 
+[[bin]]
+name = "winux-edit"
+path = "src/main.rs"
+
 [dependencies]
 gtk4.workspace = true
 libadwaita.workspace = true
@@ -19,3 +23,7 @@ toml.workspace = true
 dirs.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[features]
+default = []
