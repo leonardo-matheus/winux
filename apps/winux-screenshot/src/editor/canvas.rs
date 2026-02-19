@@ -8,7 +8,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use std::path::PathBuf;
 
-use super::{EditorState, ToolType, DrawingOperation, Point, CropRegion};
+use super::{EditorState, ToolType, DrawingOperation, CropRegion};
 use super::tools::Point as ToolPoint;
 
 /// Editor canvas that handles drawing operations

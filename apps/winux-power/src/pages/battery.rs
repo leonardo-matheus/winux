@@ -317,5 +317,3 @@ fn format_time(minutes: u32) -> String {
         format!("{}min", mins)
     }
 }
-
-use gdk4;

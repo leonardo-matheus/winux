@@ -5,7 +5,7 @@ mod tools;
 mod blur;
 mod crop;
 
-pub use canvas::EditorCanvas;
+pub use canvas::{EditorCanvas, Point};
 pub use tools::{Tool, ToolType, DrawingOperation};
 pub use blur::BlurEffect;
 pub use crop::CropTool;
