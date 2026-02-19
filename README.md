@@ -8,10 +8,10 @@
 
 *A potência do Linux + A familiaridade do Windows + A elegância do macOS*
 
-[![Version](https://img.shields.io/badge/version-1.1_Aurora-00d4ff?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/winux-os/winux/releases)
+[![Version](https://img.shields.io/badge/version-1.0_Aurora-00d4ff?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/leonardo-matheus/winux/releases/tag/v1.0.0)
 [![License](https://img.shields.io/badge/license-GPL_v3_|_MIT-00ff88?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
-[![Rust](https://img.shields.io/badge/Rust-150,000+_LOC-ff00ff?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
-[![Apps](https://img.shields.io/badge/Native_Apps-44+-00d4ff?style=for-the-badge&logo=gnome&logoColor=white)](docs/APPS.md)
+[![Rust](https://img.shields.io/badge/Rust-Native_Apps-ff00ff?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
+[![Apps](https://img.shields.io/badge/Native_Apps-14-00d4ff?style=for-the-badge&logo=gnome&logoColor=white)](docs/APPS.md)
 [![GTK4](https://img.shields.io/badge/UI-GTK4_+_Libadwaita-4A86CF?style=for-the-badge&logo=gnome&logoColor=white)](https://gtk.org)
 
 [**Download**](#-download) | [**Features**](#-features) | [**Apps**](#-44-apps-nativos) | [**Gaming**](#-gaming) | [**Dev Tools**](#-desenvolvimento) | [**Docs**](docs/)
@@ -22,7 +22,7 @@
 
 ## O Que é o Winux OS?
 
-**Winux OS** é uma distribuição Linux revolucionária construída do zero para oferecer a **melhor experiência** possível para desenvolvedores e gamers. Com **44 aplicativos nativos** escritos em Rust, temas premium com animações a 60fps, e suporte completo a arquivos Windows/macOS/Linux.
+**Winux OS** é uma distribuição Linux revolucionária construída do zero para oferecer a **melhor experiência** possível para desenvolvedores e gamers. Com **14 aplicativos nativos** escritos em Rust, 3 modos de interface (Windows/Linux/Mac-like), e ferramentas de desenvolvimento pré-configuradas.
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════╗
@@ -35,11 +35,11 @@
 ║      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝               ║
 ║                                                                                  ║
 ║     ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐       ║
-║     │  44 APPS    │   │  7 THEMES   │   │  GAMING     │   │  DEV TOOLS  │       ║
-║     │  NATIVOS    │   │  PREMIUM    │   │  READY      │   │  COMPLETAS  │       ║
+║     │  14 APPS    │   │  3 MODOS    │   │  GAMING     │   │  DEV TOOLS  │       ║
+║     │  NATIVOS    │   │ INTERFACE   │   │  READY      │   │  COMPLETAS  │       ║
 ║     └─────────────┘   └─────────────┘   └─────────────┘   └─────────────┘       ║
 ║                                                                                  ║
-║     150,000+ linhas de código Rust | 591 arquivos | 28 scripts de otimização    ║
+║     14 Apps Rust | Win/Linux/Mac Modes | ABNT2/US Keyboards | Dev Ready         ║
 ║                                                                                  ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -52,25 +52,25 @@
 <tr>
 <td width="50%" valign="top">
 
+### 🖥️ **14 Apps Nativos**
+Desenvolvidos em **Rust** para máxima performance:
+- 📁 **Files** - Gerenciador de arquivos moderno
+- 💻 **Terminal** - Emulador com GPU acceleration
+- ⚙️ **Settings** - Central de configurações + idioma
+- 🏪 **Store** - Loja de aplicativos
+- 📊 **Monitor** - System monitor em tempo real
+- ✏️ **Edit** - Editor de texto avançado
+- 🖼️ **Image** - Visualizador de imagens
+- 🎵 **Player** - Player multimídia
+- ℹ️ **About** - Informações do sistema
+- 🎨 **Personalize** - Modos Win/Linux/Mac
+- 🔧 **Env Manager** - Variáveis de ambiente
+
 ### 🚀 Performance Extrema
 - **Kernel Linux Zen 6.8+** otimizado
 - **Compositor Wayland** (Smithay) nativo
 - **PipeWire** para áudio de baixa latência
 - **GameMode** e **MangoHud** integrados
-- Scripts de otimização automática
-
-### 🎨 Design Premium
-- **7 temas** com animações 60fps
-- **Glassmorphism** e blur effects
-- **105 ícones SVG** customizados
-- **Cursores** modernos multi-DPI
-- **Plymouth** boot animation
-
-### 🔧 Compatibilidade Total
-- Arquivos **Windows** (.exe, .msi, .dll, .lnk, .reg)
-- Arquivos **macOS** (.dmg, .app, .pkg, .plist, .icns)
-- Arquivos **Linux** (.deb, .rpm, .AppImage, .flatpak, .snap)
-- **ISO/IMG** mount e extract
 
 </td>
 <td width="50%" valign="top">
@@ -367,17 +367,36 @@ Todos com `--dry-run`, `--restore`, `--status` e logging completo.
 
 <div align="center">
 
-### Winux OS 1.1 Aurora Developer Edition
+### 🎉 **Winux OS 1.0 Aurora - Developer Edition**
 
-| Edição | Tamanho | Link |
-|:-------|:--------|:-----|
-| **Developer Edition** | ~3.0 GB | [Download](https://github.com/winux-os/winux/releases) |
+| Edição | Tamanho | Descrição | Link |
+|:------:|:-------:|:---------:|:----:|
+| **Winux 1.0 Aurora** | 3.7 GB | Versão completa com 14 apps Rust, 3 modos de interface, ferramentas dev | [⬇️ **GitHub Release**](https://github.com/leonardo-matheus/winux/releases/tag/v1.0.0) |
 
 **Requisitos Mínimos:** CPU x86_64 SSE4.2, 4GB RAM, 30GB SSD, Vulkan 1.1
 
 **Requisitos Recomendados:** Ryzen 5/i5 6+ cores, 16GB RAM, 100GB NVMe, RTX 3060/RX 6700 XT
 
 </div>
+
+### ✨ Novidades da v1.0
+
+- **14 Apps Nativos em Rust** - Files, Terminal, Settings, Store, Monitor, Edit, Image, Player, About, Personalize, Env-Manager + Desktop
+- **3 Modos de Interface** - Windows-like, Linux-like, Mac-like
+- **Idiomas** - Português (Brasil) e English (USA)
+- **Teclados** - ABNT2 e US International
+- **Dev Tools** - VS Code, IntelliJ, PHP, Java, Node.js, Python, Rust, Docker
+- **Gaming** - Wine 9.0, Lutris, GameMode, MangoHud
+
+### 🔐 Verificação de Integridade
+
+```bash
+# SHA256
+echo "77fd47406119981835aaa07421308d6321b3cc2ad273d1d31c1652b06062dccb  winux-1.0-aurora-amd64.iso" | sha256sum -c
+
+# MD5
+echo "c570bfa7b93668b7d4b2393259c71fba  winux-1.0-aurora-amd64.iso" | md5sum -c
+```
 
 ---
 
@@ -387,7 +406,7 @@ Todos com `--dry-run`, `--restore`, `--status` e logging completo.
 
 ```bash
 # Linux
-sudo dd if=winux-1.1-aurora.iso of=/dev/sdX bs=4M status=progress
+sudo dd if=winux-1.0-aurora-amd64.iso of=/dev/sdX bs=4M status=progress
 
 # Windows - Usar Rufus ou balenaEtcher
 ```
@@ -433,12 +452,13 @@ winux-gaming-setup              # Configurar gaming
 
 ## 🗺️ Roadmap
 
-### v1.1 Aurora (2026) ✅
-- [x] 44 Apps nativos em Rust
-- [x] 7 Temas premium
-- [x] Compatibilidade Win/Mac/Linux
-- [x] Mobile development completo
-- [x] Gaming otimizado
+### v1.0 Aurora (2026) ✅
+- [x] 14 Apps nativos em Rust
+- [x] 3 Modos de interface (Win/Linux/Mac)
+- [x] Idiomas PT-BR e EN-US
+- [x] Teclados ABNT2 e US
+- [x] Dev tools pré-configuradas
+- [x] Gaming com Wine e Lutris
 
 ### v1.2 Blaze (2026)
 - [ ] Winux Connect (integração smartphone)

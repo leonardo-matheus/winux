@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winux OS - O Melhor dos Dois Mundos</title>
+    <meta name="description" content="Winux OS - Sistema operacional Linux com a familiaridade do Windows. Developer Edition com 14 apps nativos em Rust.">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-light: #79c0ff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(88, 166, 255, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .logo {
+            font-size: 120px;
+            font-weight: 200;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-shadow: 0 0 60px rgba(88, 166, 255, 0.5);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        .hero .version {
+            background: var(--bg-secondary);
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 40px;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-secondary);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--bg-primary);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .feature-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+        /* Modes */
+        .modes {
+            padding: 100px 0;
+        }
+        .modes h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .modes .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+        }
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .mode-card {
+            background: var(--bg-secondary);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .mode-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .mode-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .mode-card p {
+            color: var(--text-secondary);
+        }
+        /* Download */
+        .download {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+        .download h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .download .info {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        .download-box {
+            background: var(--bg-primary);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+        .download-box h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .checksum {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            word-break: break-all;
+            color: var(--text-secondary);
+        }
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="logo">W</div>
+        <h1>WINUX OS</h1>
+        <p class="tagline">O Melhor dos Dois Mundos</p>
+        <span class="version">v1.0 Aurora - Developer Edition</span>
+        <div class="cta-buttons">
+            <a href="https://github.com/leonardo-matheus/winux/releases/tag/v1.0.0" class="btn btn-primary">Download ISO (3.7 GB)</a>
+            <a href="https://github.com/leonardo-matheus/winux" class="btn btn-secondary">Ver no GitHub</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Por que Winux?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>14 Apps Nativos</h3>
+                    <p>Desenvolvidos em Rust para maxima performance. Files, Terminal, Settings, Store, Monitor, Edit, Image, Player e mais.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Developer Ready</h3>
+                    <p>VS Code, IntelliJ, PHP, Java, Node.js, Python, Rust, Docker pre-instalados e configurados.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Gaming First</h3>
+                    <p>Wine 9.0, Lutris, GameMode e MangoHud integrados. Jogue seus jogos Windows nativamente.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-idioma</h3>
+                    <p>Suporte nativo para Portugues (Brasil) e English (USA). Teclados ABNT2 e US configurados.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Base Solida</h3>
+                    <p>Ubuntu 24.04 LTS com kernel otimizado. Drivers AMD, Intel e NVIDIA suportados.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Personalizavel</h3>
+                    <p>Escolha entre 3 modos de interface: Windows-like, Linux-like ou Mac-like.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modes">
+        <div class="container">
+            <h2>Escolha seu Estilo</h2>
+            <p class="subtitle">Personalize a interface do jeito que voce prefere</p>
+            <div class="modes-grid">
+                <div class="mode-card">
+                    <h3>Windows Like</h3>
+                    <p>Barra de tarefas fixa na parte inferior com Menu Iniciar. Familiar para usuarios Windows.</p>
+                </div>
+                <div class="mode-card">
+                    <h3>Linux Like</h3>
+                    <p>Experiencia tradicional GNOME com barra superior e Activities. Padrao Linux otimizado.</p>
+                </div>
+                <div class="mode-card">
+                    <h3>Mac Like</h3>
+                    <p>Dock centralizado, botoes coloridos nas janelas. Design elegante e minimalista.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download">
+        <div class="container">
+            <h2>Download</h2>
+            <p class="info">Winux OS 1.0 Aurora - Developer Edition | 3.7 GB</p>
+            <div class="download-box">
+                <h3>winux-1.0-aurora-amd64.iso</h3>
+                <a href="https://github.com/leonardo-matheus/winux/releases/tag/v1.0.0" class="btn btn-primary" style="display: inline-block; margin-top: 20px;">Download da ISO</a>
+                <div class="checksum">
+                    <strong>SHA256:</strong><br>
+                    77fd47406119981835aaa07421308d6321b3cc2ad273d1d31c1652b06062dccb
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Winux OS &copy; 2026 | <a href="https://github.com/leonardo-matheus/winux">GitHub</a> | GPL-3.0 / MIT</p>
+        </div>
+    </footer>
+</body>
+</html>
