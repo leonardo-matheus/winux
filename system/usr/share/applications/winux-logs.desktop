@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Logs
+Name[pt_BR]=Visualizador de Logs
+GenericName=Log Viewer
+GenericName[pt_BR]=Visualizador de Logs
+Comment=View and analyze system logs
+Comment[pt_BR]=Visualize e analise logs do sistema
+Exec=/usr/bin/winux-logs
+Icon=text-x-log
+Categories=System;Monitor;
+Terminal=false
+Keywords=log;journal;syslog;kernel;dmesg;error;warning;
+Keywords[pt_BR]=log;journal;syslog;kernel;dmesg;erro;aviso;

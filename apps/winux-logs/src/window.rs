@@ -3,9 +3,10 @@
 
 use gtk4::prelude::*;
 use gtk4::{
-    Application, Box, Button, Label, Orientation, Paned, ScrolledWindow,
+    gio, Application, Box, Button, Label, Orientation, Paned, ScrolledWindow,
     SearchEntry, ToggleButton, PolicyType, Separator, MenuButton, PopoverMenu,
 };
+use gtk4::glib;
 use libadwaita as adw;
 use adw::prelude::*;
 use adw::{

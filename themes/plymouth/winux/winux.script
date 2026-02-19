@@ -1,17 +1,45 @@
 // Winux Plymouth Boot Theme Script
-// Modern boot animation with Winux branding
-
-// Screen setup with dark gradient
-Window.SetBackgroundTopColor(0.05, 0.07, 0.09);
-Window.SetBackgroundBottomColor(0.02, 0.03, 0.04);
+// Advanced Modern Boot Animation with Particles and Glow Effects
+// Version: 2.0.0
 
 // ============================================================
-// Logo Setup
+// Screen Setup - Premium Dark Gradient
 // ============================================================
 
-// Try to load the logo image, fallback to text
+// Rich dark gradient background
+Window.SetBackgroundTopColor(0.07, 0.07, 0.11);
+Window.SetBackgroundBottomColor(0.02, 0.02, 0.04);
+
+// Screen dimensions
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+center_x = screen_width / 2;
+center_y = screen_height / 2;
+
+// ============================================================
+// Configuration
+// ============================================================
+
+// Animation settings
+global.fps = 60;
+global.frame_time = 1.0 / global.fps;
+
+// Colors (Winux accent blue)
+global.accent_r = 0.04;
+global.accent_g = 0.52;
+global.accent_b = 1.0;
+
+// Secondary color (purple accent)
+global.secondary_r = 0.74;
+global.secondary_g = 0.35;
+global.secondary_b = 0.95;
+
+// ============================================================
+// Logo Setup with Glow Effect
+// ============================================================
+
 logo_found = 0;
-for (i = 0; i < 2; i++) {
+for (i = 0; i < 3; i++) {
     logo.image = Image("winux-logo.png");
     if (logo.image) {
         logo_found = 1;
@@ -20,132 +48,350 @@ for (i = 0; i < 2; i++) {
 }
 
 if (logo_found) {
+    logo_width = logo.image.GetWidth();
+    logo_height = logo.image.GetHeight();
+    logo_x = center_x - logo_width / 2;
+    logo_y = center_y - logo_height / 2 - 100;
+
+    // Main logo sprite
     logo.sprite = Sprite(logo.image);
-    logo.sprite.SetX(Window.GetWidth() / 2 - logo.image.GetWidth() / 2);
-    logo.sprite.SetY(Window.GetHeight() / 2 - logo.image.GetHeight() / 2 - 80);
+    logo.sprite.SetX(logo_x);
+    logo.sprite.SetY(logo_y);
     logo.sprite.SetOpacity(1);
+    logo.sprite.SetZ(100);
+
+    // Create glow layer behind logo
+    glow_size = 200;
+    glow.image = Image.Blank(glow_size, glow_size);
+    glow_cx = glow_size / 2;
+    glow_cy = glow_size / 2;
+
+    for (gx = 0; gx < glow_size; gx++) {
+        for (gy = 0; gy < glow_size; gy++) {
+            dx = gx - glow_cx;
+            dy = gy - glow_cy;
+            dist = Math.Sqrt(dx * dx + dy * dy);
+            max_dist = glow_size / 2;
+            if (dist < max_dist) {
+                intensity = 1.0 - (dist / max_dist);
+                intensity = intensity * intensity * 0.3;
+                glow.image.SetPixel(gx, gy, global.accent_r, global.accent_g, global.accent_b, intensity);
+            }
+        }
+    }
+    glow.sprite = Sprite(glow.image);
+    glow.sprite.SetX(center_x - glow_size / 2);
+    glow.sprite.SetY(logo_y + logo_height / 2 - glow_size / 2);
+    glow.sprite.SetZ(50);
 }
 
 // ============================================================
-// Brand Text
+// Brand Text with Premium Typography
 // ============================================================
 
-// Main title - WINUX
-text.image = Image.Text("WINUX", 0.35, 0.65, 1.0, "Noto Sans Bold 48");
-text.sprite = Sprite(text.image);
-text.sprite.SetX(Window.GetWidth() / 2 - text.image.GetWidth() / 2);
-text.sprite.SetY(Window.GetHeight() / 2 + 40);
+// Main title - WINUX with gradient effect
+title.image = Image.Text("WINUX", 1.0, 1.0, 1.0, "Inter Bold 52");
+title.sprite = Sprite(title.image);
+title.sprite.SetX(center_x - title.image.GetWidth() / 2);
+title.sprite.SetY(center_y + 50);
+title.sprite.SetZ(100);
 
-// Subtitle - Developer Edition
-subtext.image = Image.Text("Developer Edition", 0.55, 0.6, 0.7, "Noto Sans Light 16");
-subtext.sprite = Sprite(subtext.image);
-subtext.sprite.SetX(Window.GetWidth() / 2 - subtext.image.GetWidth() / 2);
-subtext.sprite.SetY(Window.GetHeight() / 2 + 95);
+// Subtitle with accent color
+subtitle.image = Image.Text("Developer Edition", 0.6, 0.65, 0.75, "Inter Light 16");
+subtitle.sprite = Sprite(subtitle.image);
+subtitle.sprite.SetX(center_x - subtitle.image.GetWidth() / 2);
+subtitle.sprite.SetY(center_y + 115);
+subtitle.sprite.SetZ(100);
 
 // ============================================================
-// Modern Progress Indicator (dots)
+// Particle System
 // ============================================================
 
-progress_width = 200;
-progress_height = 6;
-progress_x = Window.GetWidth() / 2 - progress_width / 2;
-progress_y = Window.GetHeight() / 2 + 150;
+num_particles = 50;
+for (i = 0; i < num_particles; i++) {
+    // Random starting position
+    particles[i].x = Math.Random() * screen_width;
+    particles[i].y = Math.Random() * screen_height;
 
-// Progress bar background
+    // Random velocity (slow floating)
+    particles[i].vx = (Math.Random() - 0.5) * 0.5;
+    particles[i].vy = (Math.Random() - 0.5) * 0.3 - 0.2; // Slight upward bias
+
+    // Random size and opacity
+    particles[i].size = 2 + Math.Random() * 4;
+    particles[i].opacity = 0.1 + Math.Random() * 0.3;
+    particles[i].phase = Math.Random() * 6.28; // Random starting phase
+
+    // Create particle image
+    psize = Math.Int(particles[i].size);
+    particles[i].image = Image.Blank(psize, psize);
+    pcx = psize / 2;
+    pcy = psize / 2;
+
+    for (px = 0; px < psize; px++) {
+        for (py = 0; py < psize; py++) {
+            pdx = px - pcx;
+            pdy = py - pcy;
+            pdist = Math.Sqrt(pdx * pdx + pdy * pdy);
+            if (pdist < psize / 2) {
+                pint = 1.0 - (pdist / (psize / 2));
+                pint = pint * pint;
+                // Alternate between blue and purple particles
+                if (i % 3 == 0) {
+                    particles[i].image.SetPixel(px, py, global.secondary_r, global.secondary_g, global.secondary_b, pint * particles[i].opacity);
+                } else {
+                    particles[i].image.SetPixel(px, py, global.accent_r, global.accent_g, global.accent_b, pint * particles[i].opacity);
+                }
+            }
+        }
+    }
+
+    particles[i].sprite = Sprite(particles[i].image);
+    particles[i].sprite.SetX(particles[i].x);
+    particles[i].sprite.SetY(particles[i].y);
+    particles[i].sprite.SetZ(10);
+}
+
+// ============================================================
+// Modern Progress Bar
+// ============================================================
+
+progress_width = 280;
+progress_height = 4;
+progress_radius = 2;
+progress_x = center_x - progress_width / 2;
+progress_y = center_y + 170;
+
+// Progress bar background (dark with subtle border)
 progress_bg.image = Image.Blank(progress_width, progress_height);
-for (x = 0; x < progress_width; x++) {
-    for (y = 0; y < progress_height; y++) {
-        // Rounded corners effect
-        corner_radius = 3;
-        dist_left = x;
-        dist_right = progress_width - x - 1;
-        dist_top = y;
-        dist_bottom = progress_height - y - 1;
-
-        progress_bg.image.SetPixel(x, y, 0.15, 0.18, 0.22, 0.8);
+for (px = 0; px < progress_width; px++) {
+    for (py = 0; py < progress_height; py++) {
+        // Rounded corners
+        if ((px < progress_radius && py < progress_radius) ||
+            (px < progress_radius && py >= progress_height - progress_radius) ||
+            (px >= progress_width - progress_radius && py < progress_radius) ||
+            (px >= progress_width - progress_radius && py >= progress_height - progress_radius)) {
+            // Corner pixels - check if inside rounded corner
+            corner_x = px < progress_radius ? progress_radius - px : px - (progress_width - progress_radius);
+            corner_y = py < progress_radius ? progress_radius - py : py - (progress_height - progress_radius);
+            if (corner_x * corner_x + corner_y * corner_y > progress_radius * progress_radius) {
+                continue; // Skip this pixel (outside corner)
+            }
+        }
+        progress_bg.image.SetPixel(px, py, 1, 1, 1, 0.08);
     }
 }
 progress_bg.sprite = Sprite(progress_bg.image);
 progress_bg.sprite.SetX(progress_x);
 progress_bg.sprite.SetY(progress_y);
+progress_bg.sprite.SetZ(80);
 
-// Progress bar fill
+// Progress fill (will be updated dynamically)
 progress_fill.sprite = Sprite();
 progress_fill.sprite.SetX(progress_x);
 progress_fill.sprite.SetY(progress_y);
+progress_fill.sprite.SetZ(85);
+
+// Progress glow effect
+progress_glow.sprite = Sprite();
+progress_glow.sprite.SetZ(82);
 
 // ============================================================
-// Animation Variables
+// Loading Indicator Dots
+// ============================================================
+
+num_dots = 5;
+dot_size = 6;
+dot_spacing = 16;
+dots_start_x = center_x - ((num_dots - 1) * dot_spacing) / 2;
+dots_y = center_y + 200;
+
+for (i = 0; i < num_dots; i++) {
+    dots[i].x = dots_start_x + i * dot_spacing;
+    dots[i].y = dots_y;
+    dots[i].sprite = Sprite();
+    dots[i].sprite.SetX(dots[i].x - dot_size / 2);
+    dots[i].sprite.SetY(dots[i].y - dot_size / 2);
+    dots[i].sprite.SetZ(90);
+}
+
+// ============================================================
+// Animation State
 // ============================================================
 
 global.progress = 0;
 global.phase = 0;
-global.dot_phase = 0;
+global.time = 0;
+global.dot_wave = 0;
+global.glow_pulse = 0;
 
-// Loading dots
-num_dots = 3;
-for (i = 0; i < num_dots; i++) {
-    dots[i].sprite = Sprite();
-    dots[i].sprite.SetX(Window.GetWidth() / 2 - 30 + i * 30);
-    dots[i].sprite.SetY(Window.GetHeight() / 2 + 180);
+// ============================================================
+// Helper Functions
+// ============================================================
+
+// Smooth easing function (ease-in-out cubic)
+fun ease_in_out(t) {
+    if (t < 0.5) {
+        return 4 * t * t * t;
+    } else {
+        return 1 - Math.Pow(-2 * t + 2, 3) / 2;
+    }
+}
+
+// Create gradient fill image for progress bar
+fun create_progress_fill(width) {
+    if (width < 1) {
+        return Image.Blank(1, 1);
+    }
+
+    fill_img = Image.Blank(width, progress_height);
+    for (fx = 0; fx < width; fx++) {
+        for (fy = 0; fy < progress_height; fy++) {
+            // Gradient from blue to cyan
+            gradient = fx / width;
+
+            // Color interpolation
+            r = global.accent_r + gradient * 0.2;
+            g = global.accent_g + gradient * 0.25;
+            b = global.accent_b;
+
+            // Add subtle shimmer effect
+            shimmer = 0.9 + 0.1 * Math.Sin(global.time * 4 + fx * 0.1);
+
+            fill_img.SetPixel(fx, fy, r * shimmer, g * shimmer, b * shimmer, 1.0);
+        }
+    }
+    return fill_img;
+}
+
+// Create dot image with given opacity
+fun create_dot(opacity) {
+    dot_img = Image.Blank(dot_size, dot_size);
+    dcx = dot_size / 2;
+    dcy = dot_size / 2;
+
+    for (dx = 0; dx < dot_size; dx++) {
+        for (dy = 0; dy < dot_size; dy++) {
+            ddx = dx - dcx;
+            ddy = dy - dcy;
+            ddist = Math.Sqrt(ddx * ddx + ddy * ddy);
+            if (ddist < dot_size / 2) {
+                dint = 1.0 - (ddist / (dot_size / 2));
+                dint = dint * dint;
+                dot_img.SetPixel(dx, dy, global.accent_r, global.accent_g, global.accent_b, dint * opacity);
+            }
+        }
+    }
+    return dot_img;
 }
 
 // ============================================================
 // Boot Progress Callback
 // ============================================================
 
-fun boot_progress_cb(time, progress_val) {
+fun boot_progress_cb(time_elapsed, progress_val) {
     global.progress = progress_val;
 
+    // Update progress bar fill
     fill_width = Math.Int(progress_width * progress_val);
     if (fill_width > 0) {
-        fill_image = Image.Blank(fill_width, progress_height);
-        for (x = 0; x < fill_width; x++) {
-            for (y = 0; y < progress_height; y++) {
-                // Gradient from blue to cyan
-                gradient = x / fill_width;
-                r = 0.35 + gradient * 0.2;
-                g = 0.55 + gradient * 0.2;
-                b = 0.9 + gradient * 0.1;
-                fill_image.SetPixel(x, y, r, g, b, 1.0);
+        fill_image = create_progress_fill(fill_width);
+        progress_fill.sprite.SetImage(fill_image);
+    }
+
+    // Create glow at the end of progress bar
+    if (fill_width > 10) {
+        glow_w = 30;
+        glow_h = 20;
+        glow_img = Image.Blank(glow_w, glow_h);
+        gcx = glow_w / 2;
+        gcy = glow_h / 2;
+
+        for (gx = 0; gx < glow_w; gx++) {
+            for (gy = 0; gy < glow_h; gy++) {
+                gdx = gx - gcx;
+                gdy = gy - gcy;
+                gdist = Math.Sqrt(gdx * gdx + gdy * gdy);
+                gmax = glow_w / 2;
+                if (gdist < gmax) {
+                    gint = 1.0 - (gdist / gmax);
+                    gint = gint * gint * 0.5;
+                    glow_img.SetPixel(gx, gy, global.accent_r, global.accent_g, global.accent_b, gint);
+                }
             }
         }
-        progress_fill.sprite.SetImage(fill_image);
+        progress_glow.sprite.SetImage(glow_img);
+        progress_glow.sprite.SetX(progress_x + fill_width - glow_w / 2);
+        progress_glow.sprite.SetY(progress_y - (glow_h - progress_height) / 2);
     }
 }
 
 // ============================================================
-// Refresh Animation
+// Refresh Animation Callback (called every frame)
 // ============================================================
 
 fun refresh_cb() {
-    global.phase += 0.03;
-    global.dot_phase += 0.15;
+    global.time += global.frame_time;
+    global.phase += 0.02;
+    global.dot_wave += 0.12;
+    global.glow_pulse += 0.04;
 
-    // Subtle logo pulse
+    // Animate logo glow pulsing
     if (logo_found) {
-        opacity = 0.85 + 0.15 * Math.Sin(global.phase);
-        logo.sprite.SetOpacity(opacity);
+        // Subtle breathing effect on logo
+        logo_opacity = 0.92 + 0.08 * Math.Sin(global.phase);
+        logo.sprite.SetOpacity(logo_opacity);
+
+        // Glow intensity pulsing
+        glow_opacity = 0.6 + 0.4 * Math.Sin(global.glow_pulse);
+        glow.sprite.SetOpacity(glow_opacity);
     }
 
-    // Animate loading dots
-    for (i = 0; i < num_dots; i++) {
-        dot_opacity = 0.3 + 0.7 * Math.Abs(Math.Sin(global.dot_phase - i * 0.5));
-        dot_size = 8;
+    // Animate title opacity for subtle effect
+    title_opacity = 0.95 + 0.05 * Math.Sin(global.phase * 0.8);
+    title.sprite.SetOpacity(title_opacity);
 
-        dot_image = Image.Blank(dot_size, dot_size);
-        for (x = 0; x < dot_size; x++) {
-            for (y = 0; y < dot_size; y++) {
-                // Circle
-                cx = dot_size / 2;
-                cy = dot_size / 2;
-                dist = Math.Sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
-                if (dist < dot_size / 2) {
-                    dot_image.SetPixel(x, y, 0.35, 0.65, 1.0, dot_opacity);
-                }
-            }
-        }
-        dots[i].sprite.SetImage(dot_image);
+    // Update particles
+    for (i = 0; i < num_particles; i++) {
+        // Update position
+        particles[i].x += particles[i].vx;
+        particles[i].y += particles[i].vy;
+
+        // Add gentle wave motion
+        wave_offset = Math.Sin(global.time * 0.5 + particles[i].phase) * 0.3;
+        particles[i].x += wave_offset;
+
+        // Wrap around screen edges
+        if (particles[i].x < -10) particles[i].x = screen_width + 10;
+        if (particles[i].x > screen_width + 10) particles[i].x = -10;
+        if (particles[i].y < -10) particles[i].y = screen_height + 10;
+        if (particles[i].y > screen_height + 10) particles[i].y = -10;
+
+        // Update sprite position
+        particles[i].sprite.SetX(particles[i].x);
+        particles[i].sprite.SetY(particles[i].y);
+
+        // Fade particles based on distance from center
+        dist_to_center = Math.Sqrt(
+            Math.Pow(particles[i].x - center_x, 2) +
+            Math.Pow(particles[i].y - center_y, 2)
+        );
+        fade_factor = 1.0 - Math.Min(dist_to_center / (screen_width * 0.6), 1.0);
+        particles[i].sprite.SetOpacity(particles[i].opacity * (0.5 + 0.5 * fade_factor));
+    }
+
+    // Animate loading dots (wave effect)
+    for (i = 0; i < num_dots; i++) {
+        // Calculate wave position for each dot
+        wave_phase = global.dot_wave - i * 0.5;
+        dot_opacity = 0.3 + 0.7 * Math.Max(0, Math.Sin(wave_phase));
+
+        // Scale effect
+        dot_scale = 1.0 + 0.2 * Math.Max(0, Math.Sin(wave_phase));
+
+        // Create dot with current opacity
+        dot_img = create_dot(dot_opacity);
+        dots[i].sprite.SetImage(dot_img);
     }
 }
 
@@ -154,12 +400,13 @@ fun refresh_cb() {
 // ============================================================
 
 message_sprite = Sprite();
+message_sprite.SetZ(100);
 
 fun message_cb(msg) {
-    msg_image = Image.Text(msg, 0.5, 0.55, 0.6, "Noto Sans 12");
+    msg_image = Image.Text(msg, 0.5, 0.55, 0.65, "Inter 12");
     message_sprite.SetImage(msg_image);
-    message_sprite.SetX(Window.GetWidth() / 2 - msg_image.GetWidth() / 2);
-    message_sprite.SetY(Window.GetHeight() - 80);
+    message_sprite.SetX(center_x - msg_image.GetWidth() / 2);
+    message_sprite.SetY(screen_height - 60);
 }
 
 // ============================================================
@@ -167,24 +414,59 @@ fun message_cb(msg) {
 // ============================================================
 
 password_sprite = Sprite();
+password_sprite.SetZ(100);
 bullet_sprite = Sprite();
+bullet_sprite.SetZ(100);
+
+// Password input box
+password_box.sprite = Sprite();
+password_box.sprite.SetZ(95);
 
 fun display_password_cb(prompt_text, bullets) {
-    prompt_image = Image.Text(prompt_text, 0.7, 0.75, 0.8, "Noto Sans 14");
+    // Draw prompt text
+    prompt_image = Image.Text(prompt_text, 0.8, 0.85, 0.9, "Inter Medium 14");
     password_sprite.SetImage(prompt_image);
-    password_sprite.SetX(Window.GetWidth() / 2 - prompt_image.GetWidth() / 2);
-    password_sprite.SetY(Window.GetHeight() / 2 + 200);
+    password_sprite.SetX(center_x - prompt_image.GetWidth() / 2);
+    password_sprite.SetY(center_y + 180);
 
-    // Password bullets
+    // Draw password box
+    box_width = 300;
+    box_height = 44;
+    box_image = Image.Blank(box_width, box_height);
+
+    // Box background with rounded corners
+    for (bx = 0; bx < box_width; bx++) {
+        for (by = 0; by < box_height; by++) {
+            // Simple rectangle for now
+            box_image.SetPixel(bx, by, 0.15, 0.15, 0.2, 0.8);
+        }
+    }
+    // Border
+    for (bx = 0; bx < box_width; bx++) {
+        box_image.SetPixel(bx, 0, global.accent_r, global.accent_g, global.accent_b, 0.5);
+        box_image.SetPixel(bx, box_height - 1, global.accent_r, global.accent_g, global.accent_b, 0.3);
+    }
+    for (by = 0; by < box_height; by++) {
+        box_image.SetPixel(0, by, global.accent_r, global.accent_g, global.accent_b, 0.4);
+        box_image.SetPixel(box_width - 1, by, global.accent_r, global.accent_g, global.accent_b, 0.4);
+    }
+
+    password_box.sprite.SetImage(box_image);
+    password_box.sprite.SetX(center_x - box_width / 2);
+    password_box.sprite.SetY(center_y + 210);
+
+    // Draw password bullets
     if (bullets > 0) {
         bullet_string = "";
         for (i = 0; i < bullets; i++) {
             bullet_string += "*";
         }
-        bullet_image = Image.Text(bullet_string, 1, 1, 1, "Noto Sans 18");
+        bullet_image = Image.Text(bullet_string, 1, 1, 1, "Inter 20");
         bullet_sprite.SetImage(bullet_image);
-        bullet_sprite.SetX(Window.GetWidth() / 2 - bullet_image.GetWidth() / 2);
-        bullet_sprite.SetY(Window.GetHeight() / 2 + 230);
+        bullet_sprite.SetX(center_x - bullet_image.GetWidth() / 2);
+        bullet_sprite.SetY(center_y + 220);
+    } else {
+        bullet_sprite.SetImage(Image.Blank(1, 1));
     }
 }
 
@@ -193,21 +475,67 @@ fun display_password_cb(prompt_text, bullets) {
 // ============================================================
 
 fun display_normal_cb() {
-    // Normal boot display
+    // Normal boot display - nothing special needed
 }
 
 fun quit_cb() {
-    // Fade out animation
+    // Smooth fade out animation
+    fade_steps = 20;
+    for (step = 0; step < fade_steps; step++) {
+        fade_opacity = 1.0 - (step / fade_steps);
+
+        if (logo_found) {
+            logo.sprite.SetOpacity(fade_opacity);
+            glow.sprite.SetOpacity(fade_opacity * 0.5);
+        }
+        title.sprite.SetOpacity(fade_opacity);
+        subtitle.sprite.SetOpacity(fade_opacity);
+        progress_bg.sprite.SetOpacity(fade_opacity);
+        progress_fill.sprite.SetOpacity(fade_opacity);
+        progress_glow.sprite.SetOpacity(fade_opacity);
+
+        for (i = 0; i < num_dots; i++) {
+            dots[i].sprite.SetOpacity(fade_opacity * 0.5);
+        }
+
+        for (i = 0; i < num_particles; i++) {
+            particles[i].sprite.SetOpacity(fade_opacity * particles[i].opacity);
+        }
+    }
+
+    // Final cleanup
     if (logo_found) {
         logo.sprite.SetOpacity(0);
+        glow.sprite.SetOpacity(0);
     }
-    text.sprite.SetOpacity(0);
-    subtext.sprite.SetOpacity(0);
+    title.sprite.SetOpacity(0);
+    subtitle.sprite.SetOpacity(0);
     progress_bg.sprite.SetOpacity(0);
     progress_fill.sprite.SetOpacity(0);
+    progress_glow.sprite.SetOpacity(0);
+    message_sprite.SetOpacity(0);
+
     for (i = 0; i < num_dots; i++) {
         dots[i].sprite.SetOpacity(0);
     }
+    for (i = 0; i < num_particles; i++) {
+        particles[i].sprite.SetOpacity(0);
+    }
+}
+
+// ============================================================
+// FSCK (Filesystem Check) Progress
+// ============================================================
+
+fsck_sprite = Sprite();
+fsck_sprite.SetZ(100);
+
+fun display_fsck_cb(device, progress_val, phase, action) {
+    fsck_text = "Checking filesystem: " + device + " (" + Math.Int(progress_val) + "%)";
+    fsck_image = Image.Text(fsck_text, 0.7, 0.75, 0.8, "Inter 11");
+    fsck_sprite.SetImage(fsck_image);
+    fsck_sprite.SetX(center_x - fsck_image.GetWidth() / 2);
+    fsck_sprite.SetY(screen_height - 100);
 }
 
 // ============================================================
@@ -220,3 +548,8 @@ Plymouth.SetDisplayNormalFunction(display_normal_cb);
 Plymouth.SetDisplayPasswordFunction(display_password_cb);
 Plymouth.SetMessageFunction(message_cb);
 Plymouth.SetQuitFunction(quit_cb);
+
+// Optional: FSCK progress
+if (Plymouth.GetMode() == "boot") {
+    Plymouth.SetFSCKFunction(display_fsck_cb);
+}
