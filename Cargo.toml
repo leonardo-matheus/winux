@@ -34,6 +34,8 @@ members = [
     "apps/winux-users",
     "apps/winux-weather",
     "apps/winux-calculator",
+    "apps/winux-backup",
+    "apps/winux-fonts",
 
     # Developer Tools
     "apps/winux-builder",
