@@ -37,7 +37,7 @@ mime_guess.workspace = true
 # OAuth2 authentication
 oauth2.workspace = true
 # WebDAV support
-reqwest-dav = "0.2"
+reqwest_dav = "0.1"
 # S3-compatible storage
 rust-s3 = "0.33"
 # Base64 encoding
