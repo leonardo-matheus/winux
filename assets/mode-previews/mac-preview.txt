@@ -1,0 +1,5 @@
+Mac-like Mode Preview
+- Top menu bar
+- Centered dock at bottom
+- Colored window buttons
+- Spotlight-like search

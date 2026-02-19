@@ -1,6 +1,6 @@
 [Plymouth Theme]
 Name=Winux
-Description=Modern boot splash for Winux OS
+Description=Winux OS Boot Theme - Modern and elegant
 ModuleName=script
 
 [script]

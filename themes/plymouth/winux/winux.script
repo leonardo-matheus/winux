@@ -1,128 +1,222 @@
-// Winux Plymouth Theme Script
-// Simple text-based theme with progress bar
+// Winux Plymouth Boot Theme Script
+// Modern boot animation with Winux branding
 
-// Background color (dark modern)
-Window.SetBackgroundTopColor(0.07, 0.07, 0.09);
-Window.SetBackgroundBottomColor(0.04, 0.04, 0.06);
+// Screen setup with dark gradient
+Window.SetBackgroundTopColor(0.05, 0.07, 0.09);
+Window.SetBackgroundBottomColor(0.02, 0.03, 0.04);
 
-// Brand text "WINUX"
-logo_text = Image.Text("W I N U X", 1, 1, 1, 1, "Sans Bold 48");
-logo_sprite = Sprite(logo_text);
-logo_sprite.SetX(Window.GetWidth() / 2 - logo_text.GetWidth() / 2);
-logo_sprite.SetY(Window.GetHeight() / 2 - 80);
-logo_sprite.SetOpacity(1);
+// ============================================================
+// Logo Setup
+// ============================================================
 
-// Tagline
-tagline_text = Image.Text("Gaming-First Linux", 0.6, 0.6, 0.7, 1, "Sans 16");
-tagline_sprite = Sprite(tagline_text);
-tagline_sprite.SetX(Window.GetWidth() / 2 - tagline_text.GetWidth() / 2);
-tagline_sprite.SetY(Window.GetHeight() / 2 - 20);
-
-// Spinner animation using text
-spinner_chars = ["|", "/", "-", "\\"];
-spinner_index = 0;
-spinner_sprite = Sprite();
-spinner_sprite.SetX(Window.GetWidth() / 2 - 10);
-spinner_sprite.SetY(Window.GetHeight() / 2 + 60);
-
-fun refresh_callback() {
-    spinner_index++;
-    if (spinner_index >= 4)
-        spinner_index = 0;
-
-    spinner_image = Image.Text(spinner_chars[spinner_index], 0.4, 0.6, 1, 1, "Mono Bold 24");
-    spinner_sprite.SetImage(spinner_image);
-    spinner_sprite.SetX(Window.GetWidth() / 2 - spinner_image.GetWidth() / 2);
+// Try to load the logo image, fallback to text
+logo_found = 0;
+for (i = 0; i < 2; i++) {
+    logo.image = Image("winux-logo.png");
+    if (logo.image) {
+        logo_found = 1;
+        break;
+    }
 }
 
-Plymouth.SetRefreshFunction(refresh_callback);
+if (logo_found) {
+    logo.sprite = Sprite(logo.image);
+    logo.sprite.SetX(Window.GetWidth() / 2 - logo.image.GetWidth() / 2);
+    logo.sprite.SetY(Window.GetHeight() / 2 - logo.image.GetHeight() / 2 - 80);
+    logo.sprite.SetOpacity(1);
+}
+
+// ============================================================
+// Brand Text
+// ============================================================
+
+// Main title - WINUX
+text.image = Image.Text("WINUX", 0.35, 0.65, 1.0, "Noto Sans Bold 48");
+text.sprite = Sprite(text.image);
+text.sprite.SetX(Window.GetWidth() / 2 - text.image.GetWidth() / 2);
+text.sprite.SetY(Window.GetHeight() / 2 + 40);
+
+// Subtitle - Developer Edition
+subtext.image = Image.Text("Developer Edition", 0.55, 0.6, 0.7, "Noto Sans Light 16");
+subtext.sprite = Sprite(subtext.image);
+subtext.sprite.SetX(Window.GetWidth() / 2 - subtext.image.GetWidth() / 2);
+subtext.sprite.SetY(Window.GetHeight() / 2 + 95);
+
+// ============================================================
+// Modern Progress Indicator (dots)
+// ============================================================
+
+progress_width = 200;
+progress_height = 6;
+progress_x = Window.GetWidth() / 2 - progress_width / 2;
+progress_y = Window.GetHeight() / 2 + 150;
 
 // Progress bar background
-progress_width = 300;
-progress_height = 6;
+progress_bg.image = Image.Blank(progress_width, progress_height);
+for (x = 0; x < progress_width; x++) {
+    for (y = 0; y < progress_height; y++) {
+        // Rounded corners effect
+        corner_radius = 3;
+        dist_left = x;
+        dist_right = progress_width - x - 1;
+        dist_top = y;
+        dist_bottom = progress_height - y - 1;
 
-// Draw progress bar box
-fun draw_progress_box() {
-    box = Image(progress_width + 4, progress_height + 4);
-    box.Clear(0.2, 0.2, 0.25, 1);
-    box_sprite = Sprite(box);
-    box_sprite.SetX(Window.GetWidth() / 2 - (progress_width + 4) / 2);
-    box_sprite.SetY(Window.GetHeight() - 80);
-    return box_sprite;
+        progress_bg.image.SetPixel(x, y, 0.15, 0.18, 0.22, 0.8);
+    }
 }
-
-progress_box_sprite = draw_progress_box();
+progress_bg.sprite = Sprite(progress_bg.image);
+progress_bg.sprite.SetX(progress_x);
+progress_bg.sprite.SetY(progress_y);
 
 // Progress bar fill
-progress_bar_sprite = Sprite();
-progress_bar_sprite.SetX(Window.GetWidth() / 2 - progress_width / 2);
-progress_bar_sprite.SetY(Window.GetHeight() - 78);
+progress_fill.sprite = Sprite();
+progress_fill.sprite.SetX(progress_x);
+progress_fill.sprite.SetY(progress_y);
 
-fun progress_callback(duration, progress) {
-    if (progress > 0) {
-        bar_width = Math.Int(progress_width * progress);
-        if (bar_width > 0) {
-            bar = Image(bar_width, progress_height);
-            // Blue gradient effect
-            bar.Clear(0.2, 0.5, 1, 1);
-            progress_bar_sprite.SetImage(bar);
+// ============================================================
+// Animation Variables
+// ============================================================
+
+global.progress = 0;
+global.phase = 0;
+global.dot_phase = 0;
+
+// Loading dots
+num_dots = 3;
+for (i = 0; i < num_dots; i++) {
+    dots[i].sprite = Sprite();
+    dots[i].sprite.SetX(Window.GetWidth() / 2 - 30 + i * 30);
+    dots[i].sprite.SetY(Window.GetHeight() / 2 + 180);
+}
+
+// ============================================================
+// Boot Progress Callback
+// ============================================================
+
+fun boot_progress_cb(time, progress_val) {
+    global.progress = progress_val;
+
+    fill_width = Math.Int(progress_width * progress_val);
+    if (fill_width > 0) {
+        fill_image = Image.Blank(fill_width, progress_height);
+        for (x = 0; x < fill_width; x++) {
+            for (y = 0; y < progress_height; y++) {
+                // Gradient from blue to cyan
+                gradient = x / fill_width;
+                r = 0.35 + gradient * 0.2;
+                g = 0.55 + gradient * 0.2;
+                b = 0.9 + gradient * 0.1;
+                fill_image.SetPixel(x, y, r, g, b, 1.0);
+            }
         }
+        progress_fill.sprite.SetImage(fill_image);
     }
 }
 
-Plymouth.SetBootProgressFunction(progress_callback);
+// ============================================================
+// Refresh Animation
+// ============================================================
 
-// Status message
-status_sprite = Sprite();
+fun refresh_cb() {
+    global.phase += 0.03;
+    global.dot_phase += 0.15;
 
-fun message_callback(text) {
-    status_image = Image.Text(text, 0.5, 0.5, 0.55, 1, "Sans 12");
-    status_sprite.SetImage(status_image);
-    status_sprite.SetX(Window.GetWidth() / 2 - status_image.GetWidth() / 2);
-    status_sprite.SetY(Window.GetHeight() - 50);
-}
-
-Plymouth.SetMessageFunction(message_callback);
-
-// Password prompt
-password_prompt_sprite = Sprite();
-password_entry_sprite = Sprite();
-
-fun display_password_callback(prompt, bullets) {
-    prompt_image = Image.Text(prompt, 0.9, 0.9, 0.9, 1, "Sans 14");
-    password_prompt_sprite.SetImage(prompt_image);
-    password_prompt_sprite.SetX(Window.GetWidth() / 2 - prompt_image.GetWidth() / 2);
-    password_prompt_sprite.SetY(Window.GetHeight() / 2 + 120);
-
-    bullet_string = "";
-    for (i = 0; i < bullets; i++) {
-        bullet_string += "●";
+    // Subtle logo pulse
+    if (logo_found) {
+        opacity = 0.85 + 0.15 * Math.Sin(global.phase);
+        logo.sprite.SetOpacity(opacity);
     }
 
+    // Animate loading dots
+    for (i = 0; i < num_dots; i++) {
+        dot_opacity = 0.3 + 0.7 * Math.Abs(Math.Sin(global.dot_phase - i * 0.5));
+        dot_size = 8;
+
+        dot_image = Image.Blank(dot_size, dot_size);
+        for (x = 0; x < dot_size; x++) {
+            for (y = 0; y < dot_size; y++) {
+                // Circle
+                cx = dot_size / 2;
+                cy = dot_size / 2;
+                dist = Math.Sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
+                if (dist < dot_size / 2) {
+                    dot_image.SetPixel(x, y, 0.35, 0.65, 1.0, dot_opacity);
+                }
+            }
+        }
+        dots[i].sprite.SetImage(dot_image);
+    }
+}
+
+// ============================================================
+// Message Display
+// ============================================================
+
+message_sprite = Sprite();
+
+fun message_cb(msg) {
+    msg_image = Image.Text(msg, 0.5, 0.55, 0.6, "Noto Sans 12");
+    message_sprite.SetImage(msg_image);
+    message_sprite.SetX(Window.GetWidth() / 2 - msg_image.GetWidth() / 2);
+    message_sprite.SetY(Window.GetHeight() - 80);
+}
+
+// ============================================================
+// Password Dialog
+// ============================================================
+
+password_sprite = Sprite();
+bullet_sprite = Sprite();
+
+fun display_password_cb(prompt_text, bullets) {
+    prompt_image = Image.Text(prompt_text, 0.7, 0.75, 0.8, "Noto Sans 14");
+    password_sprite.SetImage(prompt_image);
+    password_sprite.SetX(Window.GetWidth() / 2 - prompt_image.GetWidth() / 2);
+    password_sprite.SetY(Window.GetHeight() / 2 + 200);
+
+    // Password bullets
     if (bullets > 0) {
-        entry_image = Image.Text(bullet_string, 0.4, 0.6, 1, 1, "Sans Bold 18");
-        password_entry_sprite.SetImage(entry_image);
-        password_entry_sprite.SetX(Window.GetWidth() / 2 - entry_image.GetWidth() / 2);
-        password_entry_sprite.SetY(Window.GetHeight() / 2 + 150);
+        bullet_string = "";
+        for (i = 0; i < bullets; i++) {
+            bullet_string += "*";
+        }
+        bullet_image = Image.Text(bullet_string, 1, 1, 1, "Noto Sans 18");
+        bullet_sprite.SetImage(bullet_image);
+        bullet_sprite.SetX(Window.GetWidth() / 2 - bullet_image.GetWidth() / 2);
+        bullet_sprite.SetY(Window.GetHeight() / 2 + 230);
     }
 }
 
-Plymouth.SetDisplayPasswordFunction(display_password_callback);
+// ============================================================
+// Other Callbacks
+// ============================================================
 
-// Normal/FSCK display
-fun display_normal_callback() {
-    // Nothing special
+fun display_normal_cb() {
+    // Normal boot display
 }
 
-Plymouth.SetDisplayNormalFunction(display_normal_callback);
-
-// Quit function
-fun quit_callback() {
-    logo_sprite.SetOpacity(0);
-    tagline_sprite.SetOpacity(0);
-    spinner_sprite.SetOpacity(0);
-    progress_bar_sprite.SetOpacity(0);
-    progress_box_sprite.SetOpacity(0);
+fun quit_cb() {
+    // Fade out animation
+    if (logo_found) {
+        logo.sprite.SetOpacity(0);
+    }
+    text.sprite.SetOpacity(0);
+    subtext.sprite.SetOpacity(0);
+    progress_bg.sprite.SetOpacity(0);
+    progress_fill.sprite.SetOpacity(0);
+    for (i = 0; i < num_dots; i++) {
+        dots[i].sprite.SetOpacity(0);
+    }
 }
 
-Plymouth.SetQuitFunction(quit_callback);
+// ============================================================
+// Register Callbacks
+// ============================================================
+
+Plymouth.SetBootProgressFunction(boot_progress_cb);
+Plymouth.SetRefreshFunction(refresh_cb);
+Plymouth.SetDisplayNormalFunction(display_normal_cb);
+Plymouth.SetDisplayPasswordFunction(display_password_cb);
+Plymouth.SetMessageFunction(message_cb);
+Plymouth.SetQuitFunction(quit_cb);

@@ -1,0 +1,5 @@
+Windows-like Mode Preview
+- Fixed taskbar at bottom
+- Start menu with Winux logo
+- System tray on right
+- Desktop icons enabled
