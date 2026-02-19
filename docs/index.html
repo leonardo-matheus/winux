@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Winux OS - Sistema operacional Linux baseado em Ubuntu 24.04 LTS. Interface elegante estilo Windows 11, otimizado para gaming e desenvolvimento.">
-    <meta name="keywords" content="Winux, Linux, Ubuntu, Operating System, Gaming, Developer, Wine, Proton, Desktop">
+    <meta name="description" content="Winux OS v1.2 Blaze - Sistema operacional Linux baseado em Ubuntu 24.04 LTS. AI Assistant integrado, sincronizacao na nuvem, integracao com smartphone e muito mais.">
+    <meta name="keywords" content="Winux, Linux, Ubuntu, Operating System, Gaming, Developer, Wine, Proton, Desktop, AI, Cloud, Smartphone">
     <meta name="author" content="Winux Team">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Winux OS - Linux Gaming &amp; Developer Edition">
-    <meta property="og:description" content="Sistema operacional Linux completo com interface Windows 11, gaming otimizado e ferramentas de desenvolvimento.">
+    <meta property="og:title" content="Winux OS v1.2 Blaze - Linux Gaming &amp; Developer Edition">
+    <meta property="og:description" content="Sistema operacional Linux completo com AI Assistant, Cloud Sync, integracao smartphone e 48 apps nativos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://winux.dev">
     <meta property="og:image" content="assets/images/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Winux OS">
-    <meta name="twitter:description" content="Linux OS para gamers e desenvolvedores. Interface elegante, performance extrema.">
+    <meta name="twitter:title" content="Winux OS v1.2 Blaze">
+    <meta name="twitter:description" content="Linux OS para gamers e desenvolvedores. AI integrada, Cloud Sync, 48 apps nativos.">
 
-    <title>Winux OS - Linux Gaming &amp; Developer Edition</title>
+    <title>Winux OS v1.2 Blaze - Linux Gaming &amp; Developer Edition</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
@@ -32,6 +32,85 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* v1.2 Blaze Brand Colors */
+        :root {
+            --winux-cyan: #00d4ff;
+            --winux-magenta: #ff00ff;
+            --winux-green: #00ff88;
+            --winux-dark: #0a0a0f;
+            --winux-card: #12121a;
+        }
+
+        .gradient-text-blaze {
+            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta), var(--winux-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blaze-badge {
+            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-new {
+            position: relative;
+        }
+
+        .feature-new::after {
+            content: 'NEW';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .ai-glow {
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), 0 0 60px rgba(255, 0, 255, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--winux-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card .stat-label {
+            color: #888;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -40,14 +119,15 @@
             <a href="#" class="nav-logo">
                 <img src="../assets/branding/logo.png" alt="Winux Logo" class="logo-icon" style="width: 40px; height: 40px; border-radius: 10px;">
                 <span>Winux</span>
+                <span class="blaze-badge">v1.2 Blaze</span>
             </a>
 
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#ai" class="nav-link">AI Assistant</a></li>
                 <li><a href="#apps" class="nav-link">Apps</a></li>
-                <li><a href="#screenshots" class="nav-link">Screenshots</a></li>
+                <li><a href="#connect" class="nav-link">Connect</a></li>
                 <li><a href="#download" class="nav-link">Download</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -79,30 +159,31 @@
             <div class="hero-content">
                 <div class="hero-badge animate-fade-in">
                     <span class="badge-dot"></span>
-                    <span>Version 1.0 Now Available</span>
+                    <span>v1.2 Blaze - AI Powered</span>
                 </div>
 
                 <h1 class="hero-title animate-fade-in-up">
                     Linux OS<br>
-                    <span class="gradient-text">Para Gamers &amp; Devs</span>
+                    <span class="gradient-text-blaze">Com Inteligencia Artificial</span>
                 </h1>
 
                 <p class="hero-description animate-fade-in-up delay-1">
-                    Sistema operacional Linux completo baseado em Ubuntu 24.04 LTS.
-                    Interface elegante estilo Windows 11, gaming otimizado com Wine/Proton e ambiente de desenvolvimento completo.
+                    Winux OS v1.2 Blaze traz AI Assistant integrado com GPT-4o, sincronizacao na nuvem,
+                    integracao com smartphone e 48 apps nativos em Rust/GTK4. O sistema operacional Linux
+                    mais avancado para gamers e desenvolvedores.
                 </p>
 
                 <div class="hero-actions animate-fade-in-up delay-2">
-                    <a href="#download" class="btn btn-primary btn-lg">
+                    <a href="#download" class="btn btn-primary btn-lg ai-glow">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                             <polyline points="7 10 12 15 17 10"/>
                             <line x1="12" y1="15" x2="12" y2="3"/>
                         </svg>
-                        Download Grátis
+                        Download v1.2 Blaze
                     </a>
-                    <a href="#features" class="btn btn-ghost btn-lg">
-                        Saiba Mais
+                    <a href="#ai" class="btn btn-ghost btn-lg">
+                        Conhecer AI Assistant
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="5" y1="12" x2="19" y2="12"/>
                             <polyline points="12 5 19 12 12 19"/>
@@ -110,52 +191,56 @@
                     </a>
                 </div>
 
-                <div class="hero-stats animate-fade-in-up delay-3">
-                    <div class="stat">
-                        <span class="stat-value">2.7GB</span>
-                        <span class="stat-label">ISO Size</span>
+                <div class="stats-grid animate-fade-in-up delay-3">
+                    <div class="stat-card">
+                        <span class="stat-value">48</span>
+                        <span class="stat-label">Apps Nativos</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">24.04</span>
-                        <span class="stat-label">Ubuntu Base</span>
+                    <div class="stat-card">
+                        <span class="stat-value">190K+</span>
+                        <span class="stat-label">Linhas de Codigo</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">100%</span>
-                        <span class="stat-label">Free</span>
+                    <div class="stat-card">
+                        <span class="stat-value">7</span>
+                        <span class="stat-label">Temas Inclusos</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">Provedores Cloud</span>
                     </div>
                 </div>
             </div>
 
             <div class="hero-image animate-fade-in-up delay-2">
-                <div class="hero-mockup">
+                <div class="hero-mockup ai-glow">
                     <div class="mockup-header">
                         <div class="mockup-dots">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                        <span class="mockup-title">Winux Terminal</span>
+                        <span class="mockup-title">Winux AI Assistant</span>
                     </div>
                     <div class="mockup-content">
                         <div class="terminal-line">
-                            <span class="terminal-prompt">winux@desktop</span>
-                            <span class="terminal-symbol">~$</span>
-                            <span class="terminal-command typing">winux-dev status</span>
+                            <span class="terminal-prompt">user</span>
+                            <span class="terminal-symbol">:</span>
+                            <span class="terminal-command">Como otimizo meu codigo Rust?</span>
                         </div>
                         <div class="terminal-output">
-                            <span class="terminal-success">✓</span> Java 21 (OpenJDK)
+                            <span class="terminal-success">AI</span> Analisando seu codigo...
                         </div>
                         <div class="terminal-output">
-                            <span class="terminal-success">✓</span> Node.js 20 LTS (NVM)
+                            <span class="terminal-success">1.</span> Use iteradores ao inves de loops
                         </div>
                         <div class="terminal-output">
-                            <span class="terminal-success">✓</span> Python 3.12 + pip
+                            <span class="terminal-success">2.</span> Prefira &amp;str sobre String
                         </div>
                         <div class="terminal-output">
-                            <span class="terminal-success">✓</span> Docker + Compose
+                            <span class="terminal-success">3.</span> Use Arc para dados compartilhados
                         </div>
                         <div class="terminal-output terminal-complete">
-                            <span class="terminal-success">✓</span> Dev environment ready!
+                            <span class="terminal-success">Done</span> Sugestoes aplicadas!
                         </div>
                     </div>
                 </div>
@@ -168,14 +253,74 @@
         </div>
     </section>
 
+    <!-- AI Assistant Section -->
+    <section class="features" id="ai" style="background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta)); color: white;">NEW in v1.2</span>
+                <h2 class="section-title">AI Assistant<br><span class="gradient-text-blaze">Integrado ao Sistema</span></h2>
+                <p class="section-description">
+                    Assistente de IA com GPT-4o integrado nativamente ao Winux. Ajuda com codigo, comandos,
+                    analise de imagens e muito mais - tudo acessivel pelo atalho Super+Space.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Chat com GPT-4o</h3>
+                    <p>Converse com o modelo mais avancado da OpenAI. Streaming em tempo real, historico de conversas e contexto persistente.</p>
+                </div>
+
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-green));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <polyline points="8 21 12 17 16 21"/>
+                        </svg>
+                    </div>
+                    <h3>Assistente de Codigo</h3>
+                    <p>Gera, explica e refatora codigo em qualquer linguagem. Integrado com seu editor e terminal.</p>
+                </div>
+
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-green), var(--winux-cyan));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                    </div>
+                    <h3>Analise de Imagens</h3>
+                    <p>Envie screenshots ou imagens e receba descricoes, OCR e analises detalhadas usando GPT-4o Vision.</p>
+                </div>
+
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6b6b, var(--winux-magenta));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Comandos do Sistema</h3>
+                    <p>Peca comandos em linguagem natural: "como vejo processos usando mais memoria?" e receba o comando pronto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Features</span>
-                <h2 class="section-title">Tudo que você precisa,<br><span class="gradient-text">pronto para usar</span></h2>
+                <h2 class="section-title">Tudo que voce precisa,<br><span class="gradient-text-blaze">pronto para usar</span></h2>
                 <p class="section-description">
-                    Um sistema operacional Linux completo, otimizado para gamers e desenvolvedores. Instale via USB e comece a usar.
+                    Um sistema operacional Linux completo com 48 apps nativos, otimizado para gamers e desenvolvedores.
                 </p>
             </div>
 
@@ -187,31 +332,39 @@
                         </svg>
                     </div>
                     <h3>Gaming Otimizado</h3>
-                    <p>Wine 9.0, Proton GE, DXVK e GameMode pré-configurados. Jogue seus games Windows nativamente.</p>
+                    <p>Wine 9.0, Proton GE, DXVK e GameMode pre-configurados. Launcher de games integrado com suporte a Steam, Epic e GOG.</p>
                 </div>
 
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-green));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                         </svg>
                     </div>
-                    <h3>Interface Windows 11</h3>
-                    <p>Desktop GNOME customizado com visual Windows 11. Familiar, elegante e produtivo.</p>
+                    <h3>Cloud Sync</h3>
+                    <p>Sincronize arquivos com Google Drive, OneDrive, Dropbox, AWS S3, Azure Blob e provedores WebDAV.</p>
                 </div>
 
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-cyan));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2"/>
+                            <line x1="12" y1="18" x2="12" y2="18.01"/>
                         </svg>
                     </div>
-                    <h3>Ubuntu 24.04 LTS</h3>
-                    <p>Baseado no Ubuntu mais estável. 5 anos de suporte, milhares de pacotes disponíveis.</p>
+                    <h3>Winux Connect</h3>
+                    <p>Integre seu smartphone Android. Notificacoes, SMS, transferencia de arquivos e espelhamento de tela.</p>
+                </div>
+
+                <div class="feature-card glass-card feature-new" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-green), var(--winux-magenta));">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <h3>Shell Plugins</h3>
+                    <p>Sistema de plugins para o shell com hot reload, API Lua e 6 plugins inclusos (weather, system-monitor, etc).</p>
                 </div>
 
                 <div class="feature-card glass-card" data-animate>
@@ -221,7 +374,7 @@
                         </svg>
                     </div>
                     <h3>Developer Ready</h3>
-                    <p>Java 8/11/17/21, Node.js, Python, Rust, Go, Docker e IDEs pré-instalados. Code from day one.</p>
+                    <p>Java 8/11/17/21, Node.js, Python, Rust, Go, Docker e IDEs pre-instalados. Mobile Builder para iOS/Android.</p>
                 </div>
 
                 <div class="feature-card glass-card" data-animate>
@@ -231,20 +384,74 @@
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                         </svg>
                     </div>
-                    <h3>Instalação Fácil</h3>
-                    <p>Baixe a ISO, grave no USB com Rufus/Ventoy e instale. Instalador gráfico Calamares incluso.</p>
+                    <h3>48 Apps Nativos</h3>
+                    <p>File manager, terminal, settings, music player, video player, calendar, mail, e muito mais - todos em Rust/GTK4.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winux Connect Section -->
+    <section class="features" id="connect" style="background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-cyan)); color: white;">Smartphone</span>
+                <h2 class="section-title">Winux Connect<br><span class="gradient-text-blaze">Seu telefone integrado</span></h2>
+                <p class="section-description">
+                    Conecte seu smartphone Android ao Winux. Receba notificacoes, envie SMS, transfira arquivos
+                    e ate espelhe a tela - tudo sem fio via Wi-Fi.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card glass-card" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                    </div>
+                    <h3>Notificacoes</h3>
+                    <p>Veja notificacoes do seu telefone diretamente no desktop. Responda mensagens sem pegar o celular.</p>
                 </div>
 
                 <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="16 18 22 12 16 6"/>
-                            <polyline points="8 6 2 12 8 18"/>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #00c853, #69f0ae);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
                     </div>
-                    <h3>CLI Tools</h3>
-                    <p>Ferramentas exclusivas: winux-dev para stacks de desenvolvimento, winux-java para gerenciar versões do Java.</p>
+                    <h3>SMS/Mensagens</h3>
+                    <p>Envie e receba SMS pelo computador. Suporte a conversas em grupo e anexos de midia.</p>
                 </div>
+
+                <div class="feature-card glass-card" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6d00, #ffab00);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                            <polyline points="13 2 13 9 20 9"/>
+                        </svg>
+                    </div>
+                    <h3>Transferencia</h3>
+                    <p>Arraste e solte arquivos entre o PC e o telefone. Velocidade de ate 50MB/s via Wi-Fi local.</p>
+                </div>
+
+                <div class="feature-card glass-card" data-animate>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Screen Mirror</h3>
+                    <p>Espelhe a tela do seu telefone no desktop. Controle apps Android diretamente pelo mouse e teclado.</p>
+                </div>
+            </div>
+
+            <div class="apps-cta" style="margin-top: 40px;">
+                <p>App Android disponivel na Play Store</p>
+                <a href="#download" class="btn btn-outline" style="border-color: var(--winux-cyan); color: var(--winux-cyan);">Baixar Winux Connect</a>
             </div>
         </div>
     </section>
@@ -254,185 +461,131 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Apps</span>
-                <h2 class="section-title">Tudo pré-instalado,<br><span class="gradient-text">pronto para usar</span></h2>
+                <h2 class="section-title">48 Apps Nativos<br><span class="gradient-text-blaze">Escritos em Rust</span></h2>
                 <p class="section-description">
-                    Ferramentas de desenvolvimento, gaming e produtividade já incluídas na ISO. Zero configuração.
+                    Todos os apps essenciais escritos em Rust com GTK4/Libadwaita. Performance nativa, design moderno e integracao perfeita.
                 </p>
             </div>
 
             <div class="apps-showcase">
                 <div class="apps-row" data-animate>
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #FF6B35, #F72585);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Firefox</span>
+                        <span class="app-name">Winux AI</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #007ACC, #00D4FF);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/>
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v6H4v-6zm16 6h-4v-6h4v6z"/>
                             </svg>
                         </div>
-                        <span class="app-name">VS Code</span>
+                        <span class="app-name">File Manager</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #2496ED, #00C7B7);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M13.983 11.078h2.119a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.119a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 0 0 .186-.186V3.574a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 0 0 .186-.186V6.29a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 0 0 .184-.186V6.29a.185.185 0 0 0-.185-.185H8.1a.185.185 0 0 0-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 0 0 .185-.186V6.29a.186.186 0 0 0-.185-.185H5.136a.186.186 0 0 0-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 0 0 .185-.185V9.006a.185.185 0 0 0-.185-.186h-2.12a.186.186 0 0 0-.185.185v1.888c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 0 0-.75.748 11.376 11.376 0 0 0 .692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 0 0 3.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/>
+                                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM4 6h16v2H4V6z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Docker</span>
+                        <span class="app-name">Terminal</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #F05032, #FF7B54);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #ff6b35, #f72585);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/>
+                                <circle cx="12" cy="12" r="3.2"/>
+                                <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Git</span>
+                        <span class="app-name">Camera</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #339933, #5FA04E);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #1db954, #191414);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M11.998 24c-.321 0-.639-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 0 0 .272 0l8.795-5.076a.277.277 0 0 0 .134-.238V6.921a.283.283 0 0 0-.137-.242l-8.791-5.072a.278.278 0 0 0-.271 0L3.075 6.68a.284.284 0 0 0-.139.241v10.15a.27.27 0 0 0 .139.235l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551l-2.307-1.326A1.85 1.85 0 0 1 1.359 17.07V6.921c0-.681.363-1.318.953-1.658L11.106.185a1.926 1.926 0 0 1 1.784 0l8.794 5.078c.59.34.952.977.952 1.658v10.15c0 .681-.362 1.317-.952 1.658l-8.794 5.078a1.88 1.88 0 0 1-.892.193"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2" stroke="#191414" stroke-width="2" fill="none"/>
                             </svg>
                         </div>
-                        <span class="app-name">Node.js</span>
+                        <span class="app-name">Music</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+                                <path d="M8 5v14l11-7z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Python</span>
+                        <span class="app-name">Video</span>
                     </div>
                 </div>
 
                 <div class="apps-row reverse" data-animate>
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #DD0031, #C3002F);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #2196f3, #00bcd4);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.625a9.375 9.375 0 1 1 0 18.75 9.375 9.375 0 0 1 0-18.75zM8.284 8.284a1.406 1.406 0 1 0-1.99 1.99l2.722 2.722-2.722 2.722a1.406 1.406 0 1 0 1.99 1.99l2.722-2.722 2.722 2.722a1.406 1.406 0 1 0 1.99-1.99l-2.722-2.722 2.722-2.722a1.406 1.406 0 1 0-1.99-1.99l-2.722 2.722z"/>
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                             </svg>
                         </div>
-                        <span class="app-name">GIMP</span>
+                        <span class="app-name">System Monitor</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #EF652A, #F9A03C);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 1.5a10.5 10.5 0 1 1 0 21 10.5 10.5 0 0 1 0-21zm0 3a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15zm0 1.5a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/>
+                                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
                             </svg>
                         </div>
-                        <span class="app-name">VLC</span>
+                        <span class="app-name">Calendar</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #0078D6, #00BCF2);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M2.5 2.5h9v9h-9v-9zm10 0h9v9h-9v-9zm-10 10h9v9h-9v-9zm10 0h9v9h-9v-9z"/>
+                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 000-1.41l-2.34-2.34a.996.996 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
                             </svg>
                         </div>
-                        <span class="app-name">LibreOffice</span>
+                        <span class="app-name">Notes</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #764ABC, #9B59B6);">
-                            <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M12 0L1.75 6v12L12 24l10.25-6V6L12 0zm0 2.25L19.5 6.5v11L12 21.75 4.5 17.5v-11L12 2.25z"/>
-                            </svg>
-                        </div>
-                        <span class="app-name">Blender</span>
-                    </div>
-
-                    <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #00979D, #62AEB2);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #607d8b, #455a64);">
                             <svg viewBox="0 0 24 24" fill="white">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Inkscape</span>
+                        <span class="app-name">Calculator</span>
                     </div>
 
                     <div class="app-card glass-card">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #1DB954, #191414);">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #3f51b5, #2196f3);">
                             <svg viewBox="0 0 24 24" fill="white">
-                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
                         </div>
-                        <span class="app-name">Spotify</span>
+                        <span class="app-name">Mail</span>
+                    </div>
+
+                    <div class="app-card glass-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #00bcd4, #009688);">
+                            <svg viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/>
+                            </svg>
+                        </div>
+                        <span class="app-name">Weather</span>
                     </div>
                 </div>
             </div>
 
             <div class="apps-cta">
-                <p>E muito mais pré-instalado...</p>
-                <a href="#download" class="btn btn-outline">Baixar Winux OS</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section class="screenshots" id="screenshots">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Screenshots</span>
-                <h2 class="section-title">Veja o Winux<br><span class="gradient-text">em ação</span></h2>
-                <p class="section-description">
-                    Interface GNOME customizada com tema Windows 11. Familiar para quem vem do Windows, poderosa para quem conhece Linux.
-                </p>
-            </div>
-
-            <div class="screenshots-carousel" data-animate>
-                <div class="carousel-track" id="carousel-track">
-                    <div class="screenshot-item active">
-                        <div class="screenshot-card glass-card">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect fill='%231a1a2e' width='800' height='500'/%3E%3Crect fill='%2316213e' x='20' y='20' width='760' height='460' rx='10'/%3E%3Crect fill='%230f3460' x='20' y='20' width='760' height='40' rx='10'/%3E%3Ccircle fill='%23e94560' cx='50' cy='40' r='8'/%3E%3Ccircle fill='%23f39c12' cx='80' cy='40' r='8'/%3E%3Ccircle fill='%2327ae60' cx='110' cy='40' r='8'/%3E%3Ctext fill='%23ffffff' font-family='monospace' font-size='14' x='40' y='100'%3Ewinux@desktop:~$ neofetch%3C/text%3E%3Ctext fill='%236366f1' font-family='monospace' font-size='12' x='40' y='140'%3E██╗ ██╗██╗███╗ ██╗██╗ ██╗██╗ ██╗%3C/text%3E%3Ctext fill='%236366f1' font-family='monospace' font-size='12' x='40' y='160'%3E██║ ██║██║████╗ ██║██║ ██║╚██╗██╔╝%3C/text%3E%3Ctext fill='%236366f1' font-family='monospace' font-size='12' x='40' y='180'%3E██║ █╗ ██║██║██╔██╗██║██║ ██║ ╚███╔╝%3C/text%3E%3Ctext fill='%238b5cf6' font-family='monospace' font-size='12' x='400' y='140'%3EOS: Winux 1.0 Aurora%3C/text%3E%3Ctext fill='%238b5cf6' font-family='monospace' font-size='12' x='400' y='160'%3EKernel: Linux 6.8%3C/text%3E%3Ctext fill='%238b5cf6' font-family='monospace' font-size='12' x='400' y='180'%3EDE: GNOME 46%3C/text%3E%3Ctext fill='%238b5cf6' font-family='monospace' font-size='12' x='400' y='200'%3EBase: Ubuntu 24.04%3C/text%3E%3C/svg%3E" alt="Winux Terminal" loading="lazy">
-                            <span class="screenshot-label">Terminal Moderno</span>
-                        </div>
-                    </div>
-
-                    <div class="screenshot-item">
-                        <div class="screenshot-card glass-card">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect fill='%231a1a2e' width='800' height='500'/%3E%3Crect fill='%2316213e' x='20' y='20' width='200' height='460' rx='10'/%3E%3Crect fill='%230f3460' x='240' y='20' width='540' height='460' rx='10'/%3E%3Crect fill='%236366f1' x='40' y='80' width='160' height='40' rx='5'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='14' x='80' y='105'%3EAll Apps%3C/text%3E%3Crect fill='%23232347' x='40' y='140' width='160' height='40' rx='5'/%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='14' x='80' y='165'%3EDev Tools%3C/text%3E%3Crect fill='%23232347' x='40' y='200' width='160' height='40' rx='5'/%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='14' x='80' y='225'%3EMedia%3C/text%3E%3Crect fill='%23232347' x='260' y='40' width='500' height='40' rx='20'/%3E%3Ctext fill='%23666' font-family='sans-serif' font-size='14' x='290' y='65'%3ESearch apps...%3C/text%3E%3Crect fill='%23232347' x='260' y='100' width='150' height='150' rx='10'/%3E%3Crect fill='%23FF6B35' x='290' y='130' width='90' height='60' rx='10'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='12' x='300' y='220'%3EFirefox%3C/text%3E%3Crect fill='%23232347' x='430' y='100' width='150' height='150' rx='10'/%3E%3Crect fill='%23007ACC' x='460' y='130' width='90' height='60' rx='10'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='12' x='470' y='220'%3EVS Code%3C/text%3E%3Crect fill='%23232347' x='600' y='100' width='150' height='150' rx='10'/%3E%3Crect fill='%232496ED' x='630' y='130' width='90' height='60' rx='10'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='12' x='650' y='220'%3EDocker%3C/text%3E%3C/svg%3E" alt="App Store" loading="lazy">
-                            <span class="screenshot-label">App Store</span>
-                        </div>
-                    </div>
-
-                    <div class="screenshot-item">
-                        <div class="screenshot-card glass-card">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect fill='%231a1a2e' width='800' height='500'/%3E%3Crect fill='%2316213e' x='20' y='20' width='760' height='460' rx='10'/%3E%3Crect fill='%230f3460' x='20' y='20' width='760' height='50' rx='10'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='16' font-weight='bold' x='40' y='52'%3ESettings%3C/text%3E%3Crect fill='%23232347' x='40' y='90' width='200' height='370' rx='10'/%3E%3Ctext fill='%236366f1' font-family='sans-serif' font-size='14' x='60' y='130'%3EAppearance%3C/text%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='14' x='60' y='170'%3EApps%3C/text%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='14' x='60' y='210'%3ETerminal%3C/text%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='14' x='60' y='250'%3ENetwork%3C/text%3E%3Crect fill='%23232347' x='260' y='90' width='500' height='370' rx='10'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='16' x='280' y='130'%3ETheme%3C/text%3E%3Crect fill='%230f3460' x='280' y='150' width='100' height='60' rx='5'/%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='10' x='310' y='185'%3EDark%3C/text%3E%3Crect fill='%23f0f0f0' x='400' y='150' width='100' height='60' rx='5'/%3E%3Ctext fill='%23333' font-family='sans-serif' font-size='10' x='430' y='185'%3ELight%3C/text%3E%3Ctext fill='%23fff' font-family='sans-serif' font-size='16' x='280' y='260'%3EAccent Color%3C/text%3E%3Ccircle fill='%236366f1' cx='300' cy='300' r='20'/%3E%3Ccircle fill='%23ec4899' cx='360' cy='300' r='20'/%3E%3Ccircle fill='%2310b981' cx='420' cy='300' r='20'/%3E%3Ccircle fill='%23f59e0b' cx='480' cy='300' r='20'/%3E%3C/svg%3E" alt="Settings" loading="lazy">
-                            <span class="screenshot-label">Configuracoes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"/>
-                        </svg>
-                    </button>
-                    <div class="carousel-dots" id="carousel-dots">
-                        <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-                        <button class="dot" data-index="1" aria-label="Slide 2"></button>
-                        <button class="dot" data-index="2" aria-label="Slide 3"></button>
-                    </div>
-                    <button class="carousel-btn next" id="carousel-next" aria-label="Next">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"/>
-                        </svg>
-                    </button>
-                </div>
+                <p>E mais 36 apps inclusos: Clock, Contacts, Screenshot, Screen Recorder, PDF Viewer, Archive Manager...</p>
+                <a href="APPS.md" class="btn btn-outline">Ver Todos os Apps</a>
             </div>
         </div>
     </section>
@@ -440,32 +593,31 @@
     <!-- Download Section -->
     <section class="download" id="download">
         <div class="container">
-            <div class="download-card glass-card" data-animate>
+            <div class="download-card glass-card ai-glow" data-animate>
                 <div class="download-content">
-                    <span class="section-tag">Download</span>
-                    <h2 class="section-title">Pronto para começar?</h2>
+                    <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta)); color: white;">Download</span>
+                    <h2 class="section-title">Baixe o Winux v1.2 Blaze</h2>
                     <p class="download-description">
-                        Baixe a ISO do Winux Developer Edition com todas as ferramentas de desenvolvimento incluídas:
-                        Java (8, 11, 17, 21), Node.js, Python, Rust, Go, Docker, VS Code, IntelliJ IDEA e muito mais.
-                        Requisitos: CPU x86_64, 4GB RAM, 30GB disco.
+                        ISO completa com 48 apps nativos, AI Assistant, Cloud Sync, Winux Connect e todos os
+                        temas inclusos. Baseado no Ubuntu 24.04 LTS com kernel 6.8.
                     </p>
 
                     <div class="download-buttons">
-                        <a href="https://gofile.io/d/Y351PH" class="btn btn-primary btn-lg download-btn" target="_blank">
+                        <a href="https://gofile.io/d/winux-blaze" class="btn btn-primary btn-lg download-btn ai-glow" target="_blank">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                 <polyline points="7 10 12 15 17 10"/>
                                 <line x1="12" y1="15" x2="12" y2="3"/>
                             </svg>
-                            Download ISO (2.7 GB)
-                            <span class="btn-badge">v1.0 Dev</span>
+                            Download ISO (3.2 GB)
+                            <span class="btn-badge">v1.2 Blaze</span>
                         </a>
 
-                        <a href="https://github.com/leonardo-matheus/winux" class="btn btn-outline btn-lg" target="_blank">
+                        <a href="https://github.com/leonardo-matheus/winux/releases" class="btn btn-outline btn-lg" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                             </svg>
-                            View on GitHub
+                            GitHub Releases
                         </a>
                     </div>
 
@@ -499,13 +651,14 @@
                 <div class="download-visual">
                     <div class="download-illustration">
                         <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="100" r="80" stroke="url(#dl-gradient)" stroke-width="2" stroke-dasharray="10 5"/>
-                            <circle cx="100" cy="100" r="60" fill="url(#dl-gradient)" fill-opacity="0.1"/>
-                            <path d="M100 60V140M100 140L70 110M100 140L130 110" stroke="url(#dl-gradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="100" cy="100" r="80" stroke="url(#dl-gradient-blaze)" stroke-width="2" stroke-dasharray="10 5"/>
+                            <circle cx="100" cy="100" r="60" fill="url(#dl-gradient-blaze)" fill-opacity="0.1"/>
+                            <path d="M100 60V140M100 140L70 110M100 140L130 110" stroke="url(#dl-gradient-blaze)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                             <defs>
-                                <linearGradient id="dl-gradient" x1="0" y1="0" x2="200" y2="200">
-                                    <stop stop-color="#6366f1"/>
-                                    <stop offset="1" stop-color="#8b5cf6"/>
+                                <linearGradient id="dl-gradient-blaze" x1="0" y1="0" x2="200" y2="200">
+                                    <stop stop-color="#00d4ff"/>
+                                    <stop offset="0.5" stop-color="#ff00ff"/>
+                                    <stop offset="1" stop-color="#00ff88"/>
                                 </linearGradient>
                             </defs>
                         </svg>
@@ -520,72 +673,72 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Perguntas<br><span class="gradient-text">Frequentes</span></h2>
+                <h2 class="section-title">Perguntas<br><span class="gradient-text-blaze">Frequentes</span></h2>
             </div>
 
             <div class="faq-list">
                 <div class="faq-item glass-card" data-animate>
                     <button class="faq-question" aria-expanded="false">
-                        <span>O que é o Winux OS?</span>
+                        <span>O que e o Winux OS v1.2 Blaze?</span>
                         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"/>
                             <line x1="5" y1="12" x2="19" y2="12"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Winux OS é um sistema operacional Linux completo baseado em Ubuntu 24.04 LTS. Ele combina uma interface elegante estilo Windows 11 com o poder do Linux, otimizado para gaming (Wine, Proton, DXVK) e desenvolvimento de software (Java, Node.js, Python, Docker e mais).</p>
+                        <p>Winux OS v1.2 Blaze e a versao mais avancada do sistema operacional Linux para gamers e desenvolvedores. Inclui AI Assistant com GPT-4o, sincronizacao na nuvem com 6 provedores, integracao com smartphone via Winux Connect, 48 apps nativos em Rust/GTK4 e muito mais.</p>
                     </div>
                 </div>
 
                 <div class="faq-item glass-card" data-animate>
                     <button class="faq-question" aria-expanded="false">
-                        <span>Quais são os requisitos do sistema?</span>
+                        <span>Preciso de conta Azure para usar o AI Assistant?</span>
                         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"/>
                             <line x1="5" y1="12" x2="19" y2="12"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Requisitos mínimos: CPU x86_64 com SSE4.2, 4GB de RAM, 30GB de espaço em disco e GPU com suporte Vulkan 1.1. Recomendado: 16GB RAM, SSD NVMe de 100GB, e GPU NVIDIA RTX ou AMD RX 6000+ para melhor experiência em gaming.</p>
+                        <p>Sim, o AI Assistant usa Azure OpenAI. Voce precisa criar uma conta Azure gratuita e obter uma chave de API. Configure em ~/.config/winux/ai.toml ou via variaveis de ambiente WINUX_AI_API_KEY e WINUX_AI_ENDPOINT.</p>
                     </div>
                 </div>
 
                 <div class="faq-item glass-card" data-animate>
                     <button class="faq-question" aria-expanded="false">
-                        <span>O Winux é gratuito?</span>
+                        <span>Como conecto meu smartphone Android?</span>
                         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"/>
                             <line x1="5" y1="12" x2="19" y2="12"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sim! O Winux OS é completamente gratuito e open-source. Você pode baixar a ISO, instalar em quantos computadores quiser, modificar e distribuir livremente. O código-fonte está disponível no GitHub.</p>
+                        <p>Instale o app Winux Connect no seu Android (disponivel na Play Store ou APK incluso). Abra o app no desktop (Menu > Winux Connect), escaneie o QR code com o telefone e pronto! Os dispositivos se conectam automaticamente via Wi-Fi local.</p>
                     </div>
                 </div>
 
                 <div class="faq-item glass-card" data-animate>
                     <button class="faq-question" aria-expanded="false">
-                        <span>Posso jogar games do Windows?</span>
+                        <span>Quais provedores de nuvem sao suportados?</span>
                         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"/>
                             <line x1="5" y1="12" x2="19" y2="12"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sim! O Winux vem com Wine 9.0, Proton GE, DXVK e VKD3D pré-configurados. Você pode instalar Steam, Epic Games, GOG e jogar a maioria dos games Windows. Lutris também está incluso para facilitar a instalação de jogos.</p>
+                        <p>O Winux Cloud suporta Google Drive, Microsoft OneDrive, Dropbox, Amazon S3, Azure Blob Storage e qualquer servidor WebDAV. Voce pode configurar multiplas contas e sincronizar pastas diferentes com cada provedor.</p>
                     </div>
                 </div>
 
                 <div class="faq-item glass-card" data-animate>
                     <button class="faq-question" aria-expanded="false">
-                        <span>Como instalo o Winux?</span>
+                        <span>Quais sao os requisitos do sistema?</span>
                         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"/>
                             <line x1="5" y1="12" x2="19" y2="12"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Baixe a ISO, grave em um pendrive USB usando Rufus (Windows) ou dd (Linux), reinicie o computador pelo USB e siga o instalador gráfico Calamares. O processo completo leva cerca de 15-20 minutos.</p>
+                        <p>Minimo: CPU x86_64 com SSE4.2, 4GB RAM, 40GB disco, GPU com Vulkan 1.1. Recomendado: 16GB RAM, SSD NVMe 100GB+, GPU NVIDIA RTX ou AMD RX 6000+ para gaming e aceleracao de IA.</p>
                     </div>
                 </div>
             </div>
@@ -599,19 +752,21 @@
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
                         <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="40" height="40" rx="10" fill="url(#footer-logo-gradient)"/>
+                            <rect width="40" height="40" rx="10" fill="url(#footer-logo-gradient-blaze)"/>
                             <path d="M12 20L18 14V18H28V22H18V26L12 20Z" fill="white"/>
                             <defs>
-                                <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="40" y2="40">
-                                    <stop stop-color="#6366f1"/>
-                                    <stop offset="1" stop-color="#8b5cf6"/>
+                                <linearGradient id="footer-logo-gradient-blaze" x1="0" y1="0" x2="40" y2="40">
+                                    <stop stop-color="#00d4ff"/>
+                                    <stop offset="0.5" stop-color="#ff00ff"/>
+                                    <stop offset="1" stop-color="#00ff88"/>
                                 </linearGradient>
                             </defs>
                         </svg>
                         <span>Winux</span>
+                        <span class="blaze-badge">v1.2</span>
                     </a>
                     <p class="footer-description">
-                        Sistema operacional Linux para gamers e desenvolvedores. Open-source e gratuito para sempre.
+                        Sistema operacional Linux com AI integrada para gamers e desenvolvedores. Open-source e gratuito.
                     </p>
                     <div class="social-links">
                         <a href="https://github.com/winux-os" target="_blank" aria-label="GitHub">
@@ -637,9 +792,9 @@
                         <h4>Produto</h4>
                         <ul>
                             <li><a href="#features">Features</a></li>
+                            <li><a href="#ai">AI Assistant</a></li>
                             <li><a href="#apps">Apps</a></li>
                             <li><a href="#download">Download</a></li>
-                            <li><a href="#screenshots">Screenshots</a></li>
                         </ul>
                     </div>
 
@@ -647,7 +802,7 @@
                         <h4>Recursos</h4>
                         <ul>
                             <li><a href="https://github.com/leonardo-matheus/winux/wiki" target="_blank">Documentacao</a></li>
-                            <li><a href="https://github.com/leonardo-matheus/winux/releases" target="_blank">Changelog</a></li>
+                            <li><a href="CHANGELOG.md">Changelog</a></li>
                             <li><a href="#faq">FAQ</a></li>
                             <li><a href="https://github.com/leonardo-matheus/winux/issues" target="_blank">Suporte</a></li>
                         </ul>
@@ -666,8 +821,8 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Winux OS. Open-source sob licenca MIT.</p>
-                <p>Feito com <span class="heart">&#9829;</span> pela comunidade</p>
+                <p>&copy; 2026 Winux OS v1.2 Blaze. Open-source sob licenca MIT.</p>
+                <p>Feito com <span class="heart" style="color: var(--winux-magenta);">&#9829;</span> pela comunidade</p>
             </div>
         </div>
     </footer>

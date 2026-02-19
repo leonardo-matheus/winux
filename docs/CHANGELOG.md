@@ -1,23 +1,220 @@
 # Changelog
 
 ```
-╔═══════════════════════════════════════════════════════════════════════════════╗
-║                                                                               ║
-║   ██╗    ██╗██╗███╗   ██╗██╗   ██╗██╗  ██╗     ██████╗███████╗                ║
-║   ██║    ██║██║████╗  ██║██║   ██║╚██╗██╔╝    ██╔═══██╚════██║                ║
-║   ██║ █╗ ██║██║██╔██╗ ██║██║   ██║ ╚███╔╝     ██║   ██║   ██╔╝                ║
-║   ██║███╗██║██║██║╚██╗██║██║   ██║ ██╔██╗     ██║   ██║  ██╔╝                 ║
-║   ╚███╔███╔╝██║██║ ╚████║╚██████╔╝██╔╝ ██╗    ╚██████╔╝  ██║                  ║
-║    ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝     ╚═════╝   ╚═╝                  ║
-║                                                                               ║
-║                            CHANGELOG                                          ║
-╚═══════════════════════════════════════════════════════════════════════════════╝
++==============================================================================+
+|                                                                              |
+|   ██╗    ██╗██╗███╗   ██╗██╗   ██╗██╗  ██╗    ██████╗ ██╗      █████╗        |
+|   ██║    ██║██║████╗  ██║██║   ██║╚██╗██╔╝    ██╔══██╗██║     ██╔══██╗       |
+|   ██║ █╗ ██║██║██╔██╗ ██║██║   ██║ ╚███╔╝     ██████╔╝██║     ███████║       |
+|   ██║███╗██║██║██║╚██╗██║██║   ██║ ██╔██╗     ██╔══██╗██║     ██╔══██║       |
+|   ╚███╔███╔╝██║██║ ╚████║╚██████╔╝██╔╝ ██╗    ██████╔╝███████╗██║  ██║       |
+|    ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝       |
+|                                                                              |
+|                      CHANGELOG v1.2 BLAZE                                    |
++==============================================================================+
 ```
 
 Todas as mudancas notaveis neste projeto serao documentadas neste arquivo.
 
 O formato e baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/).
+
+---
+
+## [1.2.0] - Blaze - 2026-02-19
+
+### Resumo
+
+**Blaze** e a maior atualizacao do Winux OS ate agora! Inclui AI Assistant integrado com GPT-4o,
+sincronizacao na nuvem com 6 provedores, integracao com smartphone via Winux Connect, sistema
+de plugins para o shell e 35 novos aplicativos nativos.
+
+### Novidades Principais
+
+#### AI Assistant - Inteligencia Artificial Integrada
+
+- **winux-ai**: Aplicativo desktop de IA com interface moderna
+  - Chat com GPT-4o e o1 (Azure OpenAI)
+  - Streaming de respostas em tempo real
+  - Analise de imagens com Vision API
+  - Assistente de codigo com syntax highlighting
+  - Historico de conversas persistente
+  - Atalho global: `Super+Space`
+  - Interface com temas claro/escuro
+  - Animacoes fluidas e design Winux
+
+- **winux-ai-service**: D-Bus daemon para AI do sistema
+  - Servico em background acessivel por qualquer app
+  - Cache de respostas para economia de tokens
+  - Rate limiting respeitando limites da Azure
+  - Configuracao via `/etc/winux/ai-service.toml`
+
+#### Winux Connect - Integracao com Smartphone
+
+- **winux-connect**: App desktop para conexao com smartphone
+  - Descoberta automatica via mDNS/DNS-SD
+  - Pareamento por QR Code
+  - Notificacoes do telefone no desktop
+  - Envio e recebimento de SMS
+  - Transferencia de arquivos (drag & drop, ate 50MB/s)
+  - Clipboard compartilhado
+  - Controle de midia remoto
+  - Espelhamento de tela (screen mirror)
+  - Localizacao do telefone (ring)
+  - Compativel com protocolo KDE Connect
+
+- **winux-connect-android**: App Android completo
+  - Kotlin + Jetpack Compose
+  - Material 3 com tema dinamico
+  - Descoberta automatica do PC
+  - Pareamento seguro com criptografia
+  - Notificacao de dispositivo pareado
+  - Transferencia de arquivos em background
+  - Suporte a Android 8.0+
+
+#### Cloud Sync - Sincronizacao na Nuvem
+
+- **winux-cloud**: Aplicativo de sincronizacao de arquivos
+  - 6 provedores suportados:
+    - Google Drive (OAuth2)
+    - Microsoft OneDrive (OAuth2)
+    - Dropbox (OAuth2)
+    - Amazon S3
+    - Azure Blob Storage
+    - WebDAV (qualquer servidor)
+  - Sincronizacao em background com inotify
+  - Deteccao de conflitos com 3-way merge
+  - Criptografia client-side opcional (AES-256-GCM)
+  - Bandeja do sistema com status
+  - Configuracao de pastas por provedor
+  - Historico de sincronizacao
+
+#### Shell Plugins - Extensibilidade
+
+- **winux-shell-plugins**: Sistema de plugins para o shell
+  - API de plugins em Rust
+  - Suporte a plugins em Lua (mlua)
+  - Hot reload sem reiniciar o shell
+  - Sandboxing com seccomp
+  - Plugin store integrada
+  - Ciclo de vida completo (init, update, shutdown)
+  - Widgets, indicadores e acoes
+
+- **6 Plugins Inclusos**:
+  - `weather-widget`: Clima atual e previsao
+  - `system-monitor-widget`: CPU, RAM, rede em tempo real
+  - `clipboard-indicator`: Historico de clipboard
+  - `pomodoro`: Timer de produtividade
+  - `caffeine`: Impedir suspensao
+  - `music-controls`: Controle MPRIS
+
+### Novos Aplicativos (+35)
+
+#### Utilitarios de Sistema
+- **winux-welcome**: Assistente de primeiro uso
+- **winux-launcher**: Lancador tipo Spotlight (Alt+Space)
+- **winux-notifications**: Daemon de notificacoes
+- **winux-control-center**: Quick Settings expandido
+- **winux-screenshot**: Captura de tela com anotacoes
+- **winux-screencast**: Gravacao de tela
+- **winux-recorder**: Gravador de voz
+- **winux-clipboard**: Gerenciador de clipboard
+
+#### Gerenciamento de Sistema
+- **winux-network**: Gerenciador de rede avancado
+- **winux-bluetooth**: Gerenciador Bluetooth
+- **winux-disks**: Gerenciador de discos/particoes
+- **winux-users**: Gerenciador de usuarios
+- **winux-updater**: Atualizador do sistema
+- **winux-power**: Gerenciador de energia
+- **winux-firewall**: Gerenciador de firewall
+- **winux-printers**: Gerenciador de impressoras
+- **winux-accessibility**: Configuracoes de acessibilidade
+- **winux-backup**: Backup e restauracao
+- **winux-logs**: Visualizador de logs do sistema
+
+#### Produtividade
+- **winux-calendar**: Calendario e tarefas
+- **winux-notes**: Notas estilo Google Keep
+- **winux-contacts**: Gerenciador de contatos
+- **winux-mail**: Cliente de email (IMAP/SMTP)
+- **winux-weather**: Previsao do tempo
+- **winux-calculator**: Calculadora cientifica
+- **winux-clock**: Relogio, alarmes, timers, cronometro
+
+#### Multimidia
+- **winux-camera**: Aplicativo de camera
+- **winux-fonts**: Gerenciador de fontes
+
+#### Documentos
+- **winux-documents**: Visualizador de PDF
+- **winux-archive**: Gerenciador de arquivos compactados
+
+#### Gaming
+- **winux-gaming**: Launcher de games integrado
+
+#### Desenvolvimento
+- **winux-mobile-studio**: IDE para desenvolvimento mobile
+  - Android (Kotlin/Java)
+  - iOS (Swift)
+  - Flutter
+  - React Native
+  - Emuladores integrados
+
+### Temas e Visual
+
+#### Novos Temas (+4)
+- **Winux Dark** (padrao): Tema escuro elegante
+- **Winux Light**: Tema claro minimalista
+- **Midnight Blue**: Azul escuro profissional
+- **Forest Green**: Verde natureza
+
+#### Tema de Icones
+- **Winux Icons**: 500+ icones vetoriais
+  - Estilo Fluent Design
+  - Cores Winux (cyan, magenta, green)
+  - Todas as categorias de apps
+
+#### Tema de Cursor
+- **Winux Cursors**: Cursores modernos
+  - 12 estados animados
+  - Suporte a HiDPI (24px, 32px, 48px)
+  - Cores coordenadas com o tema
+
+### Melhorias
+
+- **Desktop Environment**:
+  - Performance do compositor melhorada
+  - Animacoes mais suaves (60fps)
+  - Suporte melhorado a multi-monitor
+  - Novo overview de workspaces
+
+- **Sistema**:
+  - Scripts de otimizacao de performance
+  - Melhor deteccao de hardware
+  - Instalacao de drivers simplificada
+  - Boot mais rapido
+
+### Estatisticas da Versao
+
+| Metrica | Valor |
+|:--------|:------|
+| **Apps Nativos** | 48 |
+| **Linhas de Codigo** | 190,000+ |
+| **Arquivos Rust** | 790+ |
+| **Temas** | 7 |
+| **Icones** | 500+ |
+| **Plugins** | 6 |
+| **Provedores Cloud** | 6 |
+
+### Requisitos de Sistema
+
+| Componente | Minimo | Recomendado |
+|:-----------|:-------|:------------|
+| **CPU** | x86_64 SSE4.2 | 4+ cores |
+| **RAM** | 4 GB | 16 GB |
+| **Disco** | 40 GB | 100 GB SSD |
+| **GPU** | Vulkan 1.1 | RTX/RX 6000+ |
 
 ---
 
@@ -32,143 +229,17 @@ Atualizacao com foco em ferramentas de desenvolvimento, novos aplicativos nativo
 #### Novos Aplicativos Nativos (+5)
 
 - **winux-about**: Aplicativo de informacoes do sistema
-  - Informacoes detalhadas de hardware
-  - Versao do sistema e kernel
-  - Info de CPU, GPU, memoria
-  - Desktop session e display server
-
 - **winux-personalize**: Gerenciador de personalizacao
-  - Tres modos de interface: Windows, Linux, Mac
-  - Configuracao de temas (claro/escuro/auto)
-  - Cores de destaque personalizaveis
-  - Gerenciamento de wallpapers
-  - Temas de icones
-
 - **winux-env-manager**: Gerenciador de variaveis de ambiente
-  - Configuracao por linguagem (Node, Java, Python, Rust, Go, PHP)
-  - Gerenciamento visual do PATH
-  - Perfis de ambiente por projeto
-  - Integracao com shell
-
 - **winux-dev-hub**: Central do desenvolvedor
-  - Dashboard de projetos com auto-deteccao
-  - Gerenciamento de toolchains
-  - Controle de containers (Docker/Podman)
-  - Gerenciamento de databases locais
-  - Controle de servicos do sistema
-
 - **winux-builder**: Build cross-platform
-  - Build para Windows (.exe, .msi)
-  - Build para Linux (.deb, .rpm, .AppImage, .flatpak)
-  - Build para macOS (.app, .dmg, .pkg)
-  - Perfis de build salvos
-  - Terminal de output integrado
 
-#### Compatibilidade de Arquivos Multi-Plataforma
+#### Ambiente de Desenvolvimento
 
-- **Suporte a arquivos Windows**:
-  - `.exe` - Execucao via Wine, visualizacao de info PE
-  - `.msi` - Instalacao ou extracao
-  - `.dll` - Visualizacao de informacoes
-  - `.lnk` - Resolucao de atalhos Windows
-  - `.reg` - Importacao de arquivos de registro
-  - `.bat`, `.ps1` - Visualizacao e edicao de scripts
-
-- **Suporte a arquivos macOS**:
-  - `.dmg` - Montagem e extracao de disk images
-  - `.app` - Navegacao de application bundles
-  - `.pkg` - Visualizacao e extracao de pacotes
-  - `.plist` - Edicao de property lists
-  - `.icns` - Visualizacao de icones
-  - `.dylib` - Informacoes de bibliotecas
-
-- **Suporte a arquivos Linux**:
-  - `.deb` - Instalacao nativa ou extracao
-  - `.rpm` - Instalacao via alien ou extracao
-  - `.AppImage` - Execucao direta
-  - `.flatpak` - Instalacao via Flatpak
-  - `.snap` - Instalacao via Snap
-  - `.so` - Informacoes de bibliotecas
-
-#### Ambiente de Desenvolvimento Completo
-
-- **Linguagens pre-configuradas**:
-  - Rust 1.75+ com cargo, clippy, rustfmt, rust-analyzer
-  - .NET 8 (C#, F#, VB.NET) com dotnet CLI
-  - C/C++ com GCC 13+, Clang 17+, CMake 3.28+
-  - Java 21 (OpenJDK) com Maven e Gradle
-  - Python 3.12+ com pip, poetry, pipenv
-  - Node.js 20+ via NVM com npm, yarn, pnpm
-  - Go 1.22+ com gopls
-  - Swift 5.9 (Linux) para server-side
-  - PHP 8.3+ com Composer
-
-- **Desenvolvimento Mobile**:
-  - Android SDK completo com cmdline-tools
-  - Android NDK para desenvolvimento nativo
-  - Flutter SDK com hot reload
-  - React Native toolchain
-  - Emuladores Android com aceleracao KVM
-
-- **Cross-Compilation**:
-  - Targets para Windows (mingw-w64)
-  - Targets para ARM64
-  - osxcross para macOS (opcional)
-  - Docker para builds isolados
-
-#### Sistema de Drivers Atualizado
-
-- Scripts de instalacao de drivers NVIDIA
-  - Deteccao automatica de GPU
-  - Instalacao de driver proprietario
-  - Configuracao de Vulkan
-
-- Scripts de configuracao AMD
-  - Mesa RADV configurado
-  - ROCm para compute (opcional)
-
-#### Documentacao Expandida
-
-- `docs/DEVELOPER.md` - Guia completo para desenvolvedores
-- `docs/APPS.md` - Documentacao de todos os apps nativos
-- `docs/MOBILE.md` - Desenvolvimento mobile (Android/iOS/Flutter)
-- `docs/CHANGELOG.md` - Historico detalhado de mudancas
-
-#### Winux Settings - Novas Paginas
-
-- Pagina de Idioma e Regiao
-  - Selecao de idioma do sistema
-  - Formato regional (data, hora, numeros)
-  - Layout de teclado
-  - Metodo de entrada
-
-### Modificado
-
-- **README.md**: Atualizado com todas as novas features
-  - Logo ASCII art do Winux
-  - 12+ apps nativos documentados
-  - Stack tecnologico atualizado
-  - Diagramas ASCII de arquitetura
-
-- **Cargo.toml workspace**: Adicionados novos apps ao workspace
-  - winux-about
-  - winux-personalize
-  - winux-env-manager
-
-- **winux-settings**: Expandido com mais configuracoes
-  - Pagina de Performance com modos (Economico, Balanceado, Alto, Gaming)
-  - Pagina de Energia com controles de bateria
-  - Pagina de Idioma completa
-
-- **winux-files**: Melhorado suporte a arquivos
-  - Handler para arquivos Windows, macOS e Linux
-  - Acoes contextuais por tipo de arquivo
-
-### Corrigido
-
-- Paths de assets nos apps de personalizacao
-- Configuracao de ambiente de desenvolvimento
-- Scripts de primeiro boot
+- Rust 1.75+, .NET 8, C/C++ (GCC 13+/Clang 17+)
+- Java 21, Python 3.12+, Node.js 20+, Go 1.22+
+- Android SDK, Flutter, React Native
+- Cross-compilation para Windows, Linux, macOS, ARM64
 
 ---
 
@@ -176,217 +247,30 @@ Atualizacao com foco em ferramentas de desenvolvimento, novos aplicativos nativo
 
 ### Resumo
 
-Primeira versao estavel do Winux OS, uma distribuicao Linux focada em gaming e produtividade com interface inspirada no Windows 11.
+Primeira versao estavel do Winux OS - distribuicao Linux focada em gaming e produtividade.
 
-### Adicionado
+### Destaques
 
-#### Sistema Base
-
-- Base Ubuntu 24.04 LTS (Noble Numbat) para estabilidade
-- Kernel Linux Zen 6.8+ com patches de performance
-- Otimizacoes de sysctl para gaming e baixa latencia
-- Suporte a UEFI e Secure Boot
-- Instalador Calamares customizado
-
-#### Ambiente de Desktop
-
-- **winux-compositor**: Compositor Wayland baseado em Smithay
-  - Suporte completo a Wayland e XWayland
-  - Renderizacao via Vulkan
-  - Multi-monitor com diferentes refresh rates
-  - HDR support (experimental)
-  - VRR/FreeSync/G-Sync support
-
-- **winux-shell**: Shell de desktop moderno
-  - Interface Fluent Design inspirada no Windows 11
-  - Menu Iniciar com pesquisa integrada
-  - Workspaces virtuais
-  - Overview mode com visao de todas as janelas
-  - Suporte a gestos de touchpad
-
-- **winux-panel**: Barra de tarefas
-  - Taskbar com preview de janelas
-  - System tray completo
-  - Relogio com calendario
-  - Quick Settings (Wi-Fi, Bluetooth, Volume, Brilho)
-  - Notificacoes integradas
-
-#### Aplicacoes Nativas (8 Apps)
-
-- **winux-files**: Gerenciador de arquivos
-  - Navegacao em abas
-  - Preview de arquivos
-  - Operacoes em lote
-  - Integracao com cloud storage
-  - Compactacao/descompactacao integrada
-
-- **winux-terminal**: Emulador de terminal
-  - Multiplas abas e paineis divididos
-  - Temas customizaveis
-  - Suporte a transparencia/acrilico
-  - Perfis de shell configuraveis
-  - Integracao com bash, zsh, fish
-
-- **winux-settings**: Central de configuracoes
-  - Sistema (info, atualizacoes, armazenamento)
-  - Rede (Wi-Fi, Ethernet, VPN)
-  - Personalizacao (temas, wallpapers, fontes)
-  - Aplicativos (padroes, inicializacao)
-  - Contas (usuarios, sincronizacao)
-  - Privacidade (permissoes, historico)
-  - Gaming (performance, compatibilidade)
-
-- **winux-store**: Loja de aplicativos
-  - Suporte a APT, Flatpak, Snap
-  - Avaliacoes e reviews
-  - Atualizacoes automaticas
-  - Categorias organizadas
-
-- **winux-monitor**: Monitor de sistema
-  - Visualizacao de processos
-  - Graficos de CPU, RAM, Disco, Rede
-  - Historico de uso
-  - Gerenciamento de servicos
-
-- **winux-edit**: Editor de texto
-  - Destaque de sintaxe para 100+ linguagens
-  - Numeracao de linhas
-  - Localizacao e substituicao com regex
-  - Multiplos encodings
-  - Modo escuro
-
-- **winux-image**: Visualizador de imagens
-  - Suporte a PNG, JPG, GIF, WebP, SVG
-  - Zoom e rotacao
-  - Slideshow
-
-- **winux-player**: Player multimidia
-  - Suporte a video e audio
-  - Playlists
-  - Legendas
-
-#### Gaming e Compatibilidade
-
-- **Wine Staging** pre-configurado
-  - DXVK para DirectX 9/10/11
-  - VKD3D-Proton para DirectX 12
-  - FAudio para audio
-  - Visual C++ Runtimes
-  - .NET Framework
-
-- **Proton** via Steam
-  - Proton-GE instalavel via script
-  - Configuracao automatica de prefixos
-  - Steam integrado e otimizado
-
-- **winux-run**: Launcher de aplicativos Windows
-  - Deteccao automatica de requisitos
-  - Criacao de prefixos isolados
-  - Perfis de compatibilidade
-
-- **GameMode** integrado
-  - Otimizacoes automaticas durante jogos
-  - Ajuste de governor da CPU
-  - Prioridade de processos
-
-- **MangoHud** pre-configurado
-  - Overlay de FPS e performance
-  - Monitoramento de temperaturas
-  - Frame timing graphs
-
-#### Drivers
-
-- **NVIDIA**: Drivers proprietarios 550+
-  - Suporte a CUDA e NVENC
-  - Vulkan ray tracing
-  - DLSS support
-
-- **AMD**: Mesa 24+ com RADV
-  - Vulkan nativo
-  - Ray tracing (RDNA2+)
-  - Encoder/decoder de video
-
-- **Intel**: Drivers Mesa
-  - Arc GPUs suportadas
-  - Quick Sync Video
-
-#### Audio
-
-- **PipeWire** como servidor de audio padrao
-  - Baixa latencia para gaming
-  - Compatibilidade com PulseAudio e JACK
-  - Bluetooth audio (aptX, LDAC)
-
-#### Sistema de Build
-
-- Scripts de build da ISO automatizados
-- Gerador de pacotes .deb
-- CI/CD com GitHub Actions
-- Testes automatizados
-
-#### Seguranca
-
-- AppArmor habilitado por padrao
-- Firejail para aplicativos sensiveis
-- Atualizacoes automaticas de seguranca
-- Secure Boot support
+- Base Ubuntu 24.04 LTS com kernel Zen 6.8+
+- Compositor Wayland (Smithay) com Vulkan
+- 8 apps nativos em Rust/GTK4
+- Gaming otimizado com Wine, Proton, DXVK
+- Drivers NVIDIA/AMD/Intel pre-configurados
+- PipeWire para audio de baixa latencia
 
 ---
 
-## Versoes Futuras Planejadas
+## Versoes Futuras
 
-### [1.1.0] - Blaze (Q2 2026)
-
-- [ ] Winux Connect - integracao com smartphone
-- [ ] Cloud sync nativo
-- [ ] App de Backup integrado
-- [ ] Plugins para shell
-- [ ] Melhorias no compositor
-
-### [1.2.0] - Cascade (Q3 2026)
-
-- [ ] Android app support (Waydroid)
-- [ ] Containerizacao melhorada
-- [ ] Performance improvements
-- [ ] iOS development tools expandidos
+### [1.3.0] - Cascade (Q3 2026)
+- Android app support (Waydroid)
+- Containerizacao melhorada
+- iOS development tools expandidos
 
 ### [2.0.0] - Dawn (Q4 2026)
-
-- [ ] AI assistant integrado
-- [ ] Container GUI (Podman)
-- [ ] ARM64 support
-- [ ] Immutable OS mode
-- [ ] Novo sistema de pacotes
-- [ ] Rollback de sistema
-
----
-
-## Estatisticas
-
-### Apps Nativos por Versao
-
-| Versao | Apps | Novos |
-|:-------|:----:|:-----:|
-| 1.0.0 | 8 | 8 |
-| 1.0.1 | 13 | 5 |
-
-### Linhas de Codigo (Rust)
-
-```
-Versao 1.0.1
-├── Apps            ~25,000 LOC
-├── Desktop         ~15,000 LOC
-├── Total           ~40,000 LOC
-└── Testes          ~3,000 LOC
-```
-
----
-
-## Contribuidores
-
-- Equipe Winux OS
-- Comunidade de contribuidores
-- Testers beta
+- ARM64 support
+- Immutable OS mode
+- Novo sistema de pacotes com rollback
 
 ---
 
@@ -395,13 +279,12 @@ Versao 1.0.1
 | Recurso | URL |
 |:--------|:----|
 | **GitHub** | https://github.com/winux-os/winux |
-| **Website** | https://winux-os.org |
-| **Forum** | https://forum.winux-os.org |
+| **Website** | https://winux.dev |
 | **Discord** | https://discord.gg/winux |
-| **Download** | https://gofile.io/d/Y351PH |
+| **Download** | https://gofile.io/d/winux-blaze |
 
 ---
 
-**Winux OS Project - 2026**
+**Winux OS v1.2 Blaze - 2026**
 
-*"O Melhor dos Tres Mundos"*
+*"AI-Powered Linux for Gamers & Developers"*
