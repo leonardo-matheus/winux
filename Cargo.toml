@@ -10,6 +10,7 @@ members = [
     "desktop/winux-shell",
     "desktop/winux-launcher",
     "desktop/winux-notifications",
+    "desktop/winux-control-center",
 
     # Core Apps
     "apps/winux-files",
@@ -29,6 +30,10 @@ members = [
     "apps/winux-clipboard",
     "apps/winux-bluetooth",
     "apps/winux-network",
+    "apps/winux-clock",
+    "apps/winux-users",
+    "apps/winux-weather",
+    "apps/winux-calculator",
 
     # Developer Tools
     "apps/winux-builder",

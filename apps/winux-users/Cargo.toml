@@ -11,6 +11,8 @@ gtk4.workspace = true
 libadwaita.workspace = true
 glib.workspace = true
 gio.workspace = true
+gdk4.workspace = true
+chrono.workspace = true
 tokio.workspace = true
 serde.workspace = true
 serde_json.workspace = true
@@ -23,4 +25,4 @@ once_cell.workspace = true
 regex.workspace = true
 
 # D-Bus integration
-zbus = "4.0"
+zbus.workspace = true

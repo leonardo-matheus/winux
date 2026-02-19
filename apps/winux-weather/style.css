@@ -1,0 +1,211 @@
+/* Winux Weather - Custom Styles */
+
+/* Temperature display */
+.temperature-large {
+    font-size: 72px;
+    font-weight: 200;
+    letter-spacing: -2px;
+}
+
+/* Weather icons */
+.weather-icon-large {
+    opacity: 0.9;
+}
+
+/* Weather backgrounds - Day */
+.weather-bg-day-clear {
+    background: linear-gradient(180deg, #4A90D9 0%, #87CEEB 50%, #E0F4FF 100%);
+}
+
+.weather-bg-day-cloudy {
+    background: linear-gradient(180deg, #8BA4B4 0%, #B0C4CE 50%, #D4E1E8 100%);
+}
+
+.weather-bg-day-rainy {
+    background: linear-gradient(180deg, #5C6D7E 0%, #7A8B9A 50%, #A0B0BD 100%);
+}
+
+.weather-bg-day-stormy {
+    background: linear-gradient(180deg, #3D4654 0%, #515D6B 50%, #6B7A8A 100%);
+}
+
+.weather-bg-day-snowy {
+    background: linear-gradient(180deg, #B8C6D0 0%, #D0DCE4 50%, #E8EFF4 100%);
+}
+
+.weather-bg-day-foggy {
+    background: linear-gradient(180deg, #9CA8B0 0%, #BCC4CA 50%, #D8DDE2 100%);
+}
+
+/* Weather backgrounds - Night */
+.weather-bg-night-clear {
+    background: linear-gradient(180deg, #0D1B2A 0%, #1B2838 50%, #2C3E50 100%);
+}
+
+.weather-bg-night-cloudy {
+    background: linear-gradient(180deg, #1A2332 0%, #2A3442 50%, #3A4452 100%);
+}
+
+.weather-bg-night-rainy {
+    background: linear-gradient(180deg, #151E28 0%, #1F2A36 50%, #2A3644 100%);
+}
+
+.weather-bg-night-stormy {
+    background: linear-gradient(180deg, #0F151C 0%, #171F28 50%, #1F2934 100%);
+}
+
+.weather-bg-night-snowy {
+    background: linear-gradient(180deg, #2A3340 0%, #3A4350 50%, #4A5360 100%);
+}
+
+.weather-bg-night-foggy {
+    background: linear-gradient(180deg, #1E262E 0%, #2A343E 50%, #36424E 100%);
+}
+
+/* Weather cards */
+.weather-card {
+    background: alpha(@card_bg_color, 0.8);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.weather-card-compact {
+    background: alpha(@card_bg_color, 0.6);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+/* Forecast items */
+.hour-forecast-item {
+    background: alpha(@card_bg_color, 0.5);
+    border-radius: 16px;
+    padding: 12px 8px;
+    min-width: 60px;
+}
+
+.forecast-row {
+    padding: 8px;
+}
+
+/* Temperature bar */
+.temp-bar-container {
+    background: alpha(@borders, 0.3);
+    border-radius: 3px;
+}
+
+.temp-bar {
+    background: linear-gradient(90deg, #4A90D9 0%, #FF9500 100%);
+    border-radius: 3px;
+}
+
+/* Precipitation bars */
+.precip-bar-low {
+    background: alpha(#4A90D9, 0.4);
+    border-radius: 2px;
+}
+
+.precip-bar-medium {
+    background: alpha(#4A90D9, 0.7);
+    border-radius: 2px;
+}
+
+.precip-bar-high {
+    background: #4A90D9;
+    border-radius: 2px;
+}
+
+/* UV indicators */
+.uv-low {
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.uv-moderate {
+    background: #FFEB3B;
+    border-radius: 2px;
+}
+
+.uv-high {
+    background: #FF9800;
+    border-radius: 2px;
+}
+
+.uv-very-high {
+    background: #F44336;
+    border-radius: 2px;
+}
+
+.uv-extreme {
+    background: #9C27B0;
+    border-radius: 2px;
+}
+
+.uv-active {
+    box-shadow: 0 0 4px currentColor;
+}
+
+/* Accent color for precipitation */
+.accent {
+    color: #4A90D9;
+}
+
+/* Search entry */
+entry.search {
+    border-radius: 18px;
+    padding: 4px 12px;
+}
+
+/* Animation for weather icon (placeholder for future animated icons) */
+@keyframes weather-pulse {
+    0% { opacity: 0.9; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.9; }
+}
+
+.weather-icon-animated {
+    animation: weather-pulse 2s ease-in-out infinite;
+}
+
+/* Hourly forecast scroll area */
+.hourly-forecast-box {
+    padding: 8px;
+}
+
+/* Precipitation chart */
+.precipitation-chart {
+    min-height: 60px;
+    padding: 8px 0;
+}
+
+/* Progress bars in details */
+progressbar.osd {
+    min-height: 4px;
+}
+
+progressbar.osd trough {
+    min-height: 4px;
+    background: alpha(@borders, 0.3);
+    border-radius: 2px;
+}
+
+progressbar.osd progress {
+    min-height: 4px;
+    background: @accent_bg_color;
+    border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .temperature-large {
+        font-size: 56px;
+    }
+
+    .weather-icon-large {
+        -gtk-icon-size: 96px;
+    }
+
+    .hour-forecast-item {
+        min-width: 50px;
+        padding: 8px 4px;
+    }
+}

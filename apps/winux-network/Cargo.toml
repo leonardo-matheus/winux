@@ -26,4 +26,4 @@ once_cell.workspace = true
 regex.workspace = true
 
 # D-Bus for NetworkManager integration
-zbus = { version = "4.0", default-features = false, features = ["tokio"] }
+zbus.workspace = true
