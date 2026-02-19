@@ -1,0 +1,83 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Winux Dracula
+Comment=Dark theme based on the popular Dracula color palette
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=winux-dracula
+MetacityTheme=winux-dracula
+IconTheme=Papirus-Dark
+CursorTheme=Dracula-cursors
+ButtonLayout=close,minimize,maximize:menu
+BackgroundImage=
+Font=Inter 10
+TitleFont=Inter Semi-Bold 11
+MonospaceFont=JetBrains Mono 10
+DocumentFont=Inter 10
+
+# Theme Metadata
+[Theme]
+Name=Winux Dracula
+Version=1.0.0
+Author=Winux OS Team
+License=GPL-3.0
+Website=https://winux.os
+Description=A dark theme based on the popular Dracula color palette. Features deep purple backgrounds, vibrant pink, purple, cyan, and green accents. Perfect for developers who enjoy the vampire-inspired aesthetic.
+
+# Color Scheme
+[Colors]
+AccentColor=#bd93f9
+BackgroundPrimary=#282a36
+BackgroundSecondary=#44475a
+BackgroundElevated=#44475a
+TextPrimary=#f8f8f2
+TextSecondary=#6272a4
+BorderSubtle=rgba(248,248,242,0.1)
+SuccessColor=#50fa7b
+WarningColor=#ffb86c
+ErrorColor=#ff5555
+
+# Design Specifications
+[Design]
+BorderRadius=12
+ButtonRadius=8
+AnimationDuration=200ms
+ShadowStyle=deep
+GlassmorphismEnabled=true
+BlurAmount=20
+FontFamily=Inter, SF Pro Display, Roboto, sans-serif
+MonospaceFontFamily=JetBrains Mono, Fira Code, monospace
+
+# GTK4 Support
+[GTK4]
+StyleSheet=gtk-4.0/gtk.css
+ColorPalette=gtk-4.0/colors-dark.css
+SupportsDarkMode=true
+SupportsHDR=false
+PrefersColorScheme=dark
+
+# Compatibility
+[Compatibility]
+GTK3Support=true
+GTK4Support=true
+LibadwaitaSupport=true
+GNOMEShellSupport=true
+MinGTKVersion=4.0
+MinLibadwaitaVersion=1.0
+
+# Window Controls
+[WindowControls]
+Layout=close,minimize,maximize:menu
+Style=unified
+CloseColor=#ff5555
+MinimizeColor=#ffb86c
+MaximizeColor=#50fa7b
+InactiveColor=#44475a
+
+# Recommended Applications
+[Recommendations]
+Terminal=gnome-terminal
+FileManager=nautilus
+TextEditor=gnome-text-editor
+Browser=firefox

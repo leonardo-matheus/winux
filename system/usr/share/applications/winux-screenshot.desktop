@@ -1,0 +1,25 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Screenshot
+GenericName=Screenshot Tool
+Comment=Capture screenshots with editing capabilities
+Exec=/usr/bin/winux-screenshot
+Icon=applets-screenshooter
+Categories=Utility;Graphics;
+Keywords=screenshot;capture;screen;snip;grab;print;
+Terminal=false
+StartupNotify=false
+
+Actions=fullscreen;window;region;
+
+[Desktop Action fullscreen]
+Name=Capture Fullscreen
+Exec=/usr/bin/winux-screenshot --fullscreen
+
+[Desktop Action window]
+Name=Capture Window
+Exec=/usr/bin/winux-screenshot --window
+
+[Desktop Action region]
+Name=Capture Region
+Exec=/usr/bin/winux-screenshot --region

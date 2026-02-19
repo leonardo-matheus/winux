@@ -1,0 +1,314 @@
+/*
+ * Winux Dracula Theme - Light Color Palette
+ * Vampire-Inspired Design System (Light Variant)
+ *
+ * A lighter variant based on the Dracula color palette.
+ * Maintains the signature accents with bright backgrounds.
+ *
+ * Version: 1.0.0
+ * Author: Winux OS Team
+ * License: GPL-3.0
+ */
+
+/* ============================================
+   DRACULA ACCENT COLORS (Same as dark)
+   ============================================ */
+
+@define-color dracula_cyan #8be9fd;
+@define-color dracula_green #50fa7b;
+@define-color dracula_orange #ffb86c;
+@define-color dracula_pink #ff79c6;
+@define-color dracula_purple #bd93f9;
+@define-color dracula_red #ff5555;
+@define-color dracula_yellow #f1fa8c;
+
+/* Darker variants for light mode */
+@define-color dracula_cyan_dark #00b4d8;
+@define-color dracula_green_dark #2ec460;
+@define-color dracula_orange_dark #e6954a;
+@define-color dracula_pink_dark #e05aa4;
+@define-color dracula_purple_dark #9d6dd8;
+@define-color dracula_red_dark #d93636;
+
+/* ============================================
+   PRIMARY BACKGROUND COLORS
+   ============================================ */
+
+@define-color bg_primary #f8f8f2;
+@define-color bg_secondary #f0f0ea;
+@define-color bg_tertiary #e8e8e2;
+@define-color bg_elevated #ffffff;
+@define-color bg_sidebar #f0f0ea;
+
+/* ============================================
+   GLASSMORPHISM & BLUR EFFECTS
+   ============================================ */
+
+@define-color bg_glass rgba(248, 248, 242, 0.9);
+@define-color bg_blur rgba(240, 240, 234, 0.85);
+@define-color bg_frosted rgba(240, 240, 234, 0.8);
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+@define-color bg_header #f0f0ea;
+@define-color bg_header_backdrop #f8f8f2;
+
+/* ============================================
+   INTERACTIVE ELEMENT BACKGROUNDS
+   ============================================ */
+
+@define-color bg_button #ffffff;
+@define-color bg_button_hover #f0f0ea;
+@define-color bg_button_active #e8e8e2;
+
+@define-color bg_entry #ffffff;
+@define-color bg_entry_hover #f8f8f2;
+@define-color bg_entry_focus #ffffff;
+
+@define-color bg_switch_off #d0d0ca;
+@define-color bg_switch_off_hover #c0c0ba;
+
+@define-color bg_trough #d8d8d2;
+@define-color bg_disabled #f0f0ea;
+
+/* ============================================
+   OVERLAY BACKGROUNDS
+   ============================================ */
+
+@define-color bg_tooltip #ffffff;
+@define-color bg_osd rgba(255, 255, 255, 0.95);
+@define-color bg_toast #ffffff;
+@define-color bg_popover #ffffff;
+
+/* ============================================
+   ACCENT COLORS
+   ============================================ */
+
+@define-color accent_blue @dracula_purple_dark;
+@define-color accent_blue_hover #8a5bc7;
+@define-color accent_blue_active #7a4bb7;
+
+@define-color accent_green @dracula_green_dark;
+@define-color accent_green_hover #25a850;
+@define-color accent_green_active #1c8c40;
+
+@define-color accent_red @dracula_red_dark;
+@define-color accent_red_hover #c42828;
+@define-color accent_red_active #a82020;
+
+@define-color accent_orange @dracula_orange_dark;
+@define-color accent_orange_hover #d4843a;
+@define-color accent_orange_active #c2742a;
+
+@define-color accent_yellow #d4c420;
+@define-color accent_yellow_hover #c2b418;
+@define-color accent_yellow_active #b0a410;
+
+@define-color accent_purple @dracula_purple_dark;
+@define-color accent_purple_hover #8a5bc7;
+@define-color accent_purple_active #7a4bb7;
+
+@define-color accent_pink @dracula_pink_dark;
+@define-color accent_pink_hover #c84894;
+@define-color accent_pink_active #b03884;
+
+@define-color accent_teal @dracula_cyan_dark;
+@define-color accent_teal_hover #009fc4;
+@define-color accent_teal_active #008ab0;
+
+@define-color accent_indigo #6258c8;
+@define-color accent_indigo_hover #5448b8;
+@define-color accent_indigo_active #4638a8;
+
+@define-color accent_mint @dracula_cyan_dark;
+@define-color accent_mint_hover #009fc4;
+@define-color accent_mint_active #008ab0;
+
+@define-color accent_cyan @dracula_cyan_dark;
+@define-color accent_cyan_hover #009fc4;
+@define-color accent_cyan_active #008ab0;
+
+/* ============================================
+   TEXT COLORS
+   ============================================ */
+
+@define-color text_primary #282a36;
+@define-color text_secondary #44475a;
+@define-color text_tertiary #6272a4;
+@define-color text_disabled #a0a0a0;
+@define-color text_placeholder #6272a4;
+@define-color text_on_accent #ffffff;
+@define-color text_on_dark_accent #ffffff;
+
+/* ============================================
+   BORDER COLORS
+   ============================================ */
+
+@define-color border_subtle rgba(40, 42, 54, 0.1);
+@define-color border_medium rgba(40, 42, 54, 0.15);
+@define-color border_strong rgba(40, 42, 54, 0.2);
+
+@define-color border_button rgba(40, 42, 54, 0.12);
+@define-color border_button_hover rgba(40, 42, 54, 0.18);
+
+@define-color border_entry rgba(40, 42, 54, 0.12);
+@define-color border_entry_hover rgba(40, 42, 54, 0.18);
+@define-color border_entry_focus @accent_blue;
+
+@define-color border_switch rgba(40, 42, 54, 0.1);
+@define-color border_popover rgba(40, 42, 54, 0.1);
+@define-color border_glass rgba(40, 42, 54, 0.08);
+
+/* ============================================
+   SHADOW COLORS
+   ============================================ */
+
+@define-color shadow_sm rgba(0, 0, 0, 0.08);
+@define-color shadow_md rgba(0, 0, 0, 0.12);
+@define-color shadow_lg rgba(0, 0, 0, 0.18);
+@define-color shadow_xl rgba(0, 0, 0, 0.25);
+
+@define-color shadow_blue rgba(157, 109, 216, 0.3);
+@define-color shadow_green rgba(46, 196, 96, 0.3);
+@define-color shadow_red rgba(217, 54, 54, 0.3);
+@define-color shadow_pink rgba(224, 90, 164, 0.3);
+@define-color shadow_cyan rgba(0, 180, 216, 0.3);
+
+/* ============================================
+   SEMANTIC COLORS
+   ============================================ */
+
+@define-color success_bg rgba(46, 196, 96, 0.15);
+@define-color success_fg @accent_green;
+@define-color success_border rgba(46, 196, 96, 0.3);
+
+@define-color warning_bg rgba(230, 149, 74, 0.15);
+@define-color warning_fg @accent_orange;
+@define-color warning_border rgba(230, 149, 74, 0.3);
+
+@define-color error_bg rgba(217, 54, 54, 0.12);
+@define-color error_fg @accent_red;
+@define-color error_border rgba(217, 54, 54, 0.3);
+
+@define-color info_bg rgba(157, 109, 216, 0.12);
+@define-color info_fg @accent_blue;
+@define-color info_border rgba(157, 109, 216, 0.3);
+
+/* ============================================
+   SELECTION COLORS
+   ============================================ */
+
+@define-color selection_bg rgba(157, 109, 216, 0.3);
+@define-color selection_fg @text_primary;
+
+@define-color item_selection_bg rgba(157, 109, 216, 0.12);
+@define-color item_selection_hover_bg rgba(157, 109, 216, 0.18);
+
+/* ============================================
+   HOVER & FOCUS STATES
+   ============================================ */
+
+@define-color hover_overlay rgba(40, 42, 54, 0.04);
+@define-color active_overlay rgba(40, 42, 54, 0.08);
+@define-color focus_ring rgba(157, 109, 216, 0.5);
+
+/* ============================================
+   WINDOW CONTROL COLORS
+   ============================================ */
+
+@define-color window_close @dracula_red;
+@define-color window_close_hover #ff7777;
+@define-color window_close_active #e63333;
+
+@define-color window_minimize @dracula_orange;
+@define-color window_minimize_hover #ffc98a;
+@define-color window_minimize_active #f5a24e;
+
+@define-color window_maximize @dracula_green;
+@define-color window_maximize_hover #6ffb92;
+@define-color window_maximize_active #3ce866;
+
+@define-color window_control_inactive #d0d0ca;
+
+/* ============================================
+   SCROLLBAR COLORS
+   ============================================ */
+
+@define-color scrollbar_bg transparent;
+@define-color scrollbar_slider rgba(40, 42, 54, 0.2);
+@define-color scrollbar_slider_hover rgba(40, 42, 54, 0.35);
+@define-color scrollbar_slider_active rgba(40, 42, 54, 0.5);
+
+/* ============================================
+   LINK COLORS
+   ============================================ */
+
+@define-color link_color @dracula_cyan_dark;
+@define-color link_hover_color #009fc4;
+@define-color link_visited_color @dracula_pink_dark;
+
+/* ============================================
+   HEADERBAR SPECIFIC
+   ============================================ */
+
+@define-color headerbar_shade rgba(0, 0, 0, 0.05);
+@define-color headerbar_darker_shade rgba(0, 0, 0, 0.08);
+
+/* ============================================
+   LIBADWAITA COMPATIBILITY
+   ============================================ */
+
+@define-color window_bg_color @bg_primary;
+@define-color window_fg_color @text_primary;
+@define-color view_bg_color @bg_secondary;
+@define-color view_fg_color @text_primary;
+@define-color headerbar_bg_color @bg_header;
+@define-color headerbar_fg_color @text_primary;
+@define-color headerbar_border_color @border_subtle;
+@define-color headerbar_backdrop_color @bg_header_backdrop;
+@define-color card_bg_color @bg_elevated;
+@define-color card_fg_color @text_primary;
+@define-color card_shade_color rgba(0, 0, 0, 0.05);
+@define-color popover_bg_color @bg_popover;
+@define-color popover_fg_color @text_primary;
+@define-color dialog_bg_color @bg_elevated;
+@define-color dialog_fg_color @text_primary;
+@define-color sidebar_bg_color @bg_sidebar;
+@define-color sidebar_fg_color @text_primary;
+@define-color sidebar_backdrop_color @bg_sidebar;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.05);
+@define-color accent_color @accent_blue;
+@define-color accent_bg_color @accent_blue;
+@define-color accent_fg_color @text_on_accent;
+@define-color destructive_color @accent_red;
+@define-color destructive_bg_color @accent_red;
+@define-color destructive_fg_color white;
+@define-color success_color @accent_green;
+@define-color success_bg_color @accent_green;
+@define-color success_fg_color white;
+@define-color warning_color @accent_orange;
+@define-color warning_bg_color @accent_orange;
+@define-color warning_fg_color white;
+@define-color error_color @accent_red;
+@define-color error_bg_color @accent_red;
+@define-color error_fg_color white;
+@define-color thumbnail_bg_color @bg_tertiary;
+@define-color thumbnail_fg_color @text_primary;
+
+/* ============================================
+   SHADE & TINT UTILITIES
+   ============================================ */
+
+@define-color shade_10 rgba(0, 0, 0, 0.1);
+@define-color shade_20 rgba(0, 0, 0, 0.2);
+@define-color shade_30 rgba(0, 0, 0, 0.3);
+@define-color shade_40 rgba(0, 0, 0, 0.4);
+@define-color shade_50 rgba(0, 0, 0, 0.5);
+
+@define-color tint_05 rgba(255, 255, 255, 0.05);
+@define-color tint_10 rgba(255, 255, 255, 0.1);
+@define-color tint_15 rgba(255, 255, 255, 0.15);
+@define-color tint_20 rgba(255, 255, 255, 0.2);
+@define-color tint_30 rgba(255, 255, 255, 0.3);

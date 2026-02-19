@@ -21,6 +21,7 @@ members = [
     "apps/winux-edit",
     "apps/winux-image",
     "apps/winux-player",
+    "apps/winux-notes",
 
     # System Apps
     "apps/winux-about",
@@ -36,6 +37,11 @@ members = [
     "apps/winux-calculator",
     "apps/winux-backup",
     "apps/winux-fonts",
+    "apps/winux-updater",
+    "apps/winux-screenshot",
+    "apps/winux-power",
+    "apps/winux-disks",
+    "apps/winux-accessibility",
 
     # Developer Tools
     "apps/winux-builder",
@@ -125,6 +131,9 @@ rusqlite = { version = "0.31", features = ["bundled"] }
 
 # D-Bus
 zbus = "4.0"
+
+# Cairo for drawing
+cairo-rs = { version = "0.19", features = ["png"] }
 
 [profile.release]
 lto = "thin"

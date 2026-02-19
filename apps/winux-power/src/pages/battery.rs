@@ -1,5 +1,6 @@
 // Battery status page for Winux Power
 
+use gdk4;
 use gtk4::prelude::*;
 use gtk4::{Box, Orientation, Label};
 use libadwaita as adw;

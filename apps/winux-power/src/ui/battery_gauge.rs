@@ -1,5 +1,6 @@
 // Circular battery gauge widget for Winux Power
 
+use cairo;
 use gtk4::prelude::*;
 use gtk4::{Box, Orientation, Label};
 use std::cell::Cell;
@@ -166,5 +167,3 @@ fn get_gauge_color(percentage: u32) -> (f64, f64, f64) {
         (0.34, 0.89, 0.54)
     }
 }
-
-use cairo;

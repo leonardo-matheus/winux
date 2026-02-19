@@ -32,12 +32,10 @@ serde_json.workspace = true
 chrono.workspace = true
 dirs.workspace = true
 anyhow.workspace = true
+once_cell.workspace = true
 
 # D-Bus for portal
-zbus = "4"
+zbus.workspace = true
 
 # Cairo for drawing
-cairo-rs = { version = "0.19", features = ["png"] }
-
-# Additional deps
-once_cell = "1.19"
+cairo-rs.workspace = true

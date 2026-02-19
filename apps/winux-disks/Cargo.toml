@@ -27,7 +27,7 @@ regex.workspace = true
 once_cell.workspace = true
 
 # D-Bus for UDisks2 integration
-zbus = { version = "4.0", default-features = false, features = ["tokio"] }
+zbus.workspace = true
 
 # Byte size formatting
 bytesize = "1.3"

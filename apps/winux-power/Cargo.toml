@@ -29,7 +29,11 @@ once_cell.workspace = true
 chrono.workspace = true
 
 # D-Bus for UPower and Power Profiles Daemon
-zbus = "4.0"
+zbus.workspace = true
+
+# Cairo for drawing gauges and graphs
+cairo-rs.workspace = true
+gdk4.workspace = true
 
 [features]
 default = []
