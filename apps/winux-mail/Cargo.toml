@@ -50,9 +50,6 @@ mail-builder = "0.3"
 # OAuth2
 oauth2 = "4.4"
 
-# HTML rendering
-webkit6 = { version = "0.2", optional = true }
-
 # Notifications
 notify-rust = "4.10"
 
@@ -62,6 +59,6 @@ secret-service = "3.0"
 # Base64 for encoding
 base64 = "0.21"
 
-[features]
-default = ["html-view"]
-html-view = ["webkit6"]
+# HTML parsing (without webkit for compatibility)
+html5ever = "0.27"
+markup5ever_rcdom = "0.3"
