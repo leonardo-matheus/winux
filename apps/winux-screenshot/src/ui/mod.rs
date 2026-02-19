@@ -6,7 +6,7 @@ pub mod preview;
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, Button, Box as GtkBox, Orientation, Label};
+use gtk::{Application, Button, Box as GtkBox, Orientation, Label, glib};
 use libadwaita as adw;
 use adw::prelude::*;
 use adw::{HeaderBar, ApplicationWindow as AdwApplicationWindow};

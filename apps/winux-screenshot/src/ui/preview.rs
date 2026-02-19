@@ -2,7 +2,7 @@
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, Box as GtkBox, Orientation, Label, ScrolledWindow};
+use gtk::{Application, Box as GtkBox, Orientation, Label, ScrolledWindow, glib};
 use libadwaita as adw;
 use adw::prelude::*;
 use adw::{HeaderBar, ApplicationWindow as AdwApplicationWindow};

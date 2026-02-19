@@ -1,0 +1,130 @@
+/* Winux Camera - Custom Styles */
+
+/* Viewfinder */
+.viewfinder-frame {
+    background-color: #1a1a1e;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Capture button */
+.capture-button {
+    background-color: transparent;
+    border: 4px solid #ffffff;
+    min-width: 80px;
+    min-height: 80px;
+    padding: 4px;
+}
+
+.capture-button:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.capture-button:active {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Timer countdown overlay */
+.timer-countdown {
+    font-size: 72px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Focus indicator */
+.focus-indicator {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #3584e4;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* Filter buttons */
+.filter-button {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.filter-button:checked {
+    background-color: rgba(53, 132, 228, 0.3);
+    border: 2px solid #3584e4;
+}
+
+/* Gallery items */
+.gallery-item {
+    border-radius: 8px;
+    padding: 8px;
+    transition: background-color 200ms;
+}
+
+.gallery-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Video thumbnail */
+.video-thumbnail {
+    background-color: #2a2a2e;
+    border-radius: 4px;
+}
+
+/* Recording indicator animation */
+@keyframes pulse {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1.0; }
+}
+
+.recording-indicator {
+    animation: pulse 1s infinite;
+}
+
+/* Quick settings buttons */
+.quick-setting {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Mode toggle buttons */
+.mode-toggle {
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.mode-toggle:checked {
+    background-color: #3584e4;
+    color: white;
+}
+
+/* Status bar */
+.status-bar {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+/* Caption text */
+.caption {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* Settings rows */
+row.settings-row {
+    padding: 8px 12px;
+}
+
+/* Preferences groups */
+preferencesgroup {
+    margin-bottom: 24px;
+}
+
+/* Header bar customization */
+headerbar {
+    background-color: rgba(30, 30, 34, 0.95);
+}
+
+/* Window background */
+window.background {
+    background-color: #1e1e22;
+}

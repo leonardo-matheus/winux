@@ -2,7 +2,7 @@
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, Window, DrawingArea};
+use gtk::{Application, Window, DrawingArea, glib};
 use gtk::gdk::Display;
 use std::cell::RefCell;
 use std::rc::Rc;

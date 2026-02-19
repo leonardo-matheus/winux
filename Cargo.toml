@@ -22,6 +22,8 @@ members = [
     "apps/winux-image",
     "apps/winux-player",
     "apps/winux-notes",
+    "apps/winux-calendar",
+    "apps/winux-contacts",
 
     # System Apps
     "apps/winux-about",
@@ -42,6 +44,10 @@ members = [
     "apps/winux-power",
     "apps/winux-disks",
     "apps/winux-accessibility",
+    "apps/winux-recorder",
+    "apps/winux-firewall",
+    "apps/winux-printers",
+    "apps/winux-camera",
 
     # Developer Tools
     "apps/winux-builder",

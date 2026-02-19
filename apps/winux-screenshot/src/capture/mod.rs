@@ -12,7 +12,7 @@ pub use wayland::WaylandCapture;
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::Application;
+use gtk::{Application, glib};
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::path::PathBuf;
