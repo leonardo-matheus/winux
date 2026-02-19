@@ -8,13 +8,13 @@ members = [
     "desktop/winux-compositor",
     "desktop/winux-panel",
     "desktop/winux-shell",
-    # "desktop/winux-launcher",  # v1.3 - needs API update
-    # "desktop/winux-notifications",  # v1.3
-    # "desktop/winux-control-center",  # v1.3
-    # "desktop/winux-shell-plugins",  # v1.3 - needs API update
+    "desktop/winux-launcher",
+    "desktop/winux-notifications",
+    "desktop/winux-control-center",
+    "desktop/winux-shell-plugins",
 
     # Core Apps
-    # "apps/winux-files",  # v1.3 - needs trash/open update
+    "apps/winux-files",
     "apps/winux-terminal",
     "apps/winux-settings",
     "apps/winux-store",
@@ -22,55 +22,55 @@ members = [
     "apps/winux-edit",
     "apps/winux-image",
     "apps/winux-player",
-    # "apps/winux-notes",  # v1.3 - needs API update
-    # "apps/winux-calendar",  # v1.3 - needs chrono update
-    # "apps/winux-contacts",  # v1.3
-    # "apps/winux-documents",  # v1.3 - needs poppler update
-    # "apps/winux-mail",  # v1.3 - needs secret-service update
+    "apps/winux-notes",
+    "apps/winux-calendar",
+    "apps/winux-contacts",
+    "apps/winux-documents",
+    "apps/winux-mail",
 
     # System Apps
     "apps/winux-about",
     "apps/winux-personalize",
     "apps/winux-env-manager",
-    # "apps/winux-welcome",  # v1.3
-    # "apps/winux-clipboard",  # v1.3
-    # "apps/winux-bluetooth",  # v1.3 - needs bluer update
-    # "apps/winux-connect",  # v1.3 - needs API update
-    # "apps/winux-network",  # v1.3
-    # "apps/winux-clock",  # v1.3
-    # "apps/winux-users",  # v1.3
-    # "apps/winux-weather",  # v1.3
-    # "apps/winux-calculator",  # v1.3 - needs meval update
-    # "apps/winux-backup",  # v1.3
-    # "apps/winux-fonts",  # v1.3
-    # "apps/winux-updater",  # v1.3
-    # "apps/winux-screenshot",  # v1.3
-    # "apps/winux-screencast",  # v1.3 - needs pipewire update
-    # "apps/winux-power",  # v1.3
-    # "apps/winux-disks",  # v1.3
+    "apps/winux-welcome",
+    "apps/winux-clipboard",
+    "apps/winux-bluetooth",
+    "apps/winux-connect",
+    "apps/winux-network",
+    "apps/winux-clock",
+    "apps/winux-users",
+    "apps/winux-weather",
+    "apps/winux-calculator",
+    "apps/winux-backup",
+    "apps/winux-fonts",
+    "apps/winux-updater",
+    "apps/winux-screenshot",
+    "apps/winux-screencast",
+    "apps/winux-power",
+    "apps/winux-disks",
     "apps/winux-accessibility",
-    # "apps/winux-recorder",  # v1.3 - needs adw::Dialog update
-    # "apps/winux-firewall",  # v1.3
-    # "apps/winux-printers",  # v1.3
-    # "apps/winux-camera",  # v1.3
-    # "apps/winux-logs",  # v1.3
+    "apps/winux-recorder",
+    "apps/winux-firewall",
+    "apps/winux-printers",
+    "apps/winux-camera",
+    "apps/winux-logs",
 
     # Developer Tools
-    # "apps/winux-builder",  # v1.3
-    # "apps/winux-dev-hub",  # v1.3 - needs API update
-    # "apps/winux-mobile-studio",  # v1.3
+    "apps/winux-builder",
+    "apps/winux-dev-hub",
+    "apps/winux-mobile-studio",
 
     # Gaming
-    # "apps/winux-gaming",  # v1.3
+    "apps/winux-gaming",
 
     # Utilities
-    # "apps/winux-archive",  # v1.3 - needs libarchive update
+    "apps/winux-archive",
 
     # AI
-    # "apps/winux-ai",  # v1.3 - needs azure API update
+    "apps/winux-ai",
 
     # Cloud
-    # "apps/winux-cloud",  # v1.3 - needs notify/s3 update
+    "apps/winux-cloud",
 ]
 
 [workspace.package]
@@ -82,7 +82,7 @@ repository = "https://github.com/winux-os/winux"
 rust-version = "1.75"
 
 [workspace.dependencies]
-# GTK4 Stack (all using gtk4-sys 0.8.x for compatibility with gtk4-layer-shell)
+# GTK4 Stack
 gtk4 = "0.8"
 libadwaita = "0.6"
 relm4 = "0.8"
@@ -98,10 +98,10 @@ smithay-drm-extras = "0.1"
 wayland-server = "0.31"
 wayland-protocols = "0.31"
 
-# Terminal (vte4 0.7 is compatible with gtk4 0.8)
+# Terminal
 vte4 = "0.7"
 
-# Editor (using gtk4 0.8 compatible version)
+# Editor
 sourceview5 = "0.8"
 
 # Async Runtime

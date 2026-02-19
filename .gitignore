@@ -50,3 +50,5 @@ Thumbs.db
 *.pem
 .env
 .env.local
+output/
+gtk4-layer-shell/
