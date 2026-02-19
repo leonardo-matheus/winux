@@ -13,7 +13,7 @@ mod ui;
 
 use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, gio};
+use gtk::{Application, gio, glib};
 use libadwaita as adw;
 use adw::prelude::*;
 use std::cell::RefCell;

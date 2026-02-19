@@ -24,6 +24,7 @@ members = [
     "apps/winux-notes",
     "apps/winux-calendar",
     "apps/winux-contacts",
+    "apps/winux-documents",
 
     # System Apps
     "apps/winux-about",
@@ -41,6 +42,7 @@ members = [
     "apps/winux-fonts",
     "apps/winux-updater",
     "apps/winux-screenshot",
+    "apps/winux-screencast",
     "apps/winux-power",
     "apps/winux-disks",
     "apps/winux-accessibility",
@@ -139,7 +141,14 @@ rusqlite = { version = "0.31", features = ["bundled"] }
 zbus = "4.0"
 
 # Cairo for drawing
-cairo-rs = { version = "0.19", features = ["png"] }
+cairo-rs = { version = "0.19", features = ["png", "pdf", "svg"] }
+
+# Document formats
+poppler = "0.4"
+epub = "2.1"
+zip = "0.6"
+unrar = "0.5"
+quick-xml = "0.31"
 
 [profile.release]
 lto = "thin"

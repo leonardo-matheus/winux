@@ -4,11 +4,56 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-description = "Modern file manager for Winux OS"
+description = "Modern file manager for Winux OS with cross-platform file format support"
 
 [dependencies]
+# GTK4 and libadwaita for UI
 gtk4.workspace = true
 libadwaita.workspace = true
 glib.workspace = true
+
+# Directory utilities
 dirs.workspace = true
+
+# Open files with default application
 open = "5.0"
+
+# Async runtime for background operations
+tokio = { version = "1.35", features = ["rt-multi-thread", "process", "fs", "io-util"] }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Serialization for config and metadata
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# XML parsing for plist and other formats
+quick-xml = "0.31"
+
+# Binary parsing utilities
+byteorder = "1.5"
+
+# Hex encoding/decoding for registry and binary data
+hex = "0.4"
+
+# Path manipulation
+pathdiff = "0.2"
+
+# MIME type detection
+mime_guess = "2.0"
+
+# Time and date handling
+chrono = "0.4"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+[features]
+default = []
+# Enable libarchive support (requires system libarchive)
+libarchive = []
+# Enable native PE parsing without external tools
+native-pe = []

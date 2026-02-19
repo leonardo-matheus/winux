@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Recorder
+GenericName=Voice Recorder
+Comment=Record audio from your microphone
+Exec=/usr/bin/winux-recorder
+Icon=audio-input-microphone
+Categories=AudioVideo;Audio;Recorder;
+Terminal=false
+Keywords=voice;audio;record;microphone;sound;
+MimeType=audio/wav;audio/mp3;audio/ogg;audio/flac;
