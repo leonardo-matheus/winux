@@ -54,7 +54,7 @@ oauth2 = "4.4"
 notify-rust = "4.10"
 
 # Keyring for secure password storage
-secret-service = "3.0"
+secret-service = { version = "4.0", features = ["rt-tokio-crypto-rust"] }
 
 # Base64 for encoding
 base64 = "0.21"

@@ -49,7 +49,7 @@ impl FontRenderer {
         let attrs = AttrList::new();
 
         // Font family and style
-        let font_desc = FontDescription::from_string(&font.to_pango_string());
+        let mut font_desc = FontDescription::from_string(&font.to_pango_string());
         font_desc.set_size(self.config.font_size * pango::SCALE);
         let font_attr = AttrFontDesc::new(&font_desc);
         attrs.insert(font_attr);
@@ -69,7 +69,7 @@ impl FontRenderer {
     pub fn create_sized_attributes(&self, font: &FontInfo, size: i32) -> AttrList {
         let attrs = AttrList::new();
 
-        let font_desc = FontDescription::from_string(&font.to_pango_string());
+        let mut font_desc = FontDescription::from_string(&font.to_pango_string());
         font_desc.set_size(size * pango::SCALE);
         let font_attr = AttrFontDesc::new(&font_desc);
         attrs.insert(font_attr);

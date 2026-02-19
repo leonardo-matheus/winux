@@ -11,8 +11,8 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 # Configuracoes
 # -----------------------------------------------------------------------------
-WINUX_VERSION="${WINUX_VERSION:-1.0}"
-WINUX_CODENAME="${WINUX_CODENAME:-aurora}"
+WINUX_VERSION="${WINUX_VERSION:-1.2}"
+WINUX_CODENAME="${WINUX_CODENAME:-blaze}"
 UBUNTU_VERSION="24.04"
 UBUNTU_CODENAME="noble"
 
