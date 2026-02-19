@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Winux Clipboard Daemon
+Comment=Clipboard history monitoring daemon
+Exec=winux-clipboard --daemon
+Terminal=false
+Type=Application
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=true
+NoDisplay=true

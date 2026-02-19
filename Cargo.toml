@@ -8,6 +8,7 @@ members = [
     "desktop/winux-compositor",
     "desktop/winux-panel",
     "desktop/winux-shell",
+    "desktop/winux-launcher",
     "desktop/winux-notifications",
 
     # Core Apps
@@ -25,6 +26,8 @@ members = [
     "apps/winux-personalize",
     "apps/winux-env-manager",
     "apps/winux-welcome",
+    "apps/winux-clipboard",
+    "apps/winux-bluetooth",
 
     # Developer Tools
     "apps/winux-builder",

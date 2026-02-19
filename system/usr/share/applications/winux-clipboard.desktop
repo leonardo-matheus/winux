@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Clipboard Manager
+Name[pt_BR]=Gerenciador de Clipboard
+Comment=View and manage clipboard history
+Comment[pt_BR]=Visualize e gerencie o historico da area de transferencia
+Exec=winux-clipboard
+Icon=edit-paste
+Terminal=false
+Type=Application
+Categories=Utility;GTK;
+Keywords=clipboard;copy;paste;history;
+StartupNotify=true
+StartupWMClass=winux-clipboard
+X-GNOME-UsesNotifications=true

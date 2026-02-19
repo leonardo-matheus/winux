@@ -1,0 +1,859 @@
+/*
+ * Winux Nord Theme for GTK4
+ * Arctic North-Bluish Clean Design
+ *
+ * Based on the Nord color palette - an arctic, north-bluish
+ * color scheme designed for clean and eye-friendly interfaces.
+ *
+ * Version: 1.0.0
+ * Author: Winux OS Team
+ * License: GPL-3.0
+ */
+
+/* Import color palette and animations */
+@import url("colors-dark.css");
+@import url("../../winux-fluent/gtk-4.0/animations.css");
+
+/* ===== CSS Custom Properties ===== */
+@define-color window_bg_color @bg_primary;
+@define-color window_fg_color @text_primary;
+@define-color view_bg_color @bg_secondary;
+@define-color view_fg_color @text_primary;
+@define-color accent_bg_color @accent_blue;
+@define-color accent_fg_color @text_on_accent;
+@define-color card_bg_color @bg_elevated;
+@define-color card_fg_color @text_primary;
+@define-color headerbar_bg_color @bg_header;
+@define-color headerbar_fg_color @text_primary;
+@define-color popover_bg_color @bg_popover;
+@define-color popover_fg_color @text_primary;
+@define-color dialog_bg_color @bg_elevated;
+@define-color dialog_fg_color @text_primary;
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+* {
+    outline-style: solid;
+    outline-width: 0;
+    outline-offset: 3px;
+    outline-color: @accent_blue;
+    -gtk-outline-radius: 8px;
+    transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+    transition-duration: 166ms;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+*:focus-visible {
+    outline-width: 2px;
+    outline-offset: 2px;
+    animation: focusRingPulse 400ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+/* ============================================
+   WINDOW & BACKGROUND
+   ============================================ */
+
+window,
+.background {
+    background-color: @bg_primary;
+    color: @text_primary;
+}
+
+window.csd {
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 1px @border_subtle,
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.3);
+    animation: windowOpen 350ms cubic-bezier(0.0, 0.0, 0.2, 1.0);
+}
+
+window.csd:backdrop {
+    box-shadow:
+        0 0 0 1px @border_subtle,
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+window.background.csd {
+    background-color: @bg_glass;
+    background-image: linear-gradient(
+        180deg,
+        rgba(216, 222, 233, 0.03) 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.02) 100%
+    );
+}
+
+window.maximized,
+window.fullscreen,
+window.tiled {
+    border-radius: 0;
+}
+
+window.dialog,
+window.messagedialog {
+    border-radius: 14px;
+    animation: dialogOpen 300ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+label,
+.label {
+    color: @text_primary;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+label.title,
+.title {
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: -0.02em;
+}
+
+label.heading {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+label.caption,
+.caption {
+    font-size: 0.85em;
+    color: @text_secondary;
+}
+
+label.dim-label,
+.dim-label {
+    color: @text_secondary;
+}
+
+label:disabled,
+.label:disabled {
+    color: @text_disabled;
+}
+
+link,
+*:link {
+    color: @accent_blue;
+}
+
+link:hover,
+*:link:hover {
+    color: @accent_blue_hover;
+}
+
+link:visited,
+*:visited {
+    color: @accent_purple;
+}
+
+/* ============================================
+   HEADERBAR
+   ============================================ */
+
+headerbar,
+.titlebar {
+    background-color: @bg_header;
+    background-image: linear-gradient(
+        180deg,
+        rgba(216, 222, 233, 0.04) 0%,
+        transparent 100%
+    );
+    border-bottom: 1px solid @border_subtle;
+    border-radius: 12px 12px 0 0;
+    padding: 0 8px;
+    min-height: 52px;
+    box-shadow: inset 0 1px 0 rgba(216, 222, 233, 0.05);
+}
+
+headerbar:backdrop,
+.titlebar:backdrop {
+    background-color: @bg_header_backdrop;
+    background-image: none;
+    box-shadow: none;
+}
+
+headerbar .title,
+.titlebar .title {
+    font-weight: 600;
+    font-size: 14px;
+    color: @text_primary;
+}
+
+headerbar .subtitle,
+.titlebar .subtitle {
+    font-weight: 400;
+    font-size: 11px;
+    color: @text_secondary;
+}
+
+headerbar button,
+.titlebar button {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    min-height: 28px;
+    min-width: 28px;
+    margin: 4px 2px;
+    color: @text_primary;
+    transition: all 150ms ease;
+}
+
+headerbar button:hover,
+.titlebar button:hover {
+    background-color: @hover_overlay;
+    transform: translateY(-1px);
+}
+
+headerbar button:active,
+.titlebar button:active {
+    background-color: @active_overlay;
+    transform: translateY(0) scale(0.98);
+}
+
+headerbar button.suggested-action {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+}
+
+headerbar button.suggested-action:hover {
+    background-color: @accent_blue_hover;
+    box-shadow: 0 4px 12px @shadow_blue;
+}
+
+/* Window Controls */
+windowcontrols {
+    margin: 0 6px;
+}
+
+windowcontrols button {
+    min-width: 14px;
+    min-height: 14px;
+    padding: 0;
+    margin: 0 4px;
+    border-radius: 50%;
+    border: none;
+    transition: all 150ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+windowcontrols button:hover {
+    transform: scale(1.15);
+}
+
+windowcontrols button.close {
+    background-color: @window_close;
+}
+
+windowcontrols button.close:hover {
+    box-shadow: 0 0 12px @shadow_red;
+}
+
+windowcontrols button.minimize {
+    background-color: @window_minimize;
+}
+
+windowcontrols button.minimize:hover {
+    box-shadow: 0 0 12px rgba(235, 203, 139, 0.5);
+}
+
+windowcontrols button.maximize {
+    background-color: @window_maximize;
+}
+
+windowcontrols button.maximize:hover {
+    box-shadow: 0 0 12px @shadow_green;
+}
+
+windowcontrols button:backdrop {
+    background-color: @window_control_inactive;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+    background-color: @bg_button;
+    background-image: linear-gradient(180deg, rgba(216, 222, 233, 0.04) 0%, transparent 100%);
+    border: 1px solid @border_button;
+    border-radius: 8px;
+    padding: 8px 16px;
+    min-height: 32px;
+    color: @text_primary;
+    font-weight: 500;
+    box-shadow: 0 1px 2px @shadow_sm;
+    transition: all 166ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+button:hover {
+    background-color: @bg_button_hover;
+    border-color: @border_button_hover;
+    box-shadow: 0 4px 12px @shadow_md;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: @bg_button_active;
+    transform: translateY(0) scale(0.98);
+}
+
+button:disabled {
+    background-color: @bg_disabled;
+    color: @text_disabled;
+    border-color: @border_subtle;
+    box-shadow: none;
+}
+
+button:checked {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+    border-color: @accent_blue;
+}
+
+button.suggested-action {
+    background-color: @accent_blue;
+    background-image: linear-gradient(180deg, rgba(216, 222, 233, 0.15) 0%, transparent 100%);
+    color: @text_on_accent;
+    border-color: transparent;
+    box-shadow: 0 2px 8px @shadow_blue;
+}
+
+button.suggested-action:hover {
+    background-color: @accent_blue_hover;
+    box-shadow: 0 6px 20px @shadow_blue;
+    transform: translateY(-2px);
+}
+
+button.destructive-action {
+    background-color: @accent_red;
+    color: @text_on_dark_accent;
+    border-color: transparent;
+    box-shadow: 0 2px 8px @shadow_red;
+}
+
+button.destructive-action:hover {
+    background-color: @accent_red_hover;
+    box-shadow: 0 6px 20px @shadow_red;
+}
+
+button.flat {
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+button.flat:hover {
+    background-color: @hover_overlay;
+    transform: none;
+}
+
+button.circular {
+    border-radius: 50%;
+    padding: 8px;
+    min-width: 36px;
+    min-height: 36px;
+}
+
+/* ============================================
+   ENTRIES
+   ============================================ */
+
+entry,
+spinbutton {
+    background-color: @bg_entry;
+    border: 1px solid @border_entry;
+    border-radius: 8px;
+    padding: 8px 12px;
+    min-height: 36px;
+    color: @text_primary;
+    caret-color: @accent_blue;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: all 200ms ease;
+}
+
+entry:hover:not(:focus),
+spinbutton:hover:not(:focus) {
+    border-color: @border_entry_hover;
+    background-color: @bg_entry_hover;
+}
+
+entry:focus,
+spinbutton:focus {
+    border-color: @accent_blue;
+    box-shadow: 0 0 0 3px @focus_ring;
+}
+
+entry:disabled,
+spinbutton:disabled {
+    background-color: @bg_disabled;
+    color: @text_disabled;
+}
+
+entry.error {
+    border-color: @accent_red;
+    box-shadow: 0 0 0 3px rgba(191, 97, 106, 0.25);
+    animation: shake 400ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+entry.warning {
+    border-color: @accent_orange;
+    box-shadow: 0 0 0 3px rgba(235, 203, 139, 0.25);
+}
+
+entry.success {
+    border-color: @accent_green;
+    box-shadow: 0 0 0 3px rgba(163, 190, 140, 0.25);
+}
+
+/* ============================================
+   LISTS & ROWS
+   ============================================ */
+
+listview,
+list {
+    background-color: transparent;
+}
+
+listview > row,
+list > row {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 2px 0;
+    transition: all 200ms ease;
+}
+
+listview > row:hover,
+list > row:hover {
+    background-color: @hover_overlay;
+    transform: translateX(4px);
+}
+
+listview > row:selected,
+list > row:selected {
+    background-color: @item_selection_bg;
+}
+
+listview > row:active,
+list > row:active {
+    transform: scale(0.99);
+}
+
+.boxed-list {
+    background-color: @bg_elevated;
+    border: 1px solid @border_subtle;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px @shadow_sm;
+}
+
+.boxed-list > row {
+    padding: 14px 16px;
+    border-bottom: 1px solid @border_subtle;
+}
+
+.boxed-list > row:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+.boxed-list > row:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
+}
+
+.boxed-list > row:only-child {
+    border-radius: 12px;
+}
+
+/* ============================================
+   CHECKBOXES & RADIO
+   ============================================ */
+
+checkbutton check,
+radiobutton radio {
+    min-width: 22px;
+    min-height: 22px;
+    background-color: @bg_entry;
+    border: 2px solid @border_entry;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+radiobutton radio {
+    border-radius: 50%;
+}
+
+checkbutton check:hover,
+radiobutton radio:hover {
+    border-color: @accent_blue;
+    transform: scale(1.05);
+}
+
+checkbutton check:checked,
+radiobutton radio:checked {
+    background-color: @accent_blue;
+    border-color: @accent_blue;
+    box-shadow: 0 2px 8px @shadow_blue;
+    animation: checkBounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+checkbutton check:checked {
+    -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+    color: @text_on_accent;
+}
+
+/* ============================================
+   SWITCHES
+   ============================================ */
+
+switch {
+    min-width: 52px;
+    min-height: 28px;
+    background-color: @bg_switch_off;
+    border: 2px solid @border_switch;
+    border-radius: 14px;
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+switch:checked {
+    background-color: @accent_green;
+    border-color: @accent_green;
+}
+
+switch slider {
+    min-width: 22px;
+    min-height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+switch:hover slider {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   SCALES
+   ============================================ */
+
+scale trough {
+    min-height: 4px;
+    background-color: @bg_trough;
+    border-radius: 2px;
+}
+
+scale highlight {
+    background-color: @accent_blue;
+    border-radius: 2px;
+}
+
+scale slider {
+    min-width: 22px;
+    min-height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+scale slider:hover {
+    transform: scale(1.15);
+}
+
+scale slider:active {
+    background-color: @accent_blue;
+    transform: scale(1.2);
+}
+
+/* ============================================
+   PROGRESS BARS
+   ============================================ */
+
+progressbar trough {
+    min-height: 6px;
+    background-color: @bg_trough;
+    border-radius: 3px;
+}
+
+progressbar progress {
+    background-color: @accent_blue;
+    border-radius: 3px;
+    animation: progressShimmer 2s infinite linear;
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
+scrollbar slider {
+    min-width: 6px;
+    min-height: 6px;
+    background-color: @scrollbar_slider;
+    border-radius: 100px;
+    transition: all 200ms ease;
+}
+
+scrollbar:hover slider {
+    background-color: @scrollbar_slider_hover;
+    min-width: 10px;
+}
+
+scrollbar slider:active {
+    background-color: @scrollbar_slider_active;
+}
+
+/* ============================================
+   NOTEBOOKS (TABS)
+   ============================================ */
+
+notebook > header {
+    background-color: @bg_secondary;
+    border-bottom: 1px solid @border_subtle;
+    padding: 4px 8px;
+}
+
+notebook > header tab {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 4px 2px;
+    color: @text_secondary;
+    transition: all 200ms ease;
+}
+
+notebook > header tab:hover {
+    background-color: @hover_overlay;
+    color: @text_primary;
+}
+
+notebook > header tab:checked {
+    background-color: @bg_elevated;
+    color: @text_primary;
+    box-shadow: 0 2px 8px @shadow_sm;
+}
+
+/* ============================================
+   POPOVERS
+   ============================================ */
+
+popover,
+popover.background {
+    background-color: @bg_popover;
+    border: 1px solid @border_popover;
+    border-radius: 14px;
+    box-shadow: 0 24px 80px @shadow_xl;
+    padding: 8px;
+    animation: popoverOpen 250ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+popover modelbutton {
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 150ms ease;
+}
+
+popover modelbutton:hover {
+    background-color: @hover_overlay;
+    transform: translateX(4px);
+}
+
+/* ============================================
+   MENUS
+   ============================================ */
+
+menu,
+.menu {
+    background-color: @bg_popover;
+    border: 1px solid @border_popover;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 16px 48px @shadow_lg;
+    animation: menuOpen 200ms ease;
+}
+
+menu menuitem {
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 150ms ease;
+}
+
+menu menuitem:hover {
+    background-color: @accent_blue;
+    color: @text_on_accent;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+
+tooltip {
+    background-color: @bg_tooltip;
+    border: 1px solid @border_subtle;
+    border-radius: 8px;
+    padding: 6px 10px;
+    animation: tooltipFadeIn 150ms ease;
+}
+
+/* ============================================
+   DIALOGS
+   ============================================ */
+
+dialog,
+messagedialog {
+    background-color: @bg_primary;
+    border-radius: 14px;
+    box-shadow: 0 32px 100px @shadow_xl;
+}
+
+/* ============================================
+   INFOBARS
+   ============================================ */
+
+infobar {
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 4px;
+    animation: slideInFromTop 300ms ease;
+}
+
+infobar.info {
+    background-color: @info_bg;
+    border: 1px solid @info_border;
+}
+
+infobar.warning {
+    background-color: @warning_bg;
+    border: 1px solid @warning_border;
+}
+
+infobar.error {
+    background-color: @error_bg;
+    border: 1px solid @error_border;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.sidebar,
+.navigation-sidebar {
+    background-color: @bg_sidebar;
+    border-right: 1px solid @border_subtle;
+    padding: 8px;
+}
+
+.sidebar row {
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 2px 0;
+    transition: all 200ms ease;
+}
+
+.sidebar row:hover {
+    background-color: @hover_overlay;
+    transform: translateX(4px);
+}
+
+.sidebar row:selected {
+    background-color: @item_selection_bg;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    background-color: @bg_elevated;
+    border: 1px solid @border_subtle;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 8px @shadow_sm;
+    transition: all 300ms ease;
+}
+
+.card:hover {
+    box-shadow: 0 12px 32px @shadow_md;
+    transform: translateY(-4px);
+}
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+
+.glass {
+    background-color: @bg_glass;
+    border: 1px solid @border_glass;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.frosted {
+    background-color: @bg_frosted;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+/* ============================================
+   TOASTS
+   ============================================ */
+
+toast {
+    background-color: @bg_toast;
+    border: 1px solid @border_subtle;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px @shadow_lg;
+    padding: 12px 18px;
+    animation: toastSlideIn 350ms cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+/* ============================================
+   OSD
+   ============================================ */
+
+.osd {
+    background-color: @bg_osd;
+    border-radius: 14px;
+    box-shadow: 0 16px 48px @shadow_lg;
+    padding: 12px;
+    animation: osdFadeIn 200ms ease;
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        @bg_tertiary 0%,
+        rgba(216, 222, 233, 0.1) 50%,
+        @bg_tertiary 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite ease-in-out;
+    border-radius: 8px;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

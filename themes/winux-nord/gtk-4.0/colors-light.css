@@ -1,0 +1,330 @@
+/*
+ * Winux Nord Theme - Light Color Palette
+ * Arctic North-Bluish Design System (Light Variant)
+ *
+ * Based on the Nord color palette - an arctic, north-bluish
+ * color scheme designed for clean and eye-friendly interfaces.
+ *
+ * Version: 1.0.0
+ * Author: Winux OS Team
+ * License: GPL-3.0
+ * Based on: Nord (nordtheme.com)
+ */
+
+/* ============================================
+   NORD SNOW STORM - Light backgrounds
+   ============================================ */
+
+/* Light backgrounds */
+@define-color snow0 #eceff4;
+@define-color snow1 #e5e9f0;
+@define-color snow2 #d8dee9;
+
+/* ============================================
+   NORD POLAR NIGHT - Dark text
+   ============================================ */
+
+@define-color nord0 #2e3440;
+@define-color nord1 #3b4252;
+@define-color nord2 #434c5e;
+@define-color nord3 #4c566a;
+
+/* ============================================
+   NORD FROST - Blue accents
+   ============================================ */
+
+@define-color nord7 #8fbcbb;
+@define-color nord8 #88c0d0;
+@define-color nord9 #81a1c1;
+@define-color nord10 #5e81ac;
+
+/* ============================================
+   NORD AURORA - Accent colors
+   ============================================ */
+
+@define-color nord11 #bf616a;
+@define-color nord12 #d08770;
+@define-color nord13 #ebcb8b;
+@define-color nord14 #a3be8c;
+@define-color nord15 #b48ead;
+
+/* ============================================
+   PRIMARY BACKGROUND COLORS
+   ============================================ */
+
+@define-color bg_primary @snow0;
+@define-color bg_secondary @snow1;
+@define-color bg_tertiary @snow2;
+@define-color bg_elevated #ffffff;
+@define-color bg_sidebar @snow1;
+
+/* ============================================
+   GLASSMORPHISM & BLUR EFFECTS
+   ============================================ */
+
+@define-color bg_glass rgba(236, 239, 244, 0.9);
+@define-color bg_blur rgba(229, 233, 240, 0.85);
+@define-color bg_frosted rgba(229, 233, 240, 0.8);
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+@define-color bg_header @snow1;
+@define-color bg_header_backdrop @snow0;
+
+/* ============================================
+   INTERACTIVE ELEMENT BACKGROUNDS
+   ============================================ */
+
+@define-color bg_button #ffffff;
+@define-color bg_button_hover @snow1;
+@define-color bg_button_active @snow2;
+
+@define-color bg_entry #ffffff;
+@define-color bg_entry_hover @snow0;
+@define-color bg_entry_focus #ffffff;
+
+@define-color bg_switch_off @snow2;
+@define-color bg_switch_off_hover @nord3;
+
+@define-color bg_trough @snow2;
+@define-color bg_disabled @snow1;
+
+/* ============================================
+   OVERLAY BACKGROUNDS
+   ============================================ */
+
+@define-color bg_tooltip #ffffff;
+@define-color bg_osd rgba(255, 255, 255, 0.95);
+@define-color bg_toast #ffffff;
+@define-color bg_popover #ffffff;
+
+/* ============================================
+   ACCENT COLORS
+   ============================================ */
+
+@define-color accent_blue @nord10;
+@define-color accent_blue_hover #4c6d98;
+@define-color accent_blue_active #3e5a80;
+
+@define-color accent_green @nord14;
+@define-color accent_green_hover #91ae78;
+@define-color accent_green_active #7f9c68;
+
+@define-color accent_red @nord11;
+@define-color accent_red_hover #a8525b;
+@define-color accent_red_active #96444c;
+
+@define-color accent_orange @nord12;
+@define-color accent_orange_hover #be7560;
+@define-color accent_orange_active #ac6450;
+
+@define-color accent_yellow @nord13;
+@define-color accent_yellow_hover #e0be73;
+@define-color accent_yellow_active #d5b15b;
+
+@define-color accent_purple @nord15;
+@define-color accent_purple_hover #a47898;
+@define-color accent_purple_active #946888;
+
+@define-color accent_pink @nord12;
+@define-color accent_pink_hover #be7560;
+@define-color accent_pink_active #ac6450;
+
+@define-color accent_teal @nord7;
+@define-color accent_teal_hover #7baca9;
+@define-color accent_teal_active #6b9c99;
+
+@define-color accent_indigo @nord10;
+@define-color accent_indigo_hover #4c6d98;
+@define-color accent_indigo_active #3e5a80;
+
+@define-color accent_mint @nord7;
+@define-color accent_mint_hover #7baca9;
+@define-color accent_mint_active #6b9c99;
+
+@define-color accent_cyan @nord8;
+@define-color accent_cyan_hover #70b2c6;
+@define-color accent_cyan_active #5aa4ba;
+
+/* ============================================
+   TEXT COLORS
+   ============================================ */
+
+@define-color text_primary @nord0;
+@define-color text_secondary @nord2;
+@define-color text_tertiary @nord3;
+@define-color text_disabled @snow2;
+@define-color text_placeholder @nord3;
+@define-color text_on_accent @snow0;
+@define-color text_on_dark_accent @snow0;
+
+/* ============================================
+   BORDER COLORS
+   ============================================ */
+
+@define-color border_subtle rgba(46, 52, 64, 0.1);
+@define-color border_medium rgba(46, 52, 64, 0.15);
+@define-color border_strong rgba(46, 52, 64, 0.2);
+
+@define-color border_button rgba(46, 52, 64, 0.12);
+@define-color border_button_hover rgba(46, 52, 64, 0.18);
+
+@define-color border_entry rgba(46, 52, 64, 0.12);
+@define-color border_entry_hover rgba(46, 52, 64, 0.18);
+@define-color border_entry_focus @accent_blue;
+
+@define-color border_switch rgba(46, 52, 64, 0.1);
+@define-color border_popover rgba(46, 52, 64, 0.1);
+@define-color border_glass rgba(46, 52, 64, 0.08);
+
+/* ============================================
+   SHADOW COLORS
+   ============================================ */
+
+@define-color shadow_sm rgba(0, 0, 0, 0.08);
+@define-color shadow_md rgba(0, 0, 0, 0.12);
+@define-color shadow_lg rgba(0, 0, 0, 0.18);
+@define-color shadow_xl rgba(0, 0, 0, 0.25);
+
+@define-color shadow_blue rgba(94, 129, 172, 0.25);
+@define-color shadow_green rgba(163, 190, 140, 0.25);
+@define-color shadow_red rgba(191, 97, 106, 0.25);
+
+/* ============================================
+   SEMANTIC COLORS
+   ============================================ */
+
+@define-color success_bg rgba(163, 190, 140, 0.15);
+@define-color success_fg @accent_green;
+@define-color success_border rgba(163, 190, 140, 0.3);
+
+@define-color warning_bg rgba(235, 203, 139, 0.2);
+@define-color warning_fg @accent_orange;
+@define-color warning_border rgba(235, 203, 139, 0.4);
+
+@define-color error_bg rgba(191, 97, 106, 0.12);
+@define-color error_fg @accent_red;
+@define-color error_border rgba(191, 97, 106, 0.3);
+
+@define-color info_bg rgba(94, 129, 172, 0.12);
+@define-color info_fg @accent_blue;
+@define-color info_border rgba(94, 129, 172, 0.3);
+
+/* ============================================
+   SELECTION COLORS
+   ============================================ */
+
+@define-color selection_bg rgba(94, 129, 172, 0.3);
+@define-color selection_fg @text_primary;
+
+@define-color item_selection_bg rgba(94, 129, 172, 0.12);
+@define-color item_selection_hover_bg rgba(94, 129, 172, 0.18);
+
+/* ============================================
+   HOVER & FOCUS STATES
+   ============================================ */
+
+@define-color hover_overlay rgba(46, 52, 64, 0.04);
+@define-color active_overlay rgba(46, 52, 64, 0.08);
+@define-color focus_ring rgba(94, 129, 172, 0.5);
+
+/* ============================================
+   WINDOW CONTROL COLORS
+   ============================================ */
+
+@define-color window_close @nord11;
+@define-color window_close_hover #c97a82;
+@define-color window_close_active #a8525b;
+
+@define-color window_minimize @nord13;
+@define-color window_minimize_hover #f0d8a3;
+@define-color window_minimize_active #e0be73;
+
+@define-color window_maximize @nord14;
+@define-color window_maximize_hover #b5cea0;
+@define-color window_maximize_active #91ae78;
+
+@define-color window_control_inactive @snow2;
+
+/* ============================================
+   SCROLLBAR COLORS
+   ============================================ */
+
+@define-color scrollbar_bg transparent;
+@define-color scrollbar_slider rgba(46, 52, 64, 0.2);
+@define-color scrollbar_slider_hover rgba(46, 52, 64, 0.35);
+@define-color scrollbar_slider_active rgba(46, 52, 64, 0.5);
+
+/* ============================================
+   LINK COLORS
+   ============================================ */
+
+@define-color link_color @nord10;
+@define-color link_hover_color @nord9;
+@define-color link_visited_color @nord15;
+
+/* ============================================
+   HEADERBAR SPECIFIC
+   ============================================ */
+
+@define-color headerbar_shade rgba(0, 0, 0, 0.05);
+@define-color headerbar_darker_shade rgba(0, 0, 0, 0.08);
+
+/* ============================================
+   LIBADWAITA COMPATIBILITY
+   ============================================ */
+
+@define-color window_bg_color @bg_primary;
+@define-color window_fg_color @text_primary;
+@define-color view_bg_color @bg_secondary;
+@define-color view_fg_color @text_primary;
+@define-color headerbar_bg_color @bg_header;
+@define-color headerbar_fg_color @text_primary;
+@define-color headerbar_border_color @border_subtle;
+@define-color headerbar_backdrop_color @bg_header_backdrop;
+@define-color card_bg_color @bg_elevated;
+@define-color card_fg_color @text_primary;
+@define-color card_shade_color rgba(0, 0, 0, 0.05);
+@define-color popover_bg_color @bg_popover;
+@define-color popover_fg_color @text_primary;
+@define-color dialog_bg_color @bg_elevated;
+@define-color dialog_fg_color @text_primary;
+@define-color sidebar_bg_color @bg_sidebar;
+@define-color sidebar_fg_color @text_primary;
+@define-color sidebar_backdrop_color @bg_sidebar;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.05);
+@define-color accent_color @accent_blue;
+@define-color accent_bg_color @accent_blue;
+@define-color accent_fg_color @text_on_accent;
+@define-color destructive_color @accent_red;
+@define-color destructive_bg_color @accent_red;
+@define-color destructive_fg_color @snow0;
+@define-color success_color @accent_green;
+@define-color success_bg_color @accent_green;
+@define-color success_fg_color @nord0;
+@define-color warning_color @accent_orange;
+@define-color warning_bg_color @accent_orange;
+@define-color warning_fg_color @nord0;
+@define-color error_color @accent_red;
+@define-color error_bg_color @accent_red;
+@define-color error_fg_color @snow0;
+@define-color thumbnail_bg_color @bg_tertiary;
+@define-color thumbnail_fg_color @text_primary;
+
+/* ============================================
+   SHADE & TINT UTILITIES
+   ============================================ */
+
+@define-color shade_10 rgba(0, 0, 0, 0.1);
+@define-color shade_20 rgba(0, 0, 0, 0.2);
+@define-color shade_30 rgba(0, 0, 0, 0.3);
+@define-color shade_40 rgba(0, 0, 0, 0.4);
+@define-color shade_50 rgba(0, 0, 0, 0.5);
+
+@define-color tint_05 rgba(255, 255, 255, 0.05);
+@define-color tint_10 rgba(255, 255, 255, 0.1);
+@define-color tint_15 rgba(255, 255, 255, 0.15);
+@define-color tint_20 rgba(255, 255, 255, 0.2);
+@define-color tint_30 rgba(255, 255, 255, 0.3);

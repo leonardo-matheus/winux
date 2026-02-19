@@ -1,0 +1,83 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Winux Nord
+Comment=Arctic, north-bluish clean theme inspired by Nord color palette
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=winux-nord
+MetacityTheme=winux-nord
+IconTheme=Papirus-Dark
+CursorTheme=Nordzy-cursors
+ButtonLayout=close,minimize,maximize:menu
+BackgroundImage=
+Font=Inter 10
+TitleFont=Inter Semi-Bold 11
+MonospaceFont=JetBrains Mono 10
+DocumentFont=Inter 10
+
+# Theme Metadata
+[Theme]
+Name=Winux Nord
+Version=1.0.0
+Author=Winux OS Team
+License=GPL-3.0
+Website=https://winux.os
+Description=An arctic, north-bluish clean and elegant theme inspired by the Nord color palette. Features cool blue tones, smooth animations, and excellent readability. Perfect for developers and users who prefer calm, eye-friendly colors.
+
+# Color Scheme
+[Colors]
+AccentColor=#88c0d0
+BackgroundPrimary=#2e3440
+BackgroundSecondary=#3b4252
+BackgroundElevated=#434c5e
+TextPrimary=#eceff4
+TextSecondary=#d8dee9
+BorderSubtle=rgba(216,222,233,0.1)
+SuccessColor=#a3be8c
+WarningColor=#ebcb8b
+ErrorColor=#bf616a
+
+# Design Specifications
+[Design]
+BorderRadius=12
+ButtonRadius=8
+AnimationDuration=200ms
+ShadowStyle=soft
+GlassmorphismEnabled=true
+BlurAmount=20
+FontFamily=Inter, SF Pro Display, Roboto, sans-serif
+MonospaceFontFamily=JetBrains Mono, Fira Code, monospace
+
+# GTK4 Support
+[GTK4]
+StyleSheet=gtk-4.0/gtk.css
+ColorPalette=gtk-4.0/colors-dark.css
+SupportsDarkMode=true
+SupportsHDR=false
+PrefersColorScheme=dark
+
+# Compatibility
+[Compatibility]
+GTK3Support=true
+GTK4Support=true
+LibadwaitaSupport=true
+GNOMEShellSupport=true
+MinGTKVersion=4.0
+MinLibadwaitaVersion=1.0
+
+# Window Controls
+[WindowControls]
+Layout=close,minimize,maximize:menu
+Style=unified
+CloseColor=#bf616a
+MinimizeColor=#ebcb8b
+MaximizeColor=#a3be8c
+InactiveColor=#4c566a
+
+# Recommended Applications
+[Recommendations]
+Terminal=gnome-terminal
+FileManager=nautilus
+TextEditor=gnome-text-editor
+Browser=firefox
