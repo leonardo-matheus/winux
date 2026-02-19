@@ -1,0 +1,89 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Winux Catppuccin
+Comment=Soothing pastel theme with multiple flavor variants (Mocha, Latte, Frappe, Macchiato)
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=winux-catppuccin
+MetacityTheme=winux-catppuccin
+IconTheme=Papirus-Dark
+CursorTheme=Catppuccin-cursors
+ButtonLayout=close,minimize,maximize:menu
+BackgroundImage=
+Font=Inter 10
+TitleFont=Inter Semi-Bold 11
+MonospaceFont=JetBrains Mono 10
+DocumentFont=Inter 10
+
+# Theme Metadata
+[Theme]
+Name=Winux Catppuccin
+Version=1.0.0
+Author=Winux OS Team
+License=GPL-3.0
+Website=https://winux.os
+Description=A soothing pastel theme based on Catppuccin color palette. Features four flavor variants: Mocha (dark), Macchiato (medium-dark), Frappe (medium), and Latte (light). Each variant provides warm, eye-friendly colors perfect for extended coding sessions.
+
+# Color Scheme (Mocha - Default)
+[Colors]
+AccentColor=#cba6f7
+BackgroundPrimary=#1e1e2e
+BackgroundSecondary=#313244
+BackgroundElevated=#45475a
+TextPrimary=#cdd6f4
+TextSecondary=#a6adc8
+BorderSubtle=rgba(205,214,244,0.1)
+SuccessColor=#a6e3a1
+WarningColor=#f9e2af
+ErrorColor=#f38ba8
+
+# Available Flavors
+[Flavors]
+Default=mocha
+Available=mocha,macchiato,frappe,latte
+Description=Mocha (darkest), Macchiato (dark), Frappe (medium), Latte (light)
+
+# Design Specifications
+[Design]
+BorderRadius=12
+ButtonRadius=8
+AnimationDuration=200ms
+ShadowStyle=soft
+GlassmorphismEnabled=true
+BlurAmount=20
+FontFamily=Inter, SF Pro Display, Roboto, sans-serif
+MonospaceFontFamily=JetBrains Mono, Fira Code, monospace
+
+# GTK4 Support
+[GTK4]
+StyleSheet=gtk-4.0/gtk.css
+ColorPalette=gtk-4.0/colors-dark.css
+SupportsDarkMode=true
+SupportsHDR=false
+PrefersColorScheme=dark
+
+# Compatibility
+[Compatibility]
+GTK3Support=true
+GTK4Support=true
+LibadwaitaSupport=true
+GNOMEShellSupport=true
+MinGTKVersion=4.0
+MinLibadwaitaVersion=1.0
+
+# Window Controls
+[WindowControls]
+Layout=close,minimize,maximize:menu
+Style=unified
+CloseColor=#f38ba8
+MinimizeColor=#f9e2af
+MaximizeColor=#a6e3a1
+InactiveColor=#45475a
+
+# Recommended Applications
+[Recommendations]
+Terminal=gnome-terminal
+FileManager=nautilus
+TextEditor=gnome-text-editor
+Browser=firefox

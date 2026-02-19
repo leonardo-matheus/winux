@@ -58,6 +58,9 @@ members = [
 
     # Gaming
     "apps/winux-gaming",
+
+    # Utilities
+    "apps/winux-archive",
 ]
 
 [workspace.package]

@@ -180,3 +180,108 @@ flowbox > flowboxchild.drop-target {
 .empty-folder image {
     margin-bottom: 16px;
 }
+
+/* Info panel styling */
+#info-content {
+    padding: 8px;
+    background-color: alpha(@theme_bg_color, 0.5);
+    border-radius: 8px;
+}
+
+#info-content label {
+    font-size: 0.9em;
+}
+
+#info-content label.dim-label {
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+#actions-box {
+    padding: 8px 0;
+}
+
+#actions-box button {
+    margin: 4px 0;
+}
+
+/* File type badges */
+.file-type-badge {
+    background-color: alpha(@accent_color, 0.2);
+    color: @accent_color;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+/* Windows file types */
+.file-type-exe {
+    background-color: alpha(#0078d4, 0.2);
+    color: #0078d4;
+}
+
+.file-type-msi {
+    background-color: alpha(#0078d4, 0.2);
+    color: #0078d4;
+}
+
+/* macOS file types */
+.file-type-dmg {
+    background-color: alpha(#999999, 0.2);
+    color: #666666;
+}
+
+.file-type-app {
+    background-color: alpha(#007aff, 0.2);
+    color: #007aff;
+}
+
+/* Linux file types */
+.file-type-deb {
+    background-color: alpha(#a80030, 0.2);
+    color: #a80030;
+}
+
+.file-type-rpm {
+    background-color: alpha(#ee0000, 0.2);
+    color: #ee0000;
+}
+
+.file-type-appimage {
+    background-color: alpha(#00bcd4, 0.2);
+    color: #00bcd4;
+}
+
+.file-type-flatpak {
+    background-color: alpha(#4a86cf, 0.2);
+    color: #4a86cf;
+}
+
+.file-type-snap {
+    background-color: alpha(#e95420, 0.2);
+    color: #e95420;
+}
+
+/* Archive types */
+.file-type-archive {
+    background-color: alpha(#795548, 0.2);
+    color: #795548;
+}
+
+.file-type-iso {
+    background-color: alpha(#607d8b, 0.2);
+    color: #607d8b;
+}
+
+/* Library types */
+.file-type-library {
+    background-color: alpha(#9c27b0, 0.2);
+    color: #9c27b0;
+}
+
+/* Script types */
+.file-type-script {
+    background-color: alpha(#4caf50, 0.2);
+    color: #4caf50;
+}
