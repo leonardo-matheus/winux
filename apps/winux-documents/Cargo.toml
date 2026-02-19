@@ -1,0 +1,56 @@
+[package]
+name = "winux-documents"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Document viewer for Winux OS - PDF, EPUB, DjVu, XPS, and comics"
+
+[[bin]]
+name = "winux-documents"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { workspace = true, features = ["v4_12"] }
+libadwaita = { workspace = true, features = ["v1_4"] }
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+
+# PDF rendering
+poppler = "0.4"
+
+# Async
+tokio = { workspace = true }
+async-channel.workspace = true
+
+# Error handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Serialization for annotations/bookmarks
+serde.workspace = true
+serde_json.workspace = true
+
+# Utilities
+once_cell.workspace = true
+parking_lot.workspace = true
+regex.workspace = true
+dirs.workspace = true
+
+# Image handling for rendering
+image.workspace = true
+
+# EPUB support
+epub = "2.1"
+
+# Archive support for CBZ/CBR
+zip = "0.6"
+unrar = "0.5"
+
+# XML parsing for XPS
+quick-xml = "0.31"
+
+# Cairo for rendering
+cairo-rs = { version = "0.19", features = ["pdf", "svg", "png"] }

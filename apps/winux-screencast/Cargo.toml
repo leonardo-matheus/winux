@@ -1,0 +1,58 @@
+[package]
+name = "winux-screencast"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Screen recording tool with XDG Portal and PipeWire support for Winux OS"
+
+[[bin]]
+name = "winux-screencast"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { workspace = true, features = ["v4_12"] }
+libadwaita = { workspace = true, features = ["v1_4"] }
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# Async runtime
+tokio = { workspace = true, features = ["rt-multi-thread", "process", "time", "sync", "fs"] }
+async-channel.workspace = true
+futures.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Utilities
+chrono.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+
+# D-Bus for XDG Desktop Portal
+zbus = "4"
+
+# PipeWire bindings
+pipewire = "0.8"
+
+# GStreamer for encoding (alternative to FFmpeg)
+gstreamer = "0.22"
+gstreamer-video = "0.22"
+gstreamer-audio = "0.22"
+gstreamer-app = "0.22"
+gstreamer-pbutils = "0.22"
+
+# Global hotkeys
+global-hotkey = "0.5"
+
+# Temporary files
+tempfile = "3.10"
+
+# Byte size formatting
+bytesize = "1.3"

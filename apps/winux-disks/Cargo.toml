@@ -1,0 +1,36 @@
+[package]
+name = "winux-disks"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Disk management utility for Winux OS"
+
+[[bin]]
+name = "winux-disks"
+path = "src/main.rs"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+regex.workspace = true
+once_cell.workspace = true
+
+# D-Bus for UDisks2 integration
+zbus = { version = "4.0", default-features = false, features = ["tokio"] }
+
+# Byte size formatting
+bytesize = "1.3"
+
+[features]
+default = []

@@ -1,0 +1,34 @@
+[package]
+name = "winux-gaming"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Unified game launcher for Winux OS - Steam, GOG, Epic, Emulators"
+
+[[bin]]
+name = "winux-gaming"
+path = "src/main.rs"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+walkdir.workspace = true
+chrono.workspace = true
+
+[features]
+default = []
+steam = []
+gog = []
+epic = []
+emulators = []

@@ -1,0 +1,300 @@
+/* Winux Launcher - Spotlight/Alfred Style */
+
+/* Main window styling */
+.launcher-window {
+    background: transparent;
+}
+
+.launcher-container {
+    background: alpha(@window_bg_color, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.2);
+    margin: 100px;
+}
+
+/* Search bar styling */
+.search-container {
+    padding: 16px 20px;
+    border-bottom: 1px solid alpha(@borders, 0.3);
+}
+
+.search-entry {
+    font-size: 24px;
+    font-weight: 300;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    caret-color: @accent_color;
+    min-height: 48px;
+}
+
+.search-entry:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-entry text {
+    background: transparent;
+}
+
+.search-icon {
+    color: alpha(@window_fg_color, 0.5);
+    margin-right: 12px;
+}
+
+/* Results list styling */
+.results-container {
+    min-height: 0;
+    max-height: 400px;
+}
+
+.results-list {
+    background: transparent;
+    padding: 8px;
+}
+
+.result-row {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 2px 4px;
+    transition: background 150ms ease;
+}
+
+.result-row:hover {
+    background: alpha(@accent_bg_color, 0.1);
+}
+
+.result-row:selected,
+.result-row.selected {
+    background: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.result-row:selected .result-subtitle,
+.result-row.selected .result-subtitle {
+    color: alpha(@accent_fg_color, 0.8);
+}
+
+.result-icon {
+    margin-right: 16px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.result-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.result-subtitle {
+    font-size: 12px;
+    color: alpha(@window_fg_color, 0.6);
+    margin-top: 2px;
+}
+
+.result-category {
+    font-size: 10px;
+    font-weight: 600;
+    color: alpha(@window_fg_color, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    background: alpha(@window_fg_color, 0.08);
+    border-radius: 4px;
+}
+
+/* Category headers */
+.category-header {
+    font-size: 11px;
+    font-weight: 600;
+    color: alpha(@window_fg_color, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 20px 6px;
+}
+
+/* Preview panel styling */
+.preview-container {
+    background: alpha(@window_bg_color, 0.5);
+    border-left: 1px solid alpha(@borders, 0.2);
+    min-width: 300px;
+    padding: 24px;
+}
+
+.preview-icon {
+    margin-bottom: 16px;
+}
+
+.preview-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.preview-subtitle {
+    font-size: 13px;
+    color: alpha(@window_fg_color, 0.6);
+    margin-bottom: 16px;
+}
+
+.preview-description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: alpha(@window_fg_color, 0.8);
+}
+
+.preview-actions {
+    margin-top: 20px;
+}
+
+.preview-action-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Calculator result styling */
+.calculator-result {
+    font-size: 32px;
+    font-weight: 300;
+    color: @accent_color;
+    padding: 16px 20px;
+    background: alpha(@accent_bg_color, 0.1);
+    border-radius: 12px;
+    margin: 8px 16px;
+}
+
+.calculator-expression {
+    font-size: 14px;
+    color: alpha(@window_fg_color, 0.5);
+    margin-top: 8px;
+}
+
+/* Conversion result styling */
+.conversion-result {
+    font-size: 24px;
+    font-weight: 400;
+    padding: 16px 20px;
+}
+
+.conversion-from {
+    color: alpha(@window_fg_color, 0.6);
+}
+
+.conversion-to {
+    color: @accent_color;
+    font-weight: 500;
+}
+
+/* Web search styling */
+.web-search-row {
+    background: alpha(@accent_bg_color, 0.05);
+}
+
+.web-search-icon {
+    color: @accent_color;
+}
+
+/* Command styling */
+.command-row {
+    border-left: 3px solid @warning_color;
+}
+
+.command-row.danger {
+    border-left-color: @error_color;
+}
+
+/* Footer hints */
+.footer-hints {
+    padding: 8px 16px;
+    border-top: 1px solid alpha(@borders, 0.2);
+    background: alpha(@window_bg_color, 0.3);
+}
+
+.hint-text {
+    font-size: 11px;
+    color: alpha(@window_fg_color, 0.4);
+}
+
+.hint-key {
+    font-family: monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    background: alpha(@window_fg_color, 0.1);
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+/* No results message */
+.no-results {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.no-results-icon {
+    font-size: 48px;
+    color: alpha(@window_fg_color, 0.2);
+    margin-bottom: 12px;
+}
+
+.no-results-text {
+    font-size: 14px;
+    color: alpha(@window_fg_color, 0.5);
+}
+
+/* Loading spinner */
+.loading-spinner {
+    margin: 20px;
+}
+
+/* Animations */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.launcher-container {
+    animation: fade-in 200ms ease-out;
+}
+
+.result-row {
+    animation: slide-up 150ms ease-out;
+}
+
+/* History badge */
+.history-badge {
+    font-size: 9px;
+    color: alpha(@window_fg_color, 0.4);
+    padding: 2px 6px;
+    background: alpha(@window_fg_color, 0.05);
+    border-radius: 3px;
+}
+
+/* Plugin indicator */
+.plugin-indicator {
+    font-size: 9px;
+    color: @accent_color;
+    margin-left: 8px;
+}
+
+/* Scrollbar styling */
+.results-container scrollbar {
+    background: transparent;
+}
+
+.results-container scrollbar slider {
+    background: alpha(@window_fg_color, 0.2);
+    border-radius: 4px;
+    min-width: 6px;
+}
+
+.results-container scrollbar slider:hover {
+    background: alpha(@window_fg_color, 0.3);
+}

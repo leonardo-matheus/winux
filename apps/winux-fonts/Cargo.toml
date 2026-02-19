@@ -1,0 +1,28 @@
+[package]
+name = "winux-fonts"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Font manager for Winux OS - browse, preview, compare and install fonts"
+
+[[bin]]
+name = "winux-fonts"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { workspace = true, features = ["v4_12"] }
+libadwaita = { workspace = true, features = ["v1_4"] }
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+walkdir.workspace = true
+fuzzy-matcher.workspace = true
+once_cell.workspace = true

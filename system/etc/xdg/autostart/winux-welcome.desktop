@@ -1,0 +1,28 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Welcome
+Name[pt_BR]=Bem-vindo ao Winux
+Name[es]=Bienvenido a Winux
+Name[fr]=Bienvenue sur Winux
+Name[de]=Willkommen bei Winux
+GenericName=Welcome Application
+GenericName[pt_BR]=Aplicativo de Boas-vindas
+Comment=Get started with Winux OS
+Comment[pt_BR]=Comece a usar o Winux OS
+Exec=/usr/bin/winux-welcome --autostart
+Icon=winux-welcome
+Terminal=false
+Categories=System;Settings;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-welcome
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5
+X-KDE-autostart-after=panel
+X-KDE-autostart-phase=2
+OnlyShowIn=GNOME;KDE;XFCE;Cinnamon;MATE;LXQt;
+# Only run on first boot - checked by the application itself
+# The app will check for ~/.config/winux/welcome-shown flag file
+X-Winux-FirstBootOnly=true
+Hidden=false
+AutostartCondition=unless-exists ~/.config/winux/welcome-completed

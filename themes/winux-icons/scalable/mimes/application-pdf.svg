@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="pdf-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 4h28l12 12v44a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" stroke="url(#pdf-g)" fill="none"/>
+  <path d="M40 4v12h12" stroke="url(#pdf-g)"/>
+  <rect x="12" y="26" width="36" height="16" rx="2" fill="#1a1a2e" stroke="#ff00ff"/>
+  <text x="18" y="37" font-family="monospace" font-size="10" font-weight="bold" fill="#ff00ff">PDF</text>
+  <path d="M16 50h24M16 54h18" stroke="#00d4ff" opacity="0.5"/>
+</svg>

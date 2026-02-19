@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.winux.Files
+Exec=/usr/bin/winux-files --gapplication-service
+SystemdService=winux-files.service

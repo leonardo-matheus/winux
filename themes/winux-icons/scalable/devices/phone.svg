@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="phone-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="4" width="32" height="56" rx="6" stroke="url(#phone-g)" fill="none"/>
+  <rect x="20" y="12" width="24" height="36" rx="2" stroke="#00d4ff" fill="none" opacity="0.6"/>
+  <path d="M28 8h8" stroke="url(#phone-g)" opacity="0.5"/>
+  <circle cx="32" cy="54" r="3" stroke="#ff00ff" fill="none"/>
+</svg>

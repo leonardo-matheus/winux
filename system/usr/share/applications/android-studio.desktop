@@ -1,0 +1,35 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Android Studio
+GenericName=Android IDE
+Comment=The Official IDE for Android Development
+Icon=/opt/android-studio/bin/studio.svg
+Exec=/opt/android-studio/bin/studio.sh %f
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=jetbrains-studio
+MimeType=application/x-android-studio-project;
+Keywords=android;studio;ide;development;mobile;java;kotlin;gradle;
+Actions=NewProject;OpenProject;AVDManager;SDKManager;
+
+[Desktop Action NewProject]
+Name=New Project
+Exec=/opt/android-studio/bin/studio.sh --new-project
+Icon=/opt/android-studio/bin/studio.svg
+
+[Desktop Action OpenProject]
+Name=Open Project
+Exec=/opt/android-studio/bin/studio.sh
+Icon=/opt/android-studio/bin/studio.svg
+
+[Desktop Action AVDManager]
+Name=AVD Manager
+Exec=/opt/android-studio/bin/studio.sh avdmanager
+Icon=/opt/android-studio/bin/studio.svg
+
+[Desktop Action SDKManager]
+Name=SDK Manager
+Exec=/opt/android-studio/bin/studio.sh sdk
+Icon=/opt/android-studio/bin/studio.svg

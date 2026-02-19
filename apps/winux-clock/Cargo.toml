@@ -1,0 +1,25 @@
+[package]
+name = "winux-clock"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Clock application for Winux OS - World Clock, Alarms, Stopwatch, Timer"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+chrono = { workspace = true, features = ["serde"] }
+chrono-tz = "0.8"
+once_cell.workspace = true
+parking_lot.workspace = true

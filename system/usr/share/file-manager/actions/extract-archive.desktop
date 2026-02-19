@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Action
+Name=Extract Here
+Name[pt_BR]=Extrair Aqui
+Name[es]=Extraer Aqui
+Name[fr]=Extraire Ici
+Name[de]=Hier Entpacken
+Comment=Extract archive contents to current location
+Comment[pt_BR]=Extrair conteudo do arquivo para o local atual
+Icon=package-x-generic
+Profiles=profile-extract-here;profile-extract-to;
+
+[X-Action-Profile profile-extract-here]
+MimeTypes=application/zip;application/x-tar;application/x-gzip;application/x-bzip2;application/x-xz;application/x-7z-compressed;application/x-rar;application/gzip;application/x-compressed-tar;
+Exec=/usr/bin/winux-archive --extract-here %f
+Name=Extract Here
+SelectionCount==1
+
+[X-Action-Profile profile-extract-to]
+MimeTypes=application/zip;application/x-tar;application/x-gzip;application/x-bzip2;application/x-xz;application/x-7z-compressed;application/x-rar;application/gzip;application/x-compressed-tar;
+Exec=/usr/bin/winux-archive --extract-to %f
+Name=Extract To...
+SelectionCount==1

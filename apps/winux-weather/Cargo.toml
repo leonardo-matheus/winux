@@ -1,0 +1,32 @@
+[package]
+name = "winux-weather"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Weather application for Winux OS with forecasts and location support"
+
+[[bin]]
+name = "winux-weather"
+path = "src/main.rs"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+reqwest.workspace = true
+chrono.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+dirs.workspace = true
+futures.workspace = true
+once_cell.workspace = true
+
+[features]
+default = []

@@ -3,11 +3,37 @@ Version=1.0
 Type=Application
 Name=About Winux
 Name[pt_BR]=Sobre o Winux
-Comment=System information and version
-Comment[pt_BR]=Informacoes do sistema e versao
-Exec=winux-about
+Name[es]=Acerca de Winux
+Name[fr]=A propos de Winux
+Name[de]=Uber Winux
+GenericName=System Information
+GenericName[pt_BR]=Informacoes do Sistema
+Comment=System information, version details, and credits
+Comment[pt_BR]=Informacoes do sistema, detalhes da versao e creditos
+Comment[es]=Informacion del sistema, detalles de version y creditos
+Comment[fr]=Informations systeme, details de version et credits
+Comment[de]=Systeminformationen, Versionsdetails und Credits
+Keywords=about;info;version;system;hardware;credits;license;
+Keywords[pt_BR]=sobre;info;versao;sistema;hardware;creditos;licenca;
+Exec=/usr/bin/winux-about
 Icon=help-about
 Terminal=false
-Categories=System;
-Keywords=about;info;version;system;
+Categories=System;Settings;X-Winux;
 StartupNotify=true
+StartupWMClass=winux-about
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=system-info;copy-info;
+
+[Desktop Action system-info]
+Name=Detailed System Info
+Name[pt_BR]=Informacoes Detalhadas do Sistema
+Exec=/usr/bin/winux-about --detailed
+Icon=computer
+
+[Desktop Action copy-info]
+Name=Copy System Info
+Name[pt_BR]=Copiar Informacoes do Sistema
+Exec=/usr/bin/winux-about --copy
+Icon=edit-copy

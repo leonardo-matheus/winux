@@ -1,0 +1,422 @@
+/* Winux Control Center - iOS/macOS Inspired Styles */
+
+/* Main window with blur effect simulation */
+.control-center-window {
+    background-color: alpha(@window_bg_color, 0.85);
+    border-radius: 24px;
+}
+
+/* Blur background overlay */
+.blur-overlay {
+    background-color: alpha(@dark_1, 0.7);
+    border-radius: 24px;
+}
+
+/* Main container */
+.control-center {
+    padding: 16px;
+    border-radius: 24px;
+}
+
+/* Section headers */
+.section-header {
+    font-size: 13px;
+    font-weight: 600;
+    color: alpha(@window_fg_color, 0.6);
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+/* Grid tiles */
+.control-tile {
+    background-color: alpha(@card_bg_color, 0.9);
+    border-radius: 16px;
+    padding: 12px;
+    min-height: 80px;
+    transition: all 200ms ease-in-out;
+}
+
+.control-tile:hover {
+    background-color: alpha(@card_bg_color, 1.0);
+}
+
+.control-tile.active {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.control-tile.active .tile-icon {
+    color: @accent_fg_color;
+}
+
+.control-tile.active .tile-label {
+    color: @accent_fg_color;
+}
+
+.control-tile.active .tile-status {
+    color: alpha(@accent_fg_color, 0.8);
+}
+
+/* Tile icon */
+.tile-icon {
+    font-size: 24px;
+    color: @accent_color;
+    margin-bottom: 4px;
+}
+
+/* Tile label */
+.tile-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: @window_fg_color;
+}
+
+/* Tile status text */
+.tile-status {
+    font-size: 10px;
+    color: alpha(@window_fg_color, 0.6);
+    margin-top: 2px;
+}
+
+/* Toggle button inside tile */
+.tile-toggle {
+    min-width: 40px;
+    min-height: 24px;
+    border-radius: 12px;
+}
+
+/* Slider tiles (volume, brightness) */
+.slider-tile {
+    background-color: alpha(@card_bg_color, 0.9);
+    border-radius: 16px;
+    padding: 16px;
+    min-height: 60px;
+}
+
+.slider-tile:hover {
+    background-color: alpha(@card_bg_color, 1.0);
+}
+
+.slider-icon {
+    font-size: 20px;
+    color: @accent_color;
+    min-width: 32px;
+}
+
+.slider-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: alpha(@window_fg_color, 0.7);
+    margin-bottom: 4px;
+}
+
+/* Custom slider styling */
+.control-slider {
+    min-height: 6px;
+}
+
+.control-slider trough {
+    background-color: alpha(@window_fg_color, 0.15);
+    border-radius: 3px;
+    min-height: 6px;
+}
+
+.control-slider highlight {
+    background-color: @accent_color;
+    border-radius: 3px;
+    min-height: 6px;
+}
+
+.control-slider slider {
+    background-color: white;
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    box-shadow: 0 2px 4px alpha(black, 0.2);
+}
+
+/* Media player card */
+.media-player {
+    background-color: alpha(@card_bg_color, 0.9);
+    border-radius: 20px;
+    padding: 16px;
+    min-height: 120px;
+}
+
+.media-player:hover {
+    background-color: alpha(@card_bg_color, 1.0);
+}
+
+.album-art {
+    border-radius: 12px;
+    min-width: 80px;
+    min-height: 80px;
+    background-color: alpha(@window_fg_color, 0.1);
+}
+
+.album-art image {
+    border-radius: 12px;
+}
+
+.media-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: @window_fg_color;
+}
+
+.media-artist {
+    font-size: 12px;
+    color: alpha(@window_fg_color, 0.7);
+    margin-top: 2px;
+}
+
+.media-controls {
+    margin-top: 12px;
+}
+
+.media-button {
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 50%;
+    padding: 0;
+    background-color: transparent;
+    color: @window_fg_color;
+}
+
+.media-button:hover {
+    background-color: alpha(@window_fg_color, 0.1);
+}
+
+.media-button.play-pause {
+    min-width: 44px;
+    min-height: 44px;
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.media-button.play-pause:hover {
+    background-color: @accent_color;
+}
+
+.media-progress {
+    margin-top: 8px;
+}
+
+.media-progress trough {
+    min-height: 4px;
+    border-radius: 2px;
+    background-color: alpha(@window_fg_color, 0.15);
+}
+
+.media-progress highlight {
+    border-radius: 2px;
+    background-color: @accent_color;
+}
+
+/* Battery section */
+.battery-card {
+    background-color: alpha(@card_bg_color, 0.9);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.battery-card:hover {
+    background-color: alpha(@card_bg_color, 1.0);
+}
+
+.battery-icon {
+    font-size: 32px;
+    color: @success_color;
+}
+
+.battery-icon.low {
+    color: @warning_color;
+}
+
+.battery-icon.critical {
+    color: @error_color;
+}
+
+.battery-icon.charging {
+    color: @success_color;
+}
+
+.battery-percentage {
+    font-size: 24px;
+    font-weight: 700;
+    color: @window_fg_color;
+}
+
+.battery-status {
+    font-size: 11px;
+    color: alpha(@window_fg_color, 0.6);
+}
+
+.power-mode-toggle {
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: alpha(@window_fg_color, 0.1);
+}
+
+.power-mode-toggle:hover {
+    background-color: alpha(@window_fg_color, 0.15);
+}
+
+.power-mode-toggle.active {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+/* WiFi and Bluetooth list popups */
+.network-list {
+    background-color: @window_bg_color;
+    border-radius: 16px;
+    padding: 8px;
+    min-width: 280px;
+}
+
+.network-item {
+    padding: 12px;
+    border-radius: 12px;
+    margin: 2px 0;
+}
+
+.network-item:hover {
+    background-color: alpha(@window_fg_color, 0.05);
+}
+
+.network-item.connected {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+.network-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: @window_fg_color;
+}
+
+.network-status {
+    font-size: 11px;
+    color: alpha(@window_fg_color, 0.6);
+}
+
+.signal-icon {
+    font-size: 16px;
+    color: alpha(@window_fg_color, 0.6);
+}
+
+.signal-icon.strong {
+    color: @success_color;
+}
+
+/* Quick toggle grid */
+.toggle-grid {
+    margin: 8px 0;
+}
+
+/* Expand button for network lists */
+.expand-button {
+    font-size: 10px;
+    color: @accent_color;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.expand-button:hover {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+/* Screen recording indicator */
+.recording-indicator {
+    background-color: @error_color;
+    border-radius: 50%;
+    min-width: 8px;
+    min-height: 8px;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 200ms ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Separator */
+.control-separator {
+    background-color: alpha(@window_fg_color, 0.1);
+    min-height: 1px;
+    margin: 12px 0;
+}
+
+/* Username and profile section */
+.profile-section {
+    padding: 8px 4px;
+    margin-bottom: 8px;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    min-width: 40px;
+    min-height: 40px;
+    background-color: @accent_bg_color;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: @window_fg_color;
+}
+
+/* Screen mirror/cast button */
+.cast-button {
+    background-color: alpha(@window_fg_color, 0.1);
+    border-radius: 12px;
+    padding: 8px 16px;
+}
+
+.cast-button:hover {
+    background-color: alpha(@window_fg_color, 0.15);
+}
+
+.cast-button.casting {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+/* Dark mode overrides */
+@define-color dark_bg alpha(#1c1c1e, 0.95);
+@define-color dark_card alpha(#2c2c2e, 0.9);
+@define-color dark_text #ffffff;
+@define-color accent_blue #0a84ff;

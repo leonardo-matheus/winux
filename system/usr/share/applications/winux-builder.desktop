@@ -1,0 +1,46 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Builder
+Name[pt_BR]=Construtor Winux
+Name[es]=Constructor Winux
+Name[fr]=Constructeur Winux
+Name[de]=Winux Builder
+GenericName=System Image Builder
+GenericName[pt_BR]=Construtor de Imagem do Sistema
+Comment=Build custom Winux OS images and ISOs
+Comment[pt_BR]=Construa imagens e ISOs personalizados do Winux OS
+Comment[es]=Construir imagenes e ISOs personalizados de Winux OS
+Comment[fr]=Construire des images et ISO Winux OS personnalises
+Comment[de]=Erstellen Sie benutzerdefinierte Winux OS Images und ISOs
+Keywords=builder;iso;image;custom;build;system;remix;remaster;
+Keywords[pt_BR]=construtor;iso;imagem;personalizado;construir;sistema;remix;
+Exec=/usr/bin/winux-builder %f
+Icon=system-software-install
+Terminal=false
+Categories=System;Development;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-builder
+MimeType=application/x-winux-project;
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=new-project;open-project;build-iso;
+
+[Desktop Action new-project]
+Name=New Project
+Name[pt_BR]=Novo Projeto
+Exec=/usr/bin/winux-builder --new
+Icon=document-new
+
+[Desktop Action open-project]
+Name=Open Project
+Name[pt_BR]=Abrir Projeto
+Exec=/usr/bin/winux-builder --open
+Icon=document-open
+
+[Desktop Action build-iso]
+Name=Quick Build ISO
+Name[pt_BR]=Construir ISO Rapidamente
+Exec=/usr/bin/winux-builder --quick-build
+Icon=media-optical-burn

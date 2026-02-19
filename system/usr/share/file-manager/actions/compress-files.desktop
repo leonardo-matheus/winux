@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Action
+Name=Compress...
+Name[pt_BR]=Comprimir...
+Name[es]=Comprimir...
+Name[fr]=Compresser...
+Name[de]=Komprimieren...
+Comment=Create a compressed archive from selected files
+Comment[pt_BR]=Criar um arquivo comprimido dos arquivos selecionados
+Icon=package-x-generic
+Profiles=profile-compress;
+
+[X-Action-Profile profile-compress]
+MimeTypes=all/allfiles;inode/directory;
+Exec=/usr/bin/winux-archive --compress %F
+Name=Compress Files
+SelectionCount=>0

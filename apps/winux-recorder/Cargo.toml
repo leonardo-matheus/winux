@@ -1,0 +1,53 @@
+[package]
+name = "winux-recorder"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Voice recorder application for Winux OS with PipeWire support"
+
+[[bin]]
+name = "winux-recorder"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { workspace = true, features = ["v4_12"] }
+libadwaita = { workspace = true, features = ["v1_4"] }
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+
+# Async runtime
+tokio = { workspace = true, features = ["rt-multi-thread", "sync", "time", "process", "fs"] }
+async-channel.workspace = true
+futures.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Utilities
+chrono = { workspace = true, features = ["serde"] }
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+once_cell.workspace = true
+parking_lot.workspace = true
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# Audio
+cpal = "0.15"
+hound = "3.5"  # WAV encoding
+rubato = "0.14"  # Resampling
+
+# Database for recordings metadata
+rusqlite.workspace = true
+
+# Cairo for waveform drawing
+cairo-rs = { version = "0.19", features = ["png"] }
+
+[features]
+default = []

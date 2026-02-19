@@ -1,0 +1,55 @@
+[package]
+name = "winux-camera"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Camera application for Winux OS with PipeWire/V4L2 integration"
+
+[[bin]]
+name = "winux-camera"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { workspace = true, features = ["v4_12"] }
+libadwaita = { workspace = true, features = ["v1_4"] }
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# Image processing
+image.workspace = true
+
+# Async runtime
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+
+# Error handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Logging
+log.workspace = true
+env_logger.workspace = true
+
+# Utilities
+chrono.workspace = true
+dirs.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+
+# Serialization
+serde = { workspace = true }
+serde_json.workspace = true
+
+# PipeWire bindings (optional, for native camera access)
+# pipewire = { version = "0.8", optional = true }
+
+# V4L2 bindings (optional, for fallback camera access)
+# v4l = { version = "0.14", optional = true }
+
+[features]
+default = []
+# pipewire = ["dep:pipewire"]
+# v4l2 = ["dep:v4l"]

@@ -1,0 +1,28 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Swift Playground
+GenericName=Swift Development
+Comment=Swift REPL and Package Development Environment
+Icon=swift
+Exec=gnome-terminal --title="Swift Playground" -- bash -c "echo 'Swift Playground - Winux OS'; echo '========================'; echo ''; swift --version; echo ''; echo 'Commands:'; echo '  swift repl        - Interactive Swift shell'; echo '  swift-new <name>  - Create new Swift project'; echo '  swift build       - Build current project'; echo '  swift run         - Build and run'; echo '  swift test        - Run tests'; echo '  exit              - Exit playground'; echo ''; source ~/.swift-env 2>/dev/null; exec bash"
+Terminal=false
+Categories=Development;IDE;TextEditor;
+StartupNotify=true
+Keywords=swift;programming;development;apple;ios;macos;linux;repl;
+Actions=REPL;NewProject;Build;
+
+[Desktop Action REPL]
+Name=Swift REPL
+Exec=gnome-terminal --title="Swift REPL" -- swift repl
+Icon=swift
+
+[Desktop Action NewProject]
+Name=Create New Project
+Exec=gnome-terminal --title="New Swift Project" -- bash -c "source ~/.swift-env 2>/dev/null; read -p 'Project name: ' name; swift-new \"\$name\"; cd \"\$name\"; exec bash"
+Icon=swift
+
+[Desktop Action Build]
+Name=Build Current Directory
+Exec=gnome-terminal --title="Swift Build" -- bash -c "swift build; echo ''; echo 'Press Enter to close'; read"
+Icon=swift

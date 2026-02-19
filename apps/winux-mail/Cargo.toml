@@ -1,0 +1,67 @@
+[package]
+name = "winux-mail"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Modern email client for Winux OS with IMAP/SMTP support"
+
+[[bin]]
+name = "winux-mail"
+path = "src/main.rs"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+pango.workspace = true
+gdk4.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+chrono = { workspace = true, features = ["serde"] }
+rusqlite.workspace = true
+reqwest = { workspace = true, features = ["json"] }
+url.workspace = true
+regex.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+mime_guess.workspace = true
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# Email specific
+async-imap = "0.9"
+async-smtp = "0.9"
+async-native-tls = "0.5"
+mailparse = "0.14"
+lettre = { version = "0.11", default-features = false, features = ["tokio1-native-tls", "smtp-transport", "builder"] }
+mail-parser = "0.9"
+mail-builder = "0.3"
+
+# OAuth2
+oauth2 = "4.4"
+
+# HTML rendering
+webkit6 = { version = "0.2", optional = true }
+
+# Notifications
+notify-rust = "4.10"
+
+# Keyring for secure password storage
+secret-service = "3.0"
+
+# Base64 for encoding
+base64 = "0.21"
+
+[features]
+default = ["html-view"]
+html-view = ["webkit6"]

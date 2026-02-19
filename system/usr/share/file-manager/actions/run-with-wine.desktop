@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Action
+Name=Run with Wine
+Name[pt_BR]=Executar com Wine
+Name[es]=Ejecutar con Wine
+Name[fr]=Executer avec Wine
+Name[de]=Mit Wine Ausfuhren
+Comment=Run Windows executable with Wine
+Comment[pt_BR]=Executar executavel Windows com Wine
+Icon=wine
+Profiles=profile-wine;profile-wine-config;
+
+[X-Action-Profile profile-wine]
+MimeTypes=application/x-ms-dos-executable;application/x-msi;application/x-msdownload;
+Exec=wine %f
+Name=Run with Wine
+SelectionCount==1
+
+[X-Action-Profile profile-wine-config]
+MimeTypes=application/x-ms-dos-executable;application/x-msi;application/x-msdownload;
+Exec=env WINEPREFIX="$HOME/.wine" winecfg
+Name=Configure Wine for this App
+SelectionCount==1

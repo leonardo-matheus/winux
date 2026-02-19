@@ -1,0 +1,36 @@
+[package]
+name = "winux-notes"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Note-taking application for Winux OS with markdown support"
+
+[[bin]]
+name = "winux-notes"
+path = "src/main.rs"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+pango.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+chrono = { workspace = true, features = ["serde"] }
+rusqlite.workspace = true
+regex.workspace = true
+once_cell.workspace = true
+uuid = { version = "1.6", features = ["v4", "serde"] }
+pulldown-cmark = "0.9"
+
+[features]
+default = []

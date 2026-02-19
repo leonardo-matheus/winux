@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="usb-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="4" width="40" height="44" rx="4" stroke="url(#usb-g)" fill="none"/>
+  <rect x="20" y="48" width="24" height="12" rx="2" stroke="url(#usb-g)" fill="none"/>
+  <path d="M26 52v6M32 52v6M38 52v6" stroke="#00d4ff" opacity="0.6"/>
+  <circle cx="32" cy="24" r="8" stroke="#00ff88" fill="none"/>
+  <path d="M32 20v8M28 24l4 4 4-4" stroke="#ff00ff"/>
+</svg>

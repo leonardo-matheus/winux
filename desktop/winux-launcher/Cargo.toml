@@ -1,0 +1,73 @@
+[package]
+name = "winux-launcher"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Winux OS Launcher - Spotlight/Alfred-style application launcher"
+
+[dependencies]
+# GTK4 and Adwaita
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+
+# Async runtime
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Utilities
+chrono.workspace = true
+dirs.workspace = true
+walkdir.workspace = true
+fuzzy-matcher.workspace = true
+rayon.workspace = true
+open.workspace = true
+
+# Freedesktop desktop entries
+freedesktop-desktop-entry = "0.7"
+
+# Icon lookup
+freedesktop-icons = "0.2"
+
+# D-Bus for global keybinding
+zbus = "4.0"
+
+# Math expression parser
+meval = "0.2"
+
+# URL encoding
+urlencoding = "2.1"
+
+# Regex for parsing
+regex = "1.10"
+
+# Once cell for lazy statics
+once_cell = "1.19"
+
+# System info for commands
+sysinfo.workspace = true
+
+[features]
+default = []
+
+[[bin]]
+name = "winux-launcher"
+path = "src/main.rs"

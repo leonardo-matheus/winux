@@ -1,115 +1,215 @@
 <div align="center">
 
-<img src="assets/branding/logo.png" alt="Winux OS Logo" width="150" height="150">
+```
+ █     █░ ██▓ ███▄    █  █    ██ ▒██   ██▒
+▓█░ █ ░█░▓██▒ ██ ▀█   █  ██  ▓██▒▒▒ █ █ ▒░
+▒█░ █ ░█ ▒██▒▓██  ▀█ ██▒▓██  ▒██░░░  █   ░
+░█░ █ ░█ ░██░▓██▒  ▐▌██▒▓▓█  ░██░ ░ █ █ ▒
+░░██▒██▓ ░██░▒██░   ▓██░▒▒█████▓ ▒██▒ ▒██▒
+░ ▓░▒ ▒  ░▓  ░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ▒▒ ░ ░▓ ░
+  ▒ ░ ░   ▒ ░░ ░░   ░ ▒░░░▒░ ░ ░ ░░   ░▒ ░
+  ░   ░   ▒ ░   ░   ░ ░  ░░░ ░ ░  ░    ░
+    ░     ░           ░    ░      ░    ░
+```
 
 # WINUX OS
 
-### 🐧 **O Melhor dos Dois Mundos** 🎮
+### **O Melhor dos Tres Mundos**
 
-*Gaming + Produtividade | Linux + Experiência Windows | Performance + Elegância*
+*Linux + Windows + macOS | Gaming + Desenvolvimento + Produtividade*
 
-[![Version](https://img.shields.io/badge/version-1.0_Aurora-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/winux-os/winux/releases)
+[![Version](https://img.shields.io/badge/version-1.0_Aurora_Developer-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/winux-os/winux/releases)
 [![License](https://img.shields.io/badge/license-GPL_v3_|_MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/winux-os/winux?style=for-the-badge&logo=github&logoColor=white&color=gold)](https://github.com/winux-os/winux/stargazers)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/winux-os/winux/actions)
+[![Rust](https://img.shields.io/badge/built_with-Rust_1.75+-DEA584?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
 [![Ubuntu](https://img.shields.io/badge/base-Ubuntu_24.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com)
-[![Rust](https://img.shields.io/badge/built_with-Rust-DEA584?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
+[![GTK4](https://img.shields.io/badge/UI-GTK4_+_Adwaita-4A86CF?style=for-the-badge&logo=gnome&logoColor=white)](https://gtk.org)
 
-[📥 Download](#-download) • [📖 Documentação](#-documentação) • [🚀 Quick Start](#-instalação-rápida) • [💬 Comunidade](#-comunidade)
+[Download](#-download) | [Documentacao](#-documentacao) | [Quick Start](#-instalacao-rapida) | [Comunidade](#-comunidade)
 
 ---
 
 </div>
 
-## 📸 Screenshots
+## Visao Geral
 
-<div align="center">
+**Winux OS** e uma distribuicao Linux moderna que oferece o melhor de tres mundos: a familiaridade do Windows, a elegancia do macOS e o poder do Linux. Projetado para desenvolvedores e gamers que querem uma experiencia unificada sem compromissos.
 
-| Desktop | Apps | Gaming |
-|:-------:|:----:|:------:|
-| ![Desktop](docs/screenshots/desktop.png) | ![Apps](docs/screenshots/apps.png) | ![Gaming](docs/screenshots/gaming.png) |
-| *Interface elegante Apple-like* | *Suite completa de apps nativos* | *Gaming otimizado com Wine/Proton* |
-
-</div>
-
-> 💡 *Screenshots serão adicionados quando a versão 1.0 for lançada*
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              WINUX OS 1.0 AURORA                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   ╭──────────────╮    ╭──────────────╮    ╭──────────────╮                   │
+│   │   WINDOWS    │    │    LINUX     │    │    macOS     │                   │
+│   │  Interface   │ +  │   Kernel     │ +  │   Design     │  =  WINUX         │
+│   │  Familiar    │    │   Poder      │    │   Elegante   │                   │
+│   ╰──────────────╯    ╰──────────────╯    ╰──────────────╯                   │
+│                                                                              │
+│   ┌────────────────────────────────────────────────────────────────────┐    │
+│   │  12+ Apps Nativos  │  Dev Mobile  │  Cross-Platform  │  Gaming     │    │
+│   └────────────────────────────────────────────────────────────────────┘    │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## ✨ Features Highlights
+## Principais Recursos
 
 <table>
 <tr>
 <td width="50%">
 
-### 🖥️ **8 Apps Nativos**
-Desenvolvidos em **Rust** para máxima performance:
-- 📁 **Files** - Gerenciador de arquivos moderno
-- 💻 **Terminal** - Emulador com GPU acceleration
-- ⚙️ **Settings** - Central de configurações
-- 🏪 **Store** - Loja de aplicativos
-- 📊 **Monitor** - System monitor em tempo real
-- ✏️ **Edit** - Editor de texto avançado
-- 🖼️ **Image** - Visualizador de imagens
-- 🎵 **Player** - Player multimídia
+### 12+ Apps Nativos em Rust
+
+Suite completa de aplicativos desenvolvidos em **Rust** com GTK4:
+
+| App | Descricao |
+|:----|:----------|
+| **Files** | Gerenciador de arquivos multi-plataforma |
+| **Terminal** | Emulador de terminal GPU-accelerated |
+| **Settings** | Central de configuracoes completa |
+| **Store** | Loja de apps (APT/Flatpak/Snap) |
+| **Monitor** | System monitor em tempo real |
+| **Edit** | Editor de texto com syntax highlighting |
+| **Image** | Visualizador de imagens |
+| **Player** | Player multimidia |
+| **About** | Informacoes do sistema |
+| **Personalize** | Temas e estilos (Win/Mac/Linux) |
+| **Env Manager** | Gerenciador de variaveis de ambiente |
+| **Dev Hub** | Central do desenvolvedor |
+| **Builder** | Build cross-platform |
 
 </td>
 <td width="50%">
 
-### 🎨 **Design Apple-like**
-Interface inspirada no macOS com elementos modernos:
-- Blur effects e transparências
-- Animações fluidas a 60fps
-- Tema claro/escuro automático
-- Ícones vetoriais SF Symbols-like
-- Typography system consistente
+### Desenvolvimento Mobile Completo
+
+Ferramentas para criar apps para todas as plataformas:
+
+```
+┌────────────────────────────────┐
+│     MOBILE DEVELOPMENT         │
+├────────────────────────────────┤
+│                                │
+│  Android     iOS      Cross    │
+│  ┌──────┐  ┌──────┐  ┌──────┐  │
+│  │  ADB │  │Swift │  │Flutter│ │
+│  │Gradle│  │  *   │  │ React │ │
+│  │Kotlin│  │      │  │Native │ │
+│  └──────┘  └──────┘  └──────┘  │
+│                                │
+│  * iOS via cross-compilation   │
+└────────────────────────────────┘
+```
+
+- Android SDK + NDK completo
+- Flutter SDK com hot reload
+- React Native toolchain
+- Swift toolchain para Linux
+- Emuladores e simuladores
 
 </td>
 </tr>
 <tr>
 <td>
 
-### 🎮 **Gaming First-Class**
-Otimizado para gamers desde o primeiro boot:
-- 🍷 **Wine 9.0** integrado
-- 🔥 **Proton GE** pré-configurado
-- ⚡ **GameMode** ativo automaticamente
-- 🎯 **DXVK/VKD3D** para DirectX
-- 📈 **MangoHud** overlay
+### Compatibilidade de Arquivos
+
+Suporte nativo a formatos de todas as plataformas:
+
+**Windows:**
+- `.exe`, `.msi` - Execucao via Wine
+- `.dll` - Visualizacao de info
+- `.lnk` - Atalhos
+- `.reg` - Arquivos de registro
+- `.bat`, `.ps1` - Scripts
+
+**macOS:**
+- `.dmg` - Montagem e extracao
+- `.app` - Navegacao de bundles
+- `.pkg` - Pacotes de instalacao
+- `.plist` - Property lists
+- `.icns` - Icones
+
+**Linux:**
+- `.deb`, `.rpm` - Instalacao nativa
+- `.AppImage` - Execucao direta
+- `.flatpak`, `.snap` - Sandboxed apps
 
 </td>
 <td>
 
-### 📦 **Suporte a Arquivos**
-Gerenciamento completo de arquivos compactados:
-- 📁 ZIP - Compressão universal
-- 📁 RAR - Suporte completo
-- 📁 TAR/GZ/BZ2 - Formatos Linux
-- 📁 7Z - Alta compressão
-- 📁 XZ/ZSTD - Formatos modernos
+### Ecossistema de Desenvolvimento
+
+Stack completa para desenvolvedores:
+
+| Linguagem | Ferramentas |
+|:----------|:------------|
+| **Rust** | rustc, cargo, clippy, rustfmt |
+| **.NET** | dotnet 8, C#, F#, VB.NET |
+| **C/C++** | GCC, Clang, CMake, Make |
+| **Java** | OpenJDK 21, Maven, Gradle |
+| **Python** | 3.12+, pip, poetry, pipenv |
+| **Node.js** | NVM, npm, yarn, pnpm |
+| **Go** | go 1.22+, gopls |
+| **Swift** | Swift 5.9 (Linux) |
+| **PHP** | 8.3+, Composer |
+
+**IDEs Pre-configuradas:**
+- VS Code com extensoes
+- JetBrains Toolbox ready
+- Neovim com LSP
 
 </td>
 </tr>
 <tr>
 <td>
 
-### 🖼️ **Compositor Wayland**
-Compositor moderno baseado em Smithay:
-- 🔄 VRR/FreeSync/G-Sync
-- 🖥️ Multi-monitor HDR
-- 🎨 Color management ICC
-- ⚡ Direct scanout
-- 🖱️ Gestures touchpad
+### Build Tools Multi-Plataforma
+
+Compile para qualquer plataforma:
+
+```
+        Seu Projeto
+             │
+    ┌────────┼────────┐
+    ▼        ▼        ▼
+┌───────┐┌───────┐┌───────┐
+│Windows││ Linux ││ macOS │
+│.exe   ││ .deb  ││ .app  │
+│.msi   ││ .rpm  ││ .dmg  │
+│       ││AppImage│ .pkg  │
+└───────┘└───────┘└───────┘
+```
+
+- **Winux Builder**: GUI para builds
+- Cross-compilation com Docker
+- Assinatura de pacotes
+- CI/CD integration
 
 </td>
 <td>
 
-### ⚡ **Performance Extrema**
-Kernel e sistema otimizados:
-- 🧠 **Kernel Zen** customizado
-- 💨 **ZRAM** e **zswap** ativos
-- 🚀 **IO schedulers** otimizados
-- 🔧 **Sysctl tunables** para gaming
-- 📦 **Flatpak** sandboxed apps
+### Gaming First-Class
+
+Otimizado para jogos desde o primeiro boot:
+
+| Componente | Versao |
+|:-----------|:-------|
+| **Wine** | 9.0 Staging |
+| **Proton GE** | Latest |
+| **DXVK** | 2.3+ |
+| **VKD3D** | 2.11+ |
+| **GameMode** | Ativo |
+| **MangoHud** | Configurado |
+
+**Features:**
+- VRR/FreeSync/G-Sync
+- HDR support
+- Low-latency audio (PipeWire)
+- GPU passthrough ready
 
 </td>
 </tr>
@@ -117,18 +217,81 @@ Kernel e sistema otimizados:
 
 ---
 
-## 💻 Requisitos do Sistema
+## Arquitetura do Sistema
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           WINUX OS ARCHITECTURE                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                         USER APPLICATIONS                            │   │
+│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐       │   │
+│  │  │  Files  │ │Terminal │ │Settings │ │  Store  │ │ Monitor │       │   │
+│  │  └─────────┘ └─────────┘ └─────────┘ └─────────┘ └─────────┘       │   │
+│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐       │   │
+│  │  │  Edit   │ │  Image  │ │ Player  │ │ Dev Hub │ │ Builder │       │   │
+│  │  └─────────┘ └─────────┘ └─────────┘ └─────────┘ └─────────┘       │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│  ┌─────────────────────────────────┼───────────────────────────────────┐   │
+│  │                    DESKTOP ENVIRONMENT                               │   │
+│  │           Compositor (Smithay) │ Panel │ Shell │ Dock               │   │
+│  └─────────────────────────────────┼───────────────────────────────────┘   │
+│                                    │                                        │
+│  ┌─────────────────────────────────┼───────────────────────────────────┐   │
+│  │                    SYSTEM SERVICES                                   │   │
+│  │    systemd │ PipeWire │ NetworkManager │ udisks2 │ polkit           │   │
+│  └─────────────────────────────────┼───────────────────────────────────┘   │
+│                                    │                                        │
+│  ┌─────────────────────────────────┼───────────────────────────────────┐   │
+│  │              COMPATIBILITY & DEVELOPMENT LAYER                       │   │
+│  │  ┌───────────────────┐  ┌───────────────────────────────────────┐   │   │
+│  │  │   Wine/Proton     │  │        Development SDKs               │   │   │
+│  │  │   DXVK/VKD3D     │  │  Android │ Flutter │ .NET │ Rust      │   │   │
+│  │  └───────────────────┘  └───────────────────────────────────────┘   │   │
+│  └─────────────────────────────────┼───────────────────────────────────┘   │
+│                                    │                                        │
+│  ┌─────────────────────────────────┼───────────────────────────────────┐   │
+│  │                      KERNEL LAYER                                    │   │
+│  │          Linux Zen 6.8+ │ Mesa RADV │ NVIDIA Driver                 │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Stack Tecnologico
+
+| Categoria | Tecnologias |
+|:----------|:------------|
+| **Linguagem Principal** | Rust 1.75+ |
+| **UI Framework** | GTK4 0.8 + libadwaita 0.6 |
+| **Reactive UI** | Relm4 0.8 |
+| **Compositor** | Smithay (Wayland) |
+| **Graphics** | wgpu, Vulkan, DRM |
+| **Audio** | PipeWire |
+| **Async Runtime** | Tokio |
+| **Serialization** | Serde, TOML, JSON |
+| **Build System** | Cargo, Make, Bash |
+| **Packaging** | dpkg, Flatpak, AppImage |
+| **Gaming Layer** | Wine, Proton, DXVK, VKD3D |
+
+---
+
+## Requisitos do Sistema
 
 <table>
 <tr>
-<th width="50%">⚡ Mínimo</th>
-<th width="50%">🚀 Recomendado</th>
+<th width="50%">Minimo</th>
+<th width="50%">Recomendado</th>
 </tr>
 <tr>
 <td>
 
-| Componente | Especificação |
-|:----------:|:-------------:|
+| Componente | Especificacao |
+|:-----------|:--------------|
 | **CPU** | x86_64 SSE4.2 |
 | **RAM** | 4 GB |
 | **Storage** | 30 GB SSD |
@@ -138,8 +301,8 @@ Kernel e sistema otimizados:
 </td>
 <td>
 
-| Componente | Especificação |
-|:----------:|:-------------:|
+| Componente | Especificacao |
+|:-----------|:--------------|
 | **CPU** | Ryzen 5 / i5 (6+ cores) |
 | **RAM** | 16 GB DDR4/DDR5 |
 | **Storage** | 100 GB NVMe |
@@ -150,24 +313,24 @@ Kernel e sistema otimizados:
 </tr>
 </table>
 
-> ⚠️ **Nota**: Para gaming com Wine/Proton, recomendamos GPU NVIDIA (driver proprietário) ou AMD (Mesa RADV)
+> **Nota**: Para desenvolvimento mobile, recomendamos 32GB RAM e SSD NVMe para melhor performance com emuladores Android.
 
 ---
 
-## 📥 Download
+## Download
 
 <div align="center">
 
-### 🎉 **Winux OS 1.0 Aurora - Disponível Agora!**
+### Winux OS 1.0 Aurora Developer Edition
 
-| Edição | Tamanho | Descrição | Link |
-|:------:|:-------:|:---------:|:----:|
-| **Winux 1.0 Aurora Developer** | 2.7 GB | Versão completa com gaming, produtividade e ferramentas dev | [⬇️ **Download (GoFile)**](https://gofile.io/d/Y351PH) |
-| *Mirror* | 2.5 GB | Versão anterior | [⬇️ Download (PixelDrain)](https://pixeldrain.com/u/TYmihSav) |
+| Edicao | Tamanho | Link |
+|:-------|:--------|:-----|
+| **Developer Edition** | 2.7 GB | [Download (GoFile)](https://gofile.io/d/Y351PH) |
+| *Mirror* | 2.5 GB | [Download (PixelDrain)](https://pixeldrain.com/u/TYmihSav) |
 
 </div>
 
-### 🔐 Verificação de Integridade
+### Verificacao de Integridade
 
 ```bash
 # MD5 (Developer Edition)
@@ -176,28 +339,28 @@ echo "77443aeb30519091512c8720688fbef7  winux-1.0-aurora-dev-amd64.iso" | md5sum
 
 ---
 
-## 🚀 Instalação Rápida
+## Instalacao Rapida
 
-### Opção 1: USB Bootável (Recomendado)
+### Opcao 1: USB Bootavel (Recomendado)
 
 ```bash
 # Linux - Usando dd
 sudo dd if=winux-1.0-aurora.iso of=/dev/sdX bs=4M status=progress conv=fsync
 
-# Linux - Usando Ventoy (mais fácil)
+# Linux - Usando Ventoy
 # Basta copiar a ISO para o pendrive Ventoy
 
 # Windows - Usar Rufus ou balenaEtcher
 ```
 
-### Opção 2: Build from Source
+### Opcao 2: Build from Source
 
 ```bash
-# Clonar repositório
+# Clonar repositorio
 git clone https://github.com/winux-os/winux.git
 cd winux
 
-# Instalar dependências (Ubuntu/Debian)
+# Instalar dependencias (Ubuntu/Debian)
 sudo apt install debootstrap squashfs-tools xorriso grub-efi-amd64-bin
 
 # Build da ISO
@@ -206,14 +369,17 @@ sudo ./build/scripts/build-winux-iso.sh
 # ISO gerada em: build/output/winux-1.0-aurora.iso
 ```
 
-### 🎯 Pós-Instalação
+### Pos-Instalacao
 
 ```bash
 # Atualizar sistema
 winux-update
 
-# Instalar drivers NVIDIA (se aplicável)
+# Instalar drivers NVIDIA (se aplicavel)
 sudo winux-drivers --nvidia
+
+# Configurar ambiente de desenvolvimento
+winux-dev-setup
 
 # Configurar gaming
 winux-gaming-setup
@@ -221,212 +387,80 @@ winux-gaming-setup
 
 ---
 
-## 📱 Aplicativos Nativos
+## Documentacao
 
-### Suite Winux Apps
-
-| App | Descrição | Tecnologias | Status |
-|:---:|:---------:|:-----------:|:------:|
-| 📁 **Winux Files** | Gerenciador de arquivos dual-pane com preview, tabs, e suporte a arquivos compactados (zip, rar, tar, 7z) | Rust, GTK4, libarchive | ✅ v1.0 |
-| 💻 **Winux Terminal** | Emulador de terminal GPU-accelerated com multiplexing, splits, e temas | Rust, wgpu, pty | ✅ v1.0 |
-| ⚙️ **Winux Settings** | Central de configurações unificada com categorias intuitivas | Rust, GTK4, dbus | ✅ v1.0 |
-| 🏪 **Winux Store** | Loja de aplicativos com Flatpak, AppImage, e repositório nativo | Rust, GTK4, flatpak-rs | ✅ v1.0 |
-| 📊 **Winux Monitor** | System monitor com gráficos em tempo real, processos, e recursos | Rust, GTK4, sysinfo | ✅ v1.0 |
-| ✏️ **Winux Edit** | Editor de texto com syntax highlighting, LSP, e plugins | Rust, GTK4, tree-sitter | ✅ v1.0 |
-| 🖼️ **Winux Image** | Visualizador de imagens com edição básica e suporte a RAW | Rust, GTK4, image-rs | ✅ v1.0 |
-| 🎵 **Winux Player** | Player multimídia com suporte a vídeo, áudio, e playlists | Rust, GTK4, GStreamer | ✅ v1.0 |
-
-### Desktop Environment
-
-| Componente | Descrição | Tecnologias |
-|:----------:|:---------:|:-----------:|
-| 🖼️ **Winux Compositor** | Compositor Wayland com VRR, HDR, e gestures | Rust, Smithay, wgpu |
-| 📊 **Winux Panel** | Painel superior com systray, clock, e notificações | Rust, GTK4 Layer Shell |
-| 🐚 **Winux Shell** | Desktop shell com dock, launcher, e widgets | Rust, GTK4, cairo |
+| Documento | Descricao |
+|:----------|:----------|
+| [**APPS.md**](docs/APPS.md) | Documentacao de todos os apps nativos |
+| [**DEVELOPER.md**](docs/DEVELOPER.md) | Guia completo para desenvolvedores |
+| [**MOBILE.md**](docs/MOBILE.md) | Desenvolvimento mobile (Android/iOS) |
+| [**CHANGELOG.md**](docs/CHANGELOG.md) | Historico de mudancas |
+| [**CONTRIBUTING.md**](CONTRIBUTING.md) | Como contribuir |
+| [**ISO-BUILD-GUIDE.md**](build/ISO-BUILD-GUIDE.md) | Guia de build da ISO |
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Roadmap
 
-<div align="center">
+### v1.0 Aurora (Q1 2026) - LANCADA
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        WINUX OS STACK                           │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                    USER APPLICATIONS                     │   │
-│  │  Files │ Terminal │ Settings │ Store │ Monitor │ Edit   │   │
-│  │               Image │ Player │ Third-party              │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                              ▼                                  │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                    DESKTOP SHELL                         │   │
-│  │         Panel │ Shell │ Compositor (Wayland)            │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                              ▼                                  │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                   SYSTEM SERVICES                        │   │
-│  │     systemd │ PipeWire │ NetworkManager │ udisks2       │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                              ▼                                  │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                  COMPATIBILITY LAYER                     │   │
-│  │         Wine 9.0 │ Proton GE │ DXVK │ VKD3D             │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                              ▼                                  │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                     KERNEL LAYER                         │   │
-│  │      Linux Zen 6.8 │ Mesa RADV │ NVIDIA Driver          │   │
-│  └─────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
-```
+- [x] 12+ Apps nativos em Rust
+- [x] Compatibilidade Windows/macOS/Linux
+- [x] Dev tools completas
+- [x] Mobile development support
+- [x] Gaming otimizado
 
-</div>
+### v1.1 Blaze (Q2 2026)
 
-### Linguagens e Frameworks
-
-| Categoria | Tecnologias |
-|:---------:|:-----------:|
-| **Core Apps** | Rust, GTK4, Adwaita |
-| **Compositor** | Rust, Smithay, wgpu, DRM |
-| **Build System** | Bash, Python, Make |
-| **Packaging** | dpkg, Flatpak, AppImage |
-| **Gaming** | Wine, Proton, DXVK, VKD3D, GameMode |
-
----
-
-## 🤝 Como Contribuir
-
-Adoramos contribuições! Veja como você pode ajudar:
-
-### 🐛 Reportar Bugs
-
-```bash
-# Use o template de issue
-gh issue create --template bug_report.md
-```
-
-### 💡 Sugerir Features
-
-```bash
-# Use o template de feature request
-gh issue create --template feature_request.md
-```
-
-### 🔧 Desenvolvimento
-
-1. **Fork** o repositório
-2. **Clone** seu fork:
-   ```bash
-   git clone https://github.com/SEU_USER/winux.git
-   ```
-3. **Crie uma branch**:
-   ```bash
-   git checkout -b feature/minha-feature
-   ```
-4. **Faça suas alterações** seguindo o [Style Guide](docs/STYLE_GUIDE.md)
-5. **Commit** suas mudanças:
-   ```bash
-   git commit -m "feat: adiciona minha feature"
-   ```
-6. **Push** para seu fork:
-   ```bash
-   git push origin feature/minha-feature
-   ```
-7. Abra um **Pull Request**
-
-### 📋 Convenção de Commits
-
-```
-feat:     Nova funcionalidade
-fix:      Correção de bug
-docs:     Documentação
-style:    Formatação
-refactor: Refatoração
-perf:     Performance
-test:     Testes
-chore:    Manutenção
-```
-
----
-
-## 🗺️ Roadmap
-
-### Versão 1.0 Aurora (Q1 2026) - ✅ **LANÇADA!**
-
-- [x] Estrutura base do projeto
-- [x] Sistema de build ISO
-- [x] Base Ubuntu 24.04 LTS
-- [x] Tema Winux Fluent (dark mode)
-- [x] Integração Wine/Proton/Lutris
-- [x] GameMode + MangoHUD
-- [x] Instalador gráfico (Calamares)
-- [x] Apps GNOME como fallback
-
-### Versão 1.1 Blaze (Q2 2026)
-
-- [ ] App de Backup integrado
 - [ ] Winux Connect (smartphone integration)
 - [ ] Cloud sync nativo
-- [ ] Temas customizáveis via Store
+- [ ] App de Backup integrado
+- [ ] Plugins para shell
 
-### Versão 2.0 Cosmos (Q4 2026)
+### v2.0 Cosmos (Q4 2026)
 
 - [ ] AI Assistant integrado
-- [ ] Virtual Desktop Workspaces
-- [ ] Container support (Podman GUI)
+- [ ] Container GUI (Podman)
 - [ ] ARM64 support
+- [ ] Immutable OS mode
 
 ---
 
-## 📊 Status do Desenvolvimento
-
-| Sprint | Foco | Status |
-|:------:|:----:|:------:|
-| 01-02 | Infraestrutura e Build Base | ✅ Completo |
-| 03-04 | Kernel e Drivers | ✅ Completo |
-| 05-06 | Compositor e Desktop Base | ✅ Completo |
-| 07-08 | Shell Components | ✅ Completo |
-| 09-10 | Core Apps (Files, Terminal, Settings) | ✅ Completo |
-| 11-12 | Core Apps (Store, Monitor, Edit) | ✅ Completo |
-| 13-14 | Compatibilidade Windows | ✅ Completo |
-| 15-16 | Build System e Installer | ✅ Completo |
-| 17-18 | Polish e Release | ✅ **v1.0 Lançada!** |
-
----
-
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 winux/
-├── 📁 apps/                    # Aplicações nativas Rust
-│   ├── winux-files/           # Gerenciador de arquivos
-│   ├── winux-terminal/        # Emulador de terminal
-│   ├── winux-settings/        # Configurações
-│   ├── winux-store/           # Loja de apps
-│   ├── winux-monitor/         # System monitor
-│   ├── winux-edit/            # Editor de texto
-│   ├── winux-image/           # Visualizador de imagens
-│   └── winux-player/          # Player multimídia
-├── 📁 build/                   # Sistema de build
-│   ├── scripts/               # Scripts de build
-│   └── configs/               # Configurações
-├── 📁 compatibility/           # Wine/Proton integration
-├── 📁 desktop/                 # Desktop Environment
-│   ├── winux-compositor/      # Compositor Wayland
-│   ├── winux-panel/           # Painel superior
-│   └── winux-shell/           # Desktop shell
-├── 📁 docs/                    # Documentação
-├── 📁 drivers/                 # Scripts de drivers
-├── 📁 kernel/                  # Kernel customizado
-├── 📁 system/                  # Configurações de sistema
-└── 📁 themes/                  # Temas visuais
+├── apps/                          # Aplicacoes nativas Rust (12+)
+│   ├── winux-files/              # Gerenciador de arquivos
+│   ├── winux-terminal/           # Emulador de terminal
+│   ├── winux-settings/           # Central de configuracoes
+│   ├── winux-store/              # Loja de aplicativos
+│   ├── winux-monitor/            # System monitor
+│   ├── winux-edit/               # Editor de texto
+│   ├── winux-image/              # Visualizador de imagens
+│   ├── winux-player/             # Player multimidia
+│   ├── winux-about/              # Informacoes do sistema
+│   ├── winux-personalize/        # Personalizacao (Win/Mac/Linux modes)
+│   ├── winux-env-manager/        # Gerenciador de variaveis
+│   ├── winux-dev-hub/            # Central do desenvolvedor
+│   └── winux-builder/            # Build cross-platform
+├── desktop/                       # Desktop Environment
+│   ├── winux-compositor/         # Compositor Wayland (Smithay)
+│   ├── winux-panel/              # Barra superior
+│   └── winux-shell/              # Shell e dock
+├── system/                        # Configuracoes de sistema
+│   └── etc/winux/scripts/        # Scripts de setup
+├── compatibility/                 # Wine/Proton integration
+├── build/                         # Sistema de build ISO
+├── docs/                          # Documentacao
+├── drivers/                       # Scripts de drivers
+├── kernel/                        # Kernel customizado
+└── themes/                        # Temas visuais
 ```
 
 ---
 
-## 💬 Comunidade
+## Comunidade
 
 <div align="center">
 
@@ -439,47 +473,49 @@ winux/
 
 ---
 
-## 🏆 Créditos
+## Como Contribuir
 
-### Core Team
+1. **Fork** o repositorio
+2. **Clone** seu fork: `git clone https://github.com/SEU_USER/winux.git`
+3. **Crie uma branch**: `git checkout -b feature/minha-feature`
+4. **Faca suas alteracoes**
+5. **Commit**: `git commit -m "feat: adiciona minha feature"`
+6. **Push**: `git push origin feature/minha-feature`
+7. Abra um **Pull Request**
 
-- **Lead Developer** - Projeto e arquitetura
-- **Contributors** - [Ver lista completa](https://github.com/winux-os/winux/graphs/contributors)
+### Convencao de Commits
 
-### Projetos que tornaram isso possível
-
-- [Ubuntu](https://ubuntu.com) - Base do sistema
-- [Smithay](https://github.com/Smithay/smithay) - Framework do compositor
-- [GTK4](https://gtk.org) - Toolkit gráfico
-- [Wine](https://winehq.org) - Compatibilidade Windows
-- [Proton](https://github.com/ValveSoftware/Proton) - Gaming layer
+```
+feat:     Nova funcionalidade
+fix:      Correcao de bug
+docs:     Documentacao
+style:    Formatacao
+refactor: Refatoracao
+perf:     Performance
+test:     Testes
+chore:    Manutencao
+```
 
 ---
 
-## 📄 Licença
+## Licenca
 
-<div align="center">
-
-| Componente | Licença |
-|:----------:|:-------:|
+| Componente | Licenca |
+|:-----------|:--------|
 | Sistema e Scripts | [GPL v3](LICENSE-GPL) |
-| Aplicações Winux | [MIT](LICENSE-MIT) |
-| Documentação | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
-
-</div>
+| Aplicacoes Winux | [MIT](LICENSE-MIT) |
+| Documentacao | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 
 ---
 
 <div align="center">
 
-**Feito com ❤️ pelo Winux OS Project**
+**Winux OS Project - 2026**
 
-*"O Melhor dos Dois Mundos"*
-
-**2026**
+*"O Melhor dos Tres Mundos"*
 
 ---
 
-⭐ Se você gostou do projeto, considere dar uma estrela!
+Se voce gostou do projeto, considere dar uma estrela!
 
 </div>

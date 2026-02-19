@@ -1,0 +1,44 @@
+[package]
+name = "winux-archive"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Archive manager for Winux OS - supports ZIP, RAR, TAR, 7z, ISO and more"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+walkdir.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+open.workspace = true
+
+# Archive handling
+libarchive = "0.1"
+libarchive3-sys = "0.1"
+zip = { version = "0.6", features = ["deflate", "bzip2", "zstd", "aes-crypto"] }
+flate2 = "1.0"
+bzip2 = "0.4"
+xz2 = "0.1"
+zstd = "0.13"
+tar = "0.4"
+unrar = "0.5"
+sevenz-rust = "0.6"
+
+# ISO handling
+iso9660 = "0.3"
+
+# Utilities
+bytesize = "1.3"
+tempfile = "3.10"

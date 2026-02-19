@@ -1,0 +1,45 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Mobile Studio
+Name[pt_BR]=Estudio Mobile Winux
+Name[es]=Estudio Movil Winux
+Name[fr]=Studio Mobile Winux
+Name[de]=Winux Mobile Studio
+GenericName=Mobile Development Studio
+GenericName[pt_BR]=Estudio de Desenvolvimento Mobile
+Comment=Develop Android and iOS applications with emulators and tools
+Comment[pt_BR]=Desenvolva aplicativos Android e iOS com emuladores e ferramentas
+Comment[es]=Desarrollar aplicaciones Android e iOS con emuladores y herramientas
+Comment[fr]=Developper des applications Android et iOS avec emulateurs et outils
+Comment[de]=Android und iOS Apps mit Emulatoren und Tools entwickeln
+Keywords=mobile;android;ios;flutter;react-native;emulator;phone;tablet;app;development;
+Keywords[pt_BR]=mobile;android;ios;flutter;react-native;emulador;telefone;tablet;aplicativo;desenvolvimento;
+Exec=/usr/bin/winux-mobile-studio
+Icon=phone
+Terminal=false
+Categories=Development;IDE;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-mobile-studio
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=android-emulator;flutter-project;react-native-project;
+
+[Desktop Action android-emulator]
+Name=Launch Android Emulator
+Name[pt_BR]=Iniciar Emulador Android
+Exec=/usr/bin/winux-mobile-studio --emulator
+Icon=android
+
+[Desktop Action flutter-project]
+Name=New Flutter Project
+Name[pt_BR]=Novo Projeto Flutter
+Exec=/usr/bin/winux-mobile-studio --new-flutter
+Icon=flutter
+
+[Desktop Action react-native-project]
+Name=New React Native Project
+Name[pt_BR]=Novo Projeto React Native
+Exec=/usr/bin/winux-mobile-studio --new-react-native
+Icon=react

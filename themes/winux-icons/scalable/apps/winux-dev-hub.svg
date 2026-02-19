@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="devhub-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="28" stroke="url(#devhub-grad)" fill="none"/>
+  <path d="M20 24l-8 8 8 8" stroke="#00d4ff"/>
+  <path d="M44 24l8 8-8 8" stroke="#00ff88"/>
+  <path d="M36 16l-8 32" stroke="#ff00ff"/>
+  <circle cx="32" cy="8" r="4" stroke="#00d4ff" fill="none"/>
+  <circle cx="32" cy="56" r="4" stroke="#00ff88" fill="none"/>
+  <circle cx="8" cy="32" r="4" stroke="#ff00ff" fill="none"/>
+  <circle cx="56" cy="32" r="4" stroke="#00d4ff" fill="none"/>
+</svg>

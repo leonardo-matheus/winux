@@ -1,0 +1,51 @@
+[Icon Theme]
+Name=Winux Icons
+Comment=Modern icon theme for Winux OS - SF Symbols/Fluent inspired
+Inherits=Adwaita,hicolor
+Example=folder
+
+# Directories
+Directories=scalable/apps,scalable/actions,scalable/places,scalable/mimes,scalable/devices,scalable/status
+
+# Scalable Icons
+[scalable/apps]
+Size=64
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Applications
+
+[scalable/actions]
+Size=24
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Actions
+
+[scalable/places]
+Size=64
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Places
+
+[scalable/mimes]
+Size=64
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=MimeTypes
+
+[scalable/devices]
+Size=64
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Devices
+
+[scalable/status]
+Size=24
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Status

@@ -1,0 +1,45 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Dev Hub
+Name[pt_BR]=Central de Desenvolvimento Winux
+Name[es]=Centro de Desarrollo Winux
+Name[fr]=Hub de Developpement Winux
+Name[de]=Winux Entwickler-Hub
+GenericName=Development Environment Manager
+GenericName[pt_BR]=Gerenciador de Ambiente de Desenvolvimento
+Comment=Manage development environments, SDKs, and tools
+Comment[pt_BR]=Gerencie ambientes de desenvolvimento, SDKs e ferramentas
+Comment[es]=Administrar entornos de desarrollo, SDKs y herramientas
+Comment[fr]=Gerer les environnements de developpement, SDK et outils
+Comment[de]=Entwicklungsumgebungen, SDKs und Tools verwalten
+Keywords=development;dev;sdk;programming;code;ide;tools;environment;docker;container;nodejs;python;java;rust;go;
+Keywords[pt_BR]=desenvolvimento;dev;sdk;programacao;codigo;ide;ferramentas;ambiente;docker;container;
+Exec=/usr/bin/winux-dev-hub
+Icon=applications-development
+Terminal=false
+Categories=Development;IDE;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-dev-hub
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=install-sdk;manage-containers;open-terminal;
+
+[Desktop Action install-sdk]
+Name=Install SDK
+Name[pt_BR]=Instalar SDK
+Exec=/usr/bin/winux-dev-hub --install-sdk
+Icon=system-software-install
+
+[Desktop Action manage-containers]
+Name=Manage Containers
+Name[pt_BR]=Gerenciar Containers
+Exec=/usr/bin/winux-dev-hub --containers
+Icon=docker
+
+[Desktop Action open-terminal]
+Name=Developer Terminal
+Name[pt_BR]=Terminal de Desenvolvedor
+Exec=/usr/bin/winux-terminal --profile=developer
+Icon=utilities-terminal

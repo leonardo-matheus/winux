@@ -3,11 +3,43 @@ Version=1.0
 Type=Application
 Name=Environment Manager
 Name[pt_BR]=Gerenciador de Ambiente
-Comment=Manage system environment variables
-Comment[pt_BR]=Gerencie variaveis de ambiente do sistema
-Exec=winux-env-manager
+Name[es]=Gestor de Entorno
+Name[fr]=Gestionnaire d'Environnement
+Name[de]=Umgebungsmanager
+GenericName=Environment Variables Manager
+GenericName[pt_BR]=Gerenciador de Variaveis de Ambiente
+Comment=Manage system and user environment variables
+Comment[pt_BR]=Gerencie variaveis de ambiente do sistema e do usuario
+Comment[es]=Administrar variables de entorno del sistema y del usuario
+Comment[fr]=Gerer les variables d'environnement systeme et utilisateur
+Comment[de]=System- und Benutzerumgebungsvariablen verwalten
+Keywords=environment;variables;path;config;env;system;export;bashrc;profile;
+Keywords[pt_BR]=ambiente;variaveis;path;config;env;sistema;exportar;bashrc;profile;
+Exec=/usr/bin/winux-env-manager
 Icon=preferences-system-environment
 Terminal=false
-Categories=System;Settings;
-Keywords=environment;variables;path;config;
+Categories=System;Settings;X-Winux;
 StartupNotify=true
+StartupWMClass=winux-env-manager
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=edit-path;export-env;import-env;
+
+[Desktop Action edit-path]
+Name=Edit PATH Variable
+Name[pt_BR]=Editar Variavel PATH
+Exec=/usr/bin/winux-env-manager --edit-path
+Icon=folder-symbolic-link
+
+[Desktop Action export-env]
+Name=Export Environment
+Name[pt_BR]=Exportar Ambiente
+Exec=/usr/bin/winux-env-manager --export
+Icon=document-export
+
+[Desktop Action import-env]
+Name=Import Environment
+Name[pt_BR]=Importar Ambiente
+Exec=/usr/bin/winux-env-manager --import
+Icon=document-import

@@ -1,0 +1,265 @@
+/* Winux Clock - Custom Styles */
+
+/* Main clock display */
+.clock-display {
+    font-size: 72px;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: 2px;
+}
+
+.clock-display-medium {
+    font-size: 48px;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.clock-display-small {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.clock-seconds {
+    font-size: 36px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+.clock-milliseconds {
+    font-size: 24px;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+/* Date display */
+.date-display {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* Timezone info */
+.timezone-label {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.timezone-offset {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: alpha(@accent_color, 0.2);
+}
+
+/* Analog clock */
+.analog-clock {
+    min-width: 200px;
+    min-height: 200px;
+}
+
+/* Stopwatch / Timer */
+.stopwatch-display {
+    font-size: 64px;
+    font-weight: 200;
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: 4px;
+}
+
+.lap-time {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+}
+
+.lap-number {
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.lap-best {
+    color: @success_color;
+}
+
+.lap-worst {
+    color: @error_color;
+}
+
+/* Timer presets */
+.timer-preset {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.timer-preset:hover {
+    background: alpha(@accent_color, 0.15);
+}
+
+/* Control buttons */
+.control-button {
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.control-button.start {
+    background: @success_color;
+    color: white;
+}
+
+.control-button.start:hover {
+    background: shade(@success_color, 1.1);
+}
+
+.control-button.stop {
+    background: @error_color;
+    color: white;
+}
+
+.control-button.stop:hover {
+    background: shade(@error_color, 1.1);
+}
+
+.control-button.reset {
+    background: alpha(@window_fg_color, 0.1);
+}
+
+.control-button.reset:hover {
+    background: alpha(@window_fg_color, 0.15);
+}
+
+/* Alarm row */
+.alarm-row {
+    padding: 12px;
+    border-radius: 12px;
+    margin: 4px 0;
+}
+
+.alarm-row:hover {
+    background: alpha(@window_fg_color, 0.05);
+}
+
+.alarm-time {
+    font-size: 32px;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.alarm-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.alarm-repeat {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.alarm-disabled {
+    opacity: 0.5;
+}
+
+/* World clock card */
+.world-clock-card {
+    padding: 16px;
+    border-radius: 12px;
+    background: alpha(@window_fg_color, 0.05);
+    margin: 4px;
+}
+
+.world-clock-card:hover {
+    background: alpha(@window_fg_color, 0.08);
+}
+
+.city-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.city-time {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.city-date {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.city-offset {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: alpha(@accent_color, 0.2);
+}
+
+/* Time picker */
+.time-picker {
+    padding: 20px;
+}
+
+.time-picker-value {
+    font-size: 48px;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+    min-width: 80px;
+    text-align: center;
+}
+
+.time-picker-separator {
+    font-size: 48px;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+.time-picker-button {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.pulsing {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+/* Progress ring for timer */
+.timer-ring {
+    min-width: 250px;
+    min-height: 250px;
+}
+
+/* Day selector for alarms */
+.day-button {
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0;
+}
+
+.day-button.selected {
+    background: @accent_color;
+    color: white;
+}
+
+.day-button:not(.selected) {
+    background: alpha(@window_fg_color, 0.1);
+}

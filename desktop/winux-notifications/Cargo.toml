@@ -1,0 +1,67 @@
+[package]
+name = "winux-notifications"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Winux OS Notification Daemon - Modern D-Bus notification service"
+
+[dependencies]
+# GTK4 and Adwaita
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# Async runtime
+tokio.workspace = true
+
+# D-Bus
+zbus = "4.0"
+zvariant = "4.0"
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# XDG directories
+directories = "5.0"
+
+# Async channels
+async-channel = "2.1"
+
+# Error handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Futures
+futures.workspace = true
+
+# Once cell for lazy statics
+once_cell = "1.19"
+
+# Icon lookup
+freedesktop-icons = "0.2"
+
+# UUID for notification IDs
+uuid = { version = "1.0", features = ["v4"] }
+
+# Rodio for notification sounds
+rodio = { version = "0.17", default-features = false, features = ["vorbis"] }
+
+[features]
+default = []
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

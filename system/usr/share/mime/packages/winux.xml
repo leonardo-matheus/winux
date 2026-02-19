@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <!-- Winux Project Files -->
+  <mime-type type="application/x-winux-project">
+    <comment>Winux Builder Project</comment>
+    <comment xml:lang="pt_BR">Projeto do Winux Builder</comment>
+    <icon name="winux-builder"/>
+    <glob pattern="*.winux-project"/>
+    <glob pattern="*.wxp"/>
+  </mime-type>
+
+  <mime-type type="application/x-winux-config">
+    <comment>Winux Configuration File</comment>
+    <comment xml:lang="pt_BR">Arquivo de Configuracao Winux</comment>
+    <icon name="preferences-system"/>
+    <glob pattern="*.winux-config"/>
+    <glob pattern="*.wxc"/>
+  </mime-type>
+
+  <mime-type type="application/x-winux-theme">
+    <comment>Winux Theme Package</comment>
+    <comment xml:lang="pt_BR">Pacote de Tema Winux</comment>
+    <icon name="preferences-desktop-theme"/>
+    <glob pattern="*.winux-theme"/>
+    <glob pattern="*.wxt"/>
+  </mime-type>
+
+  <!-- Source Code Files - Associated with winux-edit -->
+  <mime-type type="text/x-python">
+    <comment>Python Script</comment>
+    <icon name="text-x-python"/>
+    <glob pattern="*.py"/>
+    <glob pattern="*.pyw"/>
+    <glob pattern="*.pyx"/>
+  </mime-type>
+
+  <mime-type type="text/x-csrc">
+    <comment>C Source Code</comment>
+    <icon name="text-x-csrc"/>
+    <glob pattern="*.c"/>
+    <glob pattern="*.h"/>
+  </mime-type>
+
+  <mime-type type="text/x-c++src">
+    <comment>C++ Source Code</comment>
+    <icon name="text-x-c++src"/>
+    <glob pattern="*.cpp"/>
+    <glob pattern="*.cxx"/>
+    <glob pattern="*.cc"/>
+    <glob pattern="*.hpp"/>
+    <glob pattern="*.hxx"/>
+  </mime-type>
+
+  <mime-type type="application/javascript">
+    <comment>JavaScript Source</comment>
+    <icon name="text-x-javascript"/>
+    <glob pattern="*.js"/>
+    <glob pattern="*.mjs"/>
+    <glob pattern="*.cjs"/>
+  </mime-type>
+
+  <mime-type type="application/typescript">
+    <comment>TypeScript Source</comment>
+    <icon name="text-x-typescript"/>
+    <glob pattern="*.ts"/>
+    <glob pattern="*.tsx"/>
+  </mime-type>
+
+  <mime-type type="text/x-rust">
+    <comment>Rust Source Code</comment>
+    <icon name="text-x-rust"/>
+    <glob pattern="*.rs"/>
+  </mime-type>
+
+  <mime-type type="text/x-go">
+    <comment>Go Source Code</comment>
+    <icon name="text-x-go"/>
+    <glob pattern="*.go"/>
+  </mime-type>
+
+  <mime-type type="text/x-java">
+    <comment>Java Source Code</comment>
+    <icon name="text-x-java"/>
+    <glob pattern="*.java"/>
+  </mime-type>
+
+  <mime-type type="text/x-kotlin">
+    <comment>Kotlin Source Code</comment>
+    <icon name="text-x-kotlin"/>
+    <glob pattern="*.kt"/>
+    <glob pattern="*.kts"/>
+  </mime-type>
+
+  <mime-type type="text/x-swift">
+    <comment>Swift Source Code</comment>
+    <icon name="text-x-swift"/>
+    <glob pattern="*.swift"/>
+  </mime-type>
+
+  <mime-type type="text/x-shellscript">
+    <comment>Shell Script</comment>
+    <icon name="text-x-script"/>
+    <glob pattern="*.sh"/>
+    <glob pattern="*.bash"/>
+    <glob pattern="*.zsh"/>
+  </mime-type>
+
+  <mime-type type="application/x-ruby">
+    <comment>Ruby Script</comment>
+    <icon name="text-x-ruby"/>
+    <glob pattern="*.rb"/>
+    <glob pattern="*.rbw"/>
+  </mime-type>
+
+  <mime-type type="text/x-php">
+    <comment>PHP Script</comment>
+    <icon name="text-x-php"/>
+    <glob pattern="*.php"/>
+    <glob pattern="*.php5"/>
+    <glob pattern="*.phtml"/>
+  </mime-type>
+
+  <mime-type type="text/html">
+    <comment>HTML Document</comment>
+    <icon name="text-html"/>
+    <glob pattern="*.html"/>
+    <glob pattern="*.htm"/>
+    <glob pattern="*.xhtml"/>
+  </mime-type>
+
+  <mime-type type="text/css">
+    <comment>CSS Stylesheet</comment>
+    <icon name="text-css"/>
+    <glob pattern="*.css"/>
+    <glob pattern="*.scss"/>
+    <glob pattern="*.sass"/>
+    <glob pattern="*.less"/>
+  </mime-type>
+
+  <mime-type type="application/json">
+    <comment>JSON Document</comment>
+    <icon name="text-x-generic"/>
+    <glob pattern="*.json"/>
+    <glob pattern="*.jsonc"/>
+  </mime-type>
+
+  <mime-type type="application/x-yaml">
+    <comment>YAML Document</comment>
+    <icon name="text-x-generic"/>
+    <glob pattern="*.yaml"/>
+    <glob pattern="*.yml"/>
+  </mime-type>
+
+  <mime-type type="text/markdown">
+    <comment>Markdown Document</comment>
+    <icon name="text-x-markdown"/>
+    <glob pattern="*.md"/>
+    <glob pattern="*.markdown"/>
+  </mime-type>
+
+  <!-- Image Files - Associated with winux-image -->
+  <mime-type type="image/png">
+    <comment>PNG Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.png"/>
+  </mime-type>
+
+  <mime-type type="image/jpeg">
+    <comment>JPEG Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.jpg"/>
+    <glob pattern="*.jpeg"/>
+    <glob pattern="*.jpe"/>
+  </mime-type>
+
+  <mime-type type="image/gif">
+    <comment>GIF Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.gif"/>
+  </mime-type>
+
+  <mime-type type="image/webp">
+    <comment>WebP Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.webp"/>
+  </mime-type>
+
+  <mime-type type="image/svg+xml">
+    <comment>SVG Image</comment>
+    <icon name="image-x-svg+xml"/>
+    <glob pattern="*.svg"/>
+    <glob pattern="*.svgz"/>
+  </mime-type>
+
+  <mime-type type="image/x-xcf">
+    <comment>GIMP Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.xcf"/>
+  </mime-type>
+
+  <mime-type type="image/x-psd">
+    <comment>Photoshop Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.psd"/>
+  </mime-type>
+
+  <mime-type type="image/bmp">
+    <comment>BMP Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.bmp"/>
+  </mime-type>
+
+  <mime-type type="image/tiff">
+    <comment>TIFF Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.tiff"/>
+    <glob pattern="*.tif"/>
+  </mime-type>
+
+  <mime-type type="image/x-raw">
+    <comment>RAW Image</comment>
+    <icon name="image-x-generic"/>
+    <glob pattern="*.raw"/>
+    <glob pattern="*.cr2"/>
+    <glob pattern="*.nef"/>
+    <glob pattern="*.arw"/>
+    <glob pattern="*.dng"/>
+  </mime-type>
+
+  <!-- Video Files - Associated with winux-player -->
+  <mime-type type="video/mp4">
+    <comment>MP4 Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.mp4"/>
+    <glob pattern="*.m4v"/>
+  </mime-type>
+
+  <mime-type type="video/webm">
+    <comment>WebM Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.webm"/>
+  </mime-type>
+
+  <mime-type type="video/x-matroska">
+    <comment>Matroska Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.mkv"/>
+  </mime-type>
+
+  <mime-type type="video/x-msvideo">
+    <comment>AVI Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.avi"/>
+  </mime-type>
+
+  <mime-type type="video/quicktime">
+    <comment>QuickTime Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.mov"/>
+    <glob pattern="*.qt"/>
+  </mime-type>
+
+  <mime-type type="video/x-flv">
+    <comment>Flash Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.flv"/>
+  </mime-type>
+
+  <mime-type type="video/mpeg">
+    <comment>MPEG Video</comment>
+    <icon name="video-x-generic"/>
+    <glob pattern="*.mpeg"/>
+    <glob pattern="*.mpg"/>
+  </mime-type>
+
+  <!-- Audio Files - Associated with winux-player -->
+  <mime-type type="audio/mpeg">
+    <comment>MP3 Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.mp3"/>
+  </mime-type>
+
+  <mime-type type="audio/x-flac">
+    <comment>FLAC Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.flac"/>
+  </mime-type>
+
+  <mime-type type="audio/ogg">
+    <comment>Ogg Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.ogg"/>
+    <glob pattern="*.oga"/>
+  </mime-type>
+
+  <mime-type type="audio/x-wav">
+    <comment>WAV Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.wav"/>
+  </mime-type>
+
+  <mime-type type="audio/aac">
+    <comment>AAC Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.aac"/>
+    <glob pattern="*.m4a"/>
+  </mime-type>
+
+  <mime-type type="audio/x-aiff">
+    <comment>AIFF Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.aiff"/>
+    <glob pattern="*.aif"/>
+  </mime-type>
+
+  <mime-type type="audio/midi">
+    <comment>MIDI Audio</comment>
+    <icon name="audio-x-generic"/>
+    <glob pattern="*.mid"/>
+    <glob pattern="*.midi"/>
+  </mime-type>
+
+</mime-info>

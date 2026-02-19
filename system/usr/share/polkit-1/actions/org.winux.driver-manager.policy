@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+
+  <vendor>Winux OS</vendor>
+  <vendor_url>https://winux.io</vendor_url>
+  <icon_name>preferences-system-drivers</icon_name>
+
+  <action id="org.winux.driver-manager.detect">
+    <description>Detect hardware and available drivers</description>
+    <description xml:lang="pt_BR">Detectar hardware e drivers disponiveis</description>
+    <message>Authentication is required to detect hardware and drivers</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para detectar hardware e drivers</message>
+    <icon_name>preferences-system-drivers</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.driver-manager.install">
+    <description>Install hardware drivers</description>
+    <description xml:lang="pt_BR">Instalar drivers de hardware</description>
+    <message>Authentication is required to install drivers</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para instalar drivers</message>
+    <icon_name>system-software-install</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.driver-manager.remove">
+    <description>Remove hardware drivers</description>
+    <description xml:lang="pt_BR">Remover drivers de hardware</description>
+    <message>Authentication is required to remove drivers</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para remover drivers</message>
+    <icon_name>edit-delete</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.driver-manager.configure">
+    <description>Configure hardware drivers</description>
+    <description xml:lang="pt_BR">Configurar drivers de hardware</description>
+    <message>Authentication is required to configure drivers</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para configurar drivers</message>
+    <icon_name>preferences-system</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.driver-manager.switch-gpu">
+    <description>Switch between GPU drivers (NVIDIA/AMD/Intel)</description>
+    <description xml:lang="pt_BR">Alternar entre drivers de GPU (NVIDIA/AMD/Intel)</description>
+    <message>Authentication is required to switch GPU drivers</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para alternar drivers de GPU</message>
+    <icon_name>video-display</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.driver-manager.dkms-build">
+    <description>Build DKMS kernel modules</description>
+    <description xml:lang="pt_BR">Compilar modulos de kernel DKMS</description>
+    <message>Authentication is required to build kernel modules</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para compilar modulos de kernel</message>
+    <icon_name>applications-system</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+</policyconfig>

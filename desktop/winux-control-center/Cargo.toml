@@ -1,0 +1,58 @@
+[package]
+name = "winux-control-center"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Winux OS Control Center - iOS/macOS style quick settings panel"
+
+[dependencies]
+# GTK4 and Adwaita
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# Async runtime
+tokio.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# D-Bus for system controls
+zbus = "4.0"
+zvariant = "4.0"
+
+# XDG directories
+directories = "5.0"
+
+# Async channels
+async-channel = "2.1"
+
+# Error handling
+anyhow.workspace = true
+thiserror = "1.0"
+
+# Futures
+futures.workspace = true
+
+# System info (battery, etc)
+sysinfo.workspace = true
+
+# Once cell for lazy statics
+once_cell.workspace = true
+
+[features]
+default = []
+layer-shell = []
+
+[[bin]]
+name = "winux-control-center"
+path = "src/main.rs"

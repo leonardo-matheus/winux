@@ -1,0 +1,51 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Winux Gaming
+Name[pt_BR]=Jogos Winux
+Name[es]=Juegos Winux
+Name[fr]=Jeux Winux
+Name[de]=Winux Gaming
+GenericName=Gaming Center
+GenericName[pt_BR]=Central de Jogos
+Comment=Manage games, Wine prefixes, and gaming tools
+Comment[pt_BR]=Gerencie jogos, prefixos Wine e ferramentas de jogos
+Comment[es]=Administrar juegos, prefijos Wine y herramientas de juegos
+Comment[fr]=Gerer les jeux, prefixes Wine et outils de jeux
+Comment[de]=Spiele, Wine-Prefixe und Gaming-Tools verwalten
+Keywords=games;gaming;wine;proton;steam;lutris;playonlinux;gamepad;controller;
+Keywords[pt_BR]=jogos;games;wine;proton;steam;lutris;playonlinux;controle;gamepad;
+Exec=/usr/bin/winux-gaming
+Icon=applications-games
+Terminal=false
+Categories=Game;X-Winux;
+StartupNotify=true
+StartupWMClass=winux-gaming
+X-GNOME-SingleWindow=true
+X-KDE-StartupNotify=true
+
+Actions=steam;lutris;wine-config;manage-prefixes;
+
+[Desktop Action steam]
+Name=Launch Steam
+Name[pt_BR]=Iniciar Steam
+Exec=steam
+Icon=steam
+
+[Desktop Action lutris]
+Name=Launch Lutris
+Name[pt_BR]=Iniciar Lutris
+Exec=lutris
+Icon=lutris
+
+[Desktop Action wine-config]
+Name=Wine Configuration
+Name[pt_BR]=Configuracao do Wine
+Exec=winecfg
+Icon=wine
+
+[Desktop Action manage-prefixes]
+Name=Manage Wine Prefixes
+Name[pt_BR]=Gerenciar Prefixos Wine
+Exec=/usr/bin/winux-gaming --prefixes
+Icon=folder-wine

@@ -1,0 +1,29 @@
+[Desktop Entry]
+Type=Action
+Name=Open with VS Code
+Name[pt_BR]=Abrir com VS Code
+Name[es]=Abrir con VS Code
+Name[fr]=Ouvrir avec VS Code
+Name[de]=Mit VS Code Offnen
+Comment=Edit files or folders with Visual Studio Code
+Comment[pt_BR]=Editar arquivos ou pastas com Visual Studio Code
+Icon=visual-studio-code
+Profiles=profile-directory;profile-file;profile-multiple;
+
+[X-Action-Profile profile-directory]
+MimeTypes=inode/directory;
+Exec=code %f
+Name=Open Folder in VS Code
+SelectionCount==1
+
+[X-Action-Profile profile-file]
+MimeTypes=text/*;application/json;application/xml;application/javascript;application/typescript;
+Exec=code %f
+Name=Edit with VS Code
+SelectionCount==1
+
+[X-Action-Profile profile-multiple]
+MimeTypes=text/*;application/json;application/xml;application/javascript;application/typescript;inode/directory;
+Exec=code %F
+Name=Open in VS Code
+SelectionCount=>1

@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Action
+Name=Open Terminal Here
+Name[pt_BR]=Abrir Terminal Aqui
+Name[es]=Abrir Terminal Aqui
+Name[fr]=Ouvrir le Terminal Ici
+Name[de]=Terminal Hier Offnen
+Comment=Open a terminal in this location
+Comment[pt_BR]=Abrir um terminal neste local
+Icon=utilities-terminal
+Profiles=profile-directory;profile-file;
+
+[X-Action-Profile profile-directory]
+MimeTypes=inode/directory;
+Exec=/usr/bin/winux-terminal --working-directory=%f
+Name=Open Terminal Here
+SelectionCount==1
+
+[X-Action-Profile profile-file]
+MimeTypes=all/allfiles;
+Exec=/usr/bin/winux-terminal --working-directory=%d
+Name=Open Terminal Here
+SelectionCount==1

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+
+  <vendor>Winux OS</vendor>
+  <vendor_url>https://winux.io</vendor_url>
+  <icon_name>system-software-install</icon_name>
+
+  <action id="org.winux.package-manager.refresh">
+    <description>Refresh package cache</description>
+    <description xml:lang="pt_BR">Atualizar cache de pacotes</description>
+    <message>Authentication is required to refresh the package cache</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para atualizar o cache de pacotes</message>
+    <icon_name>view-refresh</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.install">
+    <description>Install packages</description>
+    <description xml:lang="pt_BR">Instalar pacotes</description>
+    <message>Authentication is required to install software packages</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para instalar pacotes de software</message>
+    <icon_name>system-software-install</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.remove">
+    <description>Remove packages</description>
+    <description xml:lang="pt_BR">Remover pacotes</description>
+    <message>Authentication is required to remove software packages</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para remover pacotes de software</message>
+    <icon_name>edit-delete</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.upgrade">
+    <description>Upgrade packages</description>
+    <description xml:lang="pt_BR">Atualizar pacotes</description>
+    <message>Authentication is required to upgrade software packages</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para atualizar pacotes de software</message>
+    <icon_name>software-update-available</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.system-upgrade">
+    <description>Perform system upgrade</description>
+    <description xml:lang="pt_BR">Realizar atualizacao do sistema</description>
+    <message>Authentication is required to perform a system upgrade</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para realizar atualizacao do sistema</message>
+    <icon_name>system-upgrade</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.add-repository">
+    <description>Add software repository</description>
+    <description xml:lang="pt_BR">Adicionar repositorio de software</description>
+    <message>Authentication is required to add a software repository</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para adicionar repositorio de software</message>
+    <icon_name>folder-remote</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.remove-repository">
+    <description>Remove software repository</description>
+    <description xml:lang="pt_BR">Remover repositorio de software</description>
+    <message>Authentication is required to remove a software repository</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para remover repositorio de software</message>
+    <icon_name>folder-remote</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.install-flatpak">
+    <description>Install Flatpak applications</description>
+    <description xml:lang="pt_BR">Instalar aplicativos Flatpak</description>
+    <message>Authentication is required to install Flatpak applications</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para instalar aplicativos Flatpak</message>
+    <icon_name>package-x-generic</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.install-snap">
+    <description>Install Snap applications</description>
+    <description xml:lang="pt_BR">Instalar aplicativos Snap</description>
+    <message>Authentication is required to install Snap applications</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para instalar aplicativos Snap</message>
+    <icon_name>package-x-generic</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.winux.package-manager.clean">
+    <description>Clean package cache</description>
+    <description xml:lang="pt_BR">Limpar cache de pacotes</description>
+    <message>Authentication is required to clean the package cache</message>
+    <message xml:lang="pt_BR">Autenticacao necessaria para limpar o cache de pacotes</message>
+    <icon_name>edit-clear-all</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+</policyconfig>

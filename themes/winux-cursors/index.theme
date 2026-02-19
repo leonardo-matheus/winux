@@ -1,0 +1,6 @@
+[Icon Theme]
+Name=Winux Cursors
+Comment=Modern minimalist cursor theme for Winux
+Comment[pt_BR]=Tema de cursores minimalista moderno para Winux
+Inherits=Adwaita
+Example=default

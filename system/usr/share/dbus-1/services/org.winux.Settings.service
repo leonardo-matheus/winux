@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.winux.Settings
+Exec=/usr/bin/winux-settings --gapplication-service
+SystemdService=winux-settings.service

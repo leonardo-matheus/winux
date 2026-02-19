@@ -8,13 +8,13 @@ Name[fr]=Bienvenue sur Winux
 Name[de]=Willkommen bei Winux
 GenericName=Welcome Application
 GenericName[pt_BR]=Aplicativo de Boas-vindas
-Comment=Get started with Winux OS
-Comment[pt_BR]=Comece a usar o Winux OS
-Comment[es]=Comience con Winux OS
-Comment[fr]=Commencez avec Winux OS
-Comment[de]=Erste Schritte mit Winux OS
-Keywords=welcome;help;about;tour;guide;introduction;getting started;
-Keywords[pt_BR]=bem-vindo;ajuda;sobre;tour;guia;introducao;
+Comment=Get started with Winux OS - tour, setup, and tips
+Comment[pt_BR]=Comece a usar o Winux OS - tour, configuracao e dicas
+Comment[es]=Comience con Winux OS - tour, configuracion y consejos
+Comment[fr]=Commencez avec Winux OS - tour, configuration et astuces
+Comment[de]=Erste Schritte mit Winux OS - Tour, Einrichtung und Tipps
+Keywords=welcome;help;about;tour;guide;introduction;getting started;setup;first;new;
+Keywords[pt_BR]=bem-vindo;ajuda;sobre;tour;guia;introducao;comecar;configuracao;primeiro;novo;
 Exec=/usr/bin/winux-welcome
 Icon=winux-welcome
 Terminal=false
@@ -25,8 +25,7 @@ X-GNOME-SingleWindow=true
 X-KDE-StartupNotify=true
 X-AppStream-Ignore=true
 
-# Actions
-Actions=documentation;forum;report-bug;
+Actions=documentation;forum;report-bug;take-tour;
 
 [Desktop Action documentation]
 Name=Documentation
@@ -45,3 +44,9 @@ Name=Report a Bug
 Name[pt_BR]=Reportar um Bug
 Exec=xdg-open https://github.com/winux-os/winux/issues/new
 Icon=tools-report-bug
+
+[Desktop Action take-tour]
+Name=Take the Tour
+Name[pt_BR]=Fazer o Tour
+Exec=/usr/bin/winux-welcome --tour
+Icon=help-info
