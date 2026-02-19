@@ -11,6 +11,7 @@ name = "winux-documents"
 path = "src/main.rs"
 
 [dependencies]
+# GTK4 Stack
 gtk4 = { workspace = true, features = ["v4_12"] }
 libadwaita = { workspace = true, features = ["v1_4"] }
 glib.workspace = true
@@ -18,11 +19,14 @@ gio.workspace = true
 gdk4.workspace = true
 pango.workspace = true
 
+# Cairo for rendering
+cairo-rs.workspace = true
+
 # PDF rendering
-poppler = "0.4"
+poppler.workspace = true
 
 # Async
-tokio = { workspace = true }
+tokio.workspace = true
 async-channel.workspace = true
 
 # Error handling
@@ -38,19 +42,17 @@ once_cell.workspace = true
 parking_lot.workspace = true
 regex.workspace = true
 dirs.workspace = true
+chrono.workspace = true
 
 # Image handling for rendering
 image.workspace = true
 
 # EPUB support
-epub = "2.1"
+epub.workspace = true
 
 # Archive support for CBZ/CBR
-zip = "0.6"
-unrar = "0.5"
+zip.workspace = true
+unrar.workspace = true
 
 # XML parsing for XPS
-quick-xml = "0.31"
-
-# Cairo for rendering
-cairo-rs = { version = "0.19", features = ["pdf", "svg", "png"] }
+quick-xml.workspace = true
