@@ -1,0 +1,23 @@
+#!/bin/bash
+# Winux OS Session Starter
+
+# Set environment
+export XDG_CURRENT_DESKTOP=Winux
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=winux
+export DESKTOP_SESSION=winux
+
+# Source user environment
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+
+# Start Winux compositor
+# Falls back to weston if winux-compositor is not available
+if command -v winux-compositor &> /dev/null; then
+    exec winux-compositor
+elif command -v weston &> /dev/null; then
+    exec weston
+else
+    # Fallback to GNOME session if available
+    exec gnome-session
+fi

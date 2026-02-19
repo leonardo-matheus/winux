@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Winux
+Comment=Winux OS Desktop Environment
+Exec=/usr/bin/winux-session
+Type=Application
+DesktopNames=Winux

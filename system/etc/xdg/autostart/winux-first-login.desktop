@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Winux First Login Setup
+Exec=/etc/winux/scripts/first-login-dev-setup.sh
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+OnlyShowIn=Winux;GNOME;

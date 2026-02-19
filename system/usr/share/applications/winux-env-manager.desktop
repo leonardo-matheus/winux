@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Environment Manager
+Name[pt_BR]=Gerenciador de Ambiente
+Comment=Manage system environment variables
+Comment[pt_BR]=Gerencie variaveis de ambiente do sistema
+Exec=winux-env-manager
+Icon=preferences-system-environment
+Terminal=false
+Categories=System;Settings;
+Keywords=environment;variables;path;config;
+StartupNotify=true

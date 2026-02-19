@@ -1,0 +1,6 @@
+# Winux OS Keyboard Configuration
+XKBMODEL="pc105"
+XKBLAYOUT="br,us"
+XKBVARIANT="abnt2,"
+XKBOPTIONS="grp:alt_shift_toggle"
+BACKSPACE="guess"

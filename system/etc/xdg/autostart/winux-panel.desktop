@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Winux Panel
+Exec=winux-panel
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Phase=Desktop

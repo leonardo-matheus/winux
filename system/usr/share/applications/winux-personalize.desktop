@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Personalize
+Name[pt_BR]=Personalizar
+Comment=Personalize your Winux experience
+Comment[pt_BR]=Personalize sua experiencia Winux
+Exec=winux-personalize
+Icon=preferences-desktop-theme
+Terminal=false
+Categories=System;Settings;
+Keywords=theme;style;windows;mac;linux;personalize;
+StartupNotify=true

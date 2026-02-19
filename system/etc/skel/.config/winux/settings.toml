@@ -1,0 +1,42 @@
+# Winux OS User Settings
+# Auto-generated configuration file
+
+[system]
+language = "pt_BR"
+region = "Brazil"
+timezone = "America/Sao_Paulo"
+
+[desktop]
+# Interface mode: "windows", "linux", "macos"
+mode = "windows"
+icons_on_desktop = true
+show_home_folder = true
+show_trash = true
+
+[appearance]
+theme = "dark"
+accent_color = "#58a6ff"
+icon_theme = "Papirus"
+cursor_theme = "Adwaita"
+font = "Noto Sans"
+font_size = 11
+
+[panel]
+position = "bottom"
+height = 48
+autohide = false
+show_clock = true
+show_tray = true
+
+[window]
+# Window button style: "classic", "adwaita", "traffic-lights"
+button_style = "classic"
+button_position = "right"
+
+[performance]
+mode = "balanced"
+animations = true
+
+[developer]
+setup_complete = false
+auto_activate_venv = true

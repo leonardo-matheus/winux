@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=About Winux
+Name[pt_BR]=Sobre o Winux
+Comment=System information and version
+Comment[pt_BR]=Informacoes do sistema e versao
+Exec=winux-about
+Icon=help-about
+Terminal=false
+Categories=System;
+Keywords=about;info;version;system;
+StartupNotify=true
