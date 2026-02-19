@@ -3,48 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Winux OS v1.2 Blaze - Sistema operacional Linux baseado em Ubuntu 24.04 LTS. AI Assistant integrado, sincronizacao na nuvem, integracao com smartphone e muito mais.">
-    <meta name="keywords" content="Winux, Linux, Ubuntu, Operating System, Gaming, Developer, Wine, Proton, Desktop, AI, Cloud, Smartphone">
-    <meta name="author" content="Winux Team">
+    <meta name="description" content="Winux OS v1.2 Blaze - Linux OS com AI integrada para desenvolvedores e gamers">
+    <title>Winux OS v1.2 Blaze - Linux for Developers</title>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Winux OS v1.2 Blaze - Linux Gaming &amp; Developer Edition">
-    <meta property="og:description" content="Sistema operacional Linux completo com AI Assistant, Cloud Sync, integracao smartphone e 48 apps nativos.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://winux.dev">
-    <meta property="og:image" content="assets/images/og-image.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Winux OS v1.2 Blaze">
-    <meta name="twitter:description" content="Linux OS para gamers e desenvolvedores. AI integrada, Cloud Sync, 48 apps nativos.">
-
-    <title>Winux OS v1.2 Blaze - Linux Gaming &amp; Developer Edition</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/qL5vpSJX/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* v1.2 Blaze Brand Colors */
         :root {
-            --winux-cyan: #00d4ff;
-            --winux-magenta: #ff00ff;
-            --winux-green: #00ff88;
-            --winux-dark: #0a0a0f;
-            --winux-card: #12121a;
+            --cyan: #00d4ff;
+            --magenta: #ff00ff;
+            --green: #00ff88;
+            --purple: #8b5cf6;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --card: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.08);
+            --text: #e4e4e7;
+            --text-muted: #71717a;
         }
 
-        /* ==================== RESPONSIVE BASE ==================== */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
@@ -53,37 +34,147 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: var(--winux-dark);
-            color: #fff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--darker);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--cyan); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(255, 0, 255, 0.3); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* ==================== UTILITIES ==================== */
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
+        .gradient-text {
+            background: linear-gradient(135deg, var(--cyan), var(--magenta), var(--green));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 4s ease infinite;
         }
 
-        /* ==================== NAVIGATION RESPONSIVE ==================== */
+        .glass {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        /* ==================== NAVBAR ==================== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.9);
-            backdrop-filter: blur(20px);
+            z-index: 100;
             padding: 16px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 8, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
@@ -92,61 +183,92 @@
             justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        .nav-logo {
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: #fff;
+            color: white;
             font-weight: 700;
             font-size: 20px;
         }
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-            margin: 0;
-            padding: 0;
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
         }
 
-        .nav-link {
-            color: #aaa;
+        .logo-badge {
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav-link:hover {
-            color: var(--winux-cyan);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-actions {
             display: flex;
             gap: 12px;
+            align-items: center;
         }
 
         .nav-toggle {
             display: none;
-            flex-direction: column;
-            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
         }
 
         .nav-toggle span {
+            display: block;
             width: 24px;
             height: 2px;
-            background: #fff;
-            transition: all 0.3s;
+            background: white;
+            margin: 6px 0;
+            transition: all 0.3s ease;
         }
 
-        /* ==================== BUTTONS RESPONSIVE ==================== */
+        /* ==================== BUTTONS ==================== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -156,691 +278,784 @@
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
-            transition: all 0.3s;
-            border: none;
             cursor: pointer;
-            white-space: nowrap;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
-            color: #fff;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
         }
 
-        .btn-ghost {
+        .btn-secondary {
             background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid var(--border);
         }
 
-        .btn-ghost:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--winux-cyan);
-            border: 1px solid var(--winux-cyan);
-        }
-
-        .btn-outline:hover {
-            background: var(--winux-cyan);
-            color: #000;
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--cyan);
         }
 
         .btn-lg {
             padding: 16px 32px;
             font-size: 16px;
+            border-radius: 16px;
         }
 
-        /* ==================== HERO RESPONSIVE ==================== */
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ==================== HERO ==================== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 100px 20px 60px;
             position: relative;
+            padding: 120px 0 80px;
             overflow: hidden;
-            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
         }
 
         .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
+            inset: 0;
+            z-index: -1;
         }
 
         .hero-gradient {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.08) 0%, transparent 50%);
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite;
         }
 
-        .hero > .container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 100%;
+        .hero-gradient-2 {
+            position: absolute;
+            bottom: -30%;
+            right: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
         }
 
         .hero-content {
-            max-width: 800px;
-            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            padding: 8px 16px;
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid rgba(0, 212, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--cyan);
             margin-bottom: 24px;
-            color: var(--winux-cyan);
         }
 
-        .badge-dot {
+        .hero-badge-dot {
             width: 8px;
             height: 8px;
-            background: var(--winux-cyan);
+            background: var(--cyan);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
         .hero-title {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(40px, 6vw, 72px);
             font-weight: 800;
-            line-height: 1.1;
-            margin: 0 0 24px;
-            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
         }
 
         .hero-description {
-            font-size: clamp(0.95rem, 2.5vw, 1.125rem);
-            color: #aaa;
-            margin: 0 auto 32px;
+            font-size: 18px;
+            color: var(--text-muted);
             line-height: 1.7;
-            max-width: 600px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
             margin-bottom: 40px;
         }
 
-        .hero-image {
-            display: none;
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        .hero-scroll {
-            display: none;
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
         }
 
-        /* ==================== SECTIONS RESPONSIVE ==================== */
-        section {
-            padding: 80px 0;
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero-stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Terminal */
+        .hero-visual {
+            position: relative;
+        }
+
+        .terminal {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #febc2e; }
+        .terminal-dot.green { background: #28c840; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .terminal-prompt {
+            color: var(--cyan);
+        }
+
+        .terminal-command {
+            color: white;
+        }
+
+        .terminal-output {
+            color: var(--text-muted);
+            padding-left: 28px;
+        }
+
+        .terminal-success {
+            color: var(--green);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--cyan);
+            animation: blink 1s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        /* ==================== FEATURES ==================== */
+        .section {
+            padding: 120px 0;
+            position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 48px;
+            max-width: 700px;
+            margin: 0 auto 80px;
         }
 
         .section-tag {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--winux-cyan);
-            padding: 6px 16px;
-            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 100px;
             font-size: 12px;
             font-weight: 600;
+            color: var(--purple);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 800;
-            margin: 0 0 16px;
-            line-height: 1.2;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .section-description {
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            color: #888;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
 
-        /* ==================== FEATURES GRID RESPONSIVE ==================== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
         .feature-card {
-            background: var(--winux-card);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s;
+            padding: 40px 32px;
+            border-radius: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--winux-cyan);
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .feature-icon svg {
-            width: 28px;
-            height: 28px;
+            margin-bottom: 24px;
+            font-size: 28px;
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
-            margin: 0 0 12px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
-            color: #888;
-            font-size: 0.9rem;
-            margin: 0;
+            color: var(--text-muted);
+            font-size: 15px;
             line-height: 1.6;
         }
 
-        /* ==================== FOOTER RESPONSIVE ==================== */
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--green);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* ==================== APPS SHOWCASE ==================== */
+        .apps-section {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 16px;
+        }
+
+        .app-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--cyan);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .app-name {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .apps-category {
+            margin-bottom: 48px;
+        }
+
+        .apps-category-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .apps-category-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ==================== CTA / DOWNLOAD ==================== */
+        .cta-section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 0, 255, 0.05) 100%);
+        }
+
+        .cta-card {
+            position: relative;
+            padding: 80px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 212, 255, 0.1), transparent, rgba(255, 0, 255, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        .cta-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .cta-info-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--green);
+        }
+
+        /* ==================== FOOTER ==================== */
         .footer {
-            background: #0a0a0f;
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
         }
 
-        .footer-brand {
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 20px 0;
             max-width: 300px;
         }
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        .footer-description {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .social-links {
+        .footer-social {
             display: flex;
             gap: 12px;
         }
 
-        .social-links a {
+        .footer-social a {
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.05);
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            color: #888;
-            transition: all 0.3s;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: var(--winux-cyan);
-            color: #000;
-        }
-
-        .social-links svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+        .footer-social a:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            transform: translateY(-2px);
         }
 
         .footer-column h4 {
             font-size: 14px;
-            margin: 0 0 16px;
-            color: #fff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
         }
 
         .footer-column ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
         .footer-column li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-column a {
-            color: #888;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .footer-column a:hover {
-            color: var(--winux-cyan);
+            color: var(--cyan);
         }
 
         .footer-bottom {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            text-align: center;
-            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
             font-size: 14px;
+            color: var(--text-muted);
         }
 
-        /* ==================== MOBILE: < 768px ==================== */
-        @media (max-width: 767px) {
-            .nav-menu {
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(10, 10, 15, 0.98);
-                flex-direction: column;
-                padding: 20px;
-                gap: 16px;
             }
 
-            .nav-menu.active {
-                display: flex;
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .nav-actions .btn-ghost {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
                 display: none;
             }
 
             .nav-toggle {
-                display: flex;
+                display: block;
             }
 
-            .hero {
-                padding: 100px 16px 60px;
-                min-height: auto;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-title {
-                font-size: 1.8rem;
-                line-height: 1.2;
-            }
-
-            .hero-description {
-                font-size: 0.9rem;
-                padding: 0 10px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 12px;
-            }
-
-            .hero-actions .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 14px 20px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                margin-top: 30px;
-            }
-
-            .stat-card {
-                padding: 14px 10px;
-            }
-
-            .stat-card .stat-value {
-                font-size: 1.3rem !important;
-            }
-
-            .stat-card .stat-label {
-                font-size: 10px !important;
-            }
-
-            section {
-                padding: 50px 16px;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .feature-card {
-                padding: 20px;
-            }
-
-            .apps-grid-full {
-                grid-template-columns: repeat(4, 1fr) !important;
-                gap: 8px !important;
-            }
-
-            .app-item {
-                padding: 10px 4px !important;
-            }
-
-            .app-item .icon {
-                width: 36px !important;
-                height: 36px !important;
-                border-radius: 10px !important;
-            }
-
-            .app-item .icon svg {
-                width: 18px !important;
-                height: 18px !important;
-            }
-
-            .app-item .name {
-                font-size: 8px !important;
-                margin-top: 6px !important;
-            }
-
-            .apps-category {
-                margin-bottom: 24px !important;
-            }
-
-            .apps-category h3 {
-                font-size: 11px !important;
-                margin-bottom: 12px !important;
-            }
-
-            .footer-links {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 24px;
-            }
-
-            .footer-brand {
-                text-align: center;
-                max-width: 100%;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .download-card {
-                flex-direction: column !important;
-                padding: 24px !important;
-            }
-
-            .download-visual {
+            .nav-actions .btn-secondary {
                 display: none;
             }
 
-            .download-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .download-buttons .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .download-info {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .faq-question span {
-                font-size: 13px;
-            }
-
-            .faq-item {
-                padding: 16px !important;
-            }
-
-            .blaze-badge {
-                font-size: 10px;
-                padding: 3px 8px;
-            }
-        }
-
-        /* ==================== TABLET: 768px - 1024px ==================== */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .nav-menu {
-                gap: 20px;
-            }
-
-            .nav-link {
-                font-size: 13px;
-            }
-
             .hero {
-                padding: 120px 24px 80px;
+                padding: 100px 0 60px;
             }
 
             .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .apps-grid-full {
-                grid-template-columns: repeat(6, 1fr) !important;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 2fr;
-            }
-        }
-
-        /* ==================== DESKTOP: > 1024px ==================== */
-        @media (min-width: 1025px) {
-            .hero {
-                padding: 120px 40px 80px;
-            }
-
-            .hero-title {
-                font-size: 3.5rem;
-            }
-
-            .hero-content {
-                max-width: 900px;
+                font-size: 32px;
+                letter-spacing: -1px;
             }
 
             .hero-description {
-                font-size: 1.125rem;
-                max-width: 700px;
+                font-size: 16px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-                max-width: 800px;
-                margin: 40px auto 0;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+            }
+
+            .hero-stat {
+                text-align: center;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 48px;
             }
 
             .features-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
             }
 
-            .apps-grid-full {
-                grid-template-columns: repeat(8, 1fr) !important;
+            .feature-card {
+                padding: 28px 24px;
+            }
+
+            .apps-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+            }
+
+            .app-card {
+                padding: 14px 8px;
+            }
+
+            .app-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .app-name {
+                font-size: 10px;
+            }
+
+            .cta-card {
+                padding: 48px 24px;
+            }
+
+            .cta-info {
+                flex-direction: column;
+                gap: 16px;
             }
 
             .footer-grid {
-                grid-template-columns: 1fr 2fr;
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-        }
 
-        /* ==================== ORIGINAL STYLES ==================== */
-        .gradient-text-blaze {
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta), var(--winux-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-        .blaze-badge {
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+            .footer-brand p {
+                text-align: center;
+            }
 
-        .feature-new {
-            position: relative;
-        }
+            .footer-social {
+                justify-content: center;
+            }
 
-        .feature-new::after {
-            content: 'NEW';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-
-        .ai-glow {
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), 0 0 60px rgba(255, 0, 255, 0.2);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 16px;
-            margin-top: 40px;
-        }
-
-        .stat-card {
-            background: var(--winux-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-card .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--winux-cyan), var(--winux-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-card .stat-label {
-            color: #888;
-            font-size: 14px;
-            margin-top: 8px;
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <img src="https://i.ibb.co/qL5vpSJX/logo.png" alt="Winux Logo" class="logo-icon" style="width: 40px; height: 40px; border-radius: 10px;">
+            <a href="#" class="logo">
+                <img src="https://i.ibb.co/qL5vpSJX/logo.png" alt="Winux">
                 <span>Winux</span>
-                <span class="blaze-badge">v1.2 Blaze</span>
+                <span class="logo-badge">v1.2</span>
             </a>
 
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#ai" class="nav-link">AI Assistant</a></li>
-                <li><a href="#apps" class="nav-link">Apps</a></li>
-                <li><a href="#connect" class="nav-link">Connect</a></li>
-                <li><a href="#download" class="nav-link">Download</a></li>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="https://github.com/leonardo-matheus/winux" target="_blank">GitHub</a></li>
             </ul>
 
             <div class="nav-actions">
-                <a href="https://github.com/leonardo-matheus/winux" class="btn btn-ghost" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    GitHub
+                <a href="https://github.com/leonardo-matheus/winux" class="btn btn-secondary" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    Star
                 </a>
                 <a href="#download" class="btn btn-primary">Download</a>
             </div>
 
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <button class="nav-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -848,665 +1063,248 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- Hero -->
+    <section class="hero">
         <div class="hero-bg">
             <div class="hero-gradient"></div>
+            <div class="hero-gradient-2"></div>
             <div class="hero-grid"></div>
         </div>
 
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge animate-fade-in">
-                    <span class="badge-dot"></span>
-                    <span>v1.2 Blaze - AI Powered</span>
-                </div>
-
-                <h1 class="hero-title animate-fade-in-up">
-                    Linux OS<br>
-                    <span class="gradient-text-blaze">Com Inteligencia Artificial</span>
-                </h1>
-
-                <p class="hero-description animate-fade-in-up delay-1">
-                    Winux OS v1.2 Blaze traz AI Assistant integrado com GPT-4o, sincronizacao na nuvem,
-                    integracao com smartphone e 48 apps nativos em Rust/GTK4. O sistema operacional Linux
-                    mais avancado para gamers e desenvolvedores.
-                </p>
-
-                <div class="hero-actions animate-fade-in-up delay-2">
-                    <a href="#download" class="btn btn-primary btn-lg ai-glow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        Download v1.2 Blaze
-                    </a>
-                    <a href="#ai" class="btn btn-ghost btn-lg">
-                        Conhecer AI Assistant
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                            <polyline points="12 5 19 12 12 19"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="stats-grid animate-fade-in-up delay-3">
-                    <div class="stat-card">
-                        <span class="stat-value">48</span>
-                        <span class="stat-label">Apps Nativos</span>
+                <div class="hero-text animate-fade-up">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        <span>v1.2 Blaze - AI Powered</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-value">190K+</span>
-                        <span class="stat-label">Linhas de Codigo</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-value">7</span>
-                        <span class="stat-label">Temas Inclusos</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-value">6</span>
-                        <span class="stat-label">Provedores Cloud</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="hero-image animate-fade-in-up delay-2">
-                <div class="hero-mockup ai-glow">
-                    <div class="mockup-header">
-                        <div class="mockup-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <span class="mockup-title">Winux AI Assistant</span>
-                    </div>
-                    <div class="mockup-content">
-                        <div class="terminal-line">
-                            <span class="terminal-prompt">user</span>
-                            <span class="terminal-symbol">:</span>
-                            <span class="terminal-command">Como otimizo meu codigo Rust?</span>
-                        </div>
-                        <div class="terminal-output">
-                            <span class="terminal-success">AI</span> Analisando seu codigo...
-                        </div>
-                        <div class="terminal-output">
-                            <span class="terminal-success">1.</span> Use iteradores ao inves de loops
-                        </div>
-                        <div class="terminal-output">
-                            <span class="terminal-success">2.</span> Prefira &amp;str sobre String
-                        </div>
-                        <div class="terminal-output">
-                            <span class="terminal-success">3.</span> Use Arc para dados compartilhados
-                        </div>
-                        <div class="terminal-output terminal-complete">
-                            <span class="terminal-success">Done</span> Sugestoes aplicadas!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <h1 class="hero-title">
+                        Linux para<br>
+                        <span class="gradient-text">Desenvolvedores</span>
+                    </h1>
 
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <div class="scroll-indicator"></div>
-        </div>
-    </section>
-
-    <!-- AI Assistant Section -->
-    <section class="features" id="ai" style="background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta)); color: white;">NEW in v1.2</span>
-                <h2 class="section-title">AI Assistant<br><span class="gradient-text-blaze">Integrado ao Sistema</span></h2>
-                <p class="section-description">
-                    Assistente de IA com GPT-4o integrado nativamente ao Winux. Ajuda com codigo, comandos,
-                    analise de imagens e muito mais - tudo acessivel pelo atalho Super+Space.
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </div>
-                    <h3>Chat com GPT-4o</h3>
-                    <p>Converse com o modelo mais avancado da OpenAI. Streaming em tempo real, historico de conversas e contexto persistente.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-green));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <polyline points="8 21 12 17 16 21"/>
-                        </svg>
-                    </div>
-                    <h3>Assistente de Codigo</h3>
-                    <p>Gera, explica e refatora codigo em qualquer linguagem. Integrado com seu editor e terminal.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-green), var(--winux-cyan));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <path d="M21 15l-5-5L5 21"/>
-                        </svg>
-                    </div>
-                    <h3>Analise de Imagens</h3>
-                    <p>Envie screenshots ou imagens e receba descricoes, OCR e analises detalhadas usando GPT-4o Vision.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6b6b, var(--winux-magenta));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Comandos do Sistema</h3>
-                    <p>Peca comandos em linguagem natural: "como vejo processos usando mais memoria?" e receba o comando pronto.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2 class="section-title">Tudo que voce precisa,<br><span class="gradient-text-blaze">pronto para usar</span></h2>
-                <p class="section-description">
-                    Um sistema operacional Linux completo com 48 apps nativos, otimizado para gamers e desenvolvedores.
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3>Gaming Otimizado</h3>
-                    <p>Wine 9.0, Proton GE, DXVK e GameMode pre-configurados. Launcher de games integrado com suporte a Steam, Epic e GOG.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-green));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                    <h3>Cloud Sync</h3>
-                    <p>Sincronize arquivos com Google Drive, OneDrive, Dropbox, AWS S3, Azure Blob e provedores WebDAV.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-cyan));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <rect x="5" y="2" width="14" height="20" rx="2"/>
-                            <line x1="12" y1="18" x2="12" y2="18.01"/>
-                        </svg>
-                    </div>
-                    <h3>Winux Connect</h3>
-                    <p>Integre seu smartphone Android. Notificacoes, SMS, transferencia de arquivos e espelhamento de tela.</p>
-                </div>
-
-                <div class="feature-card glass-card feature-new" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--winux-green), var(--winux-magenta));">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <polyline points="16 18 22 12 16 6"/>
-                            <polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <h3>Shell Plugins</h3>
-                    <p>Sistema de plugins para o shell com hot reload, API Lua e 6 plugins inclusos (weather, system-monitor, etc).</p>
-                </div>
-
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3>Developer Ready</h3>
-                    <p>Java 8/11/17/21, Node.js, Python, Rust, Go, Docker e IDEs pre-instalados. Mobile Builder para iOS/Android.</p>
-                </div>
-
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                        </svg>
-                    </div>
-                    <h3>48 Apps Nativos</h3>
-                    <p>File manager, terminal, settings, music player, video player, calendar, mail, e muito mais - todos em Rust/GTK4.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Winux Connect Section -->
-    <section class="features" id="connect" style="background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-cyan)); color: white;">Smartphone</span>
-                <h2 class="section-title">Winux Connect<br><span class="gradient-text-blaze">Seu telefone integrado</span></h2>
-                <p class="section-description">
-                    Conecte seu smartphone Android ao Winux. Receba notificacoes, envie SMS, transfira arquivos
-                    e ate espelhe a tela - tudo sem fio via Wi-Fi.
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                        </svg>
-                    </div>
-                    <h3>Notificacoes</h3>
-                    <p>Veja notificacoes do seu telefone diretamente no desktop. Responda mensagens sem pegar o celular.</p>
-                </div>
-
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, #00c853, #69f0ae);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                    </div>
-                    <h3>SMS/Mensagens</h3>
-                    <p>Envie e receba SMS pelo computador. Suporte a conversas em grupo e anexos de midia.</p>
-                </div>
-
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6d00, #ffab00);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h3>Transferencia</h3>
-                    <p>Arraste e solte arquivos entre o PC e o telefone. Velocidade de ate 50MB/s via Wi-Fi local.</p>
-                </div>
-
-                <div class="feature-card glass-card" data-animate>
-                    <div class="feature-icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3>Screen Mirror</h3>
-                    <p>Espelhe a tela do seu telefone no desktop. Controle apps Android diretamente pelo mouse e teclado.</p>
-                </div>
-            </div>
-
-            <div class="apps-cta" style="margin-top: 40px;">
-                <p>App Android disponivel na Play Store</p>
-                <a href="#download" class="btn btn-outline" style="border-color: var(--winux-cyan); color: var(--winux-cyan);">Baixar Winux Connect</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Apps Section -->
-    <section class="apps" id="apps">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Apps</span>
-                <h2 class="section-title">48 Apps Nativos<br><span class="gradient-text-blaze">Escritos em Rust</span></h2>
-                <p class="section-description">
-                    Todos os apps essenciais escritos em Rust com GTK4/Libadwaita. Performance nativa, design moderno e integracao perfeita.
-                </p>
-            </div>
-
-            <!-- Apps Grid - All 48 Apps -->
-            <style>
-                .apps-grid-full {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                    gap: 16px;
-                    margin-bottom: 40px;
-                }
-                .app-item {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 16px 8px;
-                    background: rgba(255,255,255,0.03);
-                    border: 1px solid rgba(255,255,255,0.08);
-                    border-radius: 16px;
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-                }
-                .app-item:hover {
-                    background: rgba(255,255,255,0.08);
-                    border-color: var(--winux-cyan);
-                    transform: translateY(-4px);
-                }
-                .app-item .icon {
-                    width: 48px;
-                    height: 48px;
-                    border-radius: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 8px;
-                }
-                .app-item .icon svg {
-                    width: 24px;
-                    height: 24px;
-                }
-                .app-item .name {
-                    font-size: 11px;
-                    color: #aaa;
-                    text-align: center;
-                    line-height: 1.2;
-                }
-                .apps-category {
-                    margin-bottom: 32px;
-                }
-                .apps-category h3 {
-                    font-size: 14px;
-                    color: var(--winux-cyan);
-                    margin-bottom: 16px;
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                }
-            </style>
-
-            <!-- AI & Cloud -->
-            <div class="apps-category">
-                <h3>AI & Cloud</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/></svg></div><span class="name">Winux AI</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #34a853);"><svg viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div><span class="name">Cloud Sync</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, var(--winux-magenta), var(--winux-green));"><svg viewBox="0 0 24 24" fill="white"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div><span class="name">Connect</span></div>
-                </div>
-            </div>
-
-            <!-- Core Apps -->
-            <div class="apps-category">
-                <h3>Core Apps</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4285f4, #34a853);"><svg viewBox="0 0 24 24" fill="white"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div><span class="name">Files</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"><svg viewBox="0 0 24 24" fill="white"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><span class="name">Terminal</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #607d8b, #455a64);"><svg viewBox="0 0 24 24" fill="white"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><span class="name">Settings</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);"><svg viewBox="0 0 24 24" fill="white"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg></div><span class="name">Store</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #00bcd4);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div><span class="name">Monitor</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);"><svg viewBox="0 0 24 24" fill="white"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div><span class="name">Edit</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #f06292);"><svg viewBox="0 0 24 24" fill="white"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="name">Image</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div><span class="name">Player</span></div>
-                </div>
-            </div>
-
-            <!-- Productivity -->
-            <div class="apps-category">
-                <h3>Produtividade</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);"><svg viewBox="0 0 24 24" fill="white"><path d="M3 18h12v-2H3v2zM3 6v2h18V6H3zm0 7h18v-2H3v2z"/></svg></div><span class="name">Notes</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg></div><span class="name">Calendar</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #03a9f4);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><span class="name">Contacts</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #f44336, #e91e63);"><svg viewBox="0 0 24 24" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg></div><span class="name">Documents</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #3f51b5, #2196f3);"><svg viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><span class="name">Mail</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #607d8b, #455a64);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2V9h2v8zm4 0h-2V5h2v12zm-8 0H6v-4h2v4z"/></svg></div><span class="name">Calculator</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #009688);"><svg viewBox="0 0 24 24" fill="white"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div><span class="name">Clock</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff9800, #ffc107);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg></div><span class="name">Weather</span></div>
-                </div>
-            </div>
-
-            <!-- Media -->
-            <div class="apps-category">
-                <h3>Multimidia</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #1db954, #191414);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><span class="name">Music</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);"><svg viewBox="0 0 24 24" fill="white"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span class="name">Video</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9z"/></svg></div><span class="name">Camera</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #f44336, #e91e63);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></div><span class="name">Recorder</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #f06292);"><svg viewBox="0 0 24 24" fill="white"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div><span class="name">Image</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #795548, #5d4037);"><svg viewBox="0 0 24 24" fill="white"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg></div><span class="name">Fonts</span></div>
-                </div>
-            </div>
-
-            <!-- System Tools -->
-            <div class="apps-category">
-                <h3>Sistema</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #00bcd4);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div><span class="name">Monitor</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);"><svg viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg></div><span class="name">Backup</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #f44336, #e91e63);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div><span class="name">Firewall</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><span class="name">Users</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);"><svg viewBox="0 0 24 24" fill="white"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM7 18V6h10v12H7z"/></svg></div><span class="name">Disks</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #03a9f4);"><svg viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div><span class="name">Network</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #00bcd4);"><svg viewBox="0 0 24 24" fill="white"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg></div><span class="name">Bluetooth</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg></div><span class="name">Printers</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);"><svg viewBox="0 0 24 24" fill="white"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div><span class="name">Power</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #009688);"><svg viewBox="0 0 24 24" fill="white"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div><span class="name">Updater</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #607d8b, #455a64);"><svg viewBox="0 0 24 24" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg></div><span class="name">Logs</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span class="name">Accessibility</span></div>
-                </div>
-            </div>
-
-            <!-- Utilities -->
-            <div class="apps-category">
-                <h3>Utilitarios</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #f06292);"><svg viewBox="0 0 24 24" fill="white"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div><span class="name">Screenshot</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #f44336, #e91e63);"><svg viewBox="0 0 24 24" fill="white"><path d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98z"/></svg></div><span class="name">Screencast</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);"><svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H5V7h7v10zm7 0h-5V7h5v10z"/></svg></div><span class="name">Clipboard</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #795548, #5d4037);"><svg viewBox="0 0 24 24" fill="white"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg></div><span class="name">Archive</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #f44336, #e91e63);"><svg viewBox="0 0 24 24" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9h-2V9H9V7h2V5h2v2h2v2h-2v2z"/></svg></div><span class="name">PDF Viewer</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #009688);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span class="name">Welcome</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #673ab7, #9c27b0);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><span class="name">About</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #e91e63, #f06292);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z"/></svg></div><span class="name">Personalize</span></div>
-                </div>
-            </div>
-
-            <!-- Developer Tools -->
-            <div class="apps-category">
-                <h3>Desenvolvimento</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #009688);"><svg viewBox="0 0 24 24" fill="white"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div><span class="name">Dev Hub</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);"><svg viewBox="0 0 24 24" fill="white"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14z"/></svg></div><span class="name">Builder</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);"><svg viewBox="0 0 24 24" fill="white"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div><span class="name">Mobile Studio</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #607d8b, #455a64);"><svg viewBox="0 0 24 24" fill="white"><path d="M7 5h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/></svg></div><span class="name">Env Manager</span></div>
-                </div>
-            </div>
-
-            <!-- Gaming -->
-            <div class="apps-category">
-                <h3>Gaming</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);"><svg viewBox="0 0 24 24" fill="white"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div><span class="name">Gaming</span></div>
-                </div>
-            </div>
-
-            <!-- Desktop Components -->
-            <div class="apps-category">
-                <h3>Desktop</h3>
-                <div class="apps-grid-full">
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"><svg viewBox="0 0 24 24" fill="white"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div><span class="name">Compositor</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #37474f, #455a64);"><svg viewBox="0 0 24 24" fill="white"><rect x="2" y="4" width="20" height="3" rx="1"/></svg></div><span class="name">Panel</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #2196f3, #03a9f4);"><svg viewBox="0 0 24 24" fill="white"><rect x="4" y="4" width="16" height="16" rx="2"/></svg></div><span class="name">Shell</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta));"><svg viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z"/></svg></div><span class="name">Launcher</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></div><span class="name">Notifications</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #607d8b, #455a64);"><svg viewBox="0 0 24 24" fill="white"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></div><span class="name">Control Center</span></div>
-                    <div class="app-item"><div class="icon" style="background: linear-gradient(135deg, #00bcd4, #009688);"><svg viewBox="0 0 24 24" fill="white"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-2 .9-2 2v4h1.5c1.38 0 2.5 1.12 2.5 2.5S4.88 16 3.5 16H2v4c0 1.1.9 2 2 2h4v-1.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5V22h4c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"/></svg></div><span class="name">Plugins</span></div>
-                </div>
-            </div>
-
-            <div class="apps-cta" style="margin-top: 20px;">
-                <p style="color: var(--winux-cyan); font-size: 24px; font-weight: 700;">48 Apps Nativos em Rust/GTK4</p>
-                            </svg>
-                        </div>
-                        <span class="app-name">Weather</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="apps-cta">
-                <p>E mais 36 apps inclusos: Clock, Contacts, Screenshot, Screen Recorder, PDF Viewer, Archive Manager...</p>
-                <a href="APPS.md" class="btn btn-outline">Ver Todos os Apps</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="download" id="download">
-        <div class="container">
-            <div class="download-card glass-card ai-glow" data-animate>
-                <div class="download-content">
-                    <span class="section-tag" style="background: linear-gradient(135deg, var(--winux-cyan), var(--winux-magenta)); color: white;">Download</span>
-                    <h2 class="section-title">Baixe o Winux v1.2 Blaze</h2>
-                    <p class="download-description">
-                        ISO completa com 48 apps nativos, AI Assistant, Cloud Sync, Winux Connect e todos os
-                        temas inclusos. Baseado no Ubuntu 24.04 LTS com kernel 6.8.
+                    <p class="hero-description">
+                        Sistema operacional com AI integrada (GPT-4o), cloud sync nativo,
+                        integracao com smartphone e 48 apps escritos em Rust.
+                        Feito por devs, para devs.
                     </p>
 
-                    <div class="download-buttons">
-                        <a href="https://gofile.io/d/winux-blaze" class="btn btn-primary btn-lg download-btn ai-glow" target="_blank">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7 10 12 15 17 10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                            Download ISO (3.2 GB)
-                            <span class="btn-badge">v1.2 Blaze</span>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary btn-lg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download ISO
                         </a>
-
-                        <a href="https://github.com/leonardo-matheus/winux/releases" class="btn btn-outline btn-lg" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                            </svg>
-                            GitHub Releases
+                        <a href="#features" class="btn btn-secondary btn-lg">
+                            Explorar Features
                         </a>
                     </div>
 
-                    <div class="download-info">
-                        <div class="info-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                            <span>SHA256 Verificado</span>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">48</div>
+                            <div class="hero-stat-label">Apps Nativos</div>
                         </div>
-                        <div class="info-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                            <span>Ubuntu 24.04 LTS</span>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">190K</div>
+                            <div class="hero-stat-label">Linhas de Rust</div>
                         </div>
-                        <div class="info-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                <line x1="15" y1="9" x2="15.01" y2="9"/>
-                            </svg>
-                            <span>100% Gratuito</span>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">7</div>
+                            <div class="hero-stat-label">Temas</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="download-visual">
-                    <div class="download-illustration">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="100" r="80" stroke="url(#dl-gradient-blaze)" stroke-width="2" stroke-dasharray="10 5"/>
-                            <circle cx="100" cy="100" r="60" fill="url(#dl-gradient-blaze)" fill-opacity="0.1"/>
-                            <path d="M100 60V140M100 140L70 110M100 140L130 110" stroke="url(#dl-gradient-blaze)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <defs>
-                                <linearGradient id="dl-gradient-blaze" x1="0" y1="0" x2="200" y2="200">
-                                    <stop stop-color="#00d4ff"/>
-                                    <stop offset="0.5" stop-color="#ff00ff"/>
-                                    <stop offset="1" stop-color="#00ff88"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                <div class="hero-visual animate-fade-up delay-2">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                            <div class="terminal-title">winux-ai</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-command">winux-ai --help</span>
+                            </div>
+                            <div class="terminal-output">Como otimizo queries SQL?</div>
+                            <div class="terminal-line" style="margin-top: 16px;">
+                                <span class="terminal-prompt">AI</span>
+                                <span class="terminal-success">Analisando...</span>
+                            </div>
+                            <div class="terminal-output">1. Use indices compostos</div>
+                            <div class="terminal-output">2. Evite SELECT *</div>
+                            <div class="terminal-output">3. EXPLAIN ANALYZE</div>
+                            <div class="terminal-line" style="margin-top: 16px;">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-cursor"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <!-- Features -->
+    <section class="section" id="features">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Perguntas<br><span class="gradient-text-blaze">Frequentes</span></h2>
+            <div class="section-header animate-fade-up">
+                <div class="section-tag">Features</div>
+                <h2 class="section-title">Tudo que voce precisa.<br><span class="gradient-text">Nada que nao precisa.</span></h2>
+                <p class="section-description">
+                    Ferramentas modernas integradas nativamente. Zero configuracao, maximo desempenho.
+                </p>
             </div>
 
-            <div class="faq-list">
-                <div class="faq-item glass-card" data-animate>
-                    <button class="faq-question" aria-expanded="false">
-                        <span>O que e o Winux OS v1.2 Blaze?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Winux OS v1.2 Blaze e a versao mais avancada do sistema operacional Linux para gamers e desenvolvedores. Inclui AI Assistant com GPT-4o, sincronizacao na nuvem com 6 provedores, integracao com smartphone via Winux Connect, 48 apps nativos em Rust/GTK4 e muito mais.</p>
-                    </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fade-up delay-1">
+                    <span class="feature-tag">Novo</span>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--cyan), var(--purple));">🤖</div>
+                    <h3>AI Assistant</h3>
+                    <p>GPT-4o integrado nativamente. Ajuda com codigo, comandos, debugging e documentacao. Atalho: Super+Space.</p>
                 </div>
 
-                <div class="faq-item glass-card" data-animate>
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Preciso de conta Azure para usar o AI Assistant?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Sim, o AI Assistant usa Azure OpenAI. Voce precisa criar uma conta Azure gratuita e obter uma chave de API. Configure em ~/.config/winux/ai.toml ou via variaveis de ambiente WINUX_AI_API_KEY e WINUX_AI_ENDPOINT.</p>
-                    </div>
+                <div class="feature-card animate-fade-up delay-2">
+                    <span class="feature-tag">Novo</span>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--magenta), var(--cyan));">☁️</div>
+                    <h3>Cloud Sync</h3>
+                    <p>Sincronize com Google Drive, OneDrive, Dropbox, S3, Azure e WebDAV. Criptografia end-to-end.</p>
                 </div>
 
-                <div class="faq-item glass-card" data-animate>
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Como conecto meu smartphone Android?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Instale o app Winux Connect no seu Android (disponivel na Play Store ou APK incluso). Abra o app no desktop (Menu > Winux Connect), escaneie o QR code com o telefone e pronto! Os dispositivos se conectam automaticamente via Wi-Fi local.</p>
-                    </div>
+                <div class="feature-card animate-fade-up delay-3">
+                    <span class="feature-tag">Novo</span>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--green), var(--cyan));">📱</div>
+                    <h3>Winux Connect</h3>
+                    <p>Integre seu Android. Notificacoes, SMS, transferencia de arquivos e screen mirror via Wi-Fi.</p>
                 </div>
 
-                <div class="faq-item glass-card" data-animate>
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Quais provedores de nuvem sao suportados?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>O Winux Cloud suporta Google Drive, Microsoft OneDrive, Dropbox, Amazon S3, Azure Blob Storage e qualquer servidor WebDAV. Voce pode configurar multiplas contas e sincronizar pastas diferentes com cada provedor.</p>
-                    </div>
+                <div class="feature-card animate-fade-up delay-1">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">🎮</div>
+                    <h3>Gaming Ready</h3>
+                    <p>Wine 9, Proton GE, DXVK e GameMode pre-configurados. Jogue Windows games nativamente.</p>
                 </div>
 
-                <div class="faq-item glass-card" data-animate>
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Quais sao os requisitos do sistema?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Minimo: CPU x86_64 com SSE4.2, 4GB RAM, 40GB disco, GPU com Vulkan 1.1. Recomendado: 16GB RAM, SSD NVMe 100GB+, GPU NVIDIA RTX ou AMD RX 6000+ para gaming e aceleracao de IA.</p>
+                <div class="feature-card animate-fade-up delay-2">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #5f27cd, #00d2d3);">💻</div>
+                    <h3>Dev Environment</h3>
+                    <p>Rust, Go, Node, Python, Java, .NET, Flutter e Android SDK. Docker incluso. Zero setup.</p>
+                </div>
+
+                <div class="feature-card animate-fade-up delay-3">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff9f43, #ee5a24);">🔌</div>
+                    <h3>Shell Plugins</h3>
+                    <p>Sistema de plugins extensivel com hot-reload. API Rust/Lua. 6 plugins inclusos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apps -->
+    <section class="section apps-section" id="apps">
+        <div class="container">
+            <div class="section-header animate-fade-up">
+                <div class="section-tag">48 Apps</div>
+                <h2 class="section-title">Apps nativos em <span class="gradient-text">Rust + GTK4</span></h2>
+                <p class="section-description">
+                    Todos os apps essenciais reescritos do zero. Performance nativa, design consistente.
+                </p>
+            </div>
+
+            <div class="apps-category animate-fade-up">
+                <div class="apps-category-title">Core</div>
+                <div class="apps-grid">
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, var(--cyan), var(--purple));">🤖</div><span class="app-name">AI</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">📁</div><span class="app-name">Files</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #1a1a2e, #4a4a6a);">⬛</div><span class="app-name">Terminal</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">⚙️</div><span class="app-name">Settings</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #11998e, #38ef7d);">📊</div><span class="app-name">Monitor</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #fc4a1a, #f7b733);">✏️</div><span class="app-name">Editor</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);">🖼️</div><span class="app-name">Image</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #f12711, #f5af19);">▶️</div><span class="app-name">Player</span></div>
+                </div>
+            </div>
+
+            <div class="apps-category animate-fade-up delay-1">
+                <div class="apps-category-title">Produtividade</div>
+                <div class="apps-grid">
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #56ab2f, #a8e063);">📝</div><span class="app-name">Notes</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ff9800, #ff5722);">📅</div><span class="app-name">Calendar</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #2196f3, #00bcd4);">👤</div><span class="app-name">Contacts</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #3f51b5, #2196f3);">📧</div><span class="app-name">Mail</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #607d8b, #455a64);">🔢</div><span class="app-name">Calculator</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #00bcd4, #009688);">⏰</div><span class="app-name">Clock</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ffc107, #ff9800);">🌤️</div><span class="app-name">Weather</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">📄</div><span class="app-name">Documents</span></div>
+                </div>
+            </div>
+
+            <div class="apps-category animate-fade-up delay-2">
+                <div class="apps-category-title">Sistema</div>
+                <div class="apps-grid">
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">💾</div><span class="app-name">Backup</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">🛡️</div><span class="app-name">Firewall</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);">👥</div><span class="app-name">Users</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);">💿</div><span class="app-name">Disks</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #2196f3, #03a9f4);">📶</div><span class="app-name">Network</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #3f51b5, #2196f3);">📡</div><span class="app-name">Bluetooth</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">🖨️</div><span class="app-name">Printers</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);">⚡</div><span class="app-name">Power</span></div>
+                </div>
+            </div>
+
+            <div class="apps-category animate-fade-up delay-3">
+                <div class="apps-category-title">Multimidia & Dev</div>
+                <div class="apps-grid">
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #1db954, #191414);">🎵</div><span class="app-name">Music</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);">📷</div><span class="app-name">Camera</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">🎙️</div><span class="app-name">Recorder</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #e91e63, #9c27b0);">📸</div><span class="app-name">Screenshot</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #00bcd4, #009688);">💻</div><span class="app-name">Dev Hub</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">🔨</div><span class="app-name">Builder</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #ff5722, #ff9800);">📱</div><span class="app-name">Mobile Studio</span></div>
+                    <div class="app-card"><div class="app-icon" style="background: linear-gradient(135deg, #9c27b0, #673ab7);">🎮</div><span class="app-name">Gaming</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="cta-section" id="download">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-card animate-fade-up">
+                <h2 class="cta-title">Pronto para <span class="gradient-text">comecar?</span></h2>
+                <p class="cta-description">
+                    Baixe a ISO do Winux v1.2 Blaze. Inclui todos os 48 apps, AI Assistant,
+                    Cloud Sync e ambiente de desenvolvimento completo.
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="https://github.com/leonardo-matheus/winux/releases" class="btn btn-primary btn-lg" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download ISO (3.2 GB)
+                    </a>
+                    <a href="https://github.com/leonardo-matheus/winux" class="btn btn-secondary btn-lg" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="cta-info">
+                    <div class="cta-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        SHA256 Verificado
+                    </div>
+                    <div class="cta-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        Ubuntu 24.04 LTS
+                    </div>
+                    <div class="cta-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        100% Open Source
                     </div>
                 </div>
             </div>
@@ -1518,74 +1316,105 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="footer-logo">
-                        <img src="https://i.ibb.co/qL5vpSJX/logo.png" alt="Winux Logo" style="width: 40px; height: 40px; border-radius: 10px;">
+                    <a href="#" class="logo">
+                        <img src="https://i.ibb.co/qL5vpSJX/logo.png" alt="Winux">
                         <span>Winux</span>
-                        <span class="blaze-badge">v1.2</span>
                     </a>
-                    <p class="footer-description">
-                        Sistema operacional Linux com AI integrada para gamers e desenvolvedores. Open-source e gratuito.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://github.com/winux-os" target="_blank" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                            </svg>
+                    <p>Sistema operacional Linux para desenvolvedores e gamers. Open-source, gratuito, feito com Rust.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/leonardo-matheus/winux" target="_blank" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         </a>
                         <a href="https://twitter.com/winuxos" target="_blank" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
                         <a href="https://discord.gg/winux" target="_blank" aria-label="Discord">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Produto</h4>
-                        <ul>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#ai">AI Assistant</a></li>
-                            <li><a href="#apps">Apps</a></li>
-                            <li><a href="#download">Download</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#apps">Apps</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="CHANGELOG.md">Changelog</a></li>
+                    </ul>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Recursos</h4>
-                        <ul>
-                            <li><a href="https://github.com/leonardo-matheus/winux/wiki" target="_blank">Documentacao</a></li>
-                            <li><a href="CHANGELOG.md">Changelog</a></li>
-                            <li><a href="#faq">FAQ</a></li>
-                            <li><a href="https://github.com/leonardo-matheus/winux/issues" target="_blank">Suporte</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="https://github.com/leonardo-matheus/winux/wiki" target="_blank">Documentacao</a></li>
+                        <li><a href="https://crates.io/search?q=winux" target="_blank">Crates.io</a></li>
+                        <li><a href="https://github.com/leonardo-matheus/winux" target="_blank">Source Code</a></li>
+                        <li><a href="https://github.com/leonardo-matheus/winux/issues" target="_blank">Issues</a></li>
+                    </ul>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Comunidade</h4>
-                        <ul>
-                            <li><a href="https://github.com/leonardo-matheus/winux" target="_blank">GitHub</a></li>
-                            <li><a href="https://discord.gg/winux" target="_blank">Discord</a></li>
-                            <li><a href="https://twitter.com/winuxos" target="_blank">Twitter</a></li>
-                            <li><a href="https://github.com/leonardo-matheus/winux/blob/main/CONTRIBUTING.md" target="_blank">Contribuir</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Comunidade</h4>
+                    <ul>
+                        <li><a href="https://discord.gg/winux" target="_blank">Discord</a></li>
+                        <li><a href="https://twitter.com/winuxos" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com/leonardo-matheus/winux/blob/main/CONTRIBUTING.md" target="_blank">Contribuir</a></li>
+                    </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Winux OS v1.2 Blaze. Open-source sob licenca MIT.</p>
-                <p>Feito com <span class="heart" style="color: var(--winux-magenta);">&#9829;</span> pela comunidade</p>
+                <span>&copy; 2026 Winux OS. MIT License.</span>
+                <span>Feito com 🦀 Rust</span>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle?.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fade-up, .animate-fade').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
