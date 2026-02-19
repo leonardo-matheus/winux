@@ -506,11 +506,37 @@ apt install -y \
     nmap \
     mtr-tiny
 
-# Snap packages (IDEs)
+# Snap packages (IDEs e Ferramentas)
 snap install code --classic || true
 snap install intellij-idea-community --classic || true
 snap install postman || true
 snap install insomnia || true
+snap install discord || true
+
+# Firefox (já vem no Ubuntu, mas garantir)
+apt install -y firefox || true
+
+# Drivers de Rede e Bluetooth adicionais
+apt install -y \
+    firmware-linux-nonfree \
+    linux-firmware \
+    broadcom-sta-dkms \
+    bcmwl-kernel-source \
+    firmware-b43-installer \
+    firmware-realtek \
+    firmware-atheros \
+    firmware-iwlwifi || true
+
+# Bluetooth drivers e tools
+apt install -y \
+    bluez \
+    bluez-tools \
+    bluez-firmware \
+    blueman \
+    pulseaudio-module-bluetooth || true
+
+# Habilitar Bluetooth no boot
+systemctl enable bluetooth
 
 # Docker
 curl -fsSL https://get.docker.com | sh || true

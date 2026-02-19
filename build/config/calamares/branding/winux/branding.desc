@@ -1,15 +1,6 @@
 ---
-# ============================================================================
-# Winux OS - Calamares Branding Configuration
-# Modern Apple-Style Installer
-# ============================================================================
-# SPDX-License-Identifier: GPL-3.0-or-later
-
 componentName: winux
 
-# ============================================================================
-# PRODUCT INFORMATION
-# ============================================================================
 strings:
     productName:         "Winux OS"
     shortProductName:    "Winux"
@@ -18,172 +9,23 @@ strings:
     versionedName:       "Winux OS 1.0"
     shortVersionedName:  "Winux 1.0"
     bootloaderEntryName: "Winux"
-
-    # URLs
-    productUrl:          "https://winux.io"
-    supportUrl:          "https://winux.io/support"
+    productUrl:          "https://winux.org"
+    supportUrl:          "https://github.com/winux-os/winux/issues"
     knownIssuesUrl:      "https://github.com/winux-os/winux/issues"
-    releaseNotesUrl:     "https://winux.io/releases"
-    donateUrl:           "https://winux.io/donate"
+    releaseNotesUrl:     "https://github.com/winux-os/winux/releases"
+    donateUrl:           "https://winux.org/donate"
 
-# ============================================================================
-# IMAGES AND BRANDING ASSETS
-# ============================================================================
 images:
-    # Main logo (displayed in sidebar and welcome)
-    productLogo:         "winux-logo.svg"
-
-    # Small icon (window icon, etc.)
-    productIcon:         "winux-icon.svg"
-
-    # Welcome screen background
+    productBanner:       "banner.png"
+    productIcon:         "icon.png"
+    productLogo:         "logo.png"
+    productWallpaper:    "wallpaper.png"
     productWelcome:      "welcome.png"
 
-    # Wallpaper preview
-    productWallpaper:    "wallpaper.png"
-
-# ============================================================================
-# SLIDESHOW CONFIGURATION
-# ============================================================================
 slideshow:               "show.qml"
-slideshowAPI:            2
 
-# ============================================================================
-# STYLE CONFIGURATION (Apple-inspired dark theme)
-# ============================================================================
 style:
-    # Sidebar styling
-    sidebarBackground:    "#1c1c1e"
-    sidebarText:          "rgba(255, 255, 255, 0.6)"
-    sidebarTextSelect:    "#0a84ff"
-    sidebarTextHighlight: "#ffffff"
-    sidebarTextCurrent:   "#0a84ff"
-
-# Custom stylesheet
-stylesheet:               "stylesheet.qss"
-
-# ============================================================================
-# WINDOW CONFIGURATION
-# ============================================================================
-
-# Window behavior: normal, fullscreen, noexpand
-windowExpanding:    noexpand
-
-# Fixed window size (width x height)
-windowSize:         1024px,680px
-
-# Minimum window size
-windowMinimum:      800px,520px
-
-# Window placement: center, free
-windowPlacement:    center
-
-# ============================================================================
-# SIDEBAR CONFIGURATION
-# ============================================================================
-
-# Sidebar type: widget (classic), qml (custom QML), none
-sidebar: widget
-
-# Show step numbers in sidebar
-sidebarWidth: 220
-
-# ============================================================================
-# WELCOME PAGE CONFIGURATION
-# ============================================================================
-
-# Use Calamares default welcome style (false = custom)
-welcomeStyleCalamares:   false
-
-# Expand logo on welcome page
-welcomeExpandingLogo:    true
-
-# ============================================================================
-# NAVIGATION CONFIGURATION
-# ============================================================================
-
-# Allow returning to previous steps by clicking sidebar
-navigationReturnBySteppingBack: false
-
-# ============================================================================
-# STRINGS FOR UI ELEMENTS
-# ============================================================================
-strings:
-    # Window title
-    windowTitle:         "Install Winux OS"
-
-    # Button labels
-    back:                "Back"
-    next:                "Continue"
-    cancel:              "Cancel"
-    install:             "Install"
-    done:                "Done"
-
-    # Welcome page
-    welcomeTitle:        "Welcome to Winux OS"
-    welcomeMessage:      "A modern, beautiful, and powerful Linux distribution designed for everyone."
-
-    # Language selection
-    selectLanguage:      "Select your language"
-
-    # Locale selection
-    selectLocale:        "Select your region"
-    selectTimezone:      "Select your timezone"
-
-    # Keyboard
-    selectKeyboard:      "Select your keyboard layout"
-
-    # Partitioning
-    partitionTitle:      "Where to install"
-    partitionMessage:    "Choose where you want to install Winux OS"
-
-    # User creation
-    createUserTitle:     "Create your account"
-    createUserMessage:   "Enter your name and create a password"
-    usernameLabel:       "Username"
-    passwordLabel:       "Password"
-    confirmPasswordLabel: "Confirm password"
-    fullNameLabel:       "Full name"
-    hostnameLabel:       "Computer name"
-
-    # Installation
-    installTitle:        "Installing Winux OS"
-    installMessage:      "Please wait while we install your new system"
-
-    # Finish
-    finishTitle:         "Installation Complete"
-    finishMessage:       "Winux OS has been installed successfully. Restart to begin using your new system."
-    restartNow:          "Restart Now"
-    restartLater:        "Continue Testing"
-
-    # Error messages
-    errorTitle:          "Installation Error"
-    errorGeneric:        "An error occurred during installation."
-
-    # Requirements
-    requirementsTitle:   "System Requirements"
-    requirementsMessage: "Your system meets all requirements"
-    requirementsFailed:  "Some requirements are not met"
-
-    # Disk space
-    diskSpaceRequired:   "Required disk space"
-    diskSpaceAvailable:  "Available disk space"
-
-    # RAM
-    ramRequired:         "Required RAM"
-    ramAvailable:        "Available RAM"
-
-# ============================================================================
-# UPLOAD SERVER (for installation logs)
-# ============================================================================
-# uploadServer:
-#     type:    fiche
-#     url:     "https://logs.winux.io"
-#     sizeLimit: -1
-
-# ============================================================================
-# DEBUG OPTIONS (for development only)
-# ============================================================================
-# debug:
-#     enabled: false
-#     showDebugger: false
+   sidebarBackground:    "#161b22"
+   sidebarText:          "#c9d1d9"
+   sidebarTextSelect:    "#58a6ff"
+   sidebarTextHighlight: "#79c0ff"
