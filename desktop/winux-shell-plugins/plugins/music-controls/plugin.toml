@@ -1,0 +1,35 @@
+# Plugin Manifest for Music Controls
+
+[plugin]
+id = "org.winux.music-controls"
+name = "Music Controls"
+version = "1.0.0"
+description = "MPRIS media player controls in the panel"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/music"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "audio-x-generic-symbolic"
+category = "Multimedia"
+keywords = ["music", "media", "player", "mpris", "spotify", "audio"]
+
+capabilities = [
+    "PanelWidget",
+    "CommandProvider",
+]
+
+[plugin.permissions]
+dbus_session = true
+panel_widgets = true
+audio_control = true
+own_data = true
+
+[build]
+lib_name = "winux_music_controls"
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 48
+priority = 8

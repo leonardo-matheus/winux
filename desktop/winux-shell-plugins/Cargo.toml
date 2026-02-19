@@ -1,0 +1,80 @@
+[package]
+name = "winux-shell-plugins"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "Plugin system for Winux Shell - extensible desktop functionality"
+
+[lib]
+name = "winux_shell_plugins"
+crate-type = ["lib", "cdylib"]
+
+[features]
+default = ["hot-reload", "sandbox"]
+hot-reload = ["notify"]
+sandbox = ["seccompiler", "nix"]
+plugin-store = ["reqwest"]
+
+[dependencies]
+# GTK4 Stack
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+
+# Async Runtime
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+
+# Error Handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Logging
+log.workspace = true
+tracing.workspace = true
+
+# Utilities
+chrono.workspace = true
+dirs.workspace = true
+walkdir.workspace = true
+parking_lot.workspace = true
+once_cell.workspace = true
+
+# Dynamic loading
+libloading = "0.8"
+
+# File watching (for hot reload)
+notify = { workspace = true, optional = true }
+
+# Sandboxing (Linux)
+seccompiler = { version = "0.4", optional = true }
+nix = { version = "0.28", features = ["process", "signal"], optional = true }
+
+# Plugin store
+reqwest = { workspace = true, optional = true }
+
+# D-Bus for system integration
+zbus.workspace = true
+
+# System info
+sysinfo.workspace = true
+
+# Semver for version compatibility
+semver = "1.0"
+
+# UUID for plugin instances
+uuid = { version = "1.6", features = ["v4"] }
+
+[dev-dependencies]
+tempfile = "3.10"

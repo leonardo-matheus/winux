@@ -1,0 +1,64 @@
+[package]
+name = "winux-ai-service"
+version = "1.0.0"
+edition = "2021"
+authors = ["Winux Team"]
+description = "System-wide AI service daemon for Winux"
+license = "GPL-3.0"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.35", features = ["full", "signal"] }
+
+# D-Bus
+zbus = { version = "4.0", features = ["tokio"] }
+
+# HTTP client for Azure OpenAI
+reqwest = { version = "0.11", features = ["json", "stream", "rustls-tls"], default-features = false }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Configuration
+toml = "0.8"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+tracing-journald = "0.3"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Rate limiting
+governor = "0.6"
+
+# Caching
+moka = { version = "0.12", features = ["future"] }
+
+# Base64 for image encoding
+base64 = "0.21"
+
+# Async traits
+async-trait = "0.1"
+
+# Futures utilities
+futures = "0.3"
+
+# UUID for request IDs
+uuid = { version = "1.6", features = ["v4"] }
+
+# SHA256 for cache keys
+sha2 = "0.10"
+hex = "0.4"
+
+[[bin]]
+name = "winux-ai-service"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

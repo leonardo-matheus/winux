@@ -1,0 +1,368 @@
+/* Winux AI - Stylesheet */
+
+/* Main window */
+window {
+    background-color: @window_bg_color;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: @sidebar_bg_color;
+    border-right: 1px solid @borders;
+}
+
+.sidebar-header {
+    padding: 12px;
+    border-bottom: 1px solid @borders;
+}
+
+.conversation-item {
+    padding: 12px;
+    border-radius: 8px;
+    margin: 4px 8px;
+    transition: background-color 200ms ease;
+}
+
+.conversation-item:hover {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+.conversation-item.selected {
+    background-color: alpha(@accent_color, 0.2);
+}
+
+.conversation-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.conversation-date {
+    font-size: 12px;
+    color: @dim_label_color;
+}
+
+/* Chat view */
+.chat-view {
+    background-color: @view_bg_color;
+}
+
+.chat-scroll {
+    background-color: transparent;
+}
+
+.messages-container {
+    padding: 16px;
+}
+
+/* Message bubbles */
+.message-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin: 8px 0;
+    max-width: 80%;
+}
+
+.message-bubble.user {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.message-bubble.assistant {
+    background-color: @card_bg_color;
+    border: 1px solid @borders;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+.message-bubble.system {
+    background-color: alpha(@warning_color, 0.1);
+    border: 1px solid alpha(@warning_color, 0.3);
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+}
+
+.message-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.message-timestamp {
+    font-size: 11px;
+    color: @dim_label_color;
+    margin-top: 4px;
+}
+
+/* Code blocks */
+.code-block {
+    background-color: @headerbar_bg_color;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+.code-block-header {
+    background-color: alpha(@shade_color, 0.5);
+    padding: 8px 12px;
+    border-bottom: 1px solid @borders;
+}
+
+.code-language {
+    font-size: 12px;
+    font-weight: 600;
+    color: @dim_label_color;
+}
+
+.code-copy-button {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.code-content {
+    padding: 12px;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.code-content text {
+    background-color: transparent;
+}
+
+/* Syntax highlighting */
+.code-keyword {
+    color: #c586c0;
+}
+
+.code-string {
+    color: #ce9178;
+}
+
+.code-comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.code-number {
+    color: #b5cea8;
+}
+
+.code-function {
+    color: #dcdcaa;
+}
+
+.code-type {
+    color: #4ec9b0;
+}
+
+/* Input area */
+.input-area {
+    background-color: @view_bg_color;
+    border-top: 1px solid @borders;
+    padding: 12px;
+}
+
+.input-container {
+    background-color: @card_bg_color;
+    border: 1px solid @borders;
+    border-radius: 24px;
+    padding: 8px;
+}
+
+.input-container:focus-within {
+    border-color: @accent_color;
+    box-shadow: 0 0 0 2px alpha(@accent_color, 0.2);
+}
+
+.input-text {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    min-height: 24px;
+}
+
+.input-text text {
+    background-color: transparent;
+}
+
+.send-button {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    border-radius: 50%;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+}
+
+.send-button:hover {
+    background-color: shade(@accent_bg_color, 1.1);
+}
+
+.send-button:disabled {
+    background-color: @insensitive_bg_color;
+    color: @insensitive_fg_color;
+}
+
+.attach-button {
+    border-radius: 50%;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+}
+
+/* Attachments */
+.attachment-preview {
+    background-color: @card_bg_color;
+    border: 1px solid @borders;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 4px;
+}
+
+.attachment-preview image {
+    border-radius: 4px;
+}
+
+.attachment-name {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.attachment-remove {
+    padding: 2px;
+    border-radius: 50%;
+}
+
+/* Typing indicator */
+.typing-indicator {
+    padding: 12px 16px;
+}
+
+.typing-dots {
+    animation: typing 1.4s infinite;
+}
+
+.typing-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: @accent_color;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Welcome view */
+.welcome-view {
+    padding: 48px;
+}
+
+.welcome-icon {
+    color: @accent_color;
+    margin-bottom: 24px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.welcome-subtitle {
+    font-size: 16px;
+    color: @dim_label_color;
+    margin-bottom: 32px;
+}
+
+.suggestion-button {
+    padding: 16px;
+    border-radius: 12px;
+    background-color: @card_bg_color;
+    border: 1px solid @borders;
+    margin: 8px;
+    min-width: 200px;
+}
+
+.suggestion-button:hover {
+    background-color: alpha(@accent_color, 0.1);
+    border-color: @accent_color;
+}
+
+/* Search */
+.search-entry {
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+/* Error message */
+.error-message {
+    background-color: alpha(@error_color, 0.1);
+    border: 1px solid alpha(@error_color, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 8px;
+}
+
+.error-message label {
+    color: @error_color;
+}
+
+/* Streaming animation */
+.streaming-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Settings dialog */
+.preferences-group {
+    margin: 12px;
+}
+
+/* Model badge */
+.model-badge {
+    background-color: alpha(@accent_color, 0.2);
+    color: @accent_color;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Token counter */
+.token-counter {
+    font-size: 11px;
+    color: @dim_label_color;
+    padding: 4px 8px;
+}

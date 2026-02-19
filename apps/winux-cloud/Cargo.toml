@@ -1,0 +1,68 @@
+[package]
+name = "winux-cloud"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Native cloud sync application for Winux OS"
+
+[dependencies]
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+tokio.workspace = true
+async-channel.workspace = true
+futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+dirs.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+chrono.workspace = true
+walkdir.workspace = true
+notify.workspace = true
+reqwest.workspace = true
+rusqlite.workspace = true
+url.workspace = true
+parking_lot.workspace = true
+once_cell.workspace = true
+
+# Image handling
+mime_guess.workspace = true
+
+# OAuth2 authentication
+oauth2.workspace = true
+# WebDAV support
+reqwest-dav = "0.2"
+# S3-compatible storage
+rust-s3 = "0.33"
+# Base64 encoding
+base64 = "0.21"
+# UUID generation
+uuid.workspace = true
+# SHA256 hashing
+sha2.workspace = true
+# Hex encoding
+hex.workspace = true
+# Glob patterns
+glob.workspace = true
+# URL encoding
+urlencoding.workspace = true
+# Async trait
+async-trait.workspace = true
+# AES encryption
+aes-gcm = "0.10"
+# Key derivation
+argon2 = "0.5"
+# Random generation
+rand = "0.8"
+# Mime types
+mime = "0.3"
+# Open browser
+webbrowser = "0.8"
+# Tiny HTTP server for OAuth callback
+tiny_http = "0.12"

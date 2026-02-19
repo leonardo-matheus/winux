@@ -1,0 +1,39 @@
+# Plugin Manifest for Pomodoro Timer
+
+[plugin]
+id = "org.winux.pomodoro"
+name = "Pomodoro Timer"
+version = "1.0.0"
+description = "Productivity timer using the Pomodoro Technique"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/pomodoro"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "alarm-symbolic"
+category = "Productivity"
+keywords = ["pomodoro", "timer", "productivity", "focus", "work"]
+
+capabilities = [
+    "PanelWidget",
+    "CommandProvider",
+    "SettingsProvider",
+]
+
+[plugin.permissions]
+panel_widgets = true
+notifications_send = true
+audio = true
+own_data = true
+
+[build]
+lib_name = "winux_pomodoro"
+resources = [
+    "sounds/*.ogg",
+]
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 32
+priority = 12

@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Winux AI
+GenericName=AI Assistant
+Comment=Intelligent assistant powered by Azure OpenAI
+Exec=winux-ai %U
+Icon=org.winux.ai
+Terminal=false
+Type=Application
+Categories=Utility;GTK;
+Keywords=AI;Assistant;Chat;GPT;OpenAI;Code;Help;
+StartupNotify=true
+StartupWMClass=org.winux.ai
+MimeType=text/plain;
+Actions=new-conversation;
+
+[Desktop Action new-conversation]
+Name=New Conversation
+Exec=winux-ai --new

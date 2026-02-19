@@ -1,0 +1,37 @@
+# Plugin Manifest for Clipboard Indicator
+
+[plugin]
+id = "org.winux.clipboard-indicator"
+name = "Clipboard Indicator"
+version = "1.0.0"
+description = "Shows clipboard history in the panel and allows quick access to previous copies"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/clipboard"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "edit-paste-symbolic"
+category = "Utilities"
+keywords = ["clipboard", "copy", "paste", "history"]
+
+capabilities = [
+    "PanelWidget",
+    "KeyboardShortcuts",
+    "CommandProvider",
+]
+
+[plugin.permissions]
+clipboard = true
+clipboard_write = true
+panel_widgets = true
+keyboard_shortcuts = true
+own_data = true
+
+[build]
+lib_name = "winux_clipboard_indicator"
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 64
+priority = 15

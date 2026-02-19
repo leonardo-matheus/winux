@@ -1,0 +1,34 @@
+# Plugin Manifest for Hello World Example
+
+[plugin]
+id = "org.winux.hello-plugin"
+name = "Hello Plugin"
+version = "1.0.0"
+description = "A simple example plugin that demonstrates the plugin API"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/hello"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "face-smile-symbolic"
+category = "Examples"
+keywords = ["hello", "example", "demo", "tutorial"]
+
+capabilities = [
+    "PanelWidget",
+    "CommandProvider",
+    "LauncherProvider",
+]
+
+[plugin.permissions]
+panel_widgets = true
+notifications_send = true
+
+[build]
+lib_name = "winux_hello_plugin"
+
+[runtime]
+auto_start = false    # Example plugin, don't auto-start
+hot_reload = true
+sandbox = true
+max_memory_mb = 16
+priority = -100       # Low priority

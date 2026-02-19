@@ -1,0 +1,76 @@
+[package]
+name = "winux-connect"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Smartphone integration for Winux OS - KDE Connect compatible"
+
+[dependencies]
+# GTK4/Libadwaita UI
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+pango.workspace = true
+
+# Async Runtime
+tokio.workspace = true
+futures.workspace = true
+async-channel.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Error Handling
+anyhow.workspace = true
+thiserror.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+# Utilities
+dirs.workspace = true
+chrono.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+url.workspace = true
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# D-Bus for system services
+zbus.workspace = true
+
+# Networking
+reqwest.workspace = true
+
+# mDNS/DNS-SD discovery
+mdns-sd = "0.10"
+
+# Cryptography (TLS/E2E)
+rustls = "0.22"
+tokio-rustls = "0.25"
+rcgen = "0.12"
+x509-parser = "0.15"
+ring = "0.17"
+base64 = "0.21"
+
+# QR Code generation
+qrcode = "0.13"
+image.workspace = true
+
+# Database for device storage
+rusqlite.workspace = true
+
+# File transfer
+walkdir.workspace = true
+mime_guess.workspace = true
+notify.workspace = true
+
+# Hostname detection
+hostname = "0.3"
+
+# Random number generation
+rand = "0.8"

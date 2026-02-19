@@ -1,0 +1,60 @@
+# Winux AI Service Configuration
+# Copy this file to /etc/winux/ai-service.toml and configure
+#
+# Location: /etc/winux/ai-service.toml
+
+[azure]
+# Azure OpenAI API key (required)
+# Get your key from the Azure Portal
+# api_key = "YOUR_AZURE_OPENAI_API_KEY_HERE"
+
+# Alternatively, set the WINUX_AI_API_KEY environment variable
+
+# Azure OpenAI endpoint (required)
+# endpoint = "https://YOUR_RESOURCE_NAME.openai.azure.com"
+
+# Deployment name for GPT-4o
+gpt4o_deployment = "gpt-4o"
+
+# API version
+api_version = "2025-01-01-preview"
+
+# Request timeout in seconds
+timeout_secs = 60
+
+# Maximum tokens for responses
+max_tokens = 4096
+
+[rate_limit]
+# Enable rate limiting to respect Azure OpenAI limits
+enabled = true
+
+# Maximum requests per minute
+# Adjust based on your Azure OpenAI tier
+requests_per_minute = 60
+
+# Maximum tokens per minute
+# Adjust based on your Azure OpenAI tier
+tokens_per_minute = 90000
+
+[cache]
+# Enable response caching to avoid duplicate API calls
+enabled = true
+
+# Maximum number of cached responses
+max_entries = 1000
+
+# Cache TTL in seconds (1 hour)
+ttl_secs = 3600
+
+[service]
+# D-Bus bus type: "system" or "session"
+# Use "system" for system-wide service (requires D-Bus policy)
+# Use "session" for per-user testing
+bus_type = "system"
+
+# Enable streaming responses via D-Bus signals
+streaming_enabled = true
+
+# Log level: "trace", "debug", "info", "warn", "error"
+log_level = "info"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.winux.ai" path="/org/winux/ai/">
+    <key name="default-model" type="s">
+      <default>'gpt-4o'</default>
+      <summary>Default AI Model</summary>
+      <description>The default model to use for new conversations (gpt-4o or o1)</description>
+    </key>
+    <key name="temperature" type="d">
+      <default>0.7</default>
+      <range min="0.0" max="2.0"/>
+      <summary>Temperature</summary>
+      <description>Controls randomness in responses (0.0 = deterministic, 2.0 = very random)</description>
+    </key>
+    <key name="max-tokens" type="i">
+      <default>4096</default>
+      <range min="256" max="128000"/>
+      <summary>Max Tokens</summary>
+      <description>Maximum number of tokens in response</description>
+    </key>
+    <key name="streaming-enabled" type="b">
+      <default>true</default>
+      <summary>Enable Streaming</summary>
+      <description>Show responses as they are generated</description>
+    </key>
+    <key name="include-system-context" type="b">
+      <default>true</default>
+      <summary>Include System Context</summary>
+      <description>Share system information with AI for better assistance</description>
+    </key>
+    <key name="terminal-integration" type="b">
+      <default>true</default>
+      <summary>Terminal Integration</summary>
+      <description>Allow AI to suggest terminal commands</description>
+    </key>
+    <key name="window-width" type="i">
+      <default>1200</default>
+      <summary>Window Width</summary>
+      <description>Width of the application window</description>
+    </key>
+    <key name="window-height" type="i">
+      <default>800</default>
+      <summary>Window Height</summary>
+      <description>Height of the application window</description>
+    </key>
+    <key name="sidebar-width" type="i">
+      <default>280</default>
+      <summary>Sidebar Width</summary>
+      <description>Width of the sidebar</description>
+    </key>
+    <key name="custom-system-prompt" type="s">
+      <default>''</default>
+      <summary>Custom System Prompt</summary>
+      <description>Custom system prompt to use instead of the default</description>
+    </key>
+  </schema>
+</schemalist>

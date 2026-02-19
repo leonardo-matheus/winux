@@ -1,0 +1,21 @@
+[package]
+name = "winux-clipboard-indicator"
+version = "1.0.0"
+edition = "2021"
+description = "Clipboard history indicator plugin for Winux Shell panel"
+license = "MIT OR GPL-3.0"
+
+[lib]
+name = "winux_clipboard_indicator"
+crate-type = ["cdylib"]
+
+[dependencies]
+winux-shell-plugins = { path = "../.." }
+gtk4 = "0.8"
+libadwaita = "0.6"
+glib = "0.19"
+gdk4 = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+log = "0.4"
+chrono = "0.4"

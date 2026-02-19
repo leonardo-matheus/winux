@@ -1,0 +1,34 @@
+# Plugin Manifest for System Monitor Widget
+
+[plugin]
+id = "org.winux.system-monitor-widget"
+name = "System Monitor"
+version = "1.0.0"
+description = "Shows CPU, RAM, and network usage in a compact panel widget"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/system-monitor"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "utilities-system-monitor-symbolic"
+category = "System"
+keywords = ["cpu", "memory", "ram", "monitor", "usage", "performance"]
+
+capabilities = [
+    "PanelWidget",
+    "SystemInfo",
+]
+
+[plugin.permissions]
+system_info = true
+panel_widgets = true
+own_data = true
+
+[build]
+lib_name = "winux_system_monitor_widget"
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 32
+priority = 5

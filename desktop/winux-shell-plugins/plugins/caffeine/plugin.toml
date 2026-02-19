@@ -1,0 +1,38 @@
+# Plugin Manifest for Caffeine
+
+[plugin]
+id = "org.winux.caffeine"
+name = "Caffeine"
+version = "1.0.0"
+description = "Prevent the screen from sleeping or activating screensaver"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/caffeine"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "caffeine-cup-empty-symbolic"
+category = "Utilities"
+keywords = ["caffeine", "awake", "sleep", "screensaver", "inhibit"]
+
+capabilities = [
+    "PanelWidget",
+    "KeyboardShortcuts",
+    "CommandProvider",
+    "SettingsProvider",
+]
+
+[plugin.permissions]
+power_inhibit = true
+panel_widgets = true
+notifications_send = true
+dbus_session = true
+own_data = true
+
+[build]
+lib_name = "winux_caffeine"
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 16
+priority = 20

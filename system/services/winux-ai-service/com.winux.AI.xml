@@ -1,0 +1,258 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+  "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/com/winux/AI">
+  <!--
+    com.winux.AI:
+    @short_description: System-wide AI Service Interface
+
+    The com.winux.AI interface provides AI capabilities to all applications
+    in the Winux system. It supports text completion, chat, summarization,
+    translation, code analysis, and image analysis through Azure OpenAI.
+  -->
+  <interface name="com.winux.AI">
+    <!--
+      Complete:
+      @prompt: The text prompt to complete
+      @model: The model to use (e.g., "gpt-4o")
+      @response: The completed text
+
+      Completes text based on a prompt using the specified model.
+    -->
+    <method name="Complete">
+      <arg name="prompt" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The text prompt to complete</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="model" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The AI model to use (e.g., "gpt-4o")</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="response" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>The completed text response</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      Chat:
+      @messages: Array of (role, content) tuples representing the conversation
+      @model: The model to use (e.g., "gpt-4o")
+      @response: The assistant's response
+
+      Sends a chat conversation and receives a response.
+      Roles can be: "user", "assistant", or "system"
+    -->
+    <method name="Chat">
+      <arg name="messages" type="a(ss)" direction="in">
+        <doc:doc>
+          <doc:summary>Array of (role, content) message tuples</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="model" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The AI model to use</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="response" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>The assistant's response message</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      ChatStream:
+      @messages: Array of (role, content) tuples representing the conversation
+      @model: The model to use
+      @request_id: A unique ID to correlate with StreamingResponse signals
+
+      Starts a streaming chat conversation. Responses are delivered
+      via the StreamingResponse signal.
+    -->
+    <method name="ChatStream">
+      <arg name="messages" type="a(ss)" direction="in">
+        <doc:doc>
+          <doc:summary>Array of (role, content) message tuples</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="model" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The AI model to use</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="request_id" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>Request ID to correlate with streaming signals</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      Summarize:
+      @text: The text to summarize
+      @summary: A concise summary of the input text
+
+      Generates a concise summary of the provided text.
+    -->
+    <method name="Summarize">
+      <arg name="text" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The text to summarize</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="summary" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>A concise summary of the text</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      Translate:
+      @text: The text to translate
+      @from_lang: Source language code (e.g., "en") or "auto" for detection
+      @to_lang: Target language code (e.g., "pt")
+      @translation: The translated text
+
+      Translates text from one language to another.
+      Language codes follow ISO 639-1 (e.g., "en", "pt", "es", "fr").
+    -->
+    <method name="Translate">
+      <arg name="text" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The text to translate</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="from_lang" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>Source language code or "auto"</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="to_lang" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>Target language code</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="translation" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>The translated text</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      AnalyzeCode:
+      @code: The source code to analyze
+      @language: The programming language (e.g., "rust", "python")
+      @analysis: Detailed code analysis
+
+      Analyzes source code and provides insights including:
+      - Description of what the code does
+      - Potential issues or bugs
+      - Suggestions for improvement
+      - Security concerns
+    -->
+    <method name="AnalyzeCode">
+      <arg name="code" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The source code to analyze</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="language" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>The programming language</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="analysis" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>Detailed analysis of the code</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      AnalyzeImage:
+      @image_path: Path to the image file to analyze
+      @prompt: What to analyze about the image
+      @description: Analysis or description of the image
+
+      Analyzes an image using vision capabilities.
+      Supports common image formats (PNG, JPEG, etc.)
+    -->
+    <method name="AnalyzeImage">
+      <arg name="image_path" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>Path to the image file</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="prompt" type="s" direction="in">
+        <doc:doc>
+          <doc:summary>What to analyze about the image</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="description" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>Analysis or description of the image</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      Version:
+      @version: The service version string
+
+      Returns the version of the AI service.
+    -->
+    <method name="Version">
+      <arg name="version" type="s" direction="out">
+        <doc:doc>
+          <doc:summary>Service version string</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      HealthCheck:
+      @healthy: True if the service is healthy
+
+      Checks if the service is healthy and ready to handle requests.
+    -->
+    <method name="HealthCheck">
+      <arg name="healthy" type="b" direction="out">
+        <doc:doc>
+          <doc:summary>True if service is healthy</doc:summary>
+        </doc:doc>
+      </arg>
+    </method>
+
+    <!--
+      StreamingResponse:
+      @request_id: The request ID this chunk belongs to
+      @chunk: A chunk of the response text
+      @done: True if this is the final chunk
+
+      Signal emitted for streaming responses (e.g., from ChatStream).
+      Clients should concatenate chunks until done is true.
+    -->
+    <signal name="StreamingResponse">
+      <arg name="request_id" type="s">
+        <doc:doc>
+          <doc:summary>Request ID to correlate chunks</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="chunk" type="s">
+        <doc:doc>
+          <doc:summary>Response text chunk</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg name="done" type="b">
+        <doc:doc>
+          <doc:summary>True if this is the last chunk</doc:summary>
+        </doc:doc>
+      </arg>
+    </signal>
+  </interface>
+</node>

@@ -1,0 +1,49 @@
+[Unit]
+Description=Winux AI Service - System-wide AI capabilities
+Documentation=https://github.com/winux/winux-ai-service
+After=network-online.target dbus.service
+Wants=network-online.target
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=com.winux.AI
+ExecStart=/usr/bin/winux-ai-service
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+User=winux-ai
+Group=winux-ai
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+
+# Allow reading configuration
+ReadOnlyPaths=/etc/winux
+
+# Resource limits
+MemoryMax=512M
+CPUQuota=50%
+
+# Environment
+Environment=RUST_LOG=info
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=winux-ai-service
+
+[Install]
+WantedBy=multi-user.target

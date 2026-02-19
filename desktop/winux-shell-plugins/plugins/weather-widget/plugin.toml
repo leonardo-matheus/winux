@@ -1,0 +1,49 @@
+# Plugin Manifest for Weather Widget
+# This file describes the plugin metadata and configuration
+
+[plugin]
+id = "org.winux.weather-widget"
+name = "Weather Widget"
+version = "1.0.0"
+description = "Shows current weather conditions in the panel"
+authors = ["Winux Team <team@winux.org>"]
+homepage = "https://winux.org/plugins/weather"
+license = "MIT"
+min_api_version = "1.0.0"
+icon = "weather-few-clouds-symbolic"
+category = "Utilities"
+keywords = ["weather", "temperature", "forecast", "climate"]
+
+# Plugin capabilities
+capabilities = [
+    "PanelWidget",
+    "Network",
+    "SettingsProvider",
+]
+
+# Required permissions
+[plugin.permissions]
+network = true
+panel_widgets = true
+location = true
+own_data = true
+notifications_send = true
+
+# Plugin dependencies (other plugins)
+[plugin.dependencies]
+# Example: "org.winux.location-service" = ">=1.0.0"
+
+[build]
+lib_name = "winux_weather_widget"
+resources = [
+    "icons/*.svg",
+    "translations/*.mo",
+]
+features = []
+
+[runtime]
+auto_start = true
+hot_reload = true
+sandbox = true
+max_memory_mb = 64
+priority = 10

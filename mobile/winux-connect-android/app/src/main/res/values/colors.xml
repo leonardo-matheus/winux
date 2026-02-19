@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Winux Brand Colors -->
+    <color name="winux_cyan">#00D4FF</color>
+    <color name="winux_magenta">#FF00FF</color>
+    <color name="winux_green">#00FF88</color>
+
+    <!-- Dark Theme -->
+    <color name="surface_dark">#121218</color>
+    <color name="surface_variant_dark">#1E1E26</color>
+    <color name="on_surface_dark">#E6E8ED</color>
+    <color name="on_surface_variant_dark">#B0B3BA</color>
+
+    <!-- Light Theme -->
+    <color name="surface_light">#F8F9FC</color>
+    <color name="surface_variant_light">#E8EAEF</color>
+    <color name="on_surface_light">#1A1C20</color>
+    <color name="on_surface_variant_light">#45474D</color>
+
+    <!-- Status Colors -->
+    <color name="status_connected">#00FF88</color>
+    <color name="status_connecting">#FFB800</color>
+    <color name="status_disconnected">#808090</color>
+    <color name="status_error">#FF4455</color>
+</resources>
