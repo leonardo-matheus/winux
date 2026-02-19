@@ -393,10 +393,10 @@ Todos com `--dry-run`, `--restore`, `--status` e logging completo.
 
 ```bash
 # SHA256
-echo "a7ceee56bb4af6f9ab375a848c4cce20e5aca7adb3eaf99f6aae03aacf806d88  winux-1.2-blaze-amd64.iso" | sha256sum -c
+echo "2c222ca92bd494d88b0370c02715f510fb7943bf77182a4542af026aa4566343  winux-1.2-blaze-amd64.iso" | sha256sum -c
 
-# MD5
-echo "72744674156987d0b4f6cadf3294a70f  winux-1.2-blaze-amd64.iso" | md5sum -c
+# MD5 - Calculado após build
+md5sum winux-1.2-blaze-amd64.iso
 ```
 
 ---
