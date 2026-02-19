@@ -441,21 +441,18 @@ impl CloudProvider for S3Provider {
     }
 
     async fn get_versions(&self, file_id: &str) -> Result<Vec<FileVersion>> {
-        let bucket = self.get_bucket()?;
-        let key = file_id.trim_start_matches('/');
+        // S3 versioning requires specific bucket configuration
+        // For now, return only the current version
+        let file = self.get_file(file_id).await?;
 
-        let versions = bucket.list_object_versions(Some(key.to_string()), None, None, None).await?;
-
-        Ok(versions.versions.iter().map(|v| FileVersion {
-            id: v.version_id.clone().unwrap_or_default(),
-            file_id: v.key.clone(),
-            version: v.version_id.clone().unwrap_or_default(),
-            size: v.size as u64,
-            modified_at: DateTime::parse_from_rfc3339(&v.last_modified)
-                .map(|dt| dt.with_timezone(&Utc))
-                .unwrap_or_else(|_| Utc::now()),
+        Ok(vec![FileVersion {
+            id: file.id.clone(),
+            file_id: file.id.clone(),
+            version: "current".to_string(),
+            size: file.size,
+            modified_at: file.modified_at,
             modified_by: None,
-        }).collect())
+        }])
     }
 
     async fn restore_version(&self, file_id: &str, version_id: &str) -> Result<CloudFile> {

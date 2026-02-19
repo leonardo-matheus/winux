@@ -83,14 +83,14 @@ rust-version = "1.75"
 
 [workspace.dependencies]
 # GTK4 Stack
-gtk4 = "0.8"
-libadwaita = "0.6"
-relm4 = "0.8"
-relm4-macros = "0.8"
-glib = "0.19"
-gio = "0.19"
-gdk4 = "0.8"
-pango = "0.19"
+gtk4 = "0.9"
+libadwaita = { version = "0.7", features = ["v1_4"] }
+relm4 = "0.9"
+relm4-macros = "0.9"
+glib = "0.20"
+gio = "0.20"
+gdk4 = "0.9"
+pango = "0.20"
 
 # Wayland/Compositor
 smithay = "0.3"
@@ -99,10 +99,10 @@ wayland-server = "0.31"
 wayland-protocols = "0.31"
 
 # Terminal
-vte4 = "0.7"
+vte4 = "0.8"
 
 # Editor
-sourceview5 = "0.8"
+sourceview5 = "0.9"
 
 # Async Runtime
 tokio = { version = "1", features = ["full"] }
@@ -154,7 +154,7 @@ rusqlite = { version = "0.31", features = ["bundled"] }
 zbus = "4.0"
 
 # Cairo for drawing
-cairo-rs = { version = "0.19", features = ["png", "pdf", "svg"] }
+cairo-rs = { version = "0.20", features = ["png", "pdf", "svg"] }
 
 # Document formats
 poppler = "0.4"

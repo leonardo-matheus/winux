@@ -4,7 +4,7 @@ use anyhow::Result;
 use std::path::{Path, PathBuf};
 use std::time::Duration;
 use tokio::sync::mpsc;
-use notify::{Watcher, RecursiveMode, Event, EventKind};
+use notify::{Watcher, RecursiveMode, Event, EventKind, event::{ModifyKind, RenameMode}};
 
 /// File event
 #[derive(Debug, Clone)]
@@ -65,19 +65,17 @@ impl FileWatcher {
 
         let kind = match event.kind {
             EventKind::Create(_) => FileEventKind::Created,
-            EventKind::Modify(_) => FileEventKind::Modified,
-            EventKind::Remove(_) => FileEventKind::Deleted,
-            EventKind::Rename(rename_mode) => {
+            EventKind::Modify(ModifyKind::Name(rename_mode)) => {
                 match rename_mode {
-                    notify::event::RenameMode::From => {
+                    RenameMode::From => {
                         // Wait for the "To" event
                         return None;
                     }
-                    notify::event::RenameMode::To => {
+                    RenameMode::To => {
                         // This should have the destination path
                         FileEventKind::Modified
                     }
-                    notify::event::RenameMode::Both => {
+                    RenameMode::Both => {
                         if event.paths.len() >= 2 {
                             FileEventKind::Renamed {
                                 from: event.paths[0].clone(),
@@ -90,6 +88,8 @@ impl FileWatcher {
                     _ => FileEventKind::Modified,
                 }
             }
+            EventKind::Modify(_) => FileEventKind::Modified,
+            EventKind::Remove(_) => FileEventKind::Deleted,
             _ => return None,
         };
 

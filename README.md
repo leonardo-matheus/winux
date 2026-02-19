@@ -371,7 +371,16 @@ Todos com `--dry-run`, `--restore`, `--status` e logging completo.
 
 | Edição | Tamanho | Descrição | Link |
 |:------:|:-------:|:---------:|:----:|
-| **Winux 1.2 Blaze** | 3.7 GB | 14 apps nativos Rust, Desktop Environment completo | [⬇️ **GitHub Release**](https://github.com/leonardo-matheus/winux/releases/tag/v1.2.0) |
+| **Winux 1.2 Blaze** | 3.7 GB | 14 apps nativos Rust, Desktop Environment completo | [⬇️ **Download Direto (CDN)**](https://pub-3979ce15e0dd9563e90c98c242c29ac3.r2.dev/v1.2/winux-1.2-blaze-amd64.iso) |
+| **Winux 1.2 Blaze** | 3.7 GB | Mirror alternativo | [⬇️ **GitHub Release**](https://github.com/leonardo-matheus/winux/releases/tag/v1.2.0) |
+
+### 🌐 **CDN Global (Cloudflare R2)**
+
+Downloads rápidos via rede global Cloudflare:
+
+```
+🔗 ISO:  https://pub-3979ce15e0dd9563e90c98c242c29ac3.r2.dev/v1.2/winux-1.2-blaze-amd64.iso
+```
 
 **Requisitos Mínimos:** CPU x86_64 SSE4.2, 4GB RAM, 30GB SSD, Vulkan 1.1
 

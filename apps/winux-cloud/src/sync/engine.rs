@@ -171,7 +171,7 @@ impl SyncEngine {
             providers: Arc::new(RwLock::new(HashMap::new())),
             status: Arc::new(RwLock::new(SyncStatus::default())),
             delta_sync: Arc::new(DeltaSync::new(database.clone())),
-            conflict_resolver: Arc::new(ConflictResolver::new(config.read().blocking_lock().conflict_strategy)),
+            conflict_resolver: Arc::new(ConflictResolver::new(config.blocking_read().conflict_strategy.clone())),
             watcher: None,
             event_sender,
             shutdown_sender: None,
@@ -324,7 +324,7 @@ impl SyncEngine {
                 // Mark for remote deletion
                 database.mark_deleted(&event.path.to_string_lossy())?;
             }
-            super::FileEventKind::Renamed { from, to: _ } => {
+            super::FileEventKind::Renamed { ref from, to: _ } => {
                 // Handle rename
                 database.update_path(&from.to_string_lossy(), &event.path.to_string_lossy())?;
             }
