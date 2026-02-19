@@ -15,6 +15,9 @@ members = [
     "apps/winux-edit",
     "apps/winux-image",
     "apps/winux-player",
+    "apps/winux-about",
+    "apps/winux-personalize",
+    "apps/winux-env-manager",
 ]
 
 [workspace.package]
