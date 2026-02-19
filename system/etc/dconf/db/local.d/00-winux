@@ -127,6 +127,15 @@ www=['<Super>b']
 search=['<Super>s']
 screensaver=['<Super>l']
 
+# Custom keybindings
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/clipboard/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/clipboard]
+# Clipboard history (Windows 11 style)
+name='Clipboard History'
+command='winux-clipboard --show'
+binding='<Super>v'
+
 [org/gnome/desktop/privacy]
 # Privacy settings
 remember-recent-files=true

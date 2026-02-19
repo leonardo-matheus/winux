@@ -24,4 +24,4 @@ async-channel.workspace = true
 once_cell.workspace = true
 
 # D-Bus for BlueZ communication
-zbus = "4.0"
+zbus.workspace = true
