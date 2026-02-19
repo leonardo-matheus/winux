@@ -1,0 +1,33 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=React Native Development
+GenericName=React Native CLI
+Comment=Cross-platform mobile development with React Native
+Icon=react-native
+Exec=gnome-terminal --title="React Native Development" -- bash -c "echo 'React Native Development - Winux OS'; echo '===================================='; echo ''; source ~/.mobile-dev-env 2>/dev/null; npx react-native --version 2>/dev/null || echo 'React Native not installed. Run: setup-mobile-dev.sh --cross-platform'; echo ''; echo 'Quick Commands:'; echo '  npx react-native init <name>     - Create new app'; echo '  npx react-native start           - Start Metro bundler'; echo '  npx react-native run-android     - Run on Android'; echo '  npx react-native run-ios         - Run on iOS'; echo '  expo init <name>                 - Create Expo app'; echo '  expo start                       - Start Expo dev server'; echo ''; exec bash"
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+Keywords=react;native;javascript;mobile;android;ios;cross-platform;facebook;meta;expo;
+Actions=CreateApp;CreateExpo;Metro;RunAndroid;
+
+[Desktop Action CreateApp]
+Name=Create React Native App
+Exec=gnome-terminal --title="React Native Init" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; read -p 'App name: ' name; npx react-native init \"\$name\"; cd \"\$name\"; code . 2>/dev/null || exec bash"
+Icon=react-native
+
+[Desktop Action CreateExpo]
+Name=Create Expo App
+Exec=gnome-terminal --title="Expo Init" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; read -p 'App name: ' name; npx create-expo-app \"\$name\"; cd \"\$name\"; code . 2>/dev/null || exec bash"
+Icon=react-native
+
+[Desktop Action Metro]
+Name=Start Metro Bundler
+Exec=gnome-terminal --title="Metro Bundler" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; npx react-native start"
+Icon=react-native
+
+[Desktop Action RunAndroid]
+Name=Run on Android
+Exec=gnome-terminal --title="React Native Android" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; npx react-native run-android"
+Icon=react-native

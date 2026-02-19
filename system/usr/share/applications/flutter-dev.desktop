@@ -1,0 +1,33 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Flutter Development
+GenericName=Flutter SDK
+Comment=Cross-platform mobile development with Flutter
+Icon=flutter
+Exec=gnome-terminal --title="Flutter Development" -- bash -c "echo 'Flutter Development - Winux OS'; echo '=============================='; echo ''; source ~/.mobile-dev-env 2>/dev/null; flutter --version 2>/dev/null || echo 'Flutter not installed. Run: setup-mobile-dev.sh --cross-platform'; echo ''; echo 'Quick Commands:'; echo '  flutter create <name>    - Create new app'; echo '  flutter run              - Run on connected device'; echo '  flutter build apk        - Build Android APK'; echo '  flutter build ios        - Build iOS app'; echo '  flutter doctor            - Check setup'; echo '  flutter devices          - List devices'; echo ''; exec bash"
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+Keywords=flutter;dart;mobile;android;ios;cross-platform;google;
+Actions=CreateApp;Doctor;Devices;BuildAPK;
+
+[Desktop Action CreateApp]
+Name=Create New App
+Exec=gnome-terminal --title="Flutter Create" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; read -p 'App name: ' name; flutter create --org com.winux \"\$name\"; cd \"\$name\"; code . 2>/dev/null || exec bash"
+Icon=flutter
+
+[Desktop Action Doctor]
+Name=Flutter Doctor
+Exec=gnome-terminal --title="Flutter Doctor" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; flutter doctor -v; echo ''; read -p 'Press Enter to close'"
+Icon=flutter
+
+[Desktop Action Devices]
+Name=Connected Devices
+Exec=gnome-terminal --title="Flutter Devices" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; flutter devices; echo ''; read -p 'Press Enter to close'"
+Icon=flutter
+
+[Desktop Action BuildAPK]
+Name=Build APK (current dir)
+Exec=gnome-terminal --title="Flutter Build" -- bash -c "source ~/.mobile-dev-env 2>/dev/null; flutter build apk --release; echo ''; read -p 'Press Enter to close'"
+Icon=flutter

@@ -8,6 +8,7 @@ members = [
     "desktop/winux-compositor",
     "desktop/winux-panel",
     "desktop/winux-shell",
+    "desktop/winux-notifications",
 
     # Core Apps
     "apps/winux-files",

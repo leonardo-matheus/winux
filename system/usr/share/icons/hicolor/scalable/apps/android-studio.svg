@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="androidGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3DDC84"/>
+      <stop offset="100%" style="stop-color:#2DA866"/>
+    </linearGradient>
+    <linearGradient id="androidBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4285F4"/>
+      <stop offset="100%" style="stop-color:#2962FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="50" fill="url(#androidGreen)"/>
+
+  <!-- Android head outline -->
+  <path d="M128 40c-44.18 0-80 35.82-80 80v8h160v-8c0-44.18-35.82-80-80-80z" fill="white" opacity="0.9"/>
+
+  <!-- Eyes -->
+  <circle cx="96" cy="100" r="10" fill="url(#androidGreen)"/>
+  <circle cx="160" cy="100" r="10" fill="url(#androidGreen)"/>
+
+  <!-- Antennas -->
+  <line x1="80" y1="50" x2="96" y2="72" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <line x1="176" y1="50" x2="160" y2="72" stroke="white" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Body -->
+  <rect x="48" y="132" width="160" height="80" rx="10" fill="white" opacity="0.9"/>
+
+  <!-- Arms -->
+  <rect x="28" y="140" width="16" height="56" rx="8" fill="white" opacity="0.9"/>
+  <rect x="212" y="140" width="16" height="56" rx="8" fill="white" opacity="0.9"/>
+
+  <!-- Legs -->
+  <rect x="72" y="216" width="24" height="32" rx="8" fill="white" opacity="0.9"/>
+  <rect x="160" y="216" width="24" height="32" rx="8" fill="white" opacity="0.9"/>
+
+  <!-- Studio badge -->
+  <circle cx="196" cy="196" r="36" fill="url(#androidBlue)"/>
+  <text x="196" y="204" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">AS</text>
+</svg>

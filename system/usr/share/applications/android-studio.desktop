@@ -4,7 +4,7 @@ Type=Application
 Name=Android Studio
 GenericName=Android IDE
 Comment=The Official IDE for Android Development
-Icon=/opt/android-studio/bin/studio.svg
+Icon=android-studio
 Exec=/opt/android-studio/bin/studio.sh %f
 Terminal=false
 Categories=Development;IDE;
@@ -17,19 +17,19 @@ Actions=NewProject;OpenProject;AVDManager;SDKManager;
 [Desktop Action NewProject]
 Name=New Project
 Exec=/opt/android-studio/bin/studio.sh --new-project
-Icon=/opt/android-studio/bin/studio.svg
+Icon=android-studio
 
 [Desktop Action OpenProject]
 Name=Open Project
 Exec=/opt/android-studio/bin/studio.sh
-Icon=/opt/android-studio/bin/studio.svg
+Icon=android-studio
 
 [Desktop Action AVDManager]
 Name=AVD Manager
 Exec=/opt/android-studio/bin/studio.sh avdmanager
-Icon=/opt/android-studio/bin/studio.svg
+Icon=android-studio
 
 [Desktop Action SDKManager]
 Name=SDK Manager
 Exec=/opt/android-studio/bin/studio.sh sdk
-Icon=/opt/android-studio/bin/studio.svg
+Icon=android-studio

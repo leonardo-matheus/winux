@@ -32,7 +32,7 @@ const APP_ID: &str = "org.winux.Notifications";
 #[tokio::main]
 async fn main() -> Result<()> {
     // Initialize logging
-    let subscriber = FmtSubscriber::builder()
+    let _subscriber = FmtSubscriber::builder()
         .with_max_level(Level::DEBUG)
         .with_target(true)
         .init();

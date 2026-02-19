@@ -1,0 +1,257 @@
+/* Winux Welcome - Custom Styles */
+
+/* Welcome page logo animation */
+.welcome-logo {
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.welcome-logo-icon {
+    color: @accent_bg_color;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.welcome-logo-text {
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: @accent_color;
+    margin-top: 12px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+/* Option cards */
+.option-card {
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.option-card:hover {
+    border-color: alpha(@accent_bg_color, 0.3);
+}
+
+.option-card:active {
+    transform: scale(0.98);
+}
+
+/* Cards with selection */
+.card:has(checkbutton:checked) {
+    border: 2px solid @accent_bg_color;
+    background-color: alpha(@accent_bg_color, 0.1);
+}
+
+/* Page dots */
+.page-dot {
+    background-color: alpha(@window_fg_color, 0.3);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.page-dot.active {
+    background-color: @accent_bg_color;
+    transform: scale(1.2);
+}
+
+/* Progress bar */
+.welcome-progress {
+    min-height: 6px;
+    border-radius: 3px;
+}
+
+.welcome-progress progress {
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Step indicators */
+.step-circle {
+    background-color: alpha(@window_fg_color, 0.2);
+    border-radius: 50%;
+    min-width: 32px;
+    min-height: 32px;
+    transition: all 0.3s ease;
+}
+
+.step-circle.completed {
+    background-color: @success_bg_color;
+    color: @success_fg_color;
+}
+
+.step-circle.current {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    box-shadow: 0 0 0 4px alpha(@accent_bg_color, 0.3);
+}
+
+.step-circle.upcoming {
+    background-color: alpha(@window_fg_color, 0.1);
+    color: alpha(@window_fg_color, 0.5);
+}
+
+.step-line {
+    background-color: alpha(@window_fg_color, 0.2);
+}
+
+.step-line.completed {
+    background-color: @success_bg_color;
+}
+
+/* Toggle cards */
+.toggle-card {
+    transition: all 0.2s ease;
+}
+
+.toggle-card:hover {
+    background-color: alpha(@accent_bg_color, 0.1);
+}
+
+/* Color swatches */
+.color-swatch {
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.selected {
+    box-shadow: 0 0 0 3px @accent_bg_color;
+}
+
+/* Theme preview cards */
+.theme-card-light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.theme-card-dark {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Wallpaper preview */
+.wallpaper-preview {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Section headers */
+.section-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Navigation buttons */
+.nav-button {
+    min-width: 100px;
+}
+
+/* Success status page */
+statuspage.success image {
+    color: @success_bg_color;
+}
+
+/* Monospace text for shortcuts */
+.monospace {
+    font-family: monospace;
+}
+
+/* Carousel smooth transition */
+carousel {
+    transition: all 0.3s ease;
+}
+
+/* Card hover effects */
+.card {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px alpha(black, 0.15);
+}
+
+/* Accent colored elements */
+.accent {
+    color: @accent_bg_color;
+}
+
+/* Feature icons on welcome page */
+.feature-icon {
+    padding: 16px;
+    border-radius: 50%;
+    background-color: alpha(@accent_bg_color, 0.1);
+}
+
+/* Smooth scrolling */
+scrolledwindow {
+    transition: all 0.2s ease;
+}
+
+/* App selection rows */
+row.activatable:hover {
+    background-color: alpha(@accent_bg_color, 0.05);
+}
+
+row.activatable:active {
+    background-color: alpha(@accent_bg_color, 0.1);
+}
+
+/* Privacy icons */
+.privacy-icon {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: alpha(@success_bg_color, 0.1);
+}
+
+/* Finish page summary */
+.summary-row {
+    padding: 8px;
+    border-radius: 8px;
+    margin: 4px 0;
+}
+
+/* Keyboard shortcut display */
+.shortcut-key {
+    background-color: alpha(@window_fg_color, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 600;
+}
+
+/* Header bar for welcome */
+headerbar.flat {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Circular buttons */
+.circular {
+    border-radius: 50%;
+}
+
+/* Mode preview styling */
+.mode-preview {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: @window_bg_color;
+}
+
+/* Gaming section icons */
+.gaming-icon {
+    color: @purple_3;
+}
+
+/* Dev section icons */
+.dev-icon {
+    color: @blue_3;
+}
